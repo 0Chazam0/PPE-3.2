@@ -1,0 +1,53 @@
+@CHARSET "ISO-8859-1";
+
+.conteneur{
+	margin-left: auto;
+	margin-right: auto;
+	width: 1500px;
+	background-image: url("../images/fond3.png");
+	background-repeat: repeat-x;
+}
+
+header{
+  	height: 180px;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 90%;
+  	padding-top: 5px;
+}
+
+
+nav {
+  	text-align: center;
+}
+.menuPrincipal {
+  	list-style-type: none;
+  	padding-left: 30px;
+  	font-size: 22px;
+  	text-shadow: 2px 2px 2px blue;
+}
+
+.menuPrincipal ul{
+  	list-style-type: none;
+  	border: 1px solid grey;
+}
+
+.menuPrincipal a{
+  	color: #ffffff;
+  	font-weight: bold;
+  	text-decoration: none;
+}
+
+.menuPrincipal a:hover{
+ 	text-shadow: 3px 3px 3px black;
+}
+
+.menuPrincipal .actif{
+  	color: #ffff00;
+  	font-weight: bold;
+  	text-shadow: 3px 3px 3px black;
+}
+
+.menuPrincipal img{
+  	width: 30px;
+}
