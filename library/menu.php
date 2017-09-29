@@ -51,22 +51,18 @@ class menu{
 		return $composant;
 	}
 
-	public function creerMenuEquipe($composantActif){
+	public function creerMenu($composantActif){
 		$menu = "<ul class = '" .  $this->style . "'>";
 		foreach($this->composants as $composant){
-			if($composant[0] == $composantActif){
+			if($composant[1] == $composantActif){
 				$menu .= "<li class='actif'>";
-				$chemin = "images/" . $composant[1] . ".png";
-				/*$menu .= "<img src = '" . $chemin . "' />";*/
-				$menu .=  $composant[1] ;
+				$menu .=  $composant[0] ;
 			 }
 			else{
 				$menu .= "<li>";
 				$menu .= "<a href='index.php?action=afficher" ;
-				$menu .= "&equipe=" . $composant[0] . "' >";
-				$chemin = "images/" . $composant[1] . ".png";
-				$menu .= "<img src = '" . $chemin . "' />";
-				$menu .= $composant[1] ;
+				$menu .= "&equipe=" . $composant[1] . "' >";
+				$menu .= $composant[0] ;
 				$menu .= "</a>";
 			}
 		}
