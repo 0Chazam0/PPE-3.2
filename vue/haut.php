@@ -1,5 +1,3 @@
-<nav class="menuPrincipal">
-	<?php
-	echo $menuPrincipal->creerMenu($_SESSION['menuPrincipal']);
-	?>
-</nav>
+<div class="conteneur">
+  <?php echo $menuPrincipal->creerMenu($_SESSION['menuPrincipal'],'menuPrincipal'); ?>
+</div>
