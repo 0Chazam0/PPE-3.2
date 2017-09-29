@@ -45,7 +45,7 @@ class Menu{
 	 * @param $nomMenu (nom variable transmise)
 	 */
 	public function creerMenu($composantActif,$nomMenu){
-		$menu = "<ul class = '" . '' . "'>";
+		$menu = "<ul class = '" .  $this->style . "'>";
 		foreach($this->composants as $composant){
 			if($composant[0] == $composantActif){
 				$menu .= "<li>";

@@ -5,7 +5,7 @@
 		<meta charset="utf-8" />
 		<title>EasyFood</title>
 		<style type="text/css">
-			@import url(styles/EasyFood.css);
+			@import url(style/EasyFood.css);
 		</style>
 	</head>
 	<body>

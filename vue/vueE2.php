@@ -4,7 +4,7 @@
   </header>
 
   <main>
-
+    ÉTAPE 2
   </main>
 
   <footer>
