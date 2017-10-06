@@ -36,14 +36,14 @@ else
 }
 
 $formLogo = new Formulaire("","","formLogo","logo");
-$formLogo->ajouterComposantLigne($formLogo->creerInputImage("logo","logo","image\logo.jpeg"));
+$formLogo->ajouterComposantLigne($formLogo->creerInputLogo("logo","logo","image\logo.jpeg"));
 $formLogo->ajouterComposantTab();
 $formLogo->creerFormulaire();
 
 
 $menuPrincipal = new Menu("menuP");
 
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Accueil',"Accueil"));
+$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Accueil',""));
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Connexion',"Connexion"));
 $leMenuP = $menuPrincipal->creerMenu('menuPrincipal');
 
