@@ -18,6 +18,7 @@ else
 		$_SESSION['menuPrincipal']="Accueil";
 	}
 }
+
 $formLogo = new Formulaire("","","formLogo","logo");
 $formLogo->ajouterComposantLigne($formLogo->creerInputImage("logo","logo","image\logo.jpeg"));
 $formLogo->ajouterComposantTab();

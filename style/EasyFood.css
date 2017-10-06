@@ -40,7 +40,7 @@ main {
 	min-height: 600px;
 	background-color: #f0f0f0;
  	font-size: 15px;
- 	margin-top: -150px;
+ 	margin-top: 150px;
 	height: 2000px;
 
 }
@@ -54,7 +54,7 @@ main {
 	background-image: url("../image/background.jpg");
 
 	background-size: 100%;
-	opacity: 0.70;
+	opacity: 1;
 	height: 832px;
 	overflow: hidden;
 
@@ -88,10 +88,11 @@ footer p{
 nav.menuPrincipal{
 	background-color: white;
 	font-size: 0px;
-	text-align: center;
-	height: 50px;
+	text-align: right;
+	height: 75px;
 	padding: 0px;
 	margin: 0px;
+
 }
 
 nav.menuPrincipal ul {
