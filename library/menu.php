@@ -44,20 +44,14 @@ class Menu{
 	 * @param $composantActif (item sélectionné)
 	 * @param $nomMenu (nom variable transmise)
 	 */
-	public function creerMenu($composantActif,$nomMenu){
+	public function creerMenu($nomMenu){
 		$menu = "<ul class = '" .  $this->style . "'>";
 		foreach($this->composants as $composant){
-			if($composant[0] == $composantActif){
-				$menu .= "<li>";
-				$menu .=  "<span class='actif'>" . $composant[1] ."</span>";
-			}
-			else{
 				$menu .= "<li>";
 				$menu .= "<a href='index.php?" . $nomMenu ;
 				$menu .= "=" . $composant[0] . "' >";
 				$menu .= "<span>" . $composant[1] ."</span>";
 				$menu .= "</a>";
-			}
 			$menu .= "</li>";
 		}
 		$menu .= "</ul>";
