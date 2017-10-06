@@ -12,7 +12,7 @@ if (isset($_POST['deco'])) {
 }
 
 //session du menu
-<<<<<<< HEAD
+
 	if(isset($_GET['menuPrincipal'])){
 		$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
 	}
@@ -24,7 +24,7 @@ if (isset($_POST['deco'])) {
 
 
 
-=======
+
 if(isset($_GET['menuPrincipal'])){
 	$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
 }
@@ -38,7 +38,7 @@ $formLogo = new Formulaire("","","formLogo","logo");
 $formLogo->ajouterComposantLigne($formLogo->creerInputImage("logo","logo","image\logo.jpeg"));
 $formLogo->ajouterComposantTab();
 $formLogo->creerFormulaire();
->>>>>>> 05a376672bf60466d5f76c346f356dde691335fd
+
 
 $menuPrincipal = new Menu("menuP");
 
