@@ -64,8 +64,8 @@ class Formulaire{
 		return $composant;
 	}
 
-	public function creerInputImage($unNom, $unId, $uneSource){
-		$composant = "<input type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
+	public function creerInputLogo($unNom, $unId, $uneSource){
+		$composant = "<input style='width:90px;' type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
 		$composant .= "src = '" . $uneSource . "'/> ";
 		return $composant;
 	}

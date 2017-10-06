@@ -1,16 +1,5 @@
 <?php
 
-
-class UserDAO
-{
-  public function selectUser($table)
-  {
-    $sql = "SELECT NOMU, PRENOMU FROM " . $table . ";";
-  }
-
-}
-
-
 class RestoDAO
 {
   public function selectPlatResto($idResto)
