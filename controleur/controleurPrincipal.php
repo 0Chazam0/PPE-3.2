@@ -12,6 +12,7 @@ if (isset($_POST['deco'])) {
 }
 
 //session du menu
+<<<<<<< HEAD
 	if(isset($_GET['menuPrincipal'])){
 		$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
 	}
@@ -23,14 +24,25 @@ if (isset($_POST['deco'])) {
 
 
 
+=======
+if(isset($_GET['menuPrincipal'])){
+	$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
+}
+else
+{
+	if(!isset($_SESSION['menuPrincipal'])){
+		$_SESSION['menuPrincipal']="Accueil";
+	}
+}
+$formLogo = new Formulaire("","","formLogo","logo");
+$formLogo->ajouterComposantLigne($formLogo->creerInputImage("logo","logo","image\logo.jpeg"));
+$formLogo->ajouterComposantTab();
+$formLogo->creerFormulaire();
+>>>>>>> 05a376672bf60466d5f76c346f356dde691335fd
 
 $menuPrincipal = new Menu("menuP");
 
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E1',"Livraison Bordeaux"));
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E2',"Spécialités"));
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E3',"Votre Restaurant"));
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E4',"Coordonnées et Paiement"));
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E5',"Confirmation"));
+$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Accueil',"Accueil"));
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Connexion',"Connexion"));
 $leMenuP = $menuPrincipal->creerMenu('menuPrincipal');
 
