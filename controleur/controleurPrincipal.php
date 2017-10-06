@@ -31,16 +31,6 @@ $formLogo->creerFormulaire();
 $menuPrincipal = new Menu("menuP");
 
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Accueil',""));
-
-
-$menuPrincipal = new Menu("menuP");
-
-/*$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E1',"Livraison Bordeaux"));
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Resto',"Spécialités"));
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E3',"Votre Restaurant"));
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E4',"Coordonnées et Paiement"));
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E5',"Confirmation"));*/
-
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Connexion',"Connexion"));
 $leMenuP = $menuPrincipal->creerMenu($_SESSION['menuPrincipal'],'menuPrincipal');
 
