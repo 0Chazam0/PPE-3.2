@@ -6,6 +6,7 @@
 
 html, body {
   font-family: sans-serif;
+
 }
 
 /****************************************************/
@@ -16,6 +17,7 @@ html, body {
 	padding: 0px;
 	width: 100%
 	font-size: 0px;
+
 }
 
 /****************************************************/
@@ -56,6 +58,14 @@ footer {
 footer p{
 	padding: 15px;
 	padding-top: 25px;
+}
+.logo {
+	width: 20px;
+	height: 20px;
+}
+#accueil{
+	background-image: url("image\background.jpg");
+	background-repeat: repeat-x;
 }
 
 /****************************************************/
