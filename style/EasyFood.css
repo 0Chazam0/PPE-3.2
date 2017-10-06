@@ -6,7 +6,6 @@
 
 html, body {
   font-family: sans-serif;
-
 }
 
 /****************************************************/
@@ -43,7 +42,18 @@ main {
  	font-size: 15px;
  	margin-top: 200px;
 }
+#accueil
+{
+	margin: 0px;
+	padding: 0px;
+	min-height: 600px;
 
+ 	font-size: 15px;
+ 	margin-top: 200px;
+	background-image: url("../image/background.jpg");
+	background-repeat: repeat-x;
+	opacity: 0.80;
+}
 /****************************************************/
 /*styles pour le footer                             */
 /****************************************************/
@@ -60,13 +70,11 @@ footer p{
 	padding-top: 25px;
 }
 .logo {
-	width: 20px;
+	margin-top: -35px;
+	width: 10px;
 	height: 20px;
 }
-#accueil{
-	background-image: url("image\background.jpg");
-	background-repeat: repeat-x;
-}
+
 
 /****************************************************/
 /*styles pour le menu principal                     */
