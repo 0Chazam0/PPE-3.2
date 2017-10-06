@@ -65,7 +65,7 @@ class Formulaire{
 	}
 
 	public function creerInputLogo($unNom, $unId, $uneSource){
-		$composant = "<input style='width:90px;' type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
+		$composant = "<input style='width:90px;margin-top:-10px;margin-left:50px;' type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
 		$composant .= "src = '" . $uneSource . "'/> ";
 		return $composant;
 	}
