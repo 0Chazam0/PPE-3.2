@@ -5,35 +5,22 @@ require_once 'library/menu.php';
 require_once 'library/dispatcher.php';
 require_once 'library/formulaire.php';
 require_once 'modele/dao.php';
+//require_once 'modele/dto.php';
+require_once 'modele/DAO/select.php';
+require_once 'modele/DTO/resto.php';
 
-if (isset($_POST['deco'])) {
- session_destroy();
- session_start();
-}
 
 //session du menu
-
-	if(isset($_GET['menuPrincipal'])){
-		$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
-	}
-	else{
-		if(!isset($_SESSION['menuPrincipal'])){
-			$_SESSION['menuPrincipal']="E1";
-		}
- 	}
-
-
-
-
 if(isset($_GET['menuPrincipal'])){
 	$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
 }
 else
 {
 	if(!isset($_SESSION['menuPrincipal'])){
-		$_SESSION['menuPrincipal']="Accueil";
+		$_SESSION['menuPrincipal']="E1";
 	}
 }
+
 
 $formLogo = new Formulaire("","","formLogo","logo");
 $formLogo->ajouterComposantLigne($formLogo->creerInputLogo("logo","logo","image\logo.jpeg"));
@@ -44,8 +31,18 @@ $formLogo->creerFormulaire();
 $menuPrincipal = new Menu("menuP");
 
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Accueil',""));
+
+
+$menuPrincipal = new Menu("menuP");
+
+/*$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E1',"Livraison Bordeaux"));
+$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Resto',"Spécialités"));
+$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E3',"Votre Restaurant"));
+$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E4',"Coordonnées et Paiement"));
+$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E5',"Confirmation"));*/
+
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Connexion',"Connexion"));
-$leMenuP = $menuPrincipal->creerMenu('menuPrincipal');
+$leMenuP = $menuPrincipal->creerMenu($_SESSION['menuPrincipal'],'menuPrincipal');
 
 include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
 

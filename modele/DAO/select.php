@@ -1,15 +1,7 @@
 <?php
 
-require_once 'modele/DAODBConnex.php';
 
-class UserDAO
-{
-  public function selectUser($table)
-  {
-    $sql = "SELECT NOMU, PRENOMU FROM " . $table . ";";
-  }
 
-}
 
 
 class RestoDAO
