@@ -15,7 +15,7 @@ if(isset($_GET['menuPrincipal'])){
 else
 {
 	if(!isset($_SESSION['menuPrincipal'])){
-		$_SESSION['menuPrincipal']="E2";
+		$_SESSION['menuPrincipal']="E1";
 	}
 }
 
