@@ -1,5 +1,12 @@
 <?php
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> a74e470406761a092a0288d18a26cc209dc3e844
 class RestoDAO
 {
   public function selectPlatResto($idResto)
