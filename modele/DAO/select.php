@@ -1,6 +1,5 @@
 <?php
 
-require_once 'modele/DAODBConnex.php';
 
 class UserDAO
 {

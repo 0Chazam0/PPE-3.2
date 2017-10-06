@@ -5,7 +5,9 @@ require_once 'library/menu.php';
 require_once 'library/dispatcher.php';
 require_once 'library/formulaire.php';
 require_once 'modele/dao.php';
-require_once 'modele/dto.php';
+//require_once 'modele/dto.php';
+require_once 'modele/DAO/select.php';
+require_once 'modele/DTO/resto.php';
 
 
 //session du menu
@@ -23,7 +25,7 @@ else
 $menuPrincipal = new Menu("menuP");
 
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E1',"Livraison Bordeaux"));
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E2',"Spécialités"));
+$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Resto',"Spécialités"));
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E3',"Votre Restaurant"));
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E4',"Coordonnées et Paiement"));
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('E5',"Confirmation"));

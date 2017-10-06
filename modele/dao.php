@@ -28,7 +28,7 @@ class DBConnex extends PDO{
 
 		return false;
 	}
-		
+
 	public function queryFetchFirstRow($sql){
 		$sth    = $this -> query($sql);
 		$result    = array();
