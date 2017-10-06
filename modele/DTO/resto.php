@@ -1,4 +1,42 @@
 <?php
+
+/**
+ * Restos
+ */
+class Restos
+{
+  private   $lesRestos;
+
+  function __construct($lesRestos)
+  {
+    $this->lesRestos = $lesRestos;
+  }
+
+  public function getLesRestos()
+  {
+    return $this->lesRestos;
+  }
+
+  public function setLesRestos($value)
+  {
+    $this->lesRestos = $value;
+  }
+
+  public function chercher($TheId)
+  {
+    foreach ($this->lesRestos as $resto)
+    {
+      if ($resto->getid() == $TheId)
+      {
+        return $resto;
+      }
+    }
+    return null;
+  }
+
+}
+
+
 /**
  * resto
  */
