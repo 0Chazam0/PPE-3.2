@@ -1,3 +1,4 @@
+
 @charset "ISO-8859-1";
 *{
 	margin:0%;
@@ -16,6 +17,7 @@ html, body {
 	padding: 0px;
 	width: 100%
 	font-size: 0px;
+
 }
 
 /****************************************************/
@@ -40,8 +42,25 @@ main {
 	background-color: #f0f0f0;
  	font-size: 15px;
  	margin-top: 200px;
-}
+	height: 2000px;
 
+}
+#accueil
+{
+	margin: 0px;
+	padding: 0px;
+
+ 	font-size: 15px;
+ 	margin-top: -150px;
+	background-image: url("../image/background.jpg");
+
+	background-size: 100%;
+	opacity: 1;
+	height: 832px;
+	overflow-y: hidden;
+
+
+}
 /****************************************************/
 /*styles pour le footer                             */
 /****************************************************/
@@ -57,17 +76,24 @@ footer p{
 	padding: 15px;
 	padding-top: 25px;
 }
+.logo {
+	margin-top: -35px;
+	width: 10px;
+	height: 20px;
+}
+
 
 /****************************************************/
 /*styles pour le menu principal                     */
 /****************************************************/
 nav.menuPrincipal{
-	background-color: green;
+	background-color: white;
 	font-size: 0px;
-	text-align: center;
-	height: 50px;
+	text-align: right;
+	height: 75px;
 	padding: 0px;
 	margin: 0px;
+
 }
 
 nav.menuPrincipal ul {
@@ -87,7 +113,7 @@ nav.menuPrincipal ul li {
 nav.menuPrincipal ul li a {
 	display: table-cell;
     text-decoration: none;
-  	color: white;
+  	color: black;
   	text-align: center;
   	vertical-align: middle;
   	height: 50px;
@@ -107,3 +133,4 @@ nav.menuPrincipal ul li .actif {
   	height: 50px;
   	width: 140px;
 }
+>>>>>>> 05a376672bf60466d5f76c346f356dde691335fd
