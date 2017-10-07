@@ -119,8 +119,31 @@ nav.menuPrincipal ul li .actif {
   	height: 50px;
   	width: 140px;
 }
+
+#separateur_menuP{
+	width: 100%;
+	border: none;
+	background-color: orange;
+	margin-top: 35px;
+	height: 7px;
+}
+/* -----------------TXT accueil------------------------------------------*/
+#txtAccueil{
+	color: white;
+	font-size: 20px;
+	text-align: center;
+	z-index: 10;
+	position: relative;
+	margin-top: 10%;
+	font-family: "Helvetica Neue",sans-serif;
+}
+#txtAccueil p{
+	font-size: 32px;
+
+}
+/* -----------------Recherche barre------------------------------------------*/
 .recherche_p{
-	margin-top: 30%;
+	margin-top: 10%;
 	margin-left:40%;
 	height: 100px;
 	z-index: 10;
@@ -129,11 +152,12 @@ nav.menuPrincipal ul li .actif {
 #search {
   background-color: #ffffff;
   border-style: solid;
-  border-width: 2px;
-  border-color: #dddddd;
+  border-width: 3px;
+  border-color: orange;
   padding: 5px 10px 5px 10px;
   width: 300px;
-	margin-top: -300px;
+	height: 30px;
+
   font-size: 12px;
 	margin-left: -110px;
   letter-spacing: 1px;
@@ -143,12 +167,25 @@ nav.menuPrincipal ul li .actif {
 #search-btn {
   background-color: #FAFAFA;
   border-style: solid;
-  border-width: 1px;
-  border-color: #E8B960;
+  border-width: 3px;
+  border-color: orange;
   padding: 5px 10px 5px 10px;
 	margin-left: 230px;
-
-  font-size: 13px;
+	margin-top: -100px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: BLACK;
+}
+#search-btn:hover {
+  background-color: #F7BE81;
+  border-style: solid;
+  border-width: 3px;
+  border-color: orange;
+  padding: 5px 10px 5px 10px;
+	margin-left: 230px;
+	margin-top: -100px;
+  font-size: 16px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: BLACK;
