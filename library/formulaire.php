@@ -15,7 +15,10 @@ class Formulaire{
 		$this->nom = $unNom;
 		$this->style = $unStyle;
 	}
-
+	public function concactComposants($unComposant , $autreComposant ){
+		$unComposant .=  $autreComposant;
+		return $unComposant ;
+	}
 
 	public function ajouterComposantLigne($unComposant){
 		$this->ligneComposants[] = $unComposant;

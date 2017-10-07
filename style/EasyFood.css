@@ -119,4 +119,37 @@ nav.menuPrincipal ul li .actif {
   	height: 50px;
   	width: 140px;
 }
->>>>>>> 05a376672bf60466d5f76c346f356dde691335fd
+.recherche_p{
+	margin-top: 30%;
+	margin-left:40%;
+	height: 100px;
+	z-index: 10;
+	position: relative;
+}
+#search {
+  background-color: #ffffff;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #dddddd;
+  padding: 5px 10px 5px 10px;
+  width: 300px;
+	margin-top: -300px;
+  font-size: 12px;
+	margin-left: -110px;
+  letter-spacing: 1px;
+	font-style: italic;
+	color: grey;
+}
+#search-btn {
+  background-color: #FAFAFA;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E8B960;
+  padding: 5px 10px 5px 10px;
+	margin-left: 230px;
+
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: BLACK;
+}
