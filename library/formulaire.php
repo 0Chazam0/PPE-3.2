@@ -66,7 +66,11 @@ class Formulaire{
 		$composant .= "value = '" . $uneValue . "'/> ";
 		return $composant;
 	}
-
+	public function creerInputSubmitHidden($unNom, $unId, $uneValue){
+		$composant = "<input type = 'hidden' name = '" . $unNom . "' id = '" . $unId . "' ";
+		$composant .= "value = '" . $uneValue . "'/> ";
+		return $composant;
+	}
 	public function creerInputLogo($unNom, $unId, $uneSource){
 		$composant = "<input style='width:90px;margin-top:-10px;margin-left:50px;' type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
 		$composant .= "src = '" . $uneSource . "'/> ";

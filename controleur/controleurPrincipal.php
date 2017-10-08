@@ -21,10 +21,7 @@ else
 }
 
 
-$formLogo = new Formulaire("","","formLogo","logo");
-$formLogo->ajouterComposantLigne($formLogo->creerInputLogo("logo","logo","image\logo.jpeg"));
-$formLogo->ajouterComposantTab();
-$formLogo->creerFormulaire();
+
 
 
 $menuPrincipal = new Menu("menuP");
