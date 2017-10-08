@@ -30,8 +30,8 @@ class Formulaire{
 	}
 
 
-	public function creerLabelFor($unLabel){
-		$composant = "";
+	public function creerLabelFor($unLabel,$unNom){
+		$composant = "<label style='width: 10px;height: 10px;'for = '" . $unNom . "' />" . $unLabel . "</label>";
 		return $composant;
 	}
 

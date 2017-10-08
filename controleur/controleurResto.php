@@ -1,7 +1,6 @@
 <?php
 
-$listeResto = new Restos(RestoDAO::selectListeResto());
-$menuResto = new menu("menuResto");
+$listeRestos = new Restos(RestoDAO::selectListeResto());
 
 include 'vue\vueResto.php';
  ?>

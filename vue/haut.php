@@ -5,8 +5,10 @@
 	$formLogo->ajouterComposantLigne($formLogo->creerInputLogo("logo","logo","image\logo.jpeg"));
 	$formLogo->ajouterComposantTab();
 	$formLogo->creerFormulaire();
+
 	echo $leMenuP;
 	echo $formLogo->afficherFormulaire();
+
 
 	?>
 	<hr id="separateur_menuP">

@@ -8,7 +8,6 @@ require_once 'modele/dao.php';
 require_once 'modele/DAO/select.php';
 require_once 'modele/DTO/resto.php';
 
-
 //session du menu
 if(isset($_GET['menuPrincipal'])){
 	$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
@@ -19,9 +18,6 @@ else
 		$_SESSION['menuPrincipal']="accueil";
 	}
 }
-
-
-
 
 
 $menuPrincipal = new Menu("menuP");

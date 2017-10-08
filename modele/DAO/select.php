@@ -1,7 +1,7 @@
 <?php
 class RestoDAO
 {
-  public function selectPlatResto($idResto)
+  public static function selectPlatResto($idResto)
   {
     $sql = "SELECT NOMP, PRIXFOURNISSEURP, PRIXCLIENTP, PLATVISIBLE, PHOTOP, DESCRIPTIONP FROM PLAT WHERE IDR = '" . $idResto . "';";
     foreach ($cnx->query($sql) as $tablo)
@@ -21,7 +21,7 @@ class RestoDAO
     $sql = "SELECT IDR FROM resto WHERE NOMR = ''" . $resto . "'';";
   }
 
-  public function selectListeResto()
+  public static function selectListeResto()
   {
     $result = array();
     $sql = "SELECT * FROM resto;";
@@ -37,7 +37,7 @@ class RestoDAO
     return $result;
   }
 
-  public function selectEvaluationResto($idR)
+  public static function selectEvaluationResto($idR)
   {
     $sql = "SELECT IDU, NOTERAPIDITE, NOTEQUALITE, NOTETEMP, NOTECOUT, COMMENTAIRE, COMVISIBLE FROM evaluer WHERE IDR ='" . $idR . "';";
 
@@ -46,7 +46,7 @@ class RestoDAO
 
 class CommandeDAO
 {
-  public function selectCommande($idUser)
+  public static function selectCommande($idUser)
   {
     $sql = "SELECT IDR, DATEC, COMMENTAIRECLIENTC, DATELIVRC, MODEREGLEMENTC, AVISCLIENT, NOTECLIENT, COMVISIBLE FROM commande WHERE IDC = $idUser";
 

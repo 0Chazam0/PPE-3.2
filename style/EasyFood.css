@@ -40,10 +40,57 @@ main {
 	padding: 0px;
 	min-height: 600px;
 	background-color: #f0f0f0;
- 	font-size: 15px;
- 	margin-top: 200px;
-	height: 2000px;
+ 	font-size: 0px;
+ 	margin-top:79px;
 
+}
+/***************************Gauche menus***********************************/
+.gauche {
+	display: inline-block;
+	background-color: #fff0f0;
+	width: 25%;
+	vertical-align: top;
+	font-size: 15px;
+
+}
+
+.sidenav{
+	position: fixed;
+ 	margin-top: 20px;
+ 	left: 0px;
+}
+
+.sidenav .titreListe{
+	color: black;
+	padding: 30px;
+	font-weight: bold;
+ 	font-size: 22px;
+}
+
+.sidenav ul{
+  list-style: none;
+  padding-left: 40px;
+  font-size: 16px;
+  line-height: 35px;
+}
+
+.sidenav li a {
+  text-decoration: none;
+  color: grey;
+}
+
+.sidenav li a:hover {
+  color: blue;
+}
+
+/**********************************************************************/
+/*styles pour la zone droite de la zone centrale de la page           */
+/**********************************************************************/
+.droite {
+	display: inline-block;
+	width: 75%;
+	font-size: 15px;
+	vertical-align: top;
 }
 
 /****************************************************/
