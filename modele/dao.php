@@ -65,9 +65,5 @@ class UserDAO{
   }
 }
 
-function TousLesRestos($uneConnex){
-  $req = "select * from Ligue";
-  $res = $uneConnex -> query ($req);
-  return $res -> fetchAll(PDO::FETCH_NUM);
-}
+
  ?>

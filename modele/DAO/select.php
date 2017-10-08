@@ -44,6 +44,28 @@ class RestoDAO
   }
 }
 
+
+class VilleDAO
+{
+public static function selectListeVille()
+{
+	$result = array();
+	$sql = "SELECT * FROM ville;";
+	$liste = DBConnex::getInstance()->queryFetchAll($sql);
+	if (count($liste) > 0)
+	{
+		foreach ($liste as $ville)
+		{
+			$uneVille = new Ville($ville['CODEV'], $ville['NOMV']);
+			$result[] = $uneVille;
+		}
+	}
+	return $result;
+}
+}
+
+
+
 class CommandeDAO
 {
   public static function selectCommande($idUser)
