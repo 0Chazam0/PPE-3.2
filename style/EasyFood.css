@@ -237,3 +237,28 @@ nav.menuPrincipal ul li .actif {
   text-transform: uppercase;
   color: BLACK;
 }
+
+
+/******************************Formulaire resto-------------------------**********************/
+.afficheResto{
+	border: 2px solid grey;
+	margin-top: 30px;
+	height: 200px;
+}
+.imgResto{
+	border: 2px solid black;
+	margin-top: 15px;
+	width: 300px
+}
+
+.infoResto{
+	border: 2px solid black;
+	margin-left: 315px;
+	margin-top: -177px;
+	height: 172px;
+	padding-right: 15px;
+}
+.lienPlat{
+	margin-left: 600px;
+	
+}
