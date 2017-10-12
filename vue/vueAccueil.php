@@ -23,9 +23,10 @@
       $formRecherche->ajouterComposantTab();
       $formRecherche->creerFormulaire();
       echo $formRecherche->afficherFormulaire();
+
     }
     ?>
-    <script type="text/javascript" src="fonction\autocomplete.js"></script>
+  
   </div>
 
 </div>
