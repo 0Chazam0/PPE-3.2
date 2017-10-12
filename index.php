@@ -1,4 +1,6 @@
-<?php  session_start()?>
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
@@ -13,6 +15,6 @@
 		<?php
 			include_once 'controleur/controleurPrincipal.php';
 		?>
-	
+
 	</body>
 </html>

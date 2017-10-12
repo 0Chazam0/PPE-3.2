@@ -1,5 +1,8 @@
 <?php
-
+if (isset($_POST['deco'])) {
+	session_destroy();
+	session_start();
+}
 require_once 'configs/param.php';
 require_once 'library/menu.php';
 require_once 'library/dispatcher.php';

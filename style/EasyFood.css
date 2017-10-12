@@ -279,7 +279,7 @@ nav.menuPrincipal ul li .actif {
 	margin-top: 20px;
 }
 
-.contentConnexion .btnIdent input{
+.contentConnexion .btn input{
 	background-color: #FAFAFA;
   border-style: solid;
 	margin-top: 10px;
@@ -294,24 +294,32 @@ nav.menuPrincipal ul li .actif {
 	width: 400px;
 	height: 40px;
 }
-.contentConnexion .btnIdent input[type='submit']{
+
+.contentConnexion .btn input[type='submit']{
 		width: 193px;
+		text-transform: uppercase;
+}
+
+.contentConnexion .btn #deconexion{
+	width: 400px;
 			text-transform: uppercase;
 }
-.contentConnexion .btnIdent input[type='reset']{
+
+.contentConnexion .btn input[type='reset']{
 		width: 193px;
-			text-transform: uppercase;
+		text-transform: uppercase;
 }
-.contentConnexion .btnIdent input[type='submit']:hover{
+
+.contentConnexion .btn input[type='submit']:hover{
 	background-color: #F5ECCE;
 	border-style: solid;
 	border-width: 3px;
 	border-color: orange;
 	font-size: 16px;
 	letter-spacing: 2px;
-
 	color: BLACK;
 }
+
 .contentConnexion .btnIdent input[type='reset']:hover{
 	background-color: #F5ECCE;
 	border-style: solid;
@@ -319,6 +327,5 @@ nav.menuPrincipal ul li .actif {
 	border-color: orange;
 	font-size: 16px;
 	letter-spacing: 2px;
-
 	color: BLACK;
 }
