@@ -27,7 +27,13 @@ else
 $menuPrincipal = new Menu("menuP");
 
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Accueil',""));
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Connexion',"Connexion"));
+if (!isset($_SESSION['identite'])) {
+	$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Connexion',"Connexion"));
+}
+else {
+$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('InfoClient',"Bienvenue : " . $_SESSION['identite'][2]));
+}
+
 $leMenuP = $menuPrincipal->creerMenu('menuPrincipal');
 
 include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
