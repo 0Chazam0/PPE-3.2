@@ -42,6 +42,7 @@
 										</div>
 
 										<div class='infoResto'>
+										
 											<label for='nomResto'>". $OBJ->getNom() . "</label>
 											<br>
 											<label for='adrResto'>". $OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP() . "</label>
@@ -51,7 +52,7 @@
 											<br>
 											<br>
 											<br>
-											<a class='lienPlat' href='#'>Nos plats</a>
+											<a class='lienPlat' href='controleur\controleurPlat.php'>Nos plats</a>
 										</div>
 									</span>
 								</div>";
