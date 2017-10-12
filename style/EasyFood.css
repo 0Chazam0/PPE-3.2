@@ -36,8 +36,8 @@ header {
 /*styles pour la zone centrale de la page           */
 /****************************************************/
 main {
-	margin: 0px;
-	padding: 0px;
+	margin-top: 0px;
+	padding-top: 0px;
 	min-height: 600px;
 	background-color: #f0f0f0;
  	font-size: 0px;
@@ -260,5 +260,64 @@ nav.menuPrincipal ul li .actif {
 }
 .lienPlat{
 	margin-left: 600px;
-	
+
+}
+
+/****************************************************/
+/*styles pour le formulaire de connexion            */
+/****************************************************/
+
+.contentConnexion{
+	margin-top: 10%;
+	margin-left:35%;
+	height: 100px;
+	z-index: 10;
+	display: inline-block;
+}
+
+.contentConnexion .btnIdent{
+	margin-top: 20px;
+}
+
+.contentConnexion .btnIdent input{
+	background-color: #FAFAFA;
+  border-style: solid;
+	margin-top: 10px;
+	margin-left: 20px;
+  border-width: 3px;
+  border-color: orange;
+	text-align: center;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: BLACK;
+	border-radius: 10px;
+	width: 400px;
+	height: 40px;
+}
+.contentConnexion .btnIdent input[type='submit']{
+		width: 193px;
+}
+.contentConnexion .btnIdent input[type='reset']{
+		width: 193px;
+}
+.contentConnexion .btnIdent input[type='submit']:hover{
+	background-color: #F5ECCE;
+	border-style: solid;
+	border-width: 3px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: BLACK;
+}
+.contentConnexion .btnIdent input[type='reset']:hover{
+	background-color: #F5ECCE;
+	border-style: solid;
+	border-width: 3px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: BLACK;
 }
