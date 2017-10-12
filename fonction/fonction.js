@@ -13,3 +13,10 @@ $('#search').autocomplete({
 
     minLength : 1,
 });
+
+
+
+function lienPlat(){
+
+  return plat;
+}
