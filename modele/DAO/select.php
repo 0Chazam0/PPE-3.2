@@ -75,4 +75,29 @@ class CommandeDAO
   }
 }
 
+/**
+ *
+ */
+class CommentaireDAO
+{
+
+  public static function selectCommentaire()
+  {
+    $sql = "SELECT C.MAIL, R.NOMR, `NOTERAPIDITE`, `NOTEQUALITE`, `NOTETEMP`, `NOTECOUT`, `COMMENTAIRE` FROM `evaluer` AS E, `client` AS C, `resto` AS R WHERE R.IDR = E.IDR AND C.IDU = E.IDU";
+    $liste = DBConnex::getInstance()->queryFetchAll($sql);
+    if (count($liste) > 0)
+    {
+      foreach ($liste as $note)
+      {
+        $uneNote = new Evaluer($note['MAIL'], $note['NOMR'], $note['NOTERAPIDITE'],
+                              $note['NOTEQUALITE'], $note['NOTETEMP'],
+                              $note['NOTECOUT'], $note['COMMENTAIRE']);
+        $result[] = $uneNote;
+      }
+    }
+    return $result;
+  }
+}
+
+
  ?>
