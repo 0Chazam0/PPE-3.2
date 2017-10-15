@@ -44,7 +44,7 @@ class TypePlat
   private   $libelle;
 
 
-  function __construct($pcodeT, $plibelle,)
+  function __construct($pcodeT, $plibelle)
   {
     $this->codeT = $pcodeT;
     $this->libelle = $plibelle;

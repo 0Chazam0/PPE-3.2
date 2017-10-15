@@ -1,6 +1,7 @@
 <?php
 
-$listeTypePlat = new TypePlats(TypePlatDAO::selectListeTypePlat());
+  $_SESSION['listeTypePlats'] = new TypePlats(TypePlatDAO::selectListeTypePlat());
+
 
 include 'vue\vuePlat.php';
  ?>
