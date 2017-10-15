@@ -46,9 +46,9 @@
 
 								$formResto = new Formulaire("POST","index.php?menuPrincipal=".$page."","formResto","restothis");
 								$formResto->ajouterComposantLigne($formResto->creerInputImage($OBJ->getNom(), $OBJ->getNom(), $correct));
-								$formResto->ajouterComposantLigne($formResto->concactComposants($formResto->creerLabelFor($OBJ->getNom(),'nomResto'),$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto')));
-
+								$formResto->ajouterComposantLigne($formResto->concactComposants($formResto->creerLabelFor($OBJ->getNom(),"nomResto"),$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto')));
 					      $formResto->ajouterComposantLigne($formResto->creerInputSubmit("plat-btn","plat-btn","    Nos Plats   "));
+								$formResto->ajouterComposantLigne($formResto->creerInputSubmitHidden("idResto","idResto",$OBJ->getId()  ));
 					      $formResto->ajouterComposantTab();
 					      $formResto->creerFormulaire();
 					      echo $formResto->afficherFormulaire();

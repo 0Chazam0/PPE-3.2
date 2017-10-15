@@ -64,6 +64,26 @@ public static function selectListeVille()
 }
 }
 
+class PlatDAO
+{
+public static function selectListePlat()
+{
+	$result = array();
+	$sql = "SELECT * FROM Plat;";
+	$liste = DBConnex::getInstance()->queryFetchAll($sql);
+	if (count($liste) > 0)
+	{
+		foreach ($liste as $Plat)
+		{
+			$unePlat = new Plat($Plat['IDP'], $Plat['IDR'], $Plat['CODET'], $Plat['NOMP'], $Plat['PRIXFOURNISSEURP'], $Plat['PRIXCLIENTP'], $Plat['PLATVISIBLE'], $Plat['PHOTOP'], $Plat['DESCRIPTIONP']);
+			$result[] = $unePlat;
+		}
+	}
+	return $result;
+}
+}
+
+
 class TypePlatDAO
 {
 public static function selectListeTypePlat()

@@ -13,9 +13,20 @@
           {
             echo '<li><a href="#'.$OBJ->getCodeT().'">'.$OBJ->getLibelle().'</a></li>';
           }
+
            ?>
         </ul>
       </nav>
+    </div>
+    <div class='droite'>
+      <?php
+      foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
+      {
+        if($OBJ->getIDResto() == $_POST['idResto'] ){
+          echo $OBJ->getNom();
+        }
+      }
+    ?>
     </div>
   </main>
 
