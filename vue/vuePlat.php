@@ -23,7 +23,18 @@
       foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
       {
         if($OBJ->getIDResto() == $_POST['idResto'] ){
-          echo $OBJ->getNom();
+          $correct = preg_replace('#[\\/\'" éàâäêçèë]#', "", $OBJ->getCheminPhoto());
+          $correct = strtolower($correct);
+          $correct = 'image/'.$correct;
+
+          $formPlat = new Formulaire("POST","","formPlat","platthis");
+          $formPlat->ajouterComposantLigne($formPlat->creerInputImage($OBJ->getNom(), $OBJ->getNom(), $correct));
+          $formPlat->ajouterComposantLigne($formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getNom(),"nomPlat"),$formPlat->creerLabelFor($OBJ->getPrixClient(),"prixPlat"),2));
+          $formPlat->ajouterComposantLigne($formPlat->creerInputSubmit("ajoutCommande-btn","ajoutCommande-btn","    +    "));
+          $formPlat->ajouterComposantTab();
+          $formPlat->creerFormulaire();
+          echo $formPlat->afficherFormulaire();
+
         }
       }
     ?>
