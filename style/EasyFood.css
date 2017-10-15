@@ -240,26 +240,46 @@ nav.menuPrincipal ul li .actif {
 
 
 /******************************Formulaire resto-------------------------**********************/
-.afficheResto{
-	border: 2px solid grey;
-	margin-top: 30px;
-	height: 200px;
+
+.restothis{
+	margin-left: 40px;
+	margin-top: 50px;
+	margin-right: 5px;
+	border-color: orange;
+	border-style: solid;
+	border-width: 3px;
+	height: 250px;
 }
-.imgResto{
-	border: 2px solid black;
-	margin-top: 15px;
-	width: 300px
+.restothis #plat-btn{
+	margin-left: 188px;
+	margin-top: 200px;
+	background-color: #F5ECCE;
+	border-style: solid;
+	border-width: 3px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+}
+.restothis .nomResto{
+
+	font-size: 22px;
+	width: auto;
+
+}
+.restothis .adrResto{
+
+	color :red;
+
 }
 
-.infoResto{
-	border: 2px solid black;
-	margin-left: 315px;
-	margin-top: -177px;
-	height: 172px;
-	padding-right: 15px;
-}
-.lienPlat{
-	margin-left: 600px;
+.restothis tr td table tr td{
+	width: 313px;
+	height: 240px;
+
+	float:left;
+	overflow:auto;
+	display:inline;
 
 }
 

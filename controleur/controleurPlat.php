@@ -1,3 +1,6 @@
 <?php
-include "C:\wamp\www\PPE-3.2\vue\vuePlat.php";
+
+$listeTypePlat = new TypePlats(TypePlatDAO::selectListeTypePlat());
+
+include 'vue\vuePlat.php';
  ?>

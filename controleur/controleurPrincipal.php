@@ -19,14 +19,14 @@ if(isset($_GET['menuPrincipal'])){
 else
 {
 	if(!isset($_SESSION['menuPrincipal'])){
-		$_SESSION['menuPrincipal']="accueil";
+		$_SESSION['menuPrincipal']="Accueil";
 	}
-}
 
+}
 
 $menuPrincipal = new Menu("menuP");
 
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Accueil',""));
+
 if (!isset($_SESSION['identite'])) {
 	$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Connexion',"Connexion"));
 }
@@ -37,5 +37,10 @@ $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('InfoClient',"Bie
 $leMenuP = $menuPrincipal->creerMenu('menuPrincipal');
 
 include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
+
+
+
+
+
 
  ?>

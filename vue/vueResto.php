@@ -26,47 +26,38 @@
 		</div>
 		<div class='droite'>
       <?php
-      echo "<table><tr><td>";
 			foreach ($listeVilles->getLesVilles() as $OBJ2){
 				if ($OBJ2->getNom()==ucfirst($recherche)){
 					foreach ($listeRestos->getLesRestos() as $OBJ)
 					{
 						if ($OBJ->getCodeV() == $OBJ2->getCode()){
-				        echo "<tr>";
 				        $correct = preg_replace('#[\\/\'" éàâäêçèë]#', "", $OBJ->getNom());
 				        $correct = strtolower($correct);
-				        echo "
-								<div class='afficheResto'>
-									<span>
-										<div class='imgResto'>
-											<img style='width=300px;' src='image/" . $correct . "' alt='". $correct . "'>
-										</div>
+								$correct = 'image/'.$correct;
 
-										<div class='infoResto'>
 
-											<label for='nomResto'>". $OBJ->getNom() . "</label>
-											<br>
-											<label for='adrResto'>". $OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP() . "</label>
-											<br>
-											<br>
-											<br>
-											<br>
-											<br>
-											<br>
+								if (!isset($_SESSION['identite'])) {
+									$page = 'Connexion';
+								}
+								else{
+									$page = 'Plat';
+								}
 
-											<button onclick='lienPlat()'>Click me</button>
+								
+								$formResto = new Formulaire("POST","index.php?menuPrincipal=".$page."","formResto","restothis");
+								$formResto->ajouterComposantLigne($formResto->creerInputImage($OBJ->getNom(), $OBJ->getNom(), $correct));
+								$formResto->ajouterComposantLigne($formResto->concactComposants($formResto->creerLabelFor($OBJ->getNom(),'nomResto'),$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto')));
 
-										</div>
-									</span>
-								</div>";
-				        echo "</tr>";
+					      $formResto->ajouterComposantLigne($formResto->creerInputSubmit("plat-btn","plat-btn","    Nos Plats   "));
+					      $formResto->ajouterComposantTab();
+					      $formResto->creerFormulaire();
+					      echo $formResto->afficherFormulaire();
+
 							}
 						}
 					}
       }
-      echo "</td></tr></table>";
-
-      ?>
+    ?>
     </div>
   </main>
 

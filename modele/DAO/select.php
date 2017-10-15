@@ -64,7 +64,24 @@ public static function selectListeVille()
 }
 }
 
-
+class TypePlatDAO
+{
+public static function selectListeTypePlat()
+{
+	$result = array();
+	$sql = "SELECT * FROM Type_Plat;";
+	$liste = DBConnex::getInstance()->queryFetchAll($sql);
+	if (count($liste) > 0)
+	{
+		foreach ($liste as $TypePlat)
+		{
+			$uneTypePlat = new TypePlat($TypePlat['CODET'], $TypePlat['LIBELLE']);
+			$result[] = $uneTypePlat;
+		}
+	}
+	return $result;
+}
+}
 
 class CommandeDAO
 {

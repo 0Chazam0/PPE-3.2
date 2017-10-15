@@ -31,7 +31,7 @@ class Formulaire{
 
 
 	public function creerLabelFor($unLabel,$unNom){
-		$composant = "<label style='width: 10px;height: 10px;'for = '" . $unNom . "' />" . $unLabel . "</label>";
+		$composant = "<label style='width: 10px;height: 10px;'class = '" . $unNom . "' />" . $unLabel . "</label>";
 		return $composant;
 	}
 
@@ -66,13 +66,19 @@ class Formulaire{
 		$composant .= "value = '" . $uneValue . "'/> ";
 		return $composant;
 	}
+
 	public function creerInputSubmitHidden($unNom, $unId, $uneValue){
 		$composant = "<input type = 'hidden' name = '" . $unNom . "' id = '" . $unId . "' ";
 		$composant .= "value = '" . $uneValue . "'/> ";
 		return $composant;
 	}
 	public function creerInputLogo($unNom, $unId, $uneSource){
-		$composant = "<input style='width:90px;margin-top:-10px;margin-left:50px;' type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
+		$composant = "<a href='index.php'><input style='width:90px;margin-top:-10px;margin-left:50px;'  type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
+		$composant .= "src = '" . $uneSource . "'/></a> ";
+		return $composant;
+	}
+	public function creerInputImage($unNom, $unId, $uneSource){
+		$composant = "<input style='width:300px;' type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
 		$composant .= "src = '" . $uneSource . "'/> ";
 		return $composant;
 	}
