@@ -51,11 +51,19 @@ else {
               <br/>
               <input id='mdp' type = 'password' placeholder='Saisir votre code' name='mdp' value=''/><br/><br/>
               <input id = 'validCo' type = 'submit' value = 'Valider'/>
-              <input type = 'reset' value ='Annuler'/>
+              <input type = 'reset' value ='Annuler'/><br>
         </div>
       </div>
     </form>
-      <a class ='mdpOublie' href='controleur/controleurMdpOublie.php'>Mot depasse oublié ? </a>";
+    <form action='index.php' method='post'>
+      <div class='contentConnexion'>
+        <div class='btn'>
+              <input name ='inscr' type = 'hidden'/>
+              <input id = 'inscription' type = 'submit' value ='Pas encore de compte ?'/>
+        </div>
+      </div>
+    </form>
+    ";
 }
 include "vue/vueConnexion.php";
 ?>

@@ -40,7 +40,7 @@ main {
 	padding-top: 0px;
 	min-height: 600px;
 	background-color: #f0f0f0;
- 	font-size: 0px;
+ 	font-size: 10px;
  	margin-top:79px;
 
 }
@@ -333,8 +333,13 @@ nav.menuPrincipal ul li .actif {
 	}
 
 
+	/****************************************************/
+	/*styles pour le formulaire d'inscription           */
+	/****************************************************/
 
-
+.inscription{
+	font-size: 15px;
+}
 
 /****************************************************/
 /*styles pour le formulaire de connexion            */
@@ -371,12 +376,30 @@ nav.menuPrincipal ul li .actif {
 .contentConnexion .btn input[type='submit']{
 		width: 193px;
 		text-transform: uppercase;
+		margin-bottom: 80px;
 }
 
 .contentConnexion .btn #deconexion{
 	width: 400px;
 			text-transform: uppercase;
 }
+.contentConnexion .btn #inscription{
+	width: 400px;
+			text-transform: uppercase;
+}
+
+.contentConnexion .btn a{
+	font-size: 10px;
+	text-transform: uppercase;
+	background-color: #F5ECCE;
+	border-style: solid;
+	border-width: 3px;
+	border-color: orange;
+	letter-spacing: 2px;
+	color: BLACK;
+	margin: 60px;
+}
+
 
 .contentConnexion .btn input[type='reset']{
 		width: 193px;

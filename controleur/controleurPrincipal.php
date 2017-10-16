@@ -38,6 +38,10 @@ $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('InfoClient',"Bie
 
 $leMenuP = $menuPrincipal->creerMenu('menuPrincipal');
 
+if (isset($_POST['inscr'])) {
+	$_SESSION['menuPrincipal'] = 'Inscription';
+}
+
 include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
 
 
