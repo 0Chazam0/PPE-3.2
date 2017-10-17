@@ -92,7 +92,23 @@ main {
 	font-size: 15px;
 	vertical-align: top;
 }
+.droitePlat {
+	display: inline-block;
+	width: 53%;
+	font-size: 15px;
+	vertical-align: top;
+}
 
+.panier{
+	display: inline-block;
+	width: 20%;
+	font-size: 15px;
+	vertical-align: top;
+	border: 2px solid black;
+	margin-top: 50px;
+	height: 250px;
+	margin-left: 10px;
+}
 /****************************************************/
 /*styles pour le footer                             */
 /****************************************************/
@@ -190,12 +206,10 @@ nav.menuPrincipal ul li .actif {
 }
 /* -----------------Recherche barre------------------------------------------*/
 .recherche_p{
-	margin-top: 10%;
-	margin-left:38%;
-	height: 150px;
+	margin-top: 7%;
+	margin-left:33%;
+	height: 50px;
 	z-index: 10;
-
-
 }
 #search {
   background-color: #ffffff;
@@ -220,6 +234,7 @@ nav.menuPrincipal ul li .actif {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: BLACK;
+	height: 46px;
 
 }
 #search-btn:hover {
@@ -232,9 +247,10 @@ nav.menuPrincipal ul li .actif {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: BLACK;
+	height: 46px;
+
 }
 .searchthis {
-
  	border:2px solid black;
 	float:left;
 }
@@ -242,9 +258,8 @@ nav.menuPrincipal ul li .actif {
 .searchthis tr td table tr td{
 	width: 300px;
 	height: 50px;
-	float:left;
- 	border:2px solid black;
 	position: relative;
+	padding-right: 15px;
 
 }
 
@@ -259,7 +274,7 @@ nav.menuPrincipal ul li .actif {
 	border-color: orange;
 	border-style: solid;
 	border-width: 3px;
-	height: 250px;
+	height: 244px;
 }
 .restothis #plat-btn{
 	margin-left: 188px;
@@ -280,8 +295,6 @@ nav.menuPrincipal ul li .actif {
 }
 .restothis .adrResto{
 
-	color :red;
-
 }
 
 .restothis tr td table tr td{
@@ -293,21 +306,26 @@ nav.menuPrincipal ul li .actif {
 	display:inline;
 
 }
+.imgResto{
+	max-width: 100%;
+	height: 235px;
+}
 /****************************************************/
 /*styles pour le formulaire de plat          */
 /****************************************************/
 
 .platthis{
-		margin-left: 40px;
+
 		margin-top: 50px;
 		margin-right: 5px;
 		border-color: orange;
 		border-style: solid;
 		border-width: 3px;
 		height: 250px;
+		margin-bottom:  -30px;
 	}
 	.platthis #ajoutCommande-btn{
-		margin-left: 188px;
+		margin-left: 158px;
 		margin-top: 200px;
 		background-color: #F5ECCE;
 		border-style: solid;
@@ -317,20 +335,37 @@ nav.menuPrincipal ul li .actif {
 		letter-spacing: 2px;
 		color: BLACK;
 	}
+	.platthis tr td table tr td{
+		width: 230px;
+		height: 240px;
+		padding-top: 3px;
+		float:left;
+		overflow:auto;
+		display:inline;
+
+	}
+	.imgPlat{
+		max-width: 100%;
+		height: 235px;
+	}
 	.platthis .nomPlat{
 
 		font-size: 22px;
 		width: auto;
+		padding-left: 10px;
 
 	}
-	.platthis tr td table tr td{
-		width: 313px;
-		height: 240px;
+	.platthis .lblPrixPlat{
+		width: auto;
+		padding-left: 10px;
 
-		float:left;
-		overflow:auto;
-		display:inline;
 	}
+	.platthis .lblDescripPlat{
+		width: auto;
+		padding-left: 10px;
+
+	}
+
 
 
 	/****************************************************/

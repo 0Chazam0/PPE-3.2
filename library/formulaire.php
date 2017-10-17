@@ -39,8 +39,7 @@ class Formulaire{
 	}
 
 	public function creerInputTexte($unNom, $unId, $unLabel, $uneValue , $required , $placeholder){
-		$composant = "<tr><td><label for = '" . $unNom . "' />" . $unLabel . "</label></td>";
-		$composant .= "<td><input type = 'text' name = '" . $unNom . "' id = '" . $unId . "' ";
+		$composant = "<input type = 'text' name = '" . $unNom . "' id = '" . $unId . "' ";
 		if (!empty($uneValue)){
 			$composant .= "value = '" . $uneValue . "' ";
 		}
@@ -50,7 +49,7 @@ class Formulaire{
 		if ( $required == 1){
 			$composant .= "required";
 		}
-		$composant .= "/></td></tr>";
+		$composant .= "/>";
 		return $composant;
 	}
 
@@ -76,12 +75,12 @@ class Formulaire{
 		return $composant;
 	}
 	public function creerInputLogo($unNom, $unId, $uneSource){
-		$composant = "<a href='index.php'><input style='width:90px;margin-top:-10px;margin-left:50px;'  type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
+		$composant = "<a href='index.php?menuPrincipal=Accueil'><input style='width:90px;margin-top:-10px;margin-left:50px;'  type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
 		$composant .= "src = '" . $uneSource . "'/></a> ";
 		return $composant;
 	}
-	public function creerInputImage($unNom, $unId, $uneSource){
-		$composant = "<input style='width:300px;' type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
+	public function creerInputImage($unNom, $uneClasse, $uneSource){
+		$composant = "<input style='width:300px;' type = 'image' name = '" . $unNom . "' class= '" . $uneClasse . "' ";
 		$composant .= "src = '" . $uneSource . "'/> ";
 		return $composant;
 	}
