@@ -53,6 +53,22 @@ class Formulaire{
 		return $composant;
 	}
 
+	public function creerInputPassword($unNom, $unId, $unLabel, $uneValue , $required , $placeholder){
+		$composant = "<tr><td><label for = '" . $unNom . "' />" . $unLabel . "</label></td>";
+		$composant .= "<td><input type = 'password' name = '" . $unNom . "' id = '" . $unId . "' ";
+		if (!empty($uneValue)){
+			$composant .= "value = '" . $uneValue . "' ";
+		}
+		if (!empty($placeholder)){
+			$composant .= "placeholder = '" . $placeholder . "' ";
+		}
+		if ( $required == 1){
+			$composant .= "required";
+		}
+		$composant .= "/></td></tr>";
+		return $composant;
+	}
+
 	public function creerSelect($unNom, $unId, $unLabel, $options){
 		$composant = "<tr><td><label for = '" . $unNom . "' />" . $unLabel . "</label></td>";
 		$composant .= "<td><select  name = '" . $unNom . "' id = '" . $unId . "' >";

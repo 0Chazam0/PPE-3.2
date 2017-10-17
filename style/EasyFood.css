@@ -394,7 +394,6 @@ nav.menuPrincipal ul li .actif {
 	border-radius: 10px;
 	width: 400px;
 	height: 40px;
-	text-transform: uppercase;
 }
 
 .inscription input[type='submit']:hover{
