@@ -13,6 +13,9 @@ require_once 'modele/DTO/resto.php';
 require_once 'modele/DTO/ville.php';
 require_once 'modele/DTO/typePlat.php';
 require_once 'modele/DTO/plat.php';
+require_once 'modele/DTO/user.php';
+
+
 
 //session du menu
 if(isset($_GET['menuPrincipal'])){

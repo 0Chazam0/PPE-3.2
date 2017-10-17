@@ -1,11 +1,10 @@
 <div class="conteneur">
   <header>
-      <?php //include 'haut.php' ;?>
+      <?php include 'haut.php' ;?>
   </header>
 
   <main>
-      <?php $formInscription->afficherFormulaire(); ?>
-      NTM
+      <?php echo $formInscription->afficherFormulaire(); ?>
   </main>
 
   <footer>

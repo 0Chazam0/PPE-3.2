@@ -63,6 +63,24 @@ class UserDAO{
     $user = DBConnex::getInstance()->queryFetchFirstRow($sql);
     return $user;
   }
+	public static function definirIDU(){
+		$sql = "select count(IDU) from client";
+		$resu = DBConnex::getInstance()->queryFetchFirstRow($sql);
+		return $resu;
+	}
+	public static function ajouterUnClient($unClient){
+		$sql="Insert into user(IDU,NOMU,PRENOMU,MAIL,MDP,ADRESSEU) VALUES ('";
+		$sql .= $unClient->getId() . "',NULL,NULL,NULL,NULL,NULL)";
+		DBConnex::getInstance()->queryFetchFirstRow($sql);
+		$sql = "Insert into client (IDU,NOMU,PRENOMU,MAIL,MDP,ADRESSEU) VALUES ('";
+		$sql .= $unClient->getId() . "','";
+		$sql.= $unClient->getNom() . "','";
+		$sql.= $unClient->getPrenom() . "','";
+		$sql.= $unClient->getMail() . "','";
+		$sql.= $unClient->getMdp() . "','";
+		$sql.= $unClient->getAdresse() . "')";
+		DBConnex::getInstance()->queryFetchFirstRow($sql);
+	}
 }
 
 
