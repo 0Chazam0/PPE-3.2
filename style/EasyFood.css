@@ -338,8 +338,40 @@ nav.menuPrincipal ul li .actif {
 	/****************************************************/
 
 .inscription{
-	font-size: 15px;
+	margin-top: 8%;
+	margin-left:35%;
+	height: 100px;
+	z-index: 10;
+	display: inline-block;
 }
+
+.inscription input{
+	background-color: #FAFAFA;
+	border-style: solid;
+	margin-top: 10px;
+	margin-left: 20px;
+	border-width: 3px;
+	border-color: orange;
+	text-align: center;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+	border-radius: 10px;
+	width: 400px;
+	height: 40px;
+	text-transform: uppercase;
+}
+
+.inscription input[type='submit']:hover{
+	background-color: #F5ECCE;
+	border-style: solid;
+	border-width: 3px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+}
+
 
 /****************************************************/
 /*styles pour le formulaire de connexion            */

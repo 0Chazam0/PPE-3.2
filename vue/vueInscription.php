@@ -4,8 +4,7 @@
   </header>
 
   <main>
-      <?php $formInscription->afficherFormulaire(); ?>
-      NTM
+      <?php echo $formInscription->afficherFormulaire(); ?>
   </main>
 
   <footer>
