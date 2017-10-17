@@ -1,8 +1,8 @@
 <?php
 //Définition des variables de connexion
 class Param {
-	public static $user = 'darosr';
-	public static $pass = 'darosr';
-	public static $dsn = 'mysql:host=127.0.0.1;dbname=darosr_easyfoodbdd;charset=utf8';
+	public static $user = 'root';
+	public static $pass = '';
+	public static $dsn = 'mysql:host=127.0.0.1;dbname=darosr_esayfoodbdd;charset=utf8';
 }
 ?>
