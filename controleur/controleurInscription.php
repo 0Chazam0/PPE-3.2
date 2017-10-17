@@ -26,9 +26,9 @@ if (isset($_POST['inscrIdentifiant'])
   $formInscription->ajouterComposantTab();
   $formInscription->ajouterComposantLigne($formInscription->creerInputTexte('inscrAdresse', 'inscrAdresse', '','','','saisir votre adresse' ));
   $formInscription->ajouterComposantTab();
-  $formInscription->ajouterComposantLigne($formInscription->creerInputTexte('inscrmdp', 'inscrmdp', '','','','saisir votre mot de passe' ));
+  $formInscription->ajouterComposantLigne($formInscription->creerInputPassword('inscrmdp', 'inscrmdp', '','','','saisir votre mot de passe' ));
   $formInscription->ajouterComposantTab();
-  $formInscription->ajouterComposantLigne($formInscription->creerInputTexte('inscrmdpconf', 'inscrmdpconf', '','','','confirmer votre mot de passe' ));
+  $formInscription->ajouterComposantLigne($formInscription->creerInputPassword('inscrmdpconf', 'inscrmdpconf', '','','','confirmer votre mot de passe' ));
   $formInscription->ajouterComposantTab();
   $formInscription->ajouterComposantLigne($formInscription->creerInputSubmit('inscrValid', 'inscrValid', "Valider inscription"));
   $formInscription->ajouterComposantTab();
