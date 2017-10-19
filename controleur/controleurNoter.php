@@ -19,7 +19,7 @@ $formRecherche->ajouterComposantLigne($formRecherche->creerRange(20, 2, 'noteCou
 $formRecherche->ajouterComposantTab();
 $formRecherche->ajouterComposantLigne($formRecherche->creerA("Commentaire:"));
 $formRecherche->ajouterComposantTab();
-$formRecherche->ajouterComposantLigne($formRecherche->creerInputGrandTexte("commentaire", 1, 16, ""));
+$formRecherche->ajouterComposantLigne($formRecherche->creerInputGrandTexte("commentaire", 6, 50, ""));
 $formRecherche->ajouterComposantTab();
 $formRecherche->ajouterComposantLigne($formRecherche->creerInputSubmit("noter-btn","noter-btn","Envoyer"));
 $formRecherche->ajouterComposantTab();
