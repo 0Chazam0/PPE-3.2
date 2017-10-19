@@ -20,17 +20,6 @@ html, body {
 
 }
 
-.noter{
-	display: inline-block;
-	color: white;
-	height: 70%;
-	width: 50%;
-	font-size: 15px;
-	text-align: center;
-	vertical-align: middle;
-	border-radius: 5px;
-}
-
 /****************************************************/
 /*styles pour le header                             */
 /****************************************************/
@@ -537,7 +526,31 @@ nav.menuPrincipal ul li .actif {
 .slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
-		border-radius: 50%; 
+		border-radius: 50%;
     background: orange;
     cursor: pointer;
+}
+
+.note {
+ 	border:2px solid black;
+	float:left;
+}
+
+.noter{
+	display: inline-block;
+	color: black;
+	height: 70%;
+	width: 50%;
+	font-size: 15px;
+	text-align: left;
+	vertical-align: middle;
+	border-radius: 5px;
+}
+
+.note tr td table tr td{
+	width: 300px;
+	height: 50px;
+	position: relative;
+	padding-right: 15px;
+
 }

@@ -42,6 +42,12 @@ class Formulaire{
 		return $composant;
 	}
 
+	public function creerA($value)
+	{
+		$composant = "<a>" . $value . "</a>";
+		return $composant;
+	}
+
 	public function creerLabelFor($unLabel,$unNom){
 		$composant = "<label style='width: 10px;height: 10px;' class = '" . $unNom . "' />" . $unLabel . "</label>";
 		return $composant;
