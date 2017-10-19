@@ -32,6 +32,15 @@ class Formulaire{
 		$this->ligneComposants = array();
 	}
 
+	public function creerRange($max, $step, $id)
+	{
+		$composant = '
+		<div id="slidecontainer">
+		<input type="range" class="slider" value="0" id="' . $id . '"
+		max="' . $max . '" min="0" step="' . $step . '">
+		</div>';
+		return $composant;
+	}
 
 	public function creerLabelFor($unLabel,$unNom){
 		$composant = "<label style='width: 10px;height: 10px;' class = '" . $unNom . "' />" . $unLabel . "</label>";
@@ -50,6 +59,15 @@ class Formulaire{
 			$composant .= "required";
 		}
 		$composant .= "/>";
+		return $composant;
+	}
+
+	public function creerInputGrandTexte($name, $rows, $cols, $message)
+	{
+		$composant = '
+		<textarea name="' . $name . '" rows="' . $rows . '" cols="' . $cols . '">
+		' . $message . '
+		</textarea>';
 		return $composant;
 	}
 
