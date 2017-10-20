@@ -15,8 +15,6 @@ require_once 'modele/DTO/typePlat.php';
 require_once 'modele/DTO/plat.php';
 require_once 'modele/DTO/user.php';
 
-
-
 //session du menu
 if(isset($_GET['menuPrincipal'])){
 	$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
