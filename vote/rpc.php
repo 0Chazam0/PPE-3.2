@@ -5,19 +5,19 @@ Created:        Aug 2006
 Last Mod:       Mar 18 2007
 This page handles the 'AJAX' type response if the user
 has Javascript enabled.
---------------------------------------------------------- 
+---------------------------------------------------------
 ryan masuga, masugadesign.com
-ryan@masugadesign.com 
+ryan@masugadesign.com
 Licensed under a Creative Commons Attribution 3.0 License.
 http://creativecommons.org/licenses/by/3.0/
 See readme.txt for full credit details.
 --------------------------------------------------------- */
-	
+
 	header("Cache-Control: no-cache");
 	header("Pragma: nocache");
 
 	require_once '../includes/connect.inc.php'; // get the db connection info
-	
+
 	//getting the values
 	$rating_unitwidth = 30;
 	$vote_sent = preg_replace("/[^0-9]/","",$_REQUEST['j']);
@@ -52,8 +52,8 @@ See readme.txt for full credit details.
 
 		if (($vote_sent >= 1 && $vote_sent <= $units) && ($ip == $ip_num)) { // keep votes within range, make sure IP matches - no monkey business!
 			$update = "UPDATE ratings SET total_votes='".$added."', total_value='".$sum."', used_ips='".$insertip."' WHERE page_id='$id_sent'";
-			$result = DB::getInstance()->exec($update);		
-		} 
+			$result = DB::getInstance()->exec($update);
+		}
 	} //end for the "if(!$voted)"
 	// these are new queries to get the new values!
 	$newtotals = DB::getInstance()->query("SELECT total_votes, total_value, used_ips FROM ratings WHERE page_id='$id_sent'");
@@ -82,7 +82,7 @@ See readme.txt for full credit details.
 	$new_back[] .= '<span class="thanks">Merci d\'avoir vot&eacute; !</span></p>';
 
 	$allnewback = join("\n", $new_back);
-	
+
 	//name of the div id to be updated | the html that needs to be changed
 	$output = "unit_long$id_sent|$allnewback";
 	echo $output;

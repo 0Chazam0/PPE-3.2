@@ -635,16 +635,7 @@ See readme.txt for full credit details.
 .unit-rating a.r4-unit:hover{width: 120px;}
 .unit-rating a.r5-unit{left: 120px;}
 .unit-rating a.r5-unit:hover{width: 150px;}
-.unit-rating a.r6-unit{left: 150px;}
-.unit-rating a.r6-unit:hover{width: 180px;}
-.unit-rating a.r7-unit{left: 180px;}
-.unit-rating a.r7-unit:hover{width: 210px;}
-.unit-rating a.r8-unit{left: 210px;}
-.unit-rating a.r8-unit:hover{width: 240px;}
-.unit-rating a.r9-unit{left: 240px;}
-.unit-rating a.r9-unit:hover{width: 270px;}
-.unit-rating a.r10-unit{left: 270px;}
-.unit-rating a.r10-unit:hover{width: 300px;}
+
 
 .unit-rating li.current-rating {
 	background: url('../image/starrating.png') left bottom;
@@ -659,3 +650,18 @@ See readme.txt for full credit details.
 .voted {color:#999;margin:5px 0 5px;}
 .thanks {color:#36AA3D;margin:5px 0 5px;}
 .static {color:#5D3126;margin:5px 0 5px;}
+
+.styleNote{
+	background-color: white;
+	display: inline-block;
+	color: black;
+	width: 30%;
+	border: 3px orange solid;
+	font-size: 15px;
+	text-align: center;
+	vertical-align: center;
+	margin: auto;
+	padding: 12px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
