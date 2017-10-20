@@ -26,8 +26,6 @@ if (isset($_POST['id']) && isset($_POST['mdp'])) {
     }
   }
 }
-$_SESSION['menuPrincipal']="Accueil";
-dispatcher::dispatch($_SESSION['menuPrincipal']);
 
 if (isset($_SESSION['identite'])) {
   $contentConnex = "

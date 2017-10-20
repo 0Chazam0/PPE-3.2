@@ -1,14 +1,14 @@
 <?php
 
-if (isset($_POST['inscrIdentifiant'])
-		&& isset($_POST['inscrNom'])
-		&& isset($_POST['inscrPrenom'])
-		&& isset($_POST['inscrAdresse'])
-		&& isset($_POST['inscrmdp'])
-		&& isset($_POST['inscrmdpconf'])) {
+if (isset($_POST['inscrIdentifiant']) && $_POST['inscrIdentifiant'] != ''
+		&& isset($_POST['inscrNom']) && $_POST['inscrNom'] !=''
+		&& isset($_POST['inscrPrenom']) && $_POST['inscrPrenom'] !=''
+		&& isset($_POST['inscrAdresse']) && $_POST['inscrAdresse'] !=''
+		&& isset($_POST['inscrmdp']) && $_POST['inscrmdp'] != ''
+		&& isset($_POST['inscrmdpconf']) && $_POST['inscrmdpconf'] != ''){
 	if ($_POST['inscrmdp'] == $_POST['inscrmdpconf']) {
 		$id = UserDAO::definirIDU();
-		$id = $id[0] + 1;
+		$id = "U" + $id[0] + 1;
 		$leNewClient = new User($id,$_POST['inscrNom'],$_POST['inscrPrenom'],$_POST['inscrIdentifiant'],$_POST['inscrmdp'],$_POST['inscrAdresse'],'Client');
 		UserDAO::ajouterUnClient($leNewClient);
     $_SESSION['menuPrincipal']="Accueil";
@@ -17,7 +17,6 @@ if (isset($_POST['inscrIdentifiant'])
 }
 
   $formInscription = new formulaire('post','index.php','formInscription','inscription');
-
   $formInscription->ajouterComposantLigne($formInscription->creerInputTexte('inscrIdentifiant', 'inscrIdentifiant', '','','','saisir votre mail' ));
   $formInscription->ajouterComposantTab();
   $formInscription->ajouterComposantLigne($formInscription->creerInputTexte('inscrNom', 'inscrNom', '','','','saisir votre nom' ));
