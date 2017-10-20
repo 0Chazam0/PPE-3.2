@@ -14,7 +14,7 @@ if (isset($_POST['inscrIdentifiant'])
 		UserDAO::ajouterUnClient($leNewClient);
     $_SESSION['menuPrincipal']="Accueil";
 	}
-}dispatcher::dispatch($_SESSION['menuPrincipal']);
+}include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
 
   $formInscription = new formulaire('post','index.php','formInscription','inscription');
   $formInscription->ajouterComposantLigne($formInscription->creerInputTexte('inscrIdentifiant', 'inscrIdentifiant', '','',1,'saisir votre mail' ));

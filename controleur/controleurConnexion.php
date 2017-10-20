@@ -1,5 +1,33 @@
 <?php //définition du formulaire
 
+if (isset($_POST['id']) && isset($_POST['mdp'])) {
+  $unUserC = UserDAO::unUserC($_POST['id']);
+  $unUserA = UserDAO::unUserA($_POST['id']);
+  $unUserM = UserDAO::unUserM($_POST['id']);
+  $unUserR = UserDAO::unUserR($_POST['id']);
+  if ($unUserA != NULL) {
+    $unUser = $unUserA;
+  }
+  elseif ($unUserC != NULL) {
+    $unUser = $unUserC;
+  }
+  elseif ($unUserM != NULL) {
+    $unUser = $unUserM;
+  }
+  elseif ($unUserR != NULL) {
+    $unUser = $unUserR;
+  }
+  else {
+    $unUser ='';
+  }
+  if ($unUser != '') {
+    if ($unUser[4]==$_POST['mdp'] ) {
+      $_SESSION['identite'] = $unUser;
+      $_SESSION['menuPrincipal']="Accueil";
+      include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
+    }
+  }
+}
 
 $contentConnex="
   <form method='post' action='index.php'>
@@ -23,33 +51,6 @@ $contentConnex="
     </div>
   </form>
   ";
-  if (isset($_POST['id']) && isset($_POST['mdp'])) {
-    $unUserC = UserDAO::unUserC($_POST['id']);
-    $unUserA = UserDAO::unUserA($_POST['id']);
-    $unUserM = UserDAO::unUserM($_POST['id']);
-    $unUserR = UserDAO::unUserR($_POST['id']);
-    if ($unUserA != NULL) {
-      $unUser = $unUserA;
-    }
-    elseif ($unUserC != NULL) {
-      $unUser = $unUserC;
-    }
-    elseif ($unUserM != NULL) {
-      $unUser = $unUserM;
-    }
-    elseif ($unUserR != NULL) {
-      $unUser = $unUserR;
-    }
-    else {
-      $unUser ='';
-    }
-    if ($unUser != '') {
-      if ($unUser[4]==$_POST['mdp'] ) {
-        $_SESSION['identite'] = $unUser;
-        $_SESSION['menuPrincipal']="Accueil";
-        dispatcher::dispatch($_SESSION['menuPrincipal']);
-      }
-    }
-  }
+
 include "vue/vueConnexion.php";
 ?>
