@@ -585,7 +585,7 @@ See readme.txt for full credit details.
 
 .loading {
 	height: 30px;
-	background: url('../images/ajax-loader.gif') 100% 50% no-repeat;
+	background: url('../image/ajax-loader.gif') 100% 50% no-repeat;
 	margin: 0px -30px;
 	}
 
@@ -595,7 +595,7 @@ See readme.txt for full credit details.
 	padding:0px;
 	height: 30px;
 	position: relative;
-	background: url('../images/starrating.png') top left repeat-x;
+	background: url('../image/starrating.png') top left repeat-x;
 	}
 
 .unit-rating li{
@@ -620,7 +620,7 @@ See readme.txt for full credit details.
 	}
 
 .unit-rating li a:hover{
-	background: url('../images/starrating.png') left center;
+	background: url('../image/starrating.png') left center;
 	z-index: 2;
 	left: 0px;
 	}
@@ -647,7 +647,7 @@ See readme.txt for full credit details.
 .unit-rating a.r10-unit:hover{width: 300px;}
 
 .unit-rating li.current-rating {
-	background: url('../images/starrating.png') left bottom;
+	background: url('../image/starrating.png') left bottom;
 	position: absolute;
 	height: 30px;
 	display: block;
