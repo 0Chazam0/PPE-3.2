@@ -16,7 +16,7 @@ See readme.txt for full credit details.
 	header("Cache-Control: no-cache");
 	header("Pragma: nocache");
 
-	require_once '../includes/connect.inc.php'; // get the db connection info
+	require_once '../configs/param.php'; // get the db connection info
 
 	//getting the values
 	$rating_unitwidth = 30;
@@ -29,7 +29,7 @@ See readme.txt for full credit details.
 	if ($vote_sent > $units) die("Sorry, vote appears to be invalid."); // kill the script because normal users will never see this.
 
 	//connecting to the database to get some information
-	$query = DB::getInstance()->query("SELECT total_votes, total_value, used_ips FROM ratings WHERE page_id='$id_sent'");
+	$query = Param::getInstance()->query("SELECT total_votes, total_value, used_ips FROM ratings WHERE page_id='$id_sent'");
 	$numbers = $query->fetch(PDO::FETCH_ASSOC);
 	$checkIP = unserialize($numbers['used_ips']);
 	$count = $numbers['total_votes']; //how many votes total
@@ -46,17 +46,17 @@ See readme.txt for full credit details.
 	$insertip=serialize($checkIP);
 
 	//IP check when voting
-	$req = DB::getInstance()->query("SELECT used_ips FROM ratings WHERE used_ips LIKE '%".$ip."%' AND page_id='".$id_sent."'");
+	$req = Param::getInstance()->query("SELECT used_ips FROM ratings WHERE used_ips LIKE '%".$ip."%' AND page_id='".$id_sent."'");
 	$voted = $req->rowCount();
 	if(!$voted) { //if the user hasn't yet voted, then vote normally...
 
 		if (($vote_sent >= 1 && $vote_sent <= $units) && ($ip == $ip_num)) { // keep votes within range, make sure IP matches - no monkey business!
 			$update = "UPDATE ratings SET total_votes='".$added."', total_value='".$sum."', used_ips='".$insertip."' WHERE page_id='$id_sent'";
-			$result = DB::getInstance()->exec($update);
+			$result = Param::getInstance()->exec($update);
 		}
 	} //end for the "if(!$voted)"
 	// these are new queries to get the new values!
-	$newtotals = DB::getInstance()->query("SELECT total_votes, total_value, used_ips FROM ratings WHERE page_id='$id_sent'");
+	$newtotals = Param::getInstance()->query("SELECT total_votes, total_value, used_ips FROM ratings WHERE page_id='$id_sent'");
 	$numbers = $newtotals->fetch(PDO::FETCH_ASSOC);
 	$count = $numbers['total_votes'];//how many votes total
 	$current_rating = $numbers['total_value'];//total number of rating added together and stored

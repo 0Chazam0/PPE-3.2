@@ -15,7 +15,7 @@ See readme.txt for full credit details.
 
 	function rating_bar($page_id, $units='', $static='') {
 
-		require_once ('includes/connect.inc.php'); // get the db connection info
+		require_once ('configs/param.php'); // get the db connection info
 
 		//set some variables
 		$rating_unitwidth = 30;
@@ -24,14 +24,14 @@ See readme.txt for full credit details.
 		if (!$static) {$static = FALSE;}
 
 		// get votes, values, ips for the current rating bar
-		$query = DB::getInstance()->query("SELECT total_votes, total_value, used_ips FROM ratings WHERE page_id='".$page_id."'");
+		$query = Param::getInstance()->query("SELECT total_votes, total_value, used_ips FROM ratings WHERE page_id='".$page_id."'");
 
 		// insert the id in the DB if it doesn't exist already
 		// see: http://www.masugadesign.com/the-lab/scripts/unobtrusive-ajax-star-rating-bar/#comment-121
 		$count = $query->rowCount();
 		if ($count == 0) {
 			$req = "INSERT INTO `vote`.`ratings` (`vote_id` ,`page_id` ,`total_votes` ,`total_value` ,`used_ips` ) VALUES (NULL , '".$page_id."', '0', '0', NULL);";
-			$result = DB::getInstance()->exec($req);
+			$result = Param::getInstance()->exec($req);
 		}
 
 		$numbers = $query->fetch(PDO::FETCH_ASSOC);
@@ -43,7 +43,7 @@ See readme.txt for full credit details.
 		$tense=($count==1) ? "vote" : "votes"; //plural form votes/vote
 
 		// determine whether the user has voted, so we know how to draw the ul/li
-		$req = DB::getInstance()->query("SELECT used_ips FROM ratings WHERE used_ips LIKE '%".$ip."%' AND page_id='".$page_id."'");
+		$req = Param::getInstance()->query("SELECT used_ips FROM ratings WHERE used_ips LIKE '%".$ip."%' AND page_id='".$page_id."'");
 		$voted = $req->rowCount();
 
 		// now draw the rating bar
