@@ -58,7 +58,7 @@ class User
   {
     return $this->privilege;
   }
-  
+
   public static function testConnex($unId, $unMdp){
     $unUserC = UserDAO::unUserC($unId);
     $unUserA = UserDAO::unUserA($unId);
@@ -85,8 +85,7 @@ class User
         return 1;
       }
     }
+    return 0;
   }
-  return 0;
-}
 }
  ?>

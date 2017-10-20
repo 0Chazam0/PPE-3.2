@@ -1,5 +1,8 @@
 <?php
-
+if (isset($_POST['deco'])) {
+	session_destroy();
+	session_start();
+}
 require_once 'configs/param.php';
 require_once 'library/menu.php';
 require_once 'library/dispatcher.php';
@@ -8,6 +11,11 @@ require_once 'modele/dao.php';
 require_once 'modele/DAO/select.php';
 require_once 'modele/DTO/resto.php';
 require_once 'modele/DTO/ville.php';
+require_once 'modele/DTO/typePlat.php';
+require_once 'modele/DTO/plat.php';
+require_once 'modele/DTO/user.php';
+
+
 
 //session du menu
 if(isset($_GET['menuPrincipal'])){
@@ -16,17 +24,32 @@ if(isset($_GET['menuPrincipal'])){
 else
 {
 	if(!isset($_SESSION['menuPrincipal'])){
-		$_SESSION['menuPrincipal']="accueil";
+		$_SESSION['menuPrincipal']="Accueil";
 	}
-}
 
+}
 
 $menuPrincipal = new Menu("menuP");
 
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Accueil',""));
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Connexion',"Connexion"));
+
+if (!isset($_SESSION['identite'])) {
+	$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Connexion',"Connexion"));
+}
+else {
+$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('InfoClient',"Bienvenue : " . $_SESSION['identite'][2]));
+}
+
 $leMenuP = $menuPrincipal->creerMenu('menuPrincipal');
 
+if (isset($_POST['inscr'])) {
+	$_SESSION['menuPrincipal'] = 'Inscription';
+}
+
 include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
+
+
+
+
+
 
  ?>

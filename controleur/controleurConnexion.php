@@ -26,7 +26,8 @@ if (isset($_POST['id']) && isset($_POST['mdp'])) {
     }
   }
 }
-
+$_SESSION['menuPrincipal']="Accueil";
+dispatcher::dispatch($_SESSION['menuPrincipal']);
 
 if (isset($_SESSION['identite'])) {
   $contentConnex = "
@@ -34,7 +35,7 @@ if (isset($_SESSION['identite'])) {
       <div class='btn'>
         <form method='post' action='index.php'>
           <div class='ligne'>
-            <input type = 'submit' value = 'Deconnecter'/>
+            <input id = 'deconexion' type = 'submit' value = 'Deconnecter'/>
             <input id ='deco' type = 'hidden' name='deco' value=''/>
           </div>
         </form>
@@ -45,17 +46,25 @@ else {
   $contentConnex="
     <form method='post' action='index.php'>
       <div class='contentConnexion'>
-        <div class='btnIdent'>
+        <div class='btn'>
               <input id ='id' type = 'text' placeholder='Saisir votre identifiant' name='id' value=''/>
               <br/>
               <br/>
               <input id='mdp' type = 'password' placeholder='Saisir votre code' name='mdp' value=''/><br/><br/>
               <input id = 'validCo' type = 'submit' value = 'Valider'/>
-              <input type = 'reset' value ='Annuler'/>
+              <input type = 'reset' value ='Annuler'/><br>
         </div>
       </div>
     </form>
-      <a class ='mdpOublie' href='controleur/controleurMdpOublie.php'>Mot depasse oublié ? </a>";
+    <form action='index.php' method='post'>
+      <div class='contentConnexion'>
+        <div class='btn'>
+              <input name ='inscr' type = 'hidden'/>
+              <input id = 'inscription' type = 'submit' value ='Pas encore de compte ?'/>
+        </div>
+      </div>
+    </form>
+    ";
 }
 include "vue/vueConnexion.php";
 ?>

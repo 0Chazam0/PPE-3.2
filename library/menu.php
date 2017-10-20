@@ -4,7 +4,7 @@ class Menu{
 	private $style;
 	private $composants = array();
 
-	
+
 	public function __construct($unStyle ){
 		$this->style = $unStyle;
 	}

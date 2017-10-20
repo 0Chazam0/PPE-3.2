@@ -1,5 +1,40 @@
 <?php
+/**
+ * Plats
+ */
+class Plats
+{
+  private   $lesPlats;
 
+  function __construct($lesPlats)
+  {
+    $this->lesPlats = $lesPlats;
+  }
+
+  public function getLesPlats()
+  {
+    return $this->lesPlats;
+  }
+
+  public function setLesPlats($value)
+  {
+    $this->lesPlats = $value;
+  }
+
+  public function chercher($TheId)
+  {
+    foreach ($this->lesPlats as $Plat)
+    {
+      if ($plat->getid() == $TheId)
+      {
+        return $plat;
+      }
+    }
+    return null;
+  }
+
+}
+ 
 /**
  * Plat
  */

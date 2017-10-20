@@ -15,7 +15,10 @@ class Formulaire{
 		$this->nom = $unNom;
 		$this->style = $unStyle;
 	}
-	public function concactComposants($unComposant , $autreComposant ){
+	public function concactComposants($unComposant , $autreComposant ,$nbRetourLigne){
+		for ($i=0; $i < $nbRetourLigne ; $i++) {
+			$unComposant .= '<br>';
+		}
 		$unComposant .=  $autreComposant;
 		return $unComposant ;
 	}
@@ -29,22 +32,61 @@ class Formulaire{
 		$this->ligneComposants = array();
 	}
 
+	public function creerRange($max, $step, $id)
+	{
+		$composant = '
+		<div id="slidecontainer">
+		<input type="range" class="slider" value="0" id="' . $id . '"
+		max="' . $max . '" min="0" step="' . $step . '">
+		</div>';
+		return $composant;
+	}
+
+	public function creerA($value)
+	{
+		$composant = "<a>" . $value . "</a>";
+		return $composant;
+	}
 
 	public function creerLabelFor($unLabel,$unNom){
-		$composant = "<label style='width: 10px;height: 10px;'for = '" . $unNom . "' />" . $unLabel . "</label>";
+		$composant = "<label style='width: 10px;height: 10px;' class = '" . $unNom . "' />" . $unLabel . "</label>";
 		return $composant;
 	}
 
 	public function creerInputTexte($unNom, $unId, $unLabel, $uneValue , $required , $placeholder){
-		$composant = "<tr><td><label for = '" . $unNom . "' />" . $unLabel . "</label></td>";
-		$composant .= "<td><input type = 'text' name = '" . $unNom . "' id = '" . $unId . "' ";
+		$composant = "<input type = 'text' name = '" . $unNom . "' id = '" . $unId . "' ";
 		if (!empty($uneValue)){
 			$composant .= "value = '" . $uneValue . "' ";
 		}
 		if (!empty($placeholder)){
 			$composant .= "placeholder = '" . $placeholder . "' ";
 		}
-		if ( $required = 1){
+		if ( $required == 1){
+			$composant .= "required";
+		}
+		$composant .= "/>";
+		return $composant;
+	}
+
+	public function creerInputGrandTexte($name, $rows, $cols, $message)
+	{
+		$composant = '
+		<textarea name="' . $name . '" rows="' . $rows . '" cols="' . $cols . '">
+		' . $message . '
+		</textarea>';
+		return $composant;
+	}
+
+	public function creerInputPassword($unNom, $unId, $unLabel, $uneValue , $required , $placeholder){
+		$composant = "<tr><td><label for = '" . $unNom . "' />" . $unLabel . "</label></td>";
+		$composant .= "<td><input type = 'password' name = '" . $unNom . "' id = '" . $unId . "' ";
+		if (!empty($uneValue)){
+			$composant .= "value = '" . $uneValue . "' ";
+		}
+		if (!empty($placeholder)){
+			$composant .= "placeholder = '" . $placeholder . "' ";
+		}
+		if ( $required == 1){
 			$composant .= "required";
 		}
 		$composant .= "/></td></tr>";
@@ -66,13 +108,19 @@ class Formulaire{
 		$composant .= "value = '" . $uneValue . "'/> ";
 		return $composant;
 	}
+
 	public function creerInputSubmitHidden($unNom, $unId, $uneValue){
 		$composant = "<input type = 'hidden' name = '" . $unNom . "' id = '" . $unId . "' ";
 		$composant .= "value = '" . $uneValue . "'/> ";
 		return $composant;
 	}
 	public function creerInputLogo($unNom, $unId, $uneSource){
-		$composant = "<input style='width:90px;margin-top:-10px;margin-left:50px;' type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
+		$composant = "<a href='index.php?menuPrincipal=Accueil'><input style='width:90px;margin-top:-10px;margin-left:50px;'  type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
+		$composant .= "src = '" . $uneSource . "'/></a> ";
+		return $composant;
+	}
+	public function creerInputImage($unNom, $uneClasse, $uneSource){
+		$composant = "<input style='width:300px;' type = 'image' name = '" . $unNom . "' class= '" . $uneClasse . "' ";
 		$composant .= "src = '" . $uneSource . "'/> ";
 		return $composant;
 	}
