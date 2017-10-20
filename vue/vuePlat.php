@@ -27,7 +27,7 @@ function myFunction() {
       <?php
       foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
       {
-        if($OBJ->getIDResto() == $_POST['idResto'] ){
+        if($OBJ->getIDResto() == $_SESSION['RestoSelected'] ){
 
 
           $correct = preg_replace('#[\\/\'" éàâäêçèë]#', "", $OBJ->getCheminPhoto());
