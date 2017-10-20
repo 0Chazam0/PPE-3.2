@@ -7,7 +7,5 @@
     <?php echo $contentConnex;?>
   </main>
 
-  <footer>
-      <?php include 'bas.php' ;?>
-  </footer>
+
 </div>
