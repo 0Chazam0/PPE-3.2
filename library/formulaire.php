@@ -95,7 +95,7 @@ class Formulaire{
 		$composant .= "/></td></tr>";
 		return $composant;
 	}
-	
+
 
 	public function creerSelect($unNom, $unId, $unLabel, $options){
 		$composant = "<tr><td><label for = '" . $unNom . "' />" . $unLabel . "</label></td>";
