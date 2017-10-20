@@ -99,7 +99,7 @@ main {
 	vertical-align: top;
 }
 
-.panier{
+#panier{
 	display: inline-block;
 	width: 20%;
 	font-size: 15px;

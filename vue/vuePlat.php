@@ -1,3 +1,8 @@
+<script>
+function myFunction() {
+	document.getElementById("panier").style.background = "red";
+}
+</script>
 <div class="conteneur">
   <header>
       <?php include 'haut.php' ;?>
@@ -29,14 +34,14 @@
           $correct = strtolower($correct);
           $correct = 'image/'.$correct;
 
-          $formPlat = new Formulaire("POST","index.php","formPlat","platthis");
+          $formPlat = new Formulaire("POST","","formPlat","platthis");
           $formPlat->ajouterComposantLigne($formPlat->creerInputImage('imgPlat', 'imgPlat', $correct));
           $formPlat->ajouterComposantLigne($formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getNom(),"nomPlat"),
                                           $formPlat->concactComposants($formPlat->creerLabelFor('Prix : ',"lblPrixPlat"),
                                           $formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getPrixClient()."€","prixPlat"),
                                           $formPlat->concactComposants($formPlat->creerLabelFor('Description : ',"lblDescripPlat"),
                                           $formPlat->creerLabelFor($OBJ->getDescription(),"descripPlat"),0),4),0),2));
-          $formPlat->ajouterComposantLigne($formPlat->creerInputSubmit("ajoutCommande-btn","ajoutCommande-btn","    +    "));
+          $formPlat->ajouterComposantLigne($formPlat->creerButtonOnClick("ajoutCommande-btn","    +    "));
           $formPlat->ajouterComposantTab();
           $formPlat->creerFormulaire();
           echo $formPlat->afficherFormulaire();
@@ -44,9 +49,10 @@
         }
       }
 
+
     ?>
     </div>
-    <div class="panier">
+    <div id="panier">
 
 
     </div>

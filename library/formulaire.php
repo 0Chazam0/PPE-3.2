@@ -1,3 +1,6 @@
+
+
+</script>
 <?php
 class Formulaire{
 	private $method;
@@ -106,6 +109,10 @@ class Formulaire{
 	public function creerInputSubmit($unNom, $unId, $uneValue){
 		$composant = "<input type = 'submit' name = '" . $unNom . "' id = '" . $unId . "' ";
 		$composant .= "value = '" . $uneValue . "'/> ";
+		return $composant;
+	}
+	public function creerButtonOnClick($unId,$uneValue){
+		$composant = "<button onclick='myFunction()' id = '" . $unId . "'> $uneValue </button> ";
 		return $composant;
 	}
 
