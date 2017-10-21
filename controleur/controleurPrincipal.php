@@ -9,7 +9,9 @@ require_once 'library/dispatcher.php';
 require_once 'library/formulaire.php';
 require_once 'modele/dao.php';
 require_once 'modele/DAO/select.php';
+
 require_once 'modele/DTO/resto.php';
+require_once 'modele/DTO/typeResto.php';
 require_once 'modele/DTO/ville.php';
 require_once 'modele/DTO/typePlat.php';
 require_once 'modele/DTO/plat.php';

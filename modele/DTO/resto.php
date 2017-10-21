@@ -44,6 +44,7 @@ class Resto
 {
   private   $id;
   private   $codev;
+  private   $codet;
   private   $nom;
   private   $numAdr;
   private   $rueAdr;
@@ -51,10 +52,11 @@ class Resto
 
 
 
-  function __construct($pid, $pcodev, $pnom, $pnumAdr, $prueAdr, $pCP)
+  function __construct($pid, $pcodev, $pcodet, $pnom, $pnumAdr, $prueAdr, $pCP)
   {
     $this->id = $pid;
     $this->codev = $pcodev;
+    $this->codet = $pcodet;
     $this->nom = $pnom;
     $this->numAdr = $pnumAdr;
     $this->rueAdr = $prueAdr;
@@ -69,6 +71,10 @@ class Resto
   public function getCodeV()
   {
     return $this->codev;
+  }
+  public function getCodeT()
+  {
+    return $this->codevt;
   }
 
   public function getNom()

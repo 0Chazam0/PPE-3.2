@@ -1,33 +1,33 @@
 <?php
 /**
- * TypePlats
+ * TypeRestos
  */
-class TypePlats
+class TypeRestos
 {
-  private   $lesTypePlats;
+  private   $lesTypeRestos;
 
-  function __construct($lesTypePlats)
+  function __construct($lesTypeRestos)
   {
-    $this->lesTypePlats = $lesTypePlats;
+    $this->lesTypeRestos = $lesTypeRestos;
   }
 
-  public function getLesTypePlats()
+  public function getLesTypeRestos()
   {
-    return $this->lesTypePlats;
+    return $this->lesTypeRestos;
   }
 
-  public function setLesTypePlats($value)
+  public function setLesTypeRestos($value)
   {
-    $this->lesTypePlats = $value;
+    $this->lesTypeRestos = $value;
   }
 
   public function chercher($TheId)
   {
-    foreach ($this->lesTypePlats as $TypePlat)
+    foreach ($this->lesTypeRestos as $TypeResto)
     {
-      if ($TypePlat->getCodeT() == $TheId)
+      if ($TypeResto->getCodeT() == $TheId)
       {
-        return $TypePlat;
+        return $TypeResto;
       }
     }
     return null;
@@ -36,9 +36,9 @@ class TypePlats
 }
 
 /**
- * TypePlat
+ * TypeResto
  */
-class TypePlat
+class TypeResto
 {
   private   $codeT;
   private   $libelle;

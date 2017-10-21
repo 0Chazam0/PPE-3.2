@@ -30,7 +30,7 @@ class RestoDAO
     {
       foreach ($liste as $resto)
       {
-        $unResto = new Resto($resto['IDR'], $resto['CODEV'], $resto['NOMR'], $resto['NUMADR'], $resto['RUEADR'], $resto['CPR']);
+        $unResto = new Resto($resto['IDR'], $resto['CODEV'], $resto['CODET'], $resto['NOMR'], $resto['NUMADR'], $resto['RUEADR'], $resto['CPR']);
         $result[] = $unResto;
       }
     }
@@ -43,6 +43,9 @@ class RestoDAO
 
   }
 }
+
+
+
 
 
 class VilleDAO
@@ -64,6 +67,9 @@ public static function selectListeVille()
 }
 }
 
+
+
+
 class PlatDAO
 {
 public static function selectListePlat()
@@ -82,6 +88,32 @@ public static function selectListePlat()
 	return $result;
 }
 }
+
+
+
+
+class TypeRestoDAO
+{
+public static function selectListeTypeResto()
+{
+	$result = array();
+	$sql = "SELECT * FROM Type_resto;";
+	$liste = DBConnex::getInstance()->queryFetchAll($sql);
+	if (count($liste) > 0)
+	{
+		foreach ($liste as $TypeResto)
+		{
+			$uneTypeResto = new TypeResto($TypeResto['CODET'], $TypeResto['LIBELLE']);
+			$result[] = $uneTypeResto;
+		}
+	}
+	return $result;
+}
+}
+
+
+
+
 
 
 class TypePlatDAO
@@ -103,6 +135,11 @@ public static function selectListeTypePlat()
 }
 }
 
+
+
+
+
+
 class CommandeDAO
 {
   public static function selectCommande($idUser)
@@ -112,9 +149,12 @@ class CommandeDAO
   }
 }
 
-/**
- *
- */
+
+
+
+
+
+
 class CommentaireDAO
 {
 
