@@ -6,7 +6,6 @@
 $_SESSION['listeVilles'] =new Villes(VilleDAO::selectListeVille());
 $_SESSION['listeRestos'] = new Restos(RestoDAO::selectListeResto());
 $_SESSION['listeTypeRestos'] = new TypeRestos(TypeRestoDAO::selectListeTypeResto());
-$_SESSION['VilleSelected'] = strtolower($_POST['search']);
 $_SESSION['lesFormsResto']= null;
 
 
@@ -19,10 +18,12 @@ if(isset($_GET['TypeResto'])){
 else
 {
 	if(!isset($_SESSION['TypeResto'])){
-		$_SESSION['TypeResto']="0";
+		$_SESSION['TypeResto']="TR1";
 	}
 }
-
+/*----------------------------------------------------------*/
+/*--------Affichage type resto-----*/
+/*----------------------------------------------------------*/
 $menuTypeResto = new menu("menuTypeResto");
 foreach ($_SESSION['listeTypeRestos']->getLesTypeRestos() as $uneTypeResto){
 	$menuTypeResto->ajouterComposant($menuTypeResto->creerItemLien($uneTypeResto->getCodeT() ,$uneTypeResto->getLibelle()));
@@ -52,10 +53,7 @@ foreach ($_SESSION['listeVilles']->getLesVilles() as $OBJ2){
         $correct = strtolower($correct);
         $correct = 'image/'.$correct;
 
-
-
-
-        $formResto = new Formulaire("POST","index.php?menuPrincipal=".$page."","formResto","restothis");
+        $formResto = new Formulaire("POST","index.php","formResto","restothis");
         $formResto->ajouterComposantLigne($formResto->creerInputImage('imgResto', 'imgResto', $correct));
         $formResto->ajouterComposantLigne($formResto->concactComposants($formResto->creerLabelFor($OBJ->getNom(),"nomResto"),$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto'),2));
         $formResto->ajouterComposantLigne($formResto->creerInputSubmit("plat-btn","plat-btn","    Nos Plats   "));
@@ -63,6 +61,7 @@ foreach ($_SESSION['listeVilles']->getLesVilles() as $OBJ2){
         $formResto->ajouterComposantTab();
         $formResto->creerFormulaire();
         $_SESSION['lesFormsResto'] .= $formResto->afficherFormulaire();
+
         }
       }
 

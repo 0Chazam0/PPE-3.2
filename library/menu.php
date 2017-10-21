@@ -28,7 +28,7 @@ class Menu{
 		$menu = "<ul class = '" .  $this->style . "'>";
 		foreach($this->composants as $composant){
 				$menu .= "<li>";
-				$menu .= "<a href='index.php?" . $nomMenu ;
+				$menu .= "<a href='index.php?". $nomMenu ;
 				$menu .= "=" . $composant[0] . "' >";
 				$menu .= "<span>" . $composant[1] ."</span>";
 				$menu .= "</a>";
@@ -37,7 +37,24 @@ class Menu{
 		$menu .= "</ul>";
 		return $menu ;
 	}
+	public function creerMenuType($composantActif){
+		$menu = "<ul class = '" .  $this->style . "'>";
+		foreach($this->composants as $composant){
+			if($composant[0] == $composantActif){
+				$menu .= "<li class='actif'>";
+				$menu .=  $composant[1] ;
+			}
+			else{
+				$menu .= "<li>";
+				$menu .= "<a href='index.php?action=afficher" ;
+				$menu .= "&TypePlat=" . $composant[0] . "' >";
+				$menu .= $composant[1] ;
+				$menu .= "</a>";
+			}
+			$menu .= "</li>";
+		}
+		$menu .= "</ul>";
+		return $menu ;
+	}
 
-
-
-}
+	}

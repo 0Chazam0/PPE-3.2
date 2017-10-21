@@ -4,7 +4,6 @@
 /*----------------------------------------------------------*/
 $_SESSION['listeTypePlats'] = new TypePlats(TypePlatDAO::selectListeTypePlat());
 $_SESSION['listePlats'] = new Plats(PlatDAO::selectListePlat());
-$_SESSION['RestoSelected'] = $_POST['idResto'];
 $_SESSION['lesFormsPlat'] = null;
 
 
@@ -17,15 +16,17 @@ if(isset($_GET['TypePlat'])){
 else
 {
 	if(!isset($_SESSION['TypePlat'])){
-		$_SESSION['TypePlat']="0";
+		$_SESSION['TypePlat']="menuPrincipal";
 	}
 }
-
+/*----------------------------------------------------------*/
+/*--------Affichage type PLAT-----*/
+/*----------------------------------------------------------*/
 $menuTypePlat = new menu("menuTypePlat");
 foreach ($_SESSION['listeTypePlats']->getLesTypePlats() as $uneTypePlat){
 	$menuTypePlat->ajouterComposant($menuTypePlat->creerItemLien($uneTypePlat->getCodeT() ,$uneTypePlat->getLibelle()));
 }
-$lemenuTypePlats = $menuTypePlat->creerMenu($_SESSION['TypePlat']);
+$lemenuTypePlats = $menuTypePlat->creerMenuType($_SESSION['TypePlat']);
 
 $TypePlatActive = $_SESSION['listeTypePlats']->chercher($_SESSION['TypePlat']);
 
