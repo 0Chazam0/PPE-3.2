@@ -1,7 +1,7 @@
 <script>
 function myFunction() {
 	document.getElementById("panier").style.background = "red";
-}
+	}
 </script>
 <div class="conteneur">
   <header>
@@ -11,7 +11,7 @@ function myFunction() {
   <main>
     <div class='gauche'>
       <nav class="sidenav">
-        <h3 class="titreListe">Les types de plats <?php ;?></h3>
+        <h3 class="titreListe">Les types de plats</h3>
         <ul>
           <?php
             echo $lemenuTypePlats;
@@ -26,6 +26,9 @@ function myFunction() {
     </div>
     <div id="panier">
 
+			<?php
+
+			 ?>
 
     </div>
   </main>

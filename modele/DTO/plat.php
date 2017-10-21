@@ -6,9 +6,9 @@ class Plats
 {
   private   $lesPlats;
 
-  function __construct($lesPlats)
+  function __construct($plesPlats)
   {
-    $this->lesPlats = $lesPlats;
+    $this->lesPlats = $plesPlats;
   }
 
   public function getLesPlats()
@@ -21,7 +21,7 @@ class Plats
     $this->lesPlats = $value;
   }
 
-  public function chercher($TheId)
+  public static function chercher($TheId)
   {
     foreach ($this->lesPlats as $Plat)
     {
@@ -34,7 +34,7 @@ class Plats
   }
 
 }
- 
+
 /**
  * Plat
  */

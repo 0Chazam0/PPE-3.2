@@ -113,7 +113,7 @@ class Formulaire{
 		return $composant;
 	}
 	public function creerButtonOnClick($unId,$uneValue){
-		$composant = "<button onclick='myFunction()' id = '" . $unId . "'> $uneValue </button> ";
+		$composant = "<button onclick='myFunction()' id = '" . $unId . "'  > $uneValue </button> ";
 		return $composant;
 	}
 

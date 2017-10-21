@@ -1,3 +1,4 @@
+
 <?php
 /*----------------------------------------------------------*/
 /*--------Déclaration variable session----------------------*/
@@ -28,7 +29,7 @@ foreach ($_SESSION['listeTypePlats']->getLesTypePlats() as $uneTypePlat){
 }
 $lemenuTypePlats = $menuTypePlat->creerMenuType($_SESSION['TypePlat']);
 
-$TypePlatActive = $_SESSION['listeTypePlats']->chercher($_SESSION['TypePlat']);
+$TypePlatActif = $_SESSION['listeTypePlats']->chercher($_SESSION['TypePlat']);
 
 
 /*----------------------------------------------------------*/
@@ -39,27 +40,30 @@ $TypePlatActive = $_SESSION['listeTypePlats']->chercher($_SESSION['TypePlat']);
 foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
 {
   if($OBJ->getIDResto() == $_SESSION['RestoSelected'] ){
-
-
     $correct = preg_replace('#[\\/\'" éàâäêçèë]#', "", $OBJ->getCheminPhoto());
     $correct = strtolower($correct);
     $correct = 'image/'.$correct;
 
-    $formPlat = new Formulaire("POST","","formPlat","platthis");
+    $formPlat = new Formulaire("POST","index.php","formPlat","platthis");
     $formPlat->ajouterComposantLigne($formPlat->creerInputImage('imgPlat', 'imgPlat', $correct));
     $formPlat->ajouterComposantLigne($formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getNom(),"nomPlat"),
                                     $formPlat->concactComposants($formPlat->creerLabelFor('Prix : ',"lblPrixPlat"),
                                     $formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getPrixClient()."€","prixPlat"),
                                     $formPlat->concactComposants($formPlat->creerLabelFor('Description : ',"lblDescripPlat"),
                                     $formPlat->creerLabelFor($OBJ->getDescription(),"descripPlat"),0),4),0),2));
-    $formPlat->ajouterComposantLigne($formPlat->creerButtonOnClick("ajoutCommande-btn","    +    "));
+    $formPlat->ajouterComposantLigne($formPlat->creerButtonOnClick("ajoutCommande-btn"," Commander "));
     $formPlat->ajouterComposantTab();
     $formPlat->creerFormulaire();
+    $_SESSION['PlatSelected'] = $OBJ;
     $_SESSION['lesFormsPlat'] .= $formPlat->afficherFormulaire();
 
   }
 }
-
+/*foreach ($_SESSION["listePlats"]->getLesPlats() as $OBJ){
+  if ($OBJ->getID()==$_SESSION["PlatSelected"]){
+  $_SESSION["lePanier"] = new Plats(PlatDAO::chercherPlat($OBJ->getID()));
+}
+}*/
 /*--------------------------------------------------------------------------*/
 include 'vue\vuePlat.php';
  ?>

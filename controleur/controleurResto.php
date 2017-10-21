@@ -61,12 +61,14 @@ foreach ($_SESSION['listeVilles']->getLesVilles() as $OBJ2){
         $formResto->ajouterComposantTab();
         $formResto->creerFormulaire();
         $_SESSION['lesFormsResto'] .= $formResto->afficherFormulaire();
-
         }
       }
 
     }
 }
+
+
+
 /*--------------------------------------------------------------------------*/
 include 'vue\vueResto.php';
  ?>

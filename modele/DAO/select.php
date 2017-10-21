@@ -87,6 +87,12 @@ public static function selectListePlat()
 	}
 	return $result;
 }
+public static function chercherPlat($idPlat)
+{
+  $sql = "SELECT * FROM PLAT WHERE IDP = '" . $idPlat . "';";
+  $plat = DBConnex::getInstance()->queryFetchFirstRow($sql);
+  return $plat;
+}
 }
 
 

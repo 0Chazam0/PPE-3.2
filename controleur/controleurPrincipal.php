@@ -59,7 +59,7 @@ if (isset($_POST['inscr'])) {
 	$_SESSION['menuPrincipal'] = 'Inscription';
 }
 /*----------------------------------------------------------*/
-/*--------Récupère le controleur Resto (si la condition est respectée)----------*/
+/*--------Récupère le controleur Resto et la ville choisit (si la condition est respectée)----------*/
 /*----------------------------------------------------------*/
 if (isset($_POST['search']) && $_POST['search']!=null) {
 	$_SESSION['VilleSelected'] = strtolower($_POST['search']);
@@ -68,10 +68,18 @@ if (isset($_POST['search']) && $_POST['search']!=null) {
 /*----------------------------------------------------------*/
 /*--------Récupère le controleur Plat (si la condition est respectée)----------*/
 /*----------------------------------------------------------*/
+
 if (isset($_POST['idResto'])){
 	$_SESSION['RestoSelected'] = $_POST['idResto'];
 	$_SESSION['menuPrincipal']="Plat";
+
+
 }
+
+/*Ajouter un plat a la commande*/
+
+
+
 /*----------------------------------------------------------*/
 /*-------Affiche le controleur récupéré----------*/
 /*----------------------------------------------------------*/
