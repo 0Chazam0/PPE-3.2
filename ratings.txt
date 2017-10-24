@@ -1,0 +1,13 @@
+--
+-- Structure de la table `ratings`
+--
+
+DROP TABLE IF EXISTS `ratings`;
+CREATE TABLE IF NOT EXISTS `ratings` (
+  `vote_id` int(11) NOT NULL auto_increment,
+  `page_id` varchar(255) collate latin1_german1_ci NOT NULL,
+  `total_votes` int(11) NOT NULL default '0',
+  `total_value` int(11) NOT NULL default '0',
+  `used_ips` longtext collate latin1_german1_ci,
+  PRIMARY KEY  (`vote_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german1_ci AUTO_INCREMENT=476 ;
