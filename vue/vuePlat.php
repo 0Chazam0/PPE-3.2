@@ -5,7 +5,7 @@ function myFunction() {
 </script>
 <div class="conteneur">
   <header>
-      <?php include 'haut.php' ;?>
+      <?php //include 'haut.php' ;?>
   </header>
 
   <main>
@@ -25,9 +25,10 @@ function myFunction() {
     ?>
     </div>
     <div id="panier">
-
 			<?php
-
+			foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ){
+				echo $OBJ->getNom();
+			}
 			 ?>
 
     </div>

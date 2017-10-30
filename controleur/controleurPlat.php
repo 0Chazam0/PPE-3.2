@@ -6,6 +6,7 @@
 $_SESSION['listeTypePlats'] = new TypePlats(TypePlatDAO::selectListeTypePlat());
 $_SESSION['listePlats'] = new Plats(PlatDAO::selectListePlat());
 $_SESSION['lesFormsPlat'] = null;
+$_SESSION['nbPlat'] = 1;
 
 
 /*----------------------------------------------------------*/
@@ -40,6 +41,8 @@ $TypePlatActif = $_SESSION['listeTypePlats']->chercher($_SESSION['TypePlat']);
 foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
 {
   if($OBJ->getIDResto() == $_SESSION['RestoSelected'] ){
+
+
     $correct = preg_replace('#[\\/\'" éàâäêçèë]#', "", $OBJ->getCheminPhoto());
     $correct = strtolower($correct);
     $correct = 'image/'.$correct;
@@ -51,19 +54,29 @@ foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
                                     $formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getPrixClient()."€","prixPlat"),
                                     $formPlat->concactComposants($formPlat->creerLabelFor('Description : ',"lblDescripPlat"),
                                     $formPlat->creerLabelFor($OBJ->getDescription(),"descripPlat"),0),4),0),2));
-    $formPlat->ajouterComposantLigne($formPlat->creerButtonOnClick("ajoutCommande-btn"," Commander "));
+    $formPlat->ajouterComposantLigne($formPlat->creerInputSubmitPanier($OBJ->getID(),"ajoutCommande-btn"," Commander "));
     $formPlat->ajouterComposantTab();
     $formPlat->creerFormulaire();
-    $_SESSION['PlatSelected'] = $OBJ;
     $_SESSION['lesFormsPlat'] .= $formPlat->afficherFormulaire();
-
+		$_SESSION['nbPlat'] += 1;
   }
 }
-/*foreach ($_SESSION["listePlats"]->getLesPlats() as $OBJ){
-  if ($OBJ->getID()==$_SESSION["PlatSelected"]){
-  $_SESSION["lePanier"] = new Plats(PlatDAO::chercherPlat($OBJ->getID()));
-}
-}*/
+/*Ajouter un plat a la commande*/
+foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
+{
+	if(isset($_POST[$OBJ->getID()])){
+					$lePlat = new Plat($OBJ->getID(),$OBJ->getIDResto(),$OBJ->getTypePlat(),$OBJ->getNom(),$OBJ->getPrixFournisseur(),$OBJ->getPrixClient(),$OBJ->getPlatVisible(),$OBJ->getCheminPhoto(),$OBJ->getDescription());
+					$resultat = array($lePlat =>$i);
+					$i+=1;
+		}
+	}
+
+$_SESSION['lePanier'] = new Plats($_SESSION['lesPlats']);
+
+
+
+var_dump($_SESSION["lesPlats"]);
+
 /*--------------------------------------------------------------------------*/
 include 'vue\vuePlat.php';
  ?>

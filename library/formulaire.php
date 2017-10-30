@@ -112,8 +112,9 @@ class Formulaire{
 		$composant .= "value = '" . $uneValue . "'/> ";
 		return $composant;
 	}
-	public function creerButtonOnClick($unId,$uneValue){
-		$composant = "<button onclick='myFunction()' id = '" . $unId . "'  > $uneValue </button> ";
+	public function creerInputSubmitPanier($unName,$uneClasse,$uneValue){
+		$composant = "<input type = 'submit' id = '" . $unName . "'  name = '" . $unName . "' class = '" . $uneClasse . "' ";
+		$composant .= "value = '" . $uneValue . "'/> ";
 		return $composant;
 	}
 

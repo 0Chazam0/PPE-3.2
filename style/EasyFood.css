@@ -332,7 +332,7 @@ nav.menuPrincipal ul li .actif {
 		height: 250px;
 		margin-bottom:  -30px;
 	}
-	.platthis #ajoutCommande-btn{
+	.platthis .ajoutCommande-btn{
 		margin-left: 115px;
 		margin-top: 200px;
 		background-color: #F5ECCE;
