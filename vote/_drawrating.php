@@ -30,7 +30,7 @@ See readme.txt for full credit details.
 		// see: http://www.masugadesign.com/the-lab/scripts/unobtrusive-ajax-star-rating-bar/#comment-121
 		$count = $query->rowCount();
 		if ($count == 0) {
-			$req = "INSERT INTO `vote`.`ratings` (`vote_id` ,`page_id` ,`total_votes` ,`total_value` ,`used_ips` ) VALUES (NULL , '".$page_id."', '0', '0', NULL);";
+			$req = "INSERT INTO `darosr_esayfoodbdd`.`ratings` (`vote_id` ,`page_id` ,`total_votes` ,`total_value` ,`used_ips` ) VALUES (NULL , '".$page_id."', '0', '0', NULL);";
 			$result = Param::getInstance()->exec($req);
 		}
 
