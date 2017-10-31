@@ -7,7 +7,7 @@ $_SESSION['listeTypePlats'] = new TypePlats(TypePlatDAO::selectListeTypePlat());
 $_SESSION['listePlats'] = new Plats(PlatDAO::selectListePlat());
 $_SESSION['lesFormsPlat'] = null;
 $_SESSION['nbPlat'] = 1;
-
+$_SESSION['nbPlatPanier']=0;
 
 /*----------------------------------------------------------*/
 /*--------Affichage  des plats selon leur type-----*/
@@ -34,7 +34,7 @@ $TypePlatActif = $_SESSION['listeTypePlats']->chercher($_SESSION['TypePlat']);
 
 
 /*----------------------------------------------------------*/
-/*--------Les forms des plats durestaurants choisit-----*/
+/*--------Les forms des plats du restaurants choisit-----*/
 /*----------------------------------------------------------*/
 
 
@@ -61,21 +61,47 @@ foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
 		$_SESSION['nbPlat'] += 1;
   }
 }
-/*Ajouter un plat a la commande*/
-foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
-{
-	if(isset($_POST[$OBJ->getID()])){
-					$lePlat = new Plat($OBJ->getID(),$OBJ->getIDResto(),$OBJ->getTypePlat(),$OBJ->getNom(),$OBJ->getPrixFournisseur(),$OBJ->getPrixClient(),$OBJ->getPlatVisible(),$OBJ->getCheminPhoto(),$OBJ->getDescription());
-					$resultat = array($lePlat =>$i);
-					$i+=1;
+
+/*----------------------------------------------------------*/
+/*--------Ajouter un plat a la commande-----*/
+/*----------------------------------------------------------*/
+
+$lePlat = new Plat("","","","","","","","","");
+
+	foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
+	{
+		if(isset($_POST[$OBJ->getID()])){
+			$lePlat->__construct($OBJ->getID(),$OBJ->getIDResto(),$OBJ->getTypePlat(),$OBJ->getNom(),$OBJ->getPrixFournisseur(),$OBJ->getPrixClient(),$OBJ->getPlatVisible(),$OBJ->getCheminPhoto(),$OBJ->getDescription());
+			$_SESSION['lesPlats'][] =	serialize($lePlat);
+			$_SESSION['nbPlatPanier']+=1;
 		}
 	}
 
-$_SESSION['lePanier'] = new Plats($_SESSION['lesPlats']);
+	foreach ($_SESSION['lesPlats'] as $OBJ) {
+		$lesPlats[] = unserialize($OBJ);
+	}
+
+	$_SESSION['lePanier'] = new Plats($lesPlats);
 
 
+/*----------------------------------------------------------*/
+/*--------Création du formulaire du panier-----*/
+/*----------------------------------------------------------*/
 
-var_dump($_SESSION["lesPlats"]);
+$formPanier = new Formulaire("POST","index.php","formPanier","panierthis");
+
+$formPanier->ajouterComposantLigne($formPanier->creerLabelFor('Votre Panier', 'lblPanier'));
+$formPanier->ajouterComposantTab();
+$formPanier->ajouterComposantTab();
+foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ){
+ 	$formPanier->ajouterComposantLigne($formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getNom(),"nomP"),$formPanier->concactComposants($formPanier->creerLabelFor('x1','nbPlat'),$formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getPrixClient()."€",'prixP'),$formPanier->creerInputSubmit('supprPlat','supprPlat',"X"),0),0),0));
+	$formPanier->ajouterComposantTab();
+}
+//$formPanier->ajouterComposantLigne($formPanier->creerInputSubmit("plat-btn","plat-btn","    Nos Plats   "));
+//$formPanier->ajouterComposantLigne($formPanier->creerInputSubmitHidden("idResto","idResto",$OBJ->getId()  ));
+$formPanier->creerFormulaire();
+$_SESSION['leFormPlanier'] = $formPanier->afficherFormulaire();
+
 
 /*--------------------------------------------------------------------------*/
 include 'vue\vuePlat.php';

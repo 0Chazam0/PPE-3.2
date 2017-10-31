@@ -11,17 +11,17 @@ class Plats
     $this->lesPlats = $plesPlats;
   }
 
-  public function getLesPlats()
+  public  function getLesPlats()
   {
     return $this->lesPlats;
   }
 
-  public function setLesPlats($value)
+  public  function setLesPlats($value)
   {
     $this->lesPlats = $value;
   }
 
-  public static function chercher($TheId)
+  public  function chercher($TheId)
   {
     foreach ($this->lesPlats as $Plat)
     {
@@ -50,7 +50,7 @@ class Plat
   private   $cheminPhoto;
   private   $description;
 
-  function __construct($pid, $pidResto, $ptypePlat, $pnom, $pprixFournisseur,
+  public  function  __construct($pid, $pidResto, $ptypePlat, $pnom, $pprixFournisseur,
                       $pprixClient, $pplatVisible, $pcheminPhoto, $pdescription)
   {
     $this->id = $pid;
@@ -68,44 +68,92 @@ class Plat
   {
     return $this->id;
   }
+  public  function setID($value)
+  {
+    $this->id = $value;
+  }
 
-  public function getIDResto()
+
+  public  function getIDResto()
   {
     return $this->idResto;
   }
+  public  function setIDResto($value)
+  {
+    $this->idResto = $value;
+  }
 
-  public function getTypePlat()
+
+  public  function getTypePlat()
   {
     return $this->typePlat;
   }
+  public static function setTypePlat($value)
+  {
+    $this->typePlat = $value;
+  }
 
-  public function getNom()
+  public  function getNom()
   {
     return $this->nom;
   }
+  public static function setNom($value)
+  {
+    $this->nom = $value;
+  }
 
-  public function getPrixFournisseur()
+
+
+  public  function getPrixFournisseur()
   {
     return $this->prixFournisseur;
   }
+  public static function setPrixFournisseur($value)
+  {
+    $this->prixFournisseur = $value;
+  }
 
-  public function getPrixClient()
+
+
+  public  function getPrixClient()
   {
     return $this->prixClient;
   }
-  public function getPlatVisible()
+  public static function setPrixClient($value)
+  {
+    $this->prixClient = $value;
+  }
+
+
+
+
+  public  function getPlatVisible()
   {
     return $this->platVisible;
   }
+  public static function setPlatVisible($value)
+  {
+    $this->platVisible = $value;
+  }
 
-  public function getCheminPhoto()
+
+
+  public  function getCheminPhoto()
   {
     return $this->cheminPhoto;
   }
+  public static function setCheminPhoto($value)
+  {
+    $this->cheminPhoto = $value;
+  }
 
-  public function getDescription()
+  public  function getDescription()
   {
     return $this->description;
+  }
+  public static function setDescription($value)
+  {
+    $this->description = $value;
   }
 }
 

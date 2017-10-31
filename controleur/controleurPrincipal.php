@@ -6,7 +6,7 @@ if (isset($_POST['deco'])) {
 
 
 /*----------------------------------------------------------*/
-/*--------inclut les fichiers suivant une suele fois sans erreur----------*/
+/*--------inclut les fichiers suivant une seule fois sans erreur----------*/
 /*----------------------------------------------------------*/
 require_once 'configs/param.php';
 require_once 'library/menu.php';

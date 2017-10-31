@@ -16,8 +16,6 @@ html, body {
 	margin: 0px;
 	padding: 0px;
 	width: 100%;
-
-
 }
 
 /****************************************************/
@@ -99,17 +97,7 @@ main {
 	vertical-align: top;
 }
 
-#panier{
-	display: inline-block;
-	width: 20%;
-	font-size: 15px;
-	vertical-align: top;
-	border: 3px solid orange;
-	margin-top: 50px;
-	height: 250px;
-	margin-left: 10px;
 
-}
 /****************************************************/
 /*styles pour le footer                             */
 /****************************************************/
@@ -373,8 +361,38 @@ nav.menuPrincipal ul li .actif {
 		padding-left: 10px;
 
 	}
-
-
+	/****************************************************/
+	/*styles pour le formulaire du panier           */
+	/****************************************************/
+	#panier{
+		display: inline-block;
+		width: 20%;
+		font-size: 15px;
+		vertical-align: top;
+		border: 3px solid orange;
+		margin-top: 50px;
+		height: inherit;
+		margin-left: 10px;
+	}
+.lblPanier{
+	font-size: 20px;
+	text-decoration: bold;
+	margin-left: 80px;
+}
+.panierthis .nomP{
+	margin-left: 3px;
+	margin-right: 25px;
+}
+.panierthis .nbPlat{
+	margin-right: 25px;
+}
+.panierthis #supprPlat{
+	width: 15px;
+	margin-left: 10px;
+	background-color: #FE2E2E;
+	border: 1px solid black;
+	text-align: center;
+}
 
 	/****************************************************/
 	/*styles pour le formulaire d'inscription           */
