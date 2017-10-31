@@ -521,7 +521,7 @@ nav.menuPrincipal ul li .actif {
 
 
 /* ========================================================================== */
-.note {
+/*.note {
  	border:2px solid orange;
 	border-radius: 15px;
 	float:left;
@@ -546,99 +546,9 @@ nav.menuPrincipal ul li .actif {
 	position: relative;
 	padding-right: 15px;
 
-}
-
-/*  styles for the unit rater
----------------------------------------------------------
-ryan masuga, masugadesign.com
-ryan@masugadesign.com
-Licensed under a Creative Commons Attribution 3.0 License.
-http://creativecommons.org/licenses/by/3.0/
-See readme.txt for full credit details.
---------------------------------------------------------- */
-
-.ratingblock {
-	display:block;
-	/*-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	-moz-box-shadow:0 0 15px #aaa;
-	-webkit-box-shadow:0 0 15px #aaa;
-	box-shadow:0 0 15px #aaa;
-	background-color:#E2FAB6;*/
-	margin:0 10px;
-	font:12px"Lucida Grande", Helvetica, Arial, Sans-Serif;
-	line-height:1.5em;
-	}
+}*/
 
 
-.loading {
-	height: 30px;
-	background: url('../image/ajax-loader.gif') 100% 50% no-repeat;
-	margin: 0px -30px;
-	}
-
-.unit-rating { /* the UL */
-	list-style:none;
-	margin: 0px 0px 10px 0px;
-	padding:0px;
-	height: 30px;
-	position: relative;
-	background: url('../image/starrating.png') top left repeat-x;
-	}
-
-.unit-rating li{
-    text-indent: -90000px;
-	padding:0px;
-	margin:0px;
-	/*\*/
-	float: left;
-	/* */
-	}
-
-.unit-rating li a {
-	outline: none;
-	display:block;
-	width:30px;
-	height: 30px;
-	text-decoration: none;
-	text-indent: -9000px;
-	z-index: 20;
-	position: absolute;
-	padding: 0px;
-	}
-
-.unit-rating li a:hover{
-	background: url('../image/starrating.png') left center;
-	z-index: 2;
-	left: 0px;
-	}
-
-.unit-rating a.r1-unit{left: 0px;}
-.unit-rating a.r1-unit:hover{width:30px;}
-.unit-rating a.r2-unit{left:30px;}
-.unit-rating a.r2-unit:hover{width: 60px;}
-.unit-rating a.r3-unit{left: 60px;}
-.unit-rating a.r3-unit:hover{width: 90px;}
-.unit-rating a.r4-unit{left: 90px;}
-.unit-rating a.r4-unit:hover{width: 120px;}
-.unit-rating a.r5-unit{left: 120px;}
-.unit-rating a.r5-unit:hover{width: 150px;}
-
-
-.unit-rating li.current-rating {
-	background: url('../image/starrating.png') left bottom;
-	position: absolute;
-	height: 30px;
-	display: block;
-	text-indent: -9000px;
-	z-index: 1;
-	padding: 0px;
-	}
-
-.voted {color:#999;margin:5px 0 5px;}
-.thanks {color:#36AA3D;margin:5px 0 5px;}
-.static {color:#5D3126;margin:5px 0 5px;}
 
 .styleNote{
 	z-index: 10;
