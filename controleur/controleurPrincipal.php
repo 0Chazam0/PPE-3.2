@@ -72,9 +72,20 @@ if (isset($_POST['search']) && $_POST['search']!=null) {
 if (isset($_POST['idResto'])){
 	$_SESSION['RestoSelected'] = $_POST['idResto'];
 	$_SESSION['menuPrincipal']="Plat";
-
-
 }
+/*----------------------------------------------------------*/
+/*--------Récupère le controleur Reglement (si la condition est respectée)----------*/
+/*----------------------------------------------------------*/
+if (isset($_POST['validerCommande'])){
+	$_SESSION['menuPrincipal']="Reglement";
+}
+/*----------------------------------------------------------*/
+/*--------Récupère le controleur Commande (si la condition est respectée)----------*/
+/*----------------------------------------------------------*/
+if (isset($_POST['suivantReglement'])){
+	$_SESSION['menuPrincipal']="Commande";
+}
+
 
 /*----------------------------------------------------------*/
 /*-------Affiche le controleur récupéré----------*/

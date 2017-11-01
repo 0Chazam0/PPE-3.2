@@ -4,8 +4,7 @@
   </header>
 
   <main>
-    <?php echo $contentConnex; ?>
-      Commande
+    
   </main>
 
   <footer>

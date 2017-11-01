@@ -7,8 +7,8 @@ $_SESSION['listeTypePlats'] = new TypePlats(TypePlatDAO::selectListeTypePlat());
 $_SESSION['listePlats'] = new Plats(PlatDAO::selectListePlat());
 $_SESSION['lesFormsPlat'] = null;
 $_SESSION['nbPlat'] = 1;
-$_SESSION['nbPlatPanier']=0;
-
+$_SESSION['nbPlatPanier']= 0;
+$_SESSION['prixTotal'] = 0;
 /*----------------------------------------------------------*/
 /*--------Affichage  des plats selon leur type-----*/
 /*----------------------------------------------------------*/
@@ -54,7 +54,7 @@ foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
                                     $formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getPrixClient()."€","prixPlat"),
                                     $formPlat->concactComposants($formPlat->creerLabelFor('Description : ',"lblDescripPlat"),
                                     $formPlat->creerLabelFor($OBJ->getDescription(),"descripPlat"),0),4),0),2));
-    $formPlat->ajouterComposantLigne($formPlat->creerInputSubmitPanier($OBJ->getID(),"ajoutCommande-btn"," Commander "));
+    $formPlat->ajouterComposantLigne($formPlat->creerInputSubmitPanier($OBJ->getID(),"ajoutCommande-btn"," Ajouter au panier "));
     $formPlat->ajouterComposantTab();
     $formPlat->creerFormulaire();
     $_SESSION['lesFormsPlat'] .= $formPlat->afficherFormulaire();
@@ -96,9 +96,12 @@ $formPanier->ajouterComposantTab();
 foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ){
  	$formPanier->ajouterComposantLigne($formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getNom(),"nomP"),$formPanier->concactComposants($formPanier->creerLabelFor('x1','nbPlat'),$formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getPrixClient()."€",'prixP'),$formPanier->creerInputSubmit('supprPlat','supprPlat',"X"),0),0),0));
 	$formPanier->ajouterComposantTab();
+	$_SESSION['prixTotal'] += $OBJ->getPrixClient();
 }
-//$formPanier->ajouterComposantLigne($formPanier->creerInputSubmit("plat-btn","plat-btn","    Nos Plats   "));
-//$formPanier->ajouterComposantLigne($formPanier->creerInputSubmitHidden("idResto","idResto",$OBJ->getId()  ));
+$formPanier->ajouterComposantLigne($formPanier->concactComposants($formPanier->creerLabelFor("Total : ","lbltotal"),$formPanier->creerLabelFor($_SESSION['prixTotal']."€","prixTotal"),0));
+$formPanier->ajouterComposantTab();
+$formPanier->ajouterComposantLigne($formPanier->creerInputSubmit('validerCommande','validerCommande',"Valider votre commande"));
+$formPanier->ajouterComposantTab();
 $formPanier->creerFormulaire();
 $_SESSION['leFormPlanier'] = $formPanier->afficherFormulaire();
 
