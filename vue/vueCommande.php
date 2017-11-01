@@ -3,11 +3,16 @@
       <?php include 'haut.php' ;?>
   </header>
 
-  <main>
-    
-  </main>
+    <div id='commande'>
+      <?php
+      if (isset($_POST['confirmCommande'])) {
+        echo $txt;
+      }
+      else{
+        echo $_SESSION['leformCommande'];
+      }
 
-  <footer>
-      <?php include 'bas.php' ;?>
-  </footer>
+      ?>
+    </div>
+
 </div>

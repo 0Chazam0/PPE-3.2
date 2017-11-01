@@ -461,19 +461,19 @@ nav.menuPrincipal ul li .actif {
 	margin-top: 5px;
 	margin-right: 30px;
 }
-#unjour {
+#unJour {
 	width: 25px;
 }
-#unmois {
+#unMois {
 	width: 70px;
 }
-#unannee {
+#unAnnee {
 	width: 40px;
 }
-#unheure {
+#unHeure {
 	width: 25px;
 }
-#unminute {
+#unMinute {
 	width: 25px;
 }
 .reglementthis #suivantReglement{
@@ -489,9 +489,106 @@ margin-top: 20px;
 margin-left: 540px;
 padding: 3px 3px 3px 3px;
 }
-	/****************************************************/
-	/*styles pour le formulaire d'inscription           */
-	/****************************************************/
+
+/****************************************************/
+/*styles pour le formulaire de commande          */
+/****************************************************/
+#commande{
+	margin-top: 300px;
+	margin-left: 45%;
+}
+.commandethis{
+margin-top: -200px;
+margin-left: -30%;
+border: 2px solid orange;
+width:  600px;
+padding: 10px 30px 10px 30px;
+}
+.commandethis .lblcommande{
+	color : orange;
+	font-size: 35px;
+	font-weight: bold;
+}
+.commandethis .lblville{
+	color : orange;
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: 50px;
+}
+.commandethis .lblresto{
+	color : orange;
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: 50px;
+}
+.commandethis .lesPlats{
+	color : orange;
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: 50px;
+}
+.commandethis .lblTypeReglement{
+	color : orange;
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: 50px;
+}
+.commandethis .lblDateLivraison{
+	color : orange;
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: 50px;
+}
+.commandethis .lblLieuLivraison{
+	color : orange;
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: 50px;
+}
+.commandethis .lblmontant{
+	color : orange;
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 450px;
+}
+.commandethis .nomPlatCommande{
+	font-size: 16px;
+	margin-left: 75px;
+}
+.commandethis .qtPlatCommande{
+	font-size: 16px;
+	margin-left: 15px;
+}
+.commandethis .prixPlatCommande{
+	font-size: 16px;
+	margin-left: 15px;
+}
+
+.commandethis #confirmCommande{
+background-color: #F5ECCE;
+border-style: solid;
+border-width: 2px;
+border-color: orange;
+font-size: 16px;
+letter-spacing: 2px;
+color: BLACK;
+margin-bottom: -10px;
+margin-top: 20px;
+margin-left: 390px;
+padding: 3px 3px 3px 3px;
+}
+#fin{
+	margin-top: -100px;
+	margin-left: -600px;
+	font-size: 20px;
+	text-align: center;
+	color:orange;
+	font-weight: bold;
+}
+
+/****************************************************/
+/*styles pour le formulaire d'inscription           */
+/****************************************************/
 
 .inscription{
 	margin-top: 8%;

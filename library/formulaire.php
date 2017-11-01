@@ -53,43 +53,24 @@ class Formulaire{
 		$composant = "<label style='width: 10px;height: 10px;' class = '" . $unNom . "' />" . $unLabel . "</label>";
 		return $composant;
 	}
-	/****************************************************/
-	/**********fonction qui crée un select  *************/
-	/****************************************************/
-	public function creerSelect($unNom, $unId, $unLabel, $options){
-		$composant = "<tr><td><label for = '" . $unNom . "' />" . $unLabel . "</label></td>";
-		$composant .= "<td><select  name = '" . $unNom . "' id = '" . $unId . "' >";
-		foreach ($options as $option){
-			$composant .= "<option value = " ;
-		}
-		$composant .= "</select></td></tr>";
-		return $composant;
-	}
+
+
 	/****************************************************/
 	/***************fonction qui crée les input    *********************/
 	/****************************************************/
 
 
-	public function creerInputCbx($type){
-		$composant = "<input type=text  list='" . $type . "' id='un" . $type . "' > <datalist id='" . $type . "'  >";
+	public function creerSelect($type,$id){
+		$composant = "<select  name = '" . $id . "' id = '" . $id . "' >";
 		if ($type=='jour') {
 			for ($i=1; $i <= 31 ; $i++) {
 				$composant .="<option>" . $i;
 			}
 		}
 		if ($type=='mois') {
-			$composant .="<option> Janvier";
-			$composant .="<option> Février";
-			$composant .="<option> Mars";
-			$composant .="<option> Avril";
-			$composant .="<option> Mais";
-			$composant .="<option> Juin";
-			$composant .="<option> Juillet";
-			$composant .="<option> Août";
-			$composant .="<option> Septembre";
-			$composant .="<option> Octobre";
-			$composant .="<option> Novembre";
-			$composant .="<option> Décembre";
+			for ($i=1; $i <= 12 ; $i++) {
+				$composant .="<option>" . $i;
+			}
 		}
 		if ($type=='annee') {
 			for ($i=2017; $i <= 2019 ; $i++) {
@@ -107,12 +88,13 @@ class Formulaire{
 			}
 		}
 
-		$composant .= "</datalist>";
+		$composant .= "</select>";
 		return $composant;
 	}
+
 	public function creerInputRadio($unNom, $unId, $uneValue){
 		$composant = "<input type = 'radio' name = '" . $unNom . "' id = '" . $unId . "' ";
-		$composant .= "value = '" . $uneValue . "'/>$uneValue ";
+		$composant .= "value = '" . $uneValue . "' required />$uneValue ";
 		return $composant;
 	}
 	public function creerInputSubmit($unNom, $unId, $uneValue){

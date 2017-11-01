@@ -1,4 +1,7 @@
 <?php
+/*----------------------------------------------------------*/
+/*--------Le form de reglementation-----*/
+/*----------------------------------------------------------*/
 $formReglement = new Formulaire("POST","index.php","formReglement","reglementthis");
 $formReglement->ajouterComposantLigne($formReglement->creerLabelFor('Votre mode de paiement : ', 'lblModePaiement'));
 $formReglement->ajouterComposantTab();
@@ -15,15 +18,15 @@ $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantLigne($formReglement->concactComposants($formReglement->creerLabelFor('Date de livraison : ', 'lblDateLivraison'),
-                                      $formReglement->concactComposants($formReglement->creerInputCbx('jour'),
-                                      $formReglement->concactComposants($formReglement->creerInputCbx('mois'),
-                                      $formReglement->creerInputCbx("annee"),0),0),0));
+                                      $formReglement->concactComposants($formReglement->creerSelect('jour',"unJour"),
+                                      $formReglement->concactComposants($formReglement->creerSelect('mois',"unMois"),
+                                      $formReglement->creerSelect("annee","uneAnnee"),0),0),0));
 $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantLigne($formReglement->concactComposants($formReglement->creerLabelFor('Horraire : ', 'lblHorraireLivraison'),
-                                      $formReglement->concactComposants($formReglement->creerInputCbx("heure"),
+                                      $formReglement->concactComposants($formReglement->creerSelect("heure","uneHeure"),
                                       $formReglement->concactComposants($formReglement->creerLabelFor(' : ', 'lblHeureLivraison'),
-                                      $formReglement->concactComposants($formReglement->creerInputCbx("minute"),
+                                      $formReglement->concactComposants($formReglement->creerSelect("minute","uneMinute"),
                                       $formReglement->creerLabelFor('minutes', 'lblMinuteLivraison')
                                       ,0),0),0),0));
 $formReglement->ajouterComposantTab();

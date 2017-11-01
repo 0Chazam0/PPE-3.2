@@ -8,7 +8,6 @@ $_SESSION['listeRestos'] = new Restos(RestoDAO::selectListeResto());
 $_SESSION['listeTypeRestos'] = new TypeRestos(TypeRestoDAO::selectListeTypeResto());
 $_SESSION['lesFormsResto']= null;
 
-
 /*----------------------------------------------------------*/
 /*--------Affichage  des restaurants selon leur type-----*/
 /*----------------------------------------------------------*/
@@ -41,13 +40,6 @@ foreach ($_SESSION['listeVilles']->getLesVilles() as $OBJ2){
     foreach ($_SESSION['listeRestos']->getLesRestos() as $OBJ)
     {
       if ($OBJ->getCodeV() == $OBJ2->getCode()){
-
-        if (!isset($_SESSION['identite'])) {
-          $page = 'Connexion';
-        }
-        else{
-          $page = 'Plat';
-        }
 
         $correct = preg_replace('#[\\/\'" éàâäêçèë]#', "", $OBJ->getNom());
         $correct = strtolower($correct);
