@@ -20,6 +20,7 @@ else
 		$_SESSION['TypeResto']="TR1";
 	}
 }
+
 /*----------------------------------------------------------*/
 /*--------Affichage type resto-----*/
 /*----------------------------------------------------------*/
@@ -27,9 +28,9 @@ $menuTypeResto = new menu("menuTypeResto");
 foreach ($_SESSION['listeTypeRestos']->getLesTypeRestos() as $uneTypeResto){
 	$menuTypeResto->ajouterComposant($menuTypeResto->creerItemLien($uneTypeResto->getCodeT() ,$uneTypeResto->getLibelle()));
 }
-$lemenuTypeRestos = $menuTypeResto->creerMenu($_SESSION['TypeResto']);
+$lemenuTypeRestos = $menuTypeResto->creerMenu('TypeResto');
 
-$TypeRestoActive = $_SESSION['listeTypeRestos']->chercher($_SESSION['TypeResto']);
+//$TypeRestoActive = $_SESSION['listeTypeRestos']->chercherCodeT($_SESSION['TypeResto']);
 
 /*----------------------------------------------------------*/
 /*--------Les forms des restaurants de la ville choisit-----*/
@@ -40,23 +41,24 @@ foreach ($_SESSION['listeVilles']->getLesVilles() as $OBJ2){
     foreach ($_SESSION['listeRestos']->getLesRestos() as $OBJ)
     {
       if ($OBJ->getCodeV() == $OBJ2->getCode()){
+				if ($OBJ->getCodeT()==$_SESSION['TypeResto']){
 
-        $correct = preg_replace('#[\\/\'" éàâäêçèë]#', "", $OBJ->getNom());
-        $correct = strtolower($correct);
-        $correct = 'image/'.$correct;
+	        $correct = preg_replace('#[\\/\'" éàâäêçèë]#', "", $OBJ->getNom());
+	        $correct = strtolower($correct);
+	        $correct = 'image/'.$correct;
 
-        $formResto = new Formulaire("POST","index.php","formResto","restothis");
-        $formResto->ajouterComposantLigne($formResto->creerInputImage('imgResto', 'imgResto', $correct));
-        $formResto->ajouterComposantLigne($formResto->concactComposants($formResto->creerLabelFor($OBJ->getNom(),"nomResto"),$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto'),2));
-        $formResto->ajouterComposantLigne($formResto->creerInputSubmit("plat-btn","plat-btn","    Nos Plats   "));
-        $formResto->ajouterComposantLigne($formResto->creerInputSubmitHidden("idResto","idResto",$OBJ->getId()  ));
-        $formResto->ajouterComposantTab();
-        $formResto->creerFormulaire();
-        $_SESSION['lesFormsResto'] .= $formResto->afficherFormulaire();
-        }
+	        $formResto = new Formulaire("POST","index.php","formResto","restothis");
+	        $formResto->ajouterComposantLigne($formResto->creerInputImage('imgResto', 'imgResto', $correct));
+	        $formResto->ajouterComposantLigne($formResto->concactComposants($formResto->creerLabelFor($OBJ->getNom(),"nomResto"),$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto'),2));
+	        $formResto->ajouterComposantLigne($formResto->creerInputSubmit("plat-btn","plat-btn","    Nos Plats   "));
+	        $formResto->ajouterComposantLigne($formResto->creerInputSubmitHidden("idResto","idResto",$OBJ->getId()  ));
+	        $formResto->ajouterComposantTab();
+	        $formResto->creerFormulaire();
+	        $_SESSION['lesFormsResto'] .= $formResto->afficherFormulaire();
+				}
       }
-
     }
+  }
 }
 
 

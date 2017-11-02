@@ -22,13 +22,13 @@ class Restos
     $this->lesRestos = $value;
   }
 
-  public function chercher($TheId)
+  public function chercherCodeT($TheCodeT)
   {
     foreach ($this->lesRestos as $resto)
     {
-      if ($resto->getid() == $TheId)
+      if ($resto->getCodeT() == $TheCodeT)
       {
-        return $resto;
+        return $resto->getCodeT();
       }
     }
     return null;
@@ -74,7 +74,7 @@ class Resto
   }
   public function getCodeT()
   {
-    return $this->codevt;
+    return $this->codet;
   }
 
   public function getNom()

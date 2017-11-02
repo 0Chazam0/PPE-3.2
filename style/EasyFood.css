@@ -146,14 +146,16 @@ nav.menuPrincipal{
 	text-align: right;
 	height: 75px;
 	padding: 0px;
-	margin: 0px;
+
 
 }
 
 nav.menuPrincipal ul {
 	display: inline-block;
 	list-style: none;
-	margin-top: 5px;
+	margin-top:5px;
+
+
 }
 
 
@@ -244,7 +246,7 @@ nav.menuPrincipal ul li .actif {
 
 }
 #search-btn:hover {
-  background-color: #F5ECCE;
+  background-color: #F4FA58;
   border-style: solid;
   border-width: 2px;
   border-color: orange;
@@ -294,7 +296,22 @@ nav.menuPrincipal ul li .actif {
 	letter-spacing: 2px;
 	color: BLACK;
 	padding: 3px 3px 3px 3px;
+	border-radius: 6px;
 }
+.restothis #plat-btn:hover{
+	margin-left: 185px;
+	margin-top: 195px;
+	background-color: #F4FA58;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+	padding: 3px 3px 3px 3px;
+	border-radius: 6px;
+}
+
 .restothis .nomResto{
 
 	font-size: 22px;
@@ -317,6 +334,9 @@ nav.menuPrincipal ul li .actif {
 .imgResto{
 	max-width: 100%;
 	height: 235px;
+}
+.menuTypeResto{
+	margin-top: 20px;
 }
 /****************************************************/
 /*styles pour le formulaire de plat          */
@@ -343,7 +363,22 @@ nav.menuPrincipal ul li .actif {
 		letter-spacing: 2px;
 		color: BLACK;
 		padding: 3px 3px 3px 3px;
+		border-radius: 6px;
 	}
+	.platthis .ajoutCommande-btn:hover{
+		margin-left: 60px;
+		margin-top: 200px;
+		background-color: #F4FA58;
+		border-style: solid;
+		border-width: 2px;
+		border-color: orange;
+		font-size: 16px;
+		letter-spacing: 2px;
+		color: BLACK;
+		padding: 3px 3px 3px 3px;
+		border-radius: 6px;
+	}
+
 	.platthis tr td table tr td{
 		width: 230px;
 		height: 240px;
@@ -372,7 +407,9 @@ nav.menuPrincipal ul li .actif {
 	.platthis .lblDescripPlat{
 		width: auto;
 		padding-left: 10px;
-
+	}
+	.menuTypePlat{
+		margin-top: 20px;
 	}
 	/****************************************************/
 	/*styles pour le formulaire du panier           */
@@ -405,6 +442,7 @@ nav.menuPrincipal ul li .actif {
 	background-color: #FE2E2E;
 	border: 1px solid black;
 	text-align: center;
+	border-radius: 6px;
 }
 .panierthis .lbltotal{
 	font-weight: bold;
@@ -426,6 +464,21 @@ nav.menuPrincipal ul li .actif {
 	margin-top: 10px;
 	margin-left: 20px;
 	padding: 3px 3px 3px 3px;
+	border-radius: 6px;
+}
+.panierthis #validerCommande:hover{
+	background-color: #F4FA58;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: 20px;
+	padding: 3px 3px 3px 3px;
+	border-radius: 6px;
 }
 
 	/****************************************************/
@@ -488,6 +541,21 @@ margin-bottom: -10px;
 margin-top: 20px;
 margin-left: 540px;
 padding: 3px 3px 3px 3px;
+border-radius: 6px;
+}
+.reglementthis #suivantReglement:hover{
+background-color: #F4FA58;
+border-style: solid;
+border-width: 2px;
+border-color: orange;
+font-size: 16px;
+letter-spacing: 2px;
+color: BLACK;
+margin-bottom: -10px;
+margin-top: 20px;
+margin-left: 540px;
+padding: 3px 3px 3px 3px;
+border-radius: 6px;
 }
 
 /****************************************************/
@@ -576,7 +644,23 @@ margin-bottom: -10px;
 margin-top: 20px;
 margin-left: 390px;
 padding: 3px 3px 3px 3px;
+border-radius: 6px;
 }
+.commandethis #confirmCommande:hover{
+background-color: #F4FA58;
+border-style: solid;
+border-width: 2px;
+border-color: orange;
+font-size: 16px;
+letter-spacing: 2px;
+color: BLACK;
+margin-bottom: -10px;
+margin-top: 20px;
+margin-left: 390px;
+padding: 3px 3px 3px 3px;
+border-radius: 6px;
+}
+
 #fin{
 	margin-top: -100px;
 	margin-left: -600px;
@@ -615,7 +699,7 @@ padding: 3px 3px 3px 3px;
 }
 
 .inscription input[type='submit']:hover{
-	background-color: #F5ECCE;
+	background-color: #F4FA58;
 	border-style: solid;
 	border-width: 2px;
 	border-color: orange;
@@ -691,7 +775,7 @@ padding: 3px 3px 3px 3px;
 }
 
 .contentConnexion .btn input[type='submit']:hover{
-	background-color: #F5ECCE;
+	background-color: #F4FA58;
 	border-style: solid;
 	border-width: 2px;
 	border-color: orange;
@@ -701,7 +785,7 @@ padding: 3px 3px 3px 3px;
 }
 
 .contentConnexion .btnIdent input[type='reset']:hover{
-	background-color: #F5ECCE;
+	background-color: #F4FA58;
 	border-style: solid;
 	border-width: 2px;
 	border-color: orange;

@@ -57,8 +57,6 @@ $leMenuP = $menuPrincipal->creerMenu('menuPrincipal');
 /*--------Récupère le controleur Inscription (si la condition est respectée)----------*/
 /*----------------------------------------------------------*/
 if (isset($_POST['inscr'])) {
-
-	//$_SESSION['lieuLivraison'] =
 	$_SESSION['menuPrincipal'] = 'Inscription';
 }
 

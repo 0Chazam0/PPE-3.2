@@ -18,7 +18,7 @@ if(isset($_GET['TypePlat'])){
 else
 {
 	if(!isset($_SESSION['TypePlat'])){
-		$_SESSION['TypePlat']="menuPrincipal";
+		$_SESSION['TypePlat']="TP1";
 	}
 }
 /*----------------------------------------------------------*/
@@ -28,9 +28,9 @@ $menuTypePlat = new menu("menuTypePlat");
 foreach ($_SESSION['listeTypePlats']->getLesTypePlats() as $uneTypePlat){
 	$menuTypePlat->ajouterComposant($menuTypePlat->creerItemLien($uneTypePlat->getCodeT() ,$uneTypePlat->getLibelle()));
 }
-$lemenuTypePlats = $menuTypePlat->creerMenuType($_SESSION['TypePlat']);
+$lemenuTypePlats = $menuTypePlat->creerMenu('TypePlat');
 
-$TypePlatActif = $_SESSION['listeTypePlats']->chercher($_SESSION['TypePlat']);
+
 
 
 /*----------------------------------------------------------*/
@@ -41,24 +41,24 @@ $TypePlatActif = $_SESSION['listeTypePlats']->chercher($_SESSION['TypePlat']);
 foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
 {
   if($OBJ->getIDResto() == $_SESSION['RestoSelected'] ){
+		if ($OBJ->getTypePlat()==$_SESSION['TypePlat']) {
+	    $correct = preg_replace('#[\\/\'" éàâäêçèë]#', "", $OBJ->getCheminPhoto());
+	    $correct = strtolower($correct);
+	    $correct = 'image/'.$correct;
 
-
-    $correct = preg_replace('#[\\/\'" éàâäêçèë]#', "", $OBJ->getCheminPhoto());
-    $correct = strtolower($correct);
-    $correct = 'image/'.$correct;
-
-    $formPlat = new Formulaire("POST","index.php","formPlat","platthis");
-    $formPlat->ajouterComposantLigne($formPlat->creerInputImage('imgPlat', 'imgPlat', $correct));
-    $formPlat->ajouterComposantLigne($formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getNom(),"nomPlat"),
-                                    $formPlat->concactComposants($formPlat->creerLabelFor('Prix : ',"lblPrixPlat"),
-                                    $formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getPrixClient()."€","prixPlat"),
-                                    $formPlat->concactComposants($formPlat->creerLabelFor('Description : ',"lblDescripPlat"),
-                                    $formPlat->creerLabelFor($OBJ->getDescription(),"descripPlat"),0),4),0),2));
-    $formPlat->ajouterComposantLigne($formPlat->creerInputSubmitPanier($OBJ->getID(),"ajoutCommande-btn"," Ajouter au panier "));
-    $formPlat->ajouterComposantTab();
-    $formPlat->creerFormulaire();
-    $_SESSION['lesFormsPlat'] .= $formPlat->afficherFormulaire();
-		$_SESSION['nbPlat'] += 1;
+	    $formPlat = new Formulaire("POST","index.php","formPlat","platthis");
+	    $formPlat->ajouterComposantLigne($formPlat->creerInputImage('imgPlat', 'imgPlat', $correct));
+	    $formPlat->ajouterComposantLigne($formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getNom(),"nomPlat"),
+	                                    $formPlat->concactComposants($formPlat->creerLabelFor('Prix : ',"lblPrixPlat"),
+	                                    $formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getPrixClient()."€","prixPlat"),
+	                                    $formPlat->concactComposants($formPlat->creerLabelFor('Description : ',"lblDescripPlat"),
+	                                    $formPlat->creerLabelFor($OBJ->getDescription(),"descripPlat"),0),4),0),2));
+	    $formPlat->ajouterComposantLigne($formPlat->creerInputSubmitPanier($OBJ->getID(),"ajoutCommande-btn"," Ajouter au panier "));
+	    $formPlat->ajouterComposantTab();
+	    $formPlat->creerFormulaire();
+	    $_SESSION['lesFormsPlat'] .= $formPlat->afficherFormulaire();
+			$_SESSION['nbPlat'] += 1;
+		}
   }
 }
 
