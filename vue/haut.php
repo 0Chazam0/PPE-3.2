@@ -1,7 +1,7 @@
 <nav class="menuPrincipal">
 	<?php
 
-	$formLogo = new Formulaire("","","formLogo","formLogo");
+	$formLogo = new Formulaire("post","index.php?menuPrincipal=Accueil","formLogo","formLogo");
 	$formLogo->ajouterComposantLigne($formLogo->creerInputLogo("logo","logo","image\logo.jpeg"));
 	$formLogo->ajouterComposantTab();
 	$formLogo->creerFormulaire();

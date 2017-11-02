@@ -24,7 +24,7 @@ html, body {
 /*styles pour le header                             */
 /****************************************************/
 header {
-  height: 210px;
+  height: 90px;
   position: fixed;
   width: 100%;
   top: 0;
@@ -33,9 +33,9 @@ header {
 }
 
 .formLogo{
-	height: 220px;
+	height: 90px;
 	position: fixed;
-	width: 100%;
+	width: 100px;
 	top: 0;
 	left: 0;
 	z-index: 10;
@@ -45,6 +45,7 @@ header {
 	margin-top: 10px;
 	width:90px;
 	margin-left:50px;
+
 }
 #separateur_menuP{
 	width: 100%;
@@ -62,7 +63,6 @@ main {
 	min-height: 600px;
  	font-size: 0px;
  	margin-top:79px;
-
 }
 /***************************Gauche menus***********************************/
 .gauche {
@@ -338,6 +338,15 @@ nav.menuPrincipal ul li .actif {
 .menuTypeResto{
 	margin-top: 20px;
 }
+.menuTypeResto li:hover a{
+	color: orange;
+}
+#erreurVille{
+	margin-top: 150px;
+	margin-left: 150px;
+	font-size: 20px;
+	color :orange;
+}
 /****************************************************/
 /*styles pour le formulaire de plat          */
 /****************************************************/
@@ -410,6 +419,9 @@ nav.menuPrincipal ul li .actif {
 	}
 	.menuTypePlat{
 		margin-top: 20px;
+	}
+	.menuTypePlat li:hover a{
+		color: orange;
 	}
 	/****************************************************/
 	/*styles pour le formulaire du panier           */

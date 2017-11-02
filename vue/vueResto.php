@@ -18,6 +18,9 @@
 		<div class='droite'>
       <?php
 			echo $_SESSION['lesFormsResto'];
+			if (isset($txt)) {
+				echo $txt;
+			}
     	?>
     </div>
   </main>

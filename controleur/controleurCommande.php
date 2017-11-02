@@ -2,6 +2,7 @@
 /*----------------------------------------------------------*/
 /*--------Déclaration variable session----------------------*/
 /*----------------------------------------------------------*/
+$_SESSION['dernierePage'] = "Commande";
 $_SESSION['listeRestos'] = new Restos(RestoDAO::selectListeResto());
 foreach ($_SESSION['lesPlats'] as $OBJ) {
   $lesPlats[] = unserialize($OBJ);

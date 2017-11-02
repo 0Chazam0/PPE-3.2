@@ -23,7 +23,7 @@ if (isset($_POST['id']) && isset($_POST['mdp'])) {
   if ($unUser != '') {
     if ($unUser[4]==$_POST['mdp'] ) {
       $_SESSION['identite'] = $unUser;
-      $_SESSION['menuPrincipal']="Accueil";
+      $_SESSION['menuPrincipal']=$_SESSION['dernierePage'];
       include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
     }
   }

@@ -115,7 +115,7 @@ class Formulaire{
 	}
 	public function creerInputLogo($unNom, $unId, $uneSource){
 		$composant = "<input  type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
-		$composant .= "src = '" . $uneSource . "'/> ";
+		$composant .= "src = '" . $uneSource . "'/>";
 		return $composant;
 	}
 	public function creerInputImage($unNom, $uneClasse, $uneSource){
@@ -134,7 +134,7 @@ class Formulaire{
 		if ( $required == 1){
 			$composant .= "required";
 		}
-		$composant .= "/>";
+		$composant .= " autocomplete='off'/>";
 		return $composant;
 	}
 

@@ -2,11 +2,13 @@
 /*----------------------------------------------------------*/
 /*--------Déclaration variable session----------------------*/
 /*----------------------------------------------------------*/
-
+$_SESSION['dernierePage'] = "Resto";
 $_SESSION['listeVilles'] =new Villes(VilleDAO::selectListeVille());
 $_SESSION['listeRestos'] = new Restos(RestoDAO::selectListeResto());
 $_SESSION['listeTypeRestos'] = new TypeRestos(TypeRestoDAO::selectListeTypeResto());
 $_SESSION['lesFormsResto']= null;
+$_SESSION['passagePlat']=0;
+$compteurResto =0;
 
 /*----------------------------------------------------------*/
 /*--------Affichage  des restaurants selon leur type-----*/
@@ -17,7 +19,7 @@ if(isset($_GET['TypeResto'])){
 else
 {
 	if(!isset($_SESSION['TypeResto'])){
-		$_SESSION['TypeResto']="TR1";
+		$_SESSION['TypeResto']="All";
 	}
 }
 
@@ -25,24 +27,24 @@ else
 /*--------Affichage type resto-----*/
 /*----------------------------------------------------------*/
 $menuTypeResto = new menu("menuTypeResto");
+
+$menuTypeResto->ajouterComposant($menuTypeResto->creerItemLien("All" ,"Tous les types"));
 foreach ($_SESSION['listeTypeRestos']->getLesTypeRestos() as $uneTypeResto){
 	$menuTypeResto->ajouterComposant($menuTypeResto->creerItemLien($uneTypeResto->getCodeT() ,$uneTypeResto->getLibelle()));
 }
 $lemenuTypeRestos = $menuTypeResto->creerMenu('TypeResto');
 
-//$TypeRestoActive = $_SESSION['listeTypeRestos']->chercherCodeT($_SESSION['TypeResto']);
 
 /*----------------------------------------------------------*/
 /*--------Les forms des restaurants de la ville choisit-----*/
 /*----------------------------------------------------------*/
-
-foreach ($_SESSION['listeVilles']->getLesVilles() as $OBJ2){
-  if ($OBJ2->getNom()==ucfirst($_SESSION['VilleSelected'])){
-    foreach ($_SESSION['listeRestos']->getLesRestos() as $OBJ)
-    {
-      if ($OBJ->getCodeV() == $OBJ2->getCode()){
-				if ($OBJ->getCodeT()==$_SESSION['TypeResto']){
-
+if ($_SESSION['TypeResto']=="All"){
+	foreach ($_SESSION['listeVilles']->getLesVilles() as $OBJ2){
+	  if ($OBJ2->getNom()==ucfirst($_SESSION['VilleSelected'])){
+	    foreach ($_SESSION['listeRestos']->getLesRestos() as $OBJ)
+	    {
+	      if ($OBJ->getCodeV() == $OBJ2->getCode()){
+					$compteurResto +=1;
 	        $correct = preg_replace('#[\\/\'" éàâäêçèë]#', "", $OBJ->getNom());
 	        $correct = strtolower($correct);
 	        $correct = 'image/'.$correct;
@@ -55,12 +57,40 @@ foreach ($_SESSION['listeVilles']->getLesVilles() as $OBJ2){
 	        $formResto->ajouterComposantTab();
 	        $formResto->creerFormulaire();
 	        $_SESSION['lesFormsResto'] .= $formResto->afficherFormulaire();
-				}
-      }
-    }
-  }
+	      }
+	    }
+	  }
+	}
 }
+else {
+	foreach ($_SESSION['listeVilles']->getLesVilles() as $OBJ2){
+		if ($OBJ2->getNom()==ucfirst($_SESSION['VilleSelected'])){
+			foreach ($_SESSION['listeRestos']->getLesRestos() as $OBJ)
+			{
+				if ($OBJ->getCodeV() == $OBJ2->getCode()){
+					if ($OBJ->getCodeT()==$_SESSION['TypeResto']){
+						$compteurResto +=1;
+						$correct = preg_replace('#[\\/\'" éàâäêçèë]#', "", $OBJ->getNom());
+						$correct = strtolower($correct);
+						$correct = 'image/'.$correct;
 
+						$formResto = new Formulaire("POST","index.php","formResto","restothis");
+						$formResto->ajouterComposantLigne($formResto->creerInputImage('imgResto', 'imgResto', $correct));
+						$formResto->ajouterComposantLigne($formResto->concactComposants($formResto->creerLabelFor($OBJ->getNom(),"nomResto"),$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto'),2));
+						$formResto->ajouterComposantLigne($formResto->creerInputSubmit("plat-btn","plat-btn","    Nos Plats   "));
+						$formResto->ajouterComposantLigne($formResto->creerInputSubmitHidden("idResto","idResto",$OBJ->getId()  ));
+						$formResto->ajouterComposantTab();
+						$formResto->creerFormulaire();
+						$_SESSION['lesFormsResto'] .= $formResto->afficherFormulaire();
+					}
+				}
+			}
+		}
+	}
+}
+if ($compteurResto==0) {
+	$txt = "<div id='erreurVille'>Désolé nous n'avons trouvé aucun restaurant situé dans cette ville</div>";
+}
 
 
 /*--------------------------------------------------------------------------*/
