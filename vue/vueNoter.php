@@ -11,10 +11,9 @@
 </head>
 
 <body>
-  <a style="text-align:center;">Resto</a>
-</br>
 <?php
-echo '<link rel="stylesheet" type="text/css" href="t.css">';
+$nomResto = NoteDAO::selectResto($_SESSION['identite'][0]);
+echo $nomResto . "</br></br>";
 
 echo "Rapidite<br />";
 $cp_star = "r";
@@ -43,11 +42,14 @@ if (empty($_COOKIE[$cp_star])) {
 }
 $cp_star = "c";
 include "controleur/controleurStar.php";
+echo "</br></br>";
+echo "Commentaire";
+echo $formCom->afficherFormulaire();
  ?>
 </br>
 </br>
-  <a href="image\left.png"><img src="image\left.png" width="10%" height="10%"></a>
-  <a href="image\right.png"><img src="image\right.png" width="10%" height="10%"></a>
+  <!-- <a href="image\left.png"><img src="image\left.png" width="10%" height="10%"></a>
+  <a href="image\right.png"><img src="image\right.png" width="10%" height="10%"></a> -->
 </body>
 </main>
 

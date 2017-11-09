@@ -184,4 +184,43 @@ class CommentaireDAO
 }
 
 
+/**
+ * Noter
+ */
+class NoteDAO
+{
+
+  public static function selectResto($IDClient)
+  {
+    $sql = "SELECT NOMR FROM evaluer As E, resto As R WHERE E.IDR = R.IDR
+            AND IDU = '" . $IDClient . "' AND COMVISIBLE = 0 LIMIT 1";
+    $liste = DBConnex::getInstance()->queryFetchAll($sql);
+    if (count($liste) > 0)
+    {
+      foreach ($liste as $note)
+      {
+        $result = $note['NOMR'];
+      }
+    }
+    return $result;
+  }
+
+  public static function selectIDCommand($IDClient, $selectResto)
+  {
+    $sql = 'SELECT IDC FROM evaluer As E, resto As R WHERE E.IDR = R.IDR
+            AND IDU = "' . $IDClient . '" AND R.NOMR = "' . $selectResto . '" LIMIT 1';
+    $liste = DBConnex::getInstance()->queryFetchAll($sql);
+    if (count($liste) > 0)
+    {
+      foreach ($liste as $note)
+      {
+        $result = $note['IDC'];
+      }
+    }
+    return $result;
+  }
+}
+
+
+
  ?>
