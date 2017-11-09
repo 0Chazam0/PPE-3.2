@@ -14,7 +14,13 @@ class Menu{
 		$this->composants[] = $unComposant;
 	}
 
-
+	public function ajouterImage($a, $b, $c)
+	{
+		$menu = $a;
+		$menu .= $b;
+		$menu .= $c;
+		return $menu;
+	}
 
 	public function creerItemLien($unLien,$uneValeur){
 		$composant = array();
