@@ -98,8 +98,7 @@ $lePlat = new Plat("","","","","","","","","");
 
 	foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
 	{
-
-		if(isset($_POST[$OBJ->getID()]) && $_POST[$OBJ->getID()]==" Ajouter au panier "){
+		if(isset($_POST[$OBJ->getID()])) {
 			$lePlat->__construct($OBJ->getID(),$OBJ->getIDResto(),$OBJ->getTypePlat(),$OBJ->getNom(),$OBJ->getPrixFournisseur(),$OBJ->getPrixClient(),$OBJ->getPlatVisible(),$OBJ->getCheminPhoto(),$OBJ->getDescription());
 			$_SESSION['lesPlats'][] =	serialize($lePlat);
 			$_SESSION['nbPlatPanier']+=1;
@@ -128,7 +127,23 @@ $lePlat = new Plat("","","","","","","","","");
 /*----------------------------------------------------------*/
 /*--------Création du formulaire du panier-----*/
 /*----------------------------------------------------------*/
-
+// $j=0;
+// foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ){
+// 	$i=0;
+// 	if (!isset($_SESSION['cePanier'])) {
+//
+// 	}
+// 		if ($OBJ->getID() == $OBJ2->getID()) {
+// 			$i+=1;
+// 		}
+// 	}
+// 	if ($i>1) {
+// 		$_SESSION['cePanier'][] = array($OBJ,$i);
+//
+// 	}
+//
+// }
+//var_dump($_SESSION['cePanier']);
 $formPanier = new Formulaire("POST","index.php","formPanier","panierthis");
 
 $formPanier->ajouterComposantLigne($formPanier->creerLabelFor('Votre Panier', 'lblPanier'));
@@ -136,6 +151,7 @@ $formPanier->ajouterComposantTab();
 $formPanier->ajouterComposantTab();
 if ($_SESSION['passagePlat']>0) {
 foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ){
+
  	$formPanier->ajouterComposantLigne($formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getNom(),"nomP"),$formPanier->concactComposants($formPanier->creerLabelFor('x1','nbPlat'),$formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getPrixClient()."€",'prixP'),$formPanier->creerInputSubmit($OBJ->getID(),'supprPlat',"X"),0),0),0));
 	$formPanier->ajouterComposantTab();
 	$_SESSION['prixTotal'] += $OBJ->getPrixClient();
