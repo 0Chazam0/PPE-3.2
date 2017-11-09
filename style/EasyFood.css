@@ -362,7 +362,7 @@ nav.menuPrincipal ul li .actif {
 		margin-bottom:  -30px;
 	}
 	.platthis .ajoutCommande-btn{
-		margin-left: 60px;
+		margin-left: 55px;
 		margin-top: 200px;
 		background-color: #F5ECCE;
 		border-style: solid;
@@ -375,7 +375,7 @@ nav.menuPrincipal ul li .actif {
 		border-radius: 6px;
 	}
 	.platthis .ajoutCommande-btn:hover{
-		margin-left: 60px;
+		margin-left: 55px;
 		margin-top: 200px;
 		background-color: #F4FA58;
 		border-style: solid;
@@ -389,13 +389,12 @@ nav.menuPrincipal ul li .actif {
 	}
 
 	.platthis tr td table tr td{
-		width: 230px;
+		width: 225px;
 		height: 240px;
 		padding-top: 3px;
 		float:left;
 		overflow:auto;
 		display:inline;
-
 	}
 	.imgPlat{
 		max-width: 100%;

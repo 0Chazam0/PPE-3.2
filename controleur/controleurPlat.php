@@ -90,13 +90,16 @@ else {
 /*----------------------------------------------------------*/
 /*--------Ajouter un plat a la commande-----*/
 /*----------------------------------------------------------*/
+
+
 if ($_SESSION['passagePlat']>0) {
 
 $lePlat = new Plat("","","","","","","","","");
 
 	foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
 	{
-		if(isset($_POST[$OBJ->getID()])){
+
+		if(isset($_POST[$OBJ->getID()]) && $_POST[$OBJ->getID()]==" Ajouter au panier "){
 			$lePlat->__construct($OBJ->getID(),$OBJ->getIDResto(),$OBJ->getTypePlat(),$OBJ->getNom(),$OBJ->getPrixFournisseur(),$OBJ->getPrixClient(),$OBJ->getPlatVisible(),$OBJ->getCheminPhoto(),$OBJ->getDescription());
 			$_SESSION['lesPlats'][] =	serialize($lePlat);
 			$_SESSION['nbPlatPanier']+=1;
@@ -108,8 +111,20 @@ $lePlat = new Plat("","","","","","","","","");
 	}
 
 	$_SESSION['lePanier'] = new Plats($lesPlats);
-
 }
+/*----------------------------------------------------------*/
+/*--------Suppression du formulaire du panier-----*/
+/*----------------------------------------------------------*/
+
+/*	foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ) {
+		if (isset($_POST[$OBJ->getID()]) && $_POST[$OBJ->getID()] == "X") {
+			var_dump()$_SESSION['lePanier']->chercher($OBJ->getID()));
+		}
+
+	}
+}*/
+
+
 /*----------------------------------------------------------*/
 /*--------Création du formulaire du panier-----*/
 /*----------------------------------------------------------*/
@@ -121,7 +136,7 @@ $formPanier->ajouterComposantTab();
 $formPanier->ajouterComposantTab();
 if ($_SESSION['passagePlat']>0) {
 foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ){
- 	$formPanier->ajouterComposantLigne($formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getNom(),"nomP"),$formPanier->concactComposants($formPanier->creerLabelFor('x1','nbPlat'),$formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getPrixClient()."€",'prixP'),$formPanier->creerInputSubmit('supprPlat','supprPlat',"X"),0),0),0));
+ 	$formPanier->ajouterComposantLigne($formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getNom(),"nomP"),$formPanier->concactComposants($formPanier->creerLabelFor('x1','nbPlat'),$formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getPrixClient()."€",'prixP'),$formPanier->creerInputSubmit($OBJ->getID(),'supprPlat',"X"),0),0),0));
 	$formPanier->ajouterComposantTab();
 	$_SESSION['prixTotal'] += $OBJ->getPrixClient();
 }
@@ -133,6 +148,14 @@ $formPanier->ajouterComposantTab();
 }
 $formPanier->creerFormulaire();
 $_SESSION['leFormPlanier'] = $formPanier->afficherFormulaire();
+
+
+
+
+
+
+
+
 
 $_SESSION['passagePlat']+=1;
 /*--------------------------------------------------------------------------*/

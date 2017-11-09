@@ -25,9 +25,9 @@ class Plats
   {
     foreach ($this->lesPlats as $Plat)
     {
-      if ($plat->getid() == $TheId)
+      if ($Plat->getid() == $TheId)
       {
-        return $plat;
+        return $Plat;
       }
     }
     return null;
