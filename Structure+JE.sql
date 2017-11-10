@@ -1,23 +1,323 @@
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+# -----------------------------------------------------------------------------
+#       TABLE : TYPE_PLAT
+# -----------------------------------------------------------------------------
 
--- Base de données :  `darosr_esayfoodbdd`
---
+CREATE TABLE IF NOT EXISTS TYPE_PLAT
+ (
+   CODET BIGINT(4) NOT NULL  ,
+   LIBELLE TEXT NULL
+   , PRIMARY KEY (CODET)
+ )
+ comment = "";
 
--- --------------------------------------------------------
+# -----------------------------------------------------------------------------
+#       TABLE : USER
+# -----------------------------------------------------------------------------
 
---
--- Structure de la table `administrateur`
---
+CREATE TABLE IF NOT EXISTS USER
+ (
+   IDU BIGINT(4) NOT NULL  ,
+   NOMU TEXT NULL  ,
+   PRENOMU TEXT NULL  ,
+   MAIL CHAR(32) NULL  ,
+   MDP CHAR(32) NULL  ,
+   ADRESSEU CHAR(32) NULL
+   , PRIMARY KEY (IDU)
+ )
+ comment = "";
 
-CREATE TABLE `administrateur` (
-  `IDU` char(4) NOT NULL,
-  `NOMU` text,
-  `PRENOMU` text,
-  `MAIL` char(32) DEFAULT NULL,
-  `MDP` char(32) DEFAULT NULL,
-  `ADRESSEU` char(32) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+# -----------------------------------------------------------------------------
+#       TABLE : ADMINISTRATEUR
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS ADMINISTRATEUR
+ (
+   IDU BIGINT(4) NOT NULL  ,
+   NOMU TEXT NULL  ,
+   PRENOMU TEXT NULL  ,
+   MAIL CHAR(32) NULL  ,
+   MDP CHAR(32) NULL  ,
+   ADRESSEU CHAR(32) NULL
+   , PRIMARY KEY (IDU)
+ )
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : MODERATEUR
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS MODERATEUR
+ (
+   IDU BIGINT(4) NOT NULL  ,
+   NOMU TEXT NULL  ,
+   PRENOMU TEXT NULL  ,
+   MAIL CHAR(32) NULL  ,
+   MDP CHAR(32) NULL  ,
+   ADRESSEU CHAR(32) NULL
+   , PRIMARY KEY (IDU)
+ )
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : COMMANDE
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS COMMANDE
+ (
+   IDC CHAR(32) NOT NULL  ,
+   IDR BIGINT(4) NOT NULL  ,
+   IDU BIGINT(4) NOT NULL  ,
+   DATEC DATE NULL  ,
+   COMMENTAIRECLIENTC TEXT NULL  ,
+   DATELIVRC DATE NULL  ,
+   MODEREGLEMENTC TEXT NULL  ,
+   AVISCLIENT TEXT NULL  ,
+   NOTECLIENT DECIMAL(10,2) NULL  ,
+   COMVISIBLE BOOL NULL
+   , PRIMARY KEY (IDC)
+ )
+ comment = "";
+
+
+# -----------------------------------------------------------------------------
+#       TABLE : TYPE_RESTO
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS TYPE_RESTO
+ (
+   CODET BIGINT(4) NOT NULL  ,
+   LIBELLE TEXT NULL
+   , PRIMARY KEY (CODET)
+ )
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : RESTAURATEUR
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS RESTAURATEUR
+ (
+   IDU BIGINT(4) NOT NULL  ,
+   NOMU TEXT NULL  ,
+   PRENOMU TEXT NULL  ,
+   MAIL CHAR(32) NULL  ,
+   MDP CHAR(32) NULL  ,
+   ADRESSEU CHAR(32) NULL
+   , PRIMARY KEY (IDU)
+ )
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : PLAT
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS PLAT
+ (
+   IDP BIGINT(4) NOT NULL  ,
+   IDR BIGINT(4) NOT NULL  ,
+   CODET BIGINT(4) NOT NULL  ,
+   NOMP TEXT NULL  ,
+   PRIXFOURNISSEURP DECIMAL(10,2) NULL  ,
+   PRIXCLIENTP DECIMAL(10,2) NULL  ,
+   PLATVISIBLE BOOL NULL  ,
+   PHOTOP TEXT NULL  ,
+   DESCRIPTIONP TEXT NULL
+   , PRIMARY KEY (IDP)
+ )
+ comment = "";
+
+
+
+# -----------------------------------------------------------------------------
+#       TABLE : VILLE
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS VILLE
+ (
+   CODEV BIGINT(4) NOT NULL  ,
+   NOMV TEXT NULL
+   , PRIMARY KEY (CODEV)
+ )
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : CLIENT
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS CLIENT
+ (
+   IDU BIGINT(4) NOT NULL  ,
+   NOMU TEXT NULL  ,
+   PRENOMU TEXT NULL  ,
+   MAIL CHAR(32) NULL  ,
+   MDP CHAR(32) NULL  ,
+   ADRESSEU CHAR(32) NULL
+   , PRIMARY KEY (IDU)
+ )
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : RESTO
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS RESTO
+ (
+   IDR BIGINT(4) NOT NULL  ,
+   CODEV BIGINT(4) NOT NULL  ,
+   CODET BIGINT(4) NOT NULL  ,
+   NOMR TEXT NULL  ,
+   NUMADR TEXT NULL  ,
+   RUEADR TEXT NULL  ,
+   CPR BIGINT(5) NULL
+   , PRIMARY KEY (IDR)
+ )
+ comment = "";
+
+
+
+# -----------------------------------------------------------------------------
+#       TABLE : EVALUER
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS EVALUER
+ (
+   IDU BIGINT(4) NOT NULL  ,
+   IDR BIGINT(4) NOT NULL  ,
+   IDC CHAR(32) NOT NULL  ,
+   NOTERAPIDITE DECIMAL(10,2) NULL  ,
+   NOTEQUALITE DECIMAL(10,2) NULL  ,
+   NOTETEMP DECIMAL(10,2) NULL  ,
+   NOTECOUT DECIMAL(10,2) NULL  ,
+   COMMENTAIRE TEXT NULL  ,
+   COMVISIBLE BOOL NULL
+   , PRIMARY KEY (IDU,IDR,IDC)
+ )
+ comment = "";
+
+
+
+# -----------------------------------------------------------------------------
+#       TABLE : GERER
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS GERER
+ (
+   IDU BIGINT(4) NOT NULL  ,
+   IDR BIGINT(4) NOT NULL
+   , PRIMARY KEY (IDU,IDR)
+ )
+ comment = "";
+
+
+
+# -----------------------------------------------------------------------------
+#       TABLE : QUANTITE
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS QUANTITE
+ (
+   IDP BIGINT(4) NOT NULL  ,
+   IDC CHAR(32) NOT NULL  ,
+   QUANTITE BIGINT(4) NULL
+   , PRIMARY KEY (IDP,IDC)
+ )
+ comment = "";
+
+
+
+# -----------------------------------------------------------------------------
+#       CREATION DES REFERENCES DE TABLE
+# -----------------------------------------------------------------------------
+
+
+ALTER TABLE ADMINISTRATEUR
+  ADD CONSTRAINT FK_ADMINISTRATEUR_USER
+  FOREIGN KEY (IDU) REFERENCES USER (IDU) ;
+
+
+ALTER TABLE MODERATEUR
+  ADD CONSTRAINT FK_MODERATEUR_USER
+  FOREIGN KEY  (IDU) REFERENCES USER (IDU) ;
+
+
+ALTER TABLE COMMANDE
+  ADD CONSTRAINT  FK_COMMANDE_RESTO
+   FOREIGN KEY (IDR) REFERENCES RESTO (IDR) ;
+
+
+ALTER TABLE COMMANDE
+  ADD CONSTRAINT FK_COMMANDE_CLIENT
+  FOREIGN KEY  (IDU)  REFERENCES CLIENT (IDU) ;
+
+
+ALTER TABLE RESTAURATEUR
+  ADD CONSTRAINT FK_RESTAURATEUR_USER
+   FOREIGN KEY  (IDU)  REFERENCES USER (IDU) ;
+
+
+ALTER TABLE PLAT
+  ADD CONSTRAINT FK_PLAT_RESTO
+  FOREIGN KEY  (IDR) REFERENCES RESTO (IDR) ;
+
+
+ALTER TABLE PLAT
+  ADD CONSTRAINT FK_PLAT_TYPE_PLAT
+   FOREIGN KEY  (CODET) REFERENCES TYPE_PLAT (CODET) ;
+
+
+ALTER TABLE CLIENT
+  ADD CONSTRAINT FK_CLIENT_USER
+  FOREIGN KEY  (IDU) REFERENCES USER (IDU) ;
+
+
+ALTER TABLE RESTO
+  ADD CONSTRAINT FK_RESTO_VILLE
+  FOREIGN KEY  (CODEV) REFERENCES VILLE (CODEV) ;
+
+
+ALTER TABLE RESTO
+  ADD CONSTRAINT FK_RESTO_TYPE_RESTO
+  FOREIGN KEY  (CODET) REFERENCES TYPE_RESTO (CODET) ;
+
+
+ALTER TABLE EVALUER
+  ADD CONSTRAINT FK_EVALUER_CLIENT
+   FOREIGN KEY  (IDU) REFERENCES CLIENT (IDU) ;
+
+
+ALTER TABLE EVALUER
+  ADD CONSTRAINT FK_EVALUER_RESTO
+  FOREIGN KEY  (IDR) REFERENCES RESTO (IDR) ;
+
+
+ALTER TABLE EVALUER
+  ADD CONSTRAINT FK_EVALUER_COMMANDE
+  FOREIGN KEY  (IDC) REFERENCES COMMANDE (IDC) ;
+
+
+ALTER TABLE GERER
+  ADD CONSTRAINT FK_GERER_RESTAURATEUR
+  FOREIGN KEY  (IDU) REFERENCES RESTAURATEUR (IDU) ;
+
+
+ALTER TABLE GERER
+  ADD CONSTRAINT FK_GERER_RESTO
+  FOREIGN KEY  (IDR) REFERENCES RESTO (IDR) ;
+
+
+ALTER TABLE QUANTITE
+  ADD CONSTRAINT FK_QUANTITE_PLAT
+  FOREIGN KEY (IDP) REFERENCES PLAT (IDP) ;
+
+
+ALTER TABLE QUANTITE
+  ADD CONSTRAINT FK_QUANTITE_COMMANDE
+  FOREIGN KEY  (IDC) REFERENCES COMMANDE (IDC) ;
+
+
+*-------------------------------------------------------------*
+*-------------------------------------------------------------*
+*-------------------------------------------------------------*
 
 --
 -- Contenu de la table `administrateur`
@@ -27,20 +327,6 @@ INSERT INTO `administrateur` (`IDU`, `NOMU`, `PRENOMU`, `MAIL`, `MDP`, `ADRESSEU
 ('U1', 'Gate', 'Bill', 'gate.bill@gmail.com', 'gate', '8 rue de microsoft');
 
 -- --------------------------------------------------------
-
---
--- Structure de la table `client`
---
-
-CREATE TABLE `client` (
-  `IDU` char(4) NOT NULL,
-  `NOMU` text,
-  `PRENOMU` text,
-  `MAIL` char(32) DEFAULT NULL,
-  `MDP` char(32) DEFAULT NULL,
-  `ADRESSEU` char(32) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 --
 -- Contenu de la table `client`
 --
@@ -53,23 +339,6 @@ INSERT INTO `client` (`IDU`, `NOMU`, `PRENOMU`, `MAIL`, `MDP`, `ADRESSEU`) VALUE
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commande`
---
-
-CREATE TABLE `commande` (
-  `IDC` char(32) NOT NULL,
-  `IDR` char(4) NOT NULL,
-  `IDU` char(4) NOT NULL,
-  `DATEC` date DEFAULT NULL,
-  `COMMENTAIRECLIENTC` text,
-  `DATELIVRC` date DEFAULT NULL,
-  `MODEREGLEMENTC` text,
-  `AVISCLIENT` text,
-  `NOTECLIENT` decimal(10,2) DEFAULT NULL,
-  `COMVISIBLE` tinyint(1) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
 -- Contenu de la table `commande`
 --
 
@@ -80,20 +349,6 @@ INSERT INTO `commande` (`IDC`, `IDR`, `IDU`, `DATEC`, `COMMENTAIRECLIENTC`, `DAT
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `evaluer`
---
-
-CREATE TABLE `evaluer` (
-  `IDU` char(4) NOT NULL,
-  `IDR` char(4) NOT NULL,
-  `NOTERAPIDITE` decimal(10,2) DEFAULT NULL,
-  `NOTEQUALITE` decimal(10,2) DEFAULT NULL,
-  `NOTETEMP` decimal(10,2) DEFAULT NULL,
-  `NOTECOUT` decimal(10,2) DEFAULT NULL,
-  `COMMENTAIRE` text,
-  `COMVISIBLE` tinyint(1) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `evaluer`
@@ -106,15 +361,7 @@ INSERT INTO `evaluer` (`IDU`, `IDR`, `NOTERAPIDITE`, `NOTEQUALITE`, `NOTETEMP`, 
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `gerer`
---
-
-CREATE TABLE `gerer` (
-  `IDU` char(4) NOT NULL,
-  `IDR` char(4) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
+-
 --
 -- Contenu de la table `gerer`
 --
@@ -130,19 +377,6 @@ INSERT INTO `gerer` (`IDU`, `IDR`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `moderateur`
---
-
-CREATE TABLE `moderateur` (
-  `IDU` char(4) NOT NULL,
-  `NOMU` text,
-  `PRENOMU` text,
-  `MAIL` char(32) DEFAULT NULL,
-  `MDP` char(32) DEFAULT NULL,
-  `ADRESSEU` char(32) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
 -- Contenu de la table `moderateur`
 --
 
@@ -150,22 +384,6 @@ INSERT INTO `moderateur` (`IDU`, `NOMU`, `PRENOMU`, `MAIL`, `MDP`, `ADRESSEU`) V
 ('U2', 'Jobs', 'Steve', 'jobs.steve@gmail.com', 'jobs', '9 rue d\'apple');
 
 -- --------------------------------------------------------
-
---
--- Structure de la table `plat`
---
-
-CREATE TABLE `plat` (
-  `IDP` char(6) NOT NULL,
-  `IDR` char(4) NOT NULL,
-  `CODET` char(4) NOT NULL,
-  `NOMP` text,
-  `PRIXFOURNISSEURP` decimal(10,2) DEFAULT NULL,
-  `PRIXCLIENTP` decimal(10,2) DEFAULT NULL,
-  `PLATVISIBLE` tinyint(1) DEFAULT NULL,
-  `PHOTOP` text,
-  `DESCRIPTIONP` text
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `plat`
@@ -2700,15 +2918,6 @@ INSERT INTO `plat` (`IDP`, `IDR`, `CODET`, `NOMP`, `PRIXFOURNISSEURP`, `PRIXCLIE
 ('P2524', 'R23', 'TP2', 'Margaritta', '6.20', '10.50', 1, 'margaritta', 'Tomate, jambon, fromage');
 -- --------------------------------------------------------
 
---
--- Structure de la table `quantite`
---
-
-CREATE TABLE `quantite` (
-  `IDP` char(4) NOT NULL,
-  `IDC` char(32) NOT NULL,
-  `QUANTITE` int(4) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `quantite`
@@ -2722,18 +2931,6 @@ INSERT INTO `quantite` (`IDP`, `IDC`, `QUANTITE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ratings`
---
-
-CREATE TABLE `ratings` (
-  `vote_id` int(11) NOT NULL,
-  `page_id` varchar(255) COLLATE latin1_german1_ci NOT NULL,
-  `total_votes` int(11) NOT NULL DEFAULT '0',
-  `total_value` int(11) NOT NULL DEFAULT '0',
-  `used_ips` longtext COLLATE latin1_german1_ci
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german1_ci;
-
---
 -- Contenu de la table `ratings`
 --
 
@@ -2745,18 +2942,6 @@ INSERT INTO `ratings` (`vote_id`, `page_id`, `total_votes`, `total_value`, `used
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `restaurateur`
---
-
-CREATE TABLE `restaurateur` (
-  `IDU` char(4) NOT NULL,
-  `NOMU` text,
-  `PRENOMU` text,
-  `MAIL` char(32) DEFAULT NULL,
-  `MDP` char(32) DEFAULT NULL,
-  `ADRESSEU` char(32) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `restaurateur`
@@ -2770,19 +2955,6 @@ INSERT INTO `restaurateur` (`IDU`, `NOMU`, `PRENOMU`, `MAIL`, `MDP`, `ADRESSEU`)
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `resto`
---
-
-CREATE TABLE `resto` (
-  `IDR` char(4) NOT NULL,
-  `CODEV` char(4) NOT NULL,
-  `CODET` char(4) NOT NULL,
-  `NOMR` text,
-  `NUMADR` text,
-  `RUEADR` text,
-  `CPR` int(5) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `resto`
@@ -2912,15 +3084,6 @@ INSERT INTO `resto` (`IDR`, `CODEV`,`CODET`, `NOMR`, `NUMADR`, `RUEADR`, `CPR`) 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `type_resto`
---
-
-CREATE TABLE `type_resto` (
-  `CODET` char(4) NOT NULL,
-  `LIBELLE` text
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
 -- Contenu de la table `type_resto`
 --
 
@@ -2935,14 +3098,6 @@ INSERT INTO `type_resto` (`CODET`, `LIBELLE`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `type_plat`
---
-
-CREATE TABLE `type_plat` (
-  `CODET` char(4) NOT NULL,
-  `LIBELLE` text
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `type_plat`
@@ -2958,29 +3113,7 @@ INSERT INTO `type_plat` (`CODET`, `LIBELLE`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `user`
---
 
-CREATE TABLE `user` (
-  `IDU` char(4) NOT NULL,
-  `NOMU` text,
-  `PRENOMU` text,
-  `MAIL` char(32) DEFAULT NULL,
-  `MDP` char(32) DEFAULT NULL,
-  `ADRESSEU` char(32) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `ville`
---
-
-CREATE TABLE `ville` (
-  `CODEV` char(4) NOT NULL,
-  `NOMV` text
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `ville`
@@ -2993,118 +3126,3 @@ INSERT INTO `ville` (`CODEV`, `NOMV`) VALUES
 ('V4', 'Lormont'),
 ('V5', 'Cenon'),
 ('V6', 'Merignac');
-
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `administrateur`
---
-ALTER TABLE `administrateur`
-  ADD PRIMARY KEY (`IDU`);
-
---
--- Index pour la table `client`
---
-ALTER TABLE `client`
-  ADD PRIMARY KEY (`IDU`);
-
---
--- Index pour la table `commande`
---
-ALTER TABLE `commande`
-  ADD PRIMARY KEY (`IDC`),
-  ADD KEY `I_FK_COMMANDE_RESTO` (`IDR`),
-  ADD KEY `I_FK_COMMANDE_CLIENT` (`IDU`);
-
---
--- Index pour la table `evaluer`
---
-ALTER TABLE `evaluer`
-  ADD PRIMARY KEY (`IDU`,`IDR`),
-  ADD KEY `I_FK_EVALUER_CLIENT` (`IDU`),
-  ADD KEY `I_FK_EVALUER_RESTO` (`IDR`);
-
---
--- Index pour la table `gerer`
---
-ALTER TABLE `gerer`
-  ADD PRIMARY KEY (`IDU`,`IDR`),
-  ADD KEY `I_FK_GERER_RESTAURATEUR` (`IDU`),
-  ADD KEY `I_FK_GERER_RESTO` (`IDR`);
-
---
--- Index pour la table `moderateur`
---
-ALTER TABLE `moderateur`
-  ADD PRIMARY KEY (`IDU`);
-
---
--- Index pour la table `plat`
---
-ALTER TABLE `plat`
-  ADD PRIMARY KEY (`IDP`),
-  ADD KEY `I_FK_PLAT_RESTO` (`IDR`),
-  ADD KEY `I_FK_PLAT_TYPE_PLAT` (`CODET`);
-
---
--- Index pour la table `quantite`
---
-ALTER TABLE `quantite`
-  ADD PRIMARY KEY (`IDP`,`IDC`),
-  ADD KEY `I_FK_QUANTITE_PLAT` (`IDP`),
-  ADD KEY `I_FK_QUANTITE_COMMANDE` (`IDC`);
-
---
--- Index pour la table `ratings`
---
-ALTER TABLE `ratings`
-  ADD PRIMARY KEY (`vote_id`);
-
---
--- Index pour la table `restaurateur`
---
-ALTER TABLE `restaurateur`
-  ADD PRIMARY KEY (`IDU`);
-
---
--- Index pour la table `resto`
---
-ALTER TABLE `resto`
-  ADD PRIMARY KEY (`IDR`),
-  ADD KEY `I_FK_RESTO_VILLE` (`CODEV`),
-  ADD KEY `I_FK_RESTO_TYPE_RESTO` (`CODET`);
-
---
--- Index pour la table `type_plat`
---
-ALTER TABLE `type_plat`
-  ADD PRIMARY KEY (`CODET`);
-
--- Index pour la table `type_resto`
---
-ALTER TABLE `type_resto`
-  ADD PRIMARY KEY (`CODET`);
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`IDU`);
-
---
--- Index pour la table `ville`
---
-ALTER TABLE `ville`
-  ADD PRIMARY KEY (`CODEV`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `ratings`
---
-ALTER TABLE `ratings`
-  MODIFY `vote_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=518;
