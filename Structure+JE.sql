@@ -4,7 +4,7 @@
 
 CREATE TABLE IF NOT EXISTS TYPE_PLAT
  (
-   CODET BIGINT(4) NOT NULL  ,
+   CODET CHAR(5) NOT NULL  ,
    LIBELLE TEXT NULL
    , PRIMARY KEY (CODET)
  )
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS TYPE_PLAT
 
 CREATE TABLE IF NOT EXISTS USER
  (
-   IDU BIGINT(4) NOT NULL  ,
+   IDU CHAR(5) NOT NULL  ,
    NOMU TEXT NULL  ,
    PRENOMU TEXT NULL  ,
    MAIL CHAR(32) NULL  ,
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS USER
 
 CREATE TABLE IF NOT EXISTS ADMINISTRATEUR
  (
-   IDU BIGINT(4) NOT NULL  ,
+   IDU CHAR(5) NOT NULL  ,
    NOMU TEXT NULL  ,
    PRENOMU TEXT NULL  ,
    MAIL CHAR(32) NULL  ,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS ADMINISTRATEUR
 
 CREATE TABLE IF NOT EXISTS MODERATEUR
  (
-   IDU BIGINT(4) NOT NULL  ,
+   IDU CHAR(5) NOT NULL  ,
    NOMU TEXT NULL  ,
    PRENOMU TEXT NULL  ,
    MAIL CHAR(32) NULL  ,
@@ -65,8 +65,8 @@ CREATE TABLE IF NOT EXISTS MODERATEUR
 CREATE TABLE IF NOT EXISTS COMMANDE
  (
    IDC CHAR(32) NOT NULL  ,
-   IDR BIGINT(4) NOT NULL  ,
-   IDU BIGINT(4) NOT NULL  ,
+   IDR CHAR(5) NOT NULL  ,
+   IDU CHAR(5) NOT NULL  ,
    DATEC DATE NULL  ,
    COMMENTAIRECLIENTC TEXT NULL  ,
    DATELIVRC DATE NULL  ,
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS COMMANDE
 
 CREATE TABLE IF NOT EXISTS TYPE_RESTO
  (
-   CODET BIGINT(4) NOT NULL  ,
+   CODET CHAR(5) NOT NULL  ,
    LIBELLE TEXT NULL
    , PRIMARY KEY (CODET)
  )
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS TYPE_RESTO
 
 CREATE TABLE IF NOT EXISTS RESTAURATEUR
  (
-   IDU BIGINT(4) NOT NULL  ,
+   IDU CHAR(5) NOT NULL  ,
    NOMU TEXT NULL  ,
    PRENOMU TEXT NULL  ,
    MAIL CHAR(32) NULL  ,
@@ -113,9 +113,9 @@ CREATE TABLE IF NOT EXISTS RESTAURATEUR
 
 CREATE TABLE IF NOT EXISTS PLAT
  (
-   IDP BIGINT(4) NOT NULL  ,
-   IDR BIGINT(4) NOT NULL  ,
-   CODET BIGINT(4) NOT NULL  ,
+   IDP CHAR(5) NOT NULL  ,
+   IDR CHAR(5) NOT NULL  ,
+   CODET CHAR(5) NOT NULL  ,
    NOMP TEXT NULL  ,
    PRIXFOURNISSEURP DECIMAL(10,2) NULL  ,
    PRIXCLIENTP DECIMAL(10,2) NULL  ,
@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS PLAT
 
 CREATE TABLE IF NOT EXISTS VILLE
  (
-   CODEV BIGINT(4) NOT NULL  ,
+   CODEV CHAR(5) NOT NULL  ,
    NOMV TEXT NULL
    , PRIMARY KEY (CODEV)
  )
@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS VILLE
 
 CREATE TABLE IF NOT EXISTS CLIENT
  (
-   IDU BIGINT(4) NOT NULL  ,
+   IDU CHAR(5) NOT NULL  ,
    NOMU TEXT NULL  ,
    PRENOMU TEXT NULL  ,
    MAIL CHAR(32) NULL  ,
@@ -162,9 +162,9 @@ CREATE TABLE IF NOT EXISTS CLIENT
 
 CREATE TABLE IF NOT EXISTS RESTO
  (
-   IDR BIGINT(4) NOT NULL  ,
-   CODEV BIGINT(4) NOT NULL  ,
-   CODET BIGINT(4) NOT NULL  ,
+   IDR CHAR(5) NOT NULL  ,
+   CODEV CHAR(5) NOT NULL  ,
+   CODET CHAR(5) NOT NULL  ,
    NOMR TEXT NULL  ,
    NUMADR TEXT NULL  ,
    RUEADR TEXT NULL  ,
@@ -181,8 +181,8 @@ CREATE TABLE IF NOT EXISTS RESTO
 
 CREATE TABLE IF NOT EXISTS EVALUER
  (
-   IDU BIGINT(4) NOT NULL  ,
-   IDR BIGINT(4) NOT NULL  ,
+   IDU CHAR(5) NOT NULL  ,
+   IDR CHAR(5) NOT NULL  ,
    IDC CHAR(32) NOT NULL  ,
    NOTERAPIDITE DECIMAL(10,2) NULL  ,
    NOTEQUALITE DECIMAL(10,2) NULL  ,
@@ -202,8 +202,8 @@ CREATE TABLE IF NOT EXISTS EVALUER
 
 CREATE TABLE IF NOT EXISTS GERER
  (
-   IDU BIGINT(4) NOT NULL  ,
-   IDR BIGINT(4) NOT NULL
+   IDU CHAR(5) NOT NULL  ,
+   IDR CHAR(5) NOT NULL
    , PRIMARY KEY (IDU,IDR)
  )
  comment = "";
@@ -216,9 +216,9 @@ CREATE TABLE IF NOT EXISTS GERER
 
 CREATE TABLE IF NOT EXISTS QUANTITE
  (
-   IDP BIGINT(4) NOT NULL  ,
+   IDP CHAR(5) NOT NULL  ,
    IDC CHAR(32) NOT NULL  ,
-   QUANTITE BIGINT(4) NULL
+   QUANTITE CHAR(5) NULL
    , PRIMARY KEY (IDP,IDC)
  )
  comment = "";
@@ -315,9 +315,9 @@ ALTER TABLE QUANTITE
   FOREIGN KEY  (IDC) REFERENCES COMMANDE (IDC) ;
 
 
-*-------------------------------------------------------------*
-*-------------------------------------------------------------*
-*-------------------------------------------------------------*
+-- -------------------------------------------------------------
+-- ----------------------------------------------------------
+-- -----------------------------------------------------------
 
 --
 -- Contenu de la table `administrateur`
@@ -361,7 +361,7 @@ INSERT INTO `evaluer` (`IDU`, `IDR`, `NOTERAPIDITE`, `NOTEQUALITE`, `NOTETEMP`, 
 
 -- --------------------------------------------------------
 
--
+
 --
 -- Contenu de la table `gerer`
 --
@@ -2930,17 +2930,7 @@ INSERT INTO `quantite` (`IDP`, `IDC`, `QUANTITE`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Contenu de la table `ratings`
---
 
-INSERT INTO `ratings` (`vote_id`, `page_id`, `total_votes`, `total_value`, `used_ips`) VALUES
-(515, 'Qualite', 1, 3, 'a:1:{i:0;s:9:"127.0.0.1";}'),
-(516, 'Temps', 1, 4, 'a:1:{i:0;s:9:"127.0.0.1";}'),
-(517, 'Cout', 1, 4, 'a:1:{i:0;s:9:"127.0.0.1";}'),
-(514, 'Rapidite', 1, 4, 'a:1:{i:0;s:9:"127.0.0.1";}');
-
--- --------------------------------------------------------
 
 
 --
