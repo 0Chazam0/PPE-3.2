@@ -51,9 +51,9 @@ if ($_SESSION['TypeResto']=="All"){
 
 	        $formResto = new Formulaire("POST","index.php","formResto","restothis");
 	        $formResto->ajouterComposantLigne($formResto->creerInputImage('imgResto', 'imgResto', $correct));
+					$formResto->ajouterComposantTab();
 	        $formResto->ajouterComposantLigne($formResto->concactComposants($formResto->creerLabelFor($OBJ->getNom(),"nomResto"),$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto'),2));
-	        $formResto->ajouterComposantLigne($formResto->creerInputSubmit("plat-btn","plat-btn","    Nos Plats   "));
-	        $formResto->ajouterComposantLigne($formResto->creerInputSubmitHidden("idResto","idResto",$OBJ->getId()  ));
+	        $formResto->ajouterComposantLigne($formResto->creerInputSubmitHidden("idResto","idResto",$OBJ->getId()));
 	        $formResto->ajouterComposantTab();
 	        $formResto->creerFormulaire();
 	        $_SESSION['lesFormsResto'] .= $formResto->afficherFormulaire();

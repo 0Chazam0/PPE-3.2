@@ -44,11 +44,15 @@ $formCommande->ajouterComposantTab();
 foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ){
   $formCommande->ajouterComposantLigne($formCommande->concactComposants($formCommande->creerLabelFor($OBJ->getNom(), 'nomPlatCommande'),
                                        $formCommande->concactComposants($formCommande->creerLabelFor('x1 : ', 'qtPlatCommande'),
-                                       $formCommande->creerLabelFor($OBJ->getPrixClient(), 'prixPlatCommande'),0),0));
+                                       $formCommande->creerLabelFor($OBJ->getPrixClient()."€", 'prixPlatCommande'),0),0));
 $formCommande->ajouterComposantTab();
 }
+$formCommande->ajouterComposantLigne($formCommande->concactComposants($formCommande->creerLabelFor('Pourboir : ', 'lblPourboirC'),
+                                     $formCommande->creerLabelFor($_SESSION['prixPourboir']."€", 'lePourboir'),0));
+$formCommande->ajouterComposantTab();
+
 $formCommande->ajouterComposantLigne($formCommande->concactComposants($formCommande->creerLabelFor('Montant : ', 'lblmontant'),
-                                     $formCommande->creerLabelFor($_SESSION['prixTotal']."€", 'leMontant'),0));
+                                     $formCommande->creerLabelFor($_SESSION['prixTotal']+$_SESSION['prixPourboir']."€", 'leMontant'),0));
 $formCommande->ajouterComposantTab();
 
 $formCommande->ajouterComposantLigne($formCommande->creerInputSubmit('confirmCommande','confirmCommande',"Confirmer la commande"));

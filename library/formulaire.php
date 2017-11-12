@@ -123,6 +123,11 @@ class Formulaire{
 		$composant .= "src = '" . $uneSource . "'/> ";
 		return $composant;
 	}
+	public function creerInputBanniere($unNom, $uneClasse, $uneSource){
+		$composant = "<input style='width:100%;height:400px' type = 'image' name = '" . $unNom . "' class= '" . $uneClasse . "' ";
+		$composant .= "src = '" . $uneSource . "'/> ";
+		return $composant;
+	}
 	public function creerInputTexte($unNom, $unId, $unLabel, $uneValue , $required , $placeholder){
 		$composant = "<input type = 'text' name = '" . $unNom . "' id = '" . $unId . "' ";
 		if (!empty($uneValue)){
