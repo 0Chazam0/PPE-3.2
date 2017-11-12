@@ -67,7 +67,7 @@ $_SESSION['leformCommande'] = $formCommande->afficherFormulaire();
 if (isset($_POST['confirmCommande'])) {
   $txt = "<div id='fin'>Nous vous remercions de votre commande <br><br> Merci à bientôt </div>";
 
-  inCommande(4, $_SESSION['RestoSelected'], $_SESSION['identite'][0],date("Y-m-d"),$_SESSION['dateLivraisonMySql'], $_SESSION['modePaiement']);
+  CommandeDAO::inCommande(4, $_SESSION['RestoSelected'], $_SESSION['identite'][0],date("Y-m-d"),$_SESSION['dateLivraisonMySql'], $_SESSION['modePaiement']);
 
 }
 /*--------------------------------------------------------------------------*/
