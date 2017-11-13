@@ -111,7 +111,7 @@ else {
 		    $formPlat->ajouterComposantTab();
 		    $formPlat->creerFormulaire();
 		    $_SESSION['lesFormsPlat'] .= $formPlat->afficherFormulaire();
-				$_SESSION['nbPlat'] += 1;
+				$_SESSION['nbPlatResto'] += 1;
 			}
 	  }
 	}
