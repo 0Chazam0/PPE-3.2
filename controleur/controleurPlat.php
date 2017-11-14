@@ -111,7 +111,7 @@ else {
 		    $formPlat->ajouterComposantTab();
 		    $formPlat->creerFormulaire();
 		    $_SESSION['lesFormsPlat'] .= $formPlat->afficherFormulaire();
-				$_SESSION['nbPlat'] += 1;
+				$_SESSION['nbPlatResto'] += 1;
 			}
 	  }
 	}
@@ -192,7 +192,7 @@ $formPanier = new Formulaire("POST","index.php","formPanier","panierthis");
 
 $formPanier->ajouterComposantLigne($formPanier->creerLabelFor('Votre Panier', 'lblPanier'));
 $formPanier->ajouterComposantTab();
-$formPanier->ajouterComposantTab();
+
 
 if($_SESSION['nbPlatPanier']>0){
 	foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ)
@@ -205,6 +205,10 @@ if($_SESSION['nbPlatPanier']>0){
 																		 $formPanier->concactComposants($formPanier->creerInputSubmit('btnMoinsPourboir','btnMoinsPourboir',"-"),
 																		 $formPanier->concactComposants($formPanier->creerInputSubmit('btnPlusPourboir','btnPlusPourboir',"+"),
 																		 $formPanier->creerLabelFor($_SESSION['prixPourboir']."€","prixTotal"),0),0),0));
+	$formPanier->ajouterComposantTab();
+}
+else{
+	$formPanier->ajouterComposantLigne($formPanier->creerLabelFor("Le panier est vide","lblVide"));
 	$formPanier->ajouterComposantTab();
 }
 

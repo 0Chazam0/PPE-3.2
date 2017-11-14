@@ -575,6 +575,12 @@ nav.menuPrincipal ul li .actif {
 	border-radius: 6px;
 	transition:0.5s;
 }
+
+.panierthis .lblVide{
+	color : grey;
+
+}
+
 .panierthis .lblPourboir{
 	font-weight: bold;
 }
@@ -613,7 +619,7 @@ nav.menuPrincipal ul li .actif {
 	/****************************************************/
 .reglementthis{
 	margin-top: 200px;
-	margin-left: 370px;
+	margin-left: 30%;
 	border: 2px solid orange;
 	width:  600px;
 	padding: 10px 30px 10px 30px;
@@ -642,10 +648,10 @@ nav.menuPrincipal ul li .actif {
 	margin-right: 30px;
 }
 #unJour {
-	width: 30px;
+	width: 40px;
 }
 #unMois {
-	width: 70px;
+	width: 80px;
 }
 #unAnnee {
 	width: 40px;
@@ -690,16 +696,16 @@ nav.menuPrincipal ul li .actif {
 /*styles pour le formulaire de commande          */
 /****************************************************/
 #commande{
-	margin-top: 300px;
-	margin-left: 50%;
-	margin-right: 50%.
+	margin-top: 25%;
+	margin-left: 45%;
+
 }
 .commandethis{
 margin-top: -200px;
 margin-left: -30%;
 border: 2px solid orange;
 width:  600px;
-padding: 10px 30px 10px 30px;
+padding: 10px 30px 30px 30px;
 }
 .commandethis .lblcommande{
 	color : orange;

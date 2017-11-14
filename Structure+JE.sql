@@ -3094,10 +3094,10 @@ INSERT INTO `type_resto` (`CODET`, `LIBELLE`) VALUES
 --
 
 INSERT INTO `type_plat` (`CODET`, `LIBELLE`) VALUES
-('TP1', 'Entrée'),
-('TP2', 'Plat'),
-('TP3', 'Désert'),
-('TP4', 'Boisson'),
+('TP1', 'Entrées'),
+('TP2', 'Plats'),
+('TP3', 'Déserts'),
+('TP4', 'Boissons'),
 ('TP5', 'Sauces');
 
 

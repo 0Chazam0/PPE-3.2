@@ -276,7 +276,7 @@ class CommandeDAO
     $sql = "SELECT IDR, DATEC, COMMENTAIRECLIENTC, DATELIVRC, MODEREGLEMENTC, AVISCLIENT, NOTECLIENT, COMVISIBLE FROM commande WHERE IDC = $idUser";
 
   }
-	function inCommande($idCom, $idResto, $idCli,$dateCom,$dateLiv, $modeRegl){
+	public static function inCommande($idCom, $idResto, $idCli,$dateCom,$dateLiv, $modeRegl){
 		$sql = "INSERT INTO commande VALUES ('C" . $idCom . "',
 																				 '" . $idResto . "',
 																				 '" . $idCli . "',
