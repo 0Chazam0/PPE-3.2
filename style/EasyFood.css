@@ -942,7 +942,7 @@ padding: 10px 30px 30px 30px;
 /*styles pour le formulaire de restauration            */
 /****************************************************/
 .restaurateurthis{
-margin-top: 200px;
+margin-top: 30px;
 margin-left: 30%;
 border: 2px solid orange;
 width:  600px;
@@ -953,9 +953,22 @@ padding: 10px 30px 30px 30px;
 	width: 100%;
 }
 
+#cbxTypeP{
+	width: 60px;
+}
 
 
+.resultatthis{
+text-align: center;
+margin-top: 130px;
+margin-left: 30%;
+border: 2px solid orange;
+width:  600px;
+color: red;
+height: 40px;
+padding-left: 200px;
 
+}
 
 
 

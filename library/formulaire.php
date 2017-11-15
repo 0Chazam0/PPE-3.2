@@ -94,6 +94,11 @@ class Formulaire{
 				$composant .="<option>" . $i;
 			}
 		}
+		if ($type=='typeP') {
+			for ($i=1; $i <= 5 ; $i++) {
+				$composant .="<option>TP" . $i;
+			}
+		}
 
 		$composant .= "</select>";
 		return $composant;
