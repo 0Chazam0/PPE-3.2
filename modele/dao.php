@@ -201,6 +201,22 @@ public static function chercherPlat($idPlat)
   $plat = DBConnex::getInstance()->queryFetchFirstRow($sql);
   return $plat;
 }
+
+public static function ajouterPlat($unPlat){
+	$sql="INSERT INTO PLAT(IDP,IDR,CODET,NOMP,PRIXFOURNISSEURP,PRIXCLIENTP,PLATVISIBLE,PHOTOP,DESCRIPTIONP) VALUES ('";
+	$sql .= $unPlat->getID() . "','";
+	$sql.= $unPlat->getIDResto() . "','";
+	$sql.= $unPlat->getTypePlat() . "','";
+	$sql.= $unPlat->getNom() . "','";
+	$sql.= $unPlat->getPrixFournisseur() . "','";
+	$sql.= $unPlat->getPrixClient() . "','";
+	$sql.= $unPlat->getPlatVisible() . "','";
+	$sql.= $unPlat->getCheminPhoto() . "','";
+	$sql.= $unPlat->getDescription() . "')";
+	echo $sql;
+	DBConnex::getInstance()->queryFetchFirstRow($sql);
+}
+
 public function delPlat($IDR, $IDP)
 {
   $sql = "DELETE FROM plat WHERE IDP = '" . $IDP . "' AND IDR = '" . $IDR . "';";

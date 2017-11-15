@@ -26,7 +26,7 @@ require_once 'modele/DTO/plat.php';
 require_once 'modele/DTO/user.php';
 
 /*----------------------------------------------------------*/
-/*--------session du menu principal avec accueil par defaut----------------------*/
+/*--------session du menu principal avec accueil par defaut-------*/
 /*----------------------------------------------------------*/
 if(isset($_GET['menuPrincipal'])){
 	$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
@@ -74,6 +74,16 @@ if (isset($_POST['idResto'])){
 	$_SESSION['RestoSelected'] = $_POST['idResto'];
 	$_SESSION['menuPrincipal']="Plat";
 }
+
+/*----------------------------------------------------------*/
+/*--------Récupère le controleur Commande (si la condition est respectée)----------*/
+/*----------------------------------------------------------*/
+if (isset($_POST['suivantReglement'])){
+	$_SESSION['modePaiement']= $_POST['typeReglement'];
+	$_SESSION['dateLivraison']= $_POST['unJour']."/".$_POST['unMois']."/".$_POST['uneAnnee']." à ".$_POST['uneHeure']."h".$_POST['uneMinute'];
+	$_SESSION['dateLivraisonMySql'] = $_POST['uneAnnee']."-".$_POST['unMois']."-".$_POST['unJour'];
+	$_SESSION['menuPrincipal']="Commande";
+}
 /*----------------------------------------------------------*/
 /*--------Récupère le controleur Reglement (si la condition est respectée) et si on est connecté----------*/
 /*----------------------------------------------------------*/
@@ -87,16 +97,6 @@ if (isset($_POST['validerCommande'])){
 	}
 
 }
-/*----------------------------------------------------------*/
-/*--------Récupère le controleur Commande (si la condition est respectée)----------*/
-/*----------------------------------------------------------*/
-if (isset($_POST['suivantReglement'])){
-	$_SESSION['modePaiement']= $_POST['typeReglement'];
-	$_SESSION['dateLivraison']= $_POST['unJour']."/".$_POST['unMois']."/".$_POST['uneAnnee']." à ".$_POST['uneHeure']."h".$_POST['uneMinute'];
-	$_SESSION['dateLivraisonMySql'] = $_POST['uneAnnee']."-".$_POST['unMois']."-".$_POST['unJour'];
-	$_SESSION['menuPrincipal']="Commande";
-}
-
 /*----------------------------------------------------------*/
 /*-------Affiche le controleur récupéré----------*/
 /*----------------------------------------------------------*/

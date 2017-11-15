@@ -368,7 +368,7 @@ nav.menuPrincipal ul li .actif {
 
 }
 .baniereRestothis{
-	background-color: white;
+		background-color: white;
 		color: black;
 		font-size: 50px;
 		text-align: center;
@@ -938,6 +938,34 @@ padding: 10px 30px 30px 30px;
 	color: BLACK;
 	transition:0.5s;
 }
+/****************************************************/
+/*styles pour le formulaire de restauration            */
+/****************************************************/
+.restaurateurthis{
+margin-top: 200px;
+margin-left: 30%;
+border: 2px solid orange;
+width:  600px;
+padding: 10px 30px 30px 30px;
+}
+
+.sepAjoutPlat{
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

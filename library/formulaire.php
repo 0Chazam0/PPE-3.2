@@ -35,7 +35,14 @@ class Formulaire{
 		$this->tabComposants[] = $this->ligneComposants;
 		$this->ligneComposants = array();
 	}
-
+	/****************************************************/
+	/**********fonction qui crée un séparateur *************/
+	/****************************************************/
+	public function creerSep($id)
+	{
+		$composant = "<hr id=" . $id . ">";
+		return $composant;
+	}
 
 	/****************************************************/
 	/**********fonction qui crée un lien *************/
@@ -102,6 +109,12 @@ class Formulaire{
 		$composant .= "value = '" . $uneValue . "'/> ";
 		return $composant;
 	}
+
+	public function creerInputSubmitOnClick($unNom, $unId, $uneValue,$erreur){
+		$composant = "<input type = 'submit' name = '" . $unNom . "' id = '" . $unId . "' ";
+		$composant .= "onclick='myFunction($erreur)' value = '" . $uneValue . "'/> ";
+		return $composant;
+	}
 	public function creerInputSubmitPanier($unName,$uneClasse,$uneValue){
 		$composant = "<input type = 'submit' id = '" . $unName . "'  name = '" . $unName . "' class = '" . $uneClasse . "' ";
 		$composant .= "value = '" . $uneValue . "'/> ";
@@ -140,6 +153,10 @@ class Formulaire{
 			$composant .= "required";
 		}
 		$composant .= " autocomplete='off'/>";
+		return $composant;
+	}
+	public function creerInputFile($unName,$uneClasse){
+		$composant = "<input type = 'file' id = '" . $unName . "'  name = '" . $unName . "' class = '" . $uneClasse . "'/> ";
 		return $composant;
 	}
 
@@ -184,7 +201,7 @@ class Formulaire{
 	public function creerFormulaire(){
 
 		$this->formulaireToPrint = "<form method = '" .  $this->method . "' ";
-		$this->formulaireToPrint .= "action = '" .  $this->action . "' ";
+		$this->formulaireToPrint .= "action = '" .  $this->action . "' enctype='multipart/form-data' ";
 		$this->formulaireToPrint .= "name = '" .  $this->nom . "' ";
 		$this->formulaireToPrint .= "class = '" .  $this->style . "' ><table>";
 
