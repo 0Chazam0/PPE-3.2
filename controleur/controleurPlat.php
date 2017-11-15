@@ -6,10 +6,18 @@
 $_SESSION['dernierePage'] = "Plat";
 $_SESSION['listeTypePlats'] = new TypePlats(TypePlatDAO::selectListeTypePlat());
 $_SESSION['listePlats'] = new Plats(PlatDAO::selectListePlat());
+$_SESSION['listeRestos'] = new Restos(RestoDAO::selectListeResto());
+$_SESSION['listeTypeRestos'] = new TypeRestos(TypeRestoDAO::selectListeTypeResto());
 $_SESSION['lesFormsPlat'] = null;
-$_SESSION['nbPlat'] = 1;
-$_SESSION['nbPlatPanier']= 0;
+$_SESSION['nbPlatResto'] = 1;
 $_SESSION['prixTotal'] = 0;
+if(!isset($_SESSION['nbPlatPanier'])){
+$_SESSION['nbPlatPanier']= 0;
+}
+
+if(!isset($_SESSION['prixPourboir'])){
+	$_SESSION['prixPourboir'] = 0;
+}
 /*----------------------------------------------------------*/
 /*--------Affichage  des plats selon leur type-----*/
 /*----------------------------------------------------------*/
@@ -34,6 +42,27 @@ $lemenuTypePlats = $menuTypePlat->creerMenu('TypePlat');
 
 
 
+/*----------------------------------------------------------*/
+/*-------------------La banniere resto----------------------*/
+/*----------------------------------------------------------*/
+
+
+foreach ($_SESSION['listeRestos']->getLesRestos() as $OBJ)
+{
+  if ($_SESSION['RestoSelected']==$OBJ->getId())
+	{
+		foreach ($_SESSION['listeTypeRestos']->getLesTypeRestos() as $OBJ2)
+		{
+			if ($OBJ2->getCodeT()==$OBJ->getCodeT()) {
+				$laBanniereResto = new Formulaire("POST","index.php","formBaniereResto","baniereRestothis");
+	 		 	$laBanniereResto->ajouterComposantLigne($laBanniereResto->concactComposants($laBanniereResto->creerLabelFor($OBJ->getNom(),"nomRestoB"),
+																								$laBanniereResto->concactComposants($laBanniereResto->creerLabelFor($OBJ2->getLibelle(),"typeRestoB"),$laBanniereResto->creerLabelFor(" ~ 30 - 40 min","timeRestoB"),0),2));
+	 		 	$laBanniereResto->ajouterComposantTab();
+	 	 	 	$laBanniereResto->creerFormulaire();
+			}
+		}
+	}
+}
 
 /*----------------------------------------------------------*/
 /*--------Les forms des plats du restaurants choisit-----*/
@@ -58,7 +87,7 @@ if ($_SESSION['TypePlat']=="All") {
 	    $formPlat->ajouterComposantTab();
 	    $formPlat->creerFormulaire();
 	    $_SESSION['lesFormsPlat'] .= $formPlat->afficherFormulaire();
-			$_SESSION['nbPlat'] += 1;
+			$_SESSION['nbPlatResto'] += 1;
 	  }
 	}
 }
@@ -82,7 +111,7 @@ else {
 		    $formPlat->ajouterComposantTab();
 		    $formPlat->creerFormulaire();
 		    $_SESSION['lesFormsPlat'] .= $formPlat->afficherFormulaire();
-				$_SESSION['nbPlat'] += 1;
+				$_SESSION['nbPlatResto'] += 1;
 			}
 	  }
 	}
@@ -91,26 +120,30 @@ else {
 /*--------Ajouter un plat a la commande-----*/
 /*----------------------------------------------------------*/
 
-
-if ($_SESSION['passagePlat']>0) {
-
 $lePlat = new Plat("","","","","","","","","");
 
-	foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
-	{
-		if(isset($_POST[$OBJ->getID()])) {
-			$lePlat->__construct($OBJ->getID(),$OBJ->getIDResto(),$OBJ->getTypePlat(),$OBJ->getNom(),$OBJ->getPrixFournisseur(),$OBJ->getPrixClient(),$OBJ->getPlatVisible(),$OBJ->getCheminPhoto(),$OBJ->getDescription());
-			$_SESSION['lesPlats'][] =	serialize($lePlat);
-			$_SESSION['nbPlatPanier']+=1;
-		}
+foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
+{
+	if(isset($_POST[$OBJ->getID()])) {
+		$lePlat->__construct($OBJ->getID(),$OBJ->getIDResto(),$OBJ->getTypePlat(),$OBJ->getNom(),$OBJ->getPrixFournisseur(),$OBJ->getPrixClient(),$OBJ->getPlatVisible(),$OBJ->getCheminPhoto(),$OBJ->getDescription());
+		$_SESSION['lesPlats'][] =	serialize($lePlat);
+		$_SESSION['nbPlatPanier']+=1;
 	}
-
-	foreach ($_SESSION['lesPlats'] as $OBJ) {
+}
+if ($_SESSION['nbPlatPanier']>0)
+{
+	foreach ($_SESSION['lesPlats'] as $OBJ)
+	{
 		$lesPlats[] = unserialize($OBJ);
 	}
-
 	$_SESSION['lePanier'] = new Plats($lesPlats);
+
 }
+
+
+
+
+
 /*----------------------------------------------------------*/
 /*--------Suppression du formulaire du panier-----*/
 /*----------------------------------------------------------*/
@@ -144,24 +177,46 @@ $lePlat = new Plat("","","","","","","","","");
 //
 // }
 //var_dump($_SESSION['cePanier']);
+
+
+if (isset($_POST['btnMoinsPourboir'])) {
+	if($_SESSION['prixPourboir']>0){
+		$_SESSION['prixPourboir']-=1;
+	}
+}
+if (isset($_POST['btnPlusPourboir'])) {
+	$_SESSION['prixPourboir']+=1;
+}
+
 $formPanier = new Formulaire("POST","index.php","formPanier","panierthis");
 
 $formPanier->ajouterComposantLigne($formPanier->creerLabelFor('Votre Panier', 'lblPanier'));
 $formPanier->ajouterComposantTab();
-$formPanier->ajouterComposantTab();
-if ($_SESSION['passagePlat']>0) {
-foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ){
 
- 	$formPanier->ajouterComposantLigne($formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getNom(),"nomP"),$formPanier->concactComposants($formPanier->creerLabelFor('x1','nbPlat'),$formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getPrixClient()."€",'prixP'),$formPanier->creerInputSubmit($OBJ->getID(),'supprPlat',"X"),0),0),0));
+
+if($_SESSION['nbPlatPanier']>0){
+	foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ)
+	{
+	 	$formPanier->ajouterComposantLigne($formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getNom(),"nomP"),$formPanier->concactComposants($formPanier->creerLabelFor('x1','nbPlat'),$formPanier->concactComposants($formPanier->creerLabelFor($OBJ->getPrixClient()."€",'prixP'),$formPanier->creerInputSubmit($OBJ->getID(),'supprPlat',"X"),0),0),0));
+		$formPanier->ajouterComposantTab();
+		$_SESSION['prixTotal'] += $OBJ->getPrixClient();
+	}
+	$formPanier->ajouterComposantLigne($formPanier->concactComposants($formPanier->creerLabelFor("Pourboir au Livreur : ","lblPourboir"),
+																		 $formPanier->concactComposants($formPanier->creerInputSubmit('btnMoinsPourboir','btnMoinsPourboir',"-"),
+																		 $formPanier->concactComposants($formPanier->creerInputSubmit('btnPlusPourboir','btnPlusPourboir',"+"),
+																		 $formPanier->creerLabelFor($_SESSION['prixPourboir']."€","prixTotal"),0),0),0));
 	$formPanier->ajouterComposantTab();
-	$_SESSION['prixTotal'] += $OBJ->getPrixClient();
+}
+else{
+	$formPanier->ajouterComposantLigne($formPanier->creerLabelFor("Le panier est vide","lblVide"));
+	$formPanier->ajouterComposantTab();
 }
 
-$formPanier->ajouterComposantLigne($formPanier->concactComposants($formPanier->creerLabelFor("Total : ","lbltotal"),$formPanier->creerLabelFor($_SESSION['prixTotal']."€","prixTotal"),0));
+$formPanier->ajouterComposantLigne($formPanier->concactComposants($formPanier->creerLabelFor("Total : ","lbltotal"),$formPanier->creerLabelFor($_SESSION['prixTotal']+$_SESSION['prixPourboir']."€","prixTotal"),0));
 $formPanier->ajouterComposantTab();
 $formPanier->ajouterComposantLigne($formPanier->creerInputSubmit('validerCommande','validerCommande',"Valider votre commande"));
 $formPanier->ajouterComposantTab();
-}
+
 $formPanier->creerFormulaire();
 $_SESSION['leFormPlanier'] = $formPanier->afficherFormulaire();
 
@@ -169,11 +224,6 @@ $_SESSION['leFormPlanier'] = $formPanier->afficherFormulaire();
 
 
 
-
-
-
-
-$_SESSION['passagePlat']+=1;
 /*--------------------------------------------------------------------------*/
 include 'vue\vuePlat.php';
  ?>

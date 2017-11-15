@@ -2909,7 +2909,7 @@ INSERT INTO `plat` (`IDP`, `IDR`, `CODET`, `NOMP`, `PRIXFOURNISSEURP`, `PRIXCLIE
 ('P2515','R22', 'TP2', 'Pizza Hawaienne', '8.20', '11.90', 1, 'pizzaHawaienne', 'Annanas, fromage, tomate, oignons, poulet'),
 ('P2516', 'R22', 'TP2', 'Pizza 4 fromages', '9.20', '10.90', 1, 'pizza4fromages', 'Tomate, gorgonzola, mozzarella, chèvre, parmesan'),
 ('P2517', 'R22', 'TP2', 'Pizza Olivio', '9.14', '12.90', 1, 'pizzaOlivio', 'Tomate, Olive, mozzarella, fromage'),
-('P2518', 'R22', 'TP2', 'Calzonne', '8.20', '13.90', 1, 'calzonne', 'Tomate, poivrons, lardon, fromage'),
+('P2518', 'R22', 'TP2', 'Calzone', '8.20', '13.90', 1, 'calzonne', 'Tomate, poivrons, lardon, fromage'),
 ('P2519', 'R22', 'TP2', 'Margaritta', '6.20', '10.50', 1, 'margaritta', 'Tomate, jambon, fromage'),
 ('P2520','R23', 'TP2', 'Pizza Hawaienne', '8.20', '11.90', 1, 'pizzaHawaienne', 'Annanas, fromage, tomate, oignons, poulet'),
 ('P2521', 'R23', 'TP2', 'Pizza 4 fromages', '9.20', '10.90', 1, 'pizza4fromages', 'Tomate, gorgonzola, mozzarella, chèvre, parmesan'),
@@ -3094,10 +3094,10 @@ INSERT INTO `type_resto` (`CODET`, `LIBELLE`) VALUES
 --
 
 INSERT INTO `type_plat` (`CODET`, `LIBELLE`) VALUES
-('TP1', 'Entrée'),
-('TP2', 'Plat'),
-('TP3', 'Désert'),
-('TP4', 'Boisson'),
+('TP1', 'Entrées'),
+('TP2', 'Plats'),
+('TP3', 'Déserts'),
+('TP4', 'Boissons'),
 ('TP5', 'Sauces');
 
 

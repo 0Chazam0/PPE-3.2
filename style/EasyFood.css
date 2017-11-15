@@ -5,6 +5,11 @@
 	padding:0%;
 }
 
+@font-face {
+   font-family: 'Snell Roundhand';
+	  src: url('SnellRoundhand-Bold.ttf') format('truetype');
+ }
+
 html, body {
   font-family: sans-serif;
 
@@ -179,10 +184,11 @@ nav.menuPrincipal ul li a {
 
 nav.menuPrincipal ul li a:hover {
   color: grey;
+	transition:0.5s;
 }
 
 nav.menuPrincipal ul li .actif {
-	display: table-cell;
+		display: table-cell;
   	background-color: ivory;
   	color: black;
   	text-align: center;
@@ -256,7 +262,7 @@ nav.menuPrincipal ul li .actif {
   text-transform: uppercase;
   color: BLACK;
 	height: 46px;
-
+	transition:0.5s;
 }
 .searchthis {
  	border:2px solid black;
@@ -279,11 +285,10 @@ nav.menuPrincipal ul li .actif {
 	margin-left: 40px;
 	margin-top: 50px;
 	margin-right: 5px;
-	border-color: orange;
-	border-style: solid;
-	border-width: 2px;
-	height: 244px;
+	height: 320px;
+	width: 310px;
 	margin-bottom:  -30px;
+	display: inline-block;
 }
 .restothis #plat-btn{
 	margin-left: 185px;
@@ -310,6 +315,7 @@ nav.menuPrincipal ul li .actif {
 	color: BLACK;
 	padding: 3px 3px 3px 3px;
 	border-radius: 6px;
+	transition:0.5s;
 }
 
 .restothis .nomResto{
@@ -325,7 +331,6 @@ nav.menuPrincipal ul li .actif {
 .restothis tr td table tr td{
 	width: 313px;
 	height: 240px;
-
 	float:left;
 	overflow:auto;
 	display:inline;
@@ -334,13 +339,16 @@ nav.menuPrincipal ul li .actif {
 .imgResto{
 	max-width: 100%;
 	height: 235px;
+	border-radius: 7px;
 }
 .menuTypeResto{
 	margin-top: 20px;
 }
 .menuTypeResto li:hover a{
 	color: orange;
+	transition:0.5s;
 }
+
 #erreurVille{
 	margin-top: 150px;
 	margin-left: 150px;
@@ -350,91 +358,166 @@ nav.menuPrincipal ul li .actif {
 /****************************************************/
 /*styles pour le formulaire de plat          */
 /****************************************************/
+#baniereResto{
+	padding-top: 50px;
+	height: 400px;
+	width: 100%;
+	background-image: url(../image/banniereResto.jpeg);
+	background-size: 100% 400px;
+	background-repeat:no-repeat;
+
+}
+.baniereRestothis{
+		background-color: white;
+		color: black;
+		font-size: 50px;
+		text-align: center;
+		height: 250px;
+		margin-left:  70px;
+		width: 340px;
+		font-family: Snell Roundhand , cursive;
+		padding: 2% 2% 2% 2%;
+		border-radius: 10px;
+	}
+
+.typeRestoB{
+	font-size: 30px;
+	color: grey;
+}
+
+.timeRestoB{
+	font-size: 30px;
+	color: grey;
+}
+
+#typePlat{
+	margin-top: -50px;
+	height: 50px;
+	border-bottom:  1px solid grey;
+}
+
+.titreListe{
+	padding-top: 10px;
+	color: orange;
+	font-weight: bold;
+ 	font-size: 22px;
+	margin-left: 15px;
+}
+#typePlat ul{
+	margin-top: -30px;
+  font-size: 16px;
+  line-height: 35px;
+	margin-left: 130px;
+}
+#typePlat li  {
+  display:inline;
+	margin-right: 5%;
+}
+#typePlat li a {
+  text-decoration: none;
+  color: grey;
+}
+
+#typePlat li a:hover {
+  color: orange;
+}
+
+
+
+
 
 .platthis{
+	margin-top: 70px;
+	margin-right: 5%;
+	margin-left: 15%;
+	border-bottom: 2px solid orange;
+	border-radius: 10px;
+	height: 250px;
+	width: 800px;
+	margin-bottom:  -30px;
+}
+.platthis .ajoutCommande-btn{
+	margin-left: 25%;
+	margin-top: 75%;
+	background-color: #F5ECCE;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+	padding: 3px 3px 3px 3px;
+	border-radius: 6px;
+}
+.platthis .ajoutCommande-btn:hover{
+	margin-left: 25%;
+	margin-top: 75%;
+	background-color: #F4FA58;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+	padding: 3px 3px 3px 3px;
+	border-radius: 6px;
+	transition:0.5s;
+}
 
-		margin-top: 50px;
-		margin-right: 5px;
-		border-color: orange;
-		border-style: solid;
-		border-width: 2px;
-		height: 250px;
-		margin-bottom:  -30px;
-	}
-	.platthis .ajoutCommande-btn{
-		margin-left: 55px;
-		margin-top: 200px;
-		background-color: #F5ECCE;
-		border-style: solid;
-		border-width: 2px;
-		border-color: orange;
-		font-size: 16px;
-		letter-spacing: 2px;
-		color: BLACK;
-		padding: 3px 3px 3px 3px;
-		border-radius: 6px;
-	}
-	.platthis .ajoutCommande-btn:hover{
-		margin-left: 55px;
-		margin-top: 200px;
-		background-color: #F4FA58;
-		border-style: solid;
-		border-width: 2px;
-		border-color: orange;
-		font-size: 16px;
-		letter-spacing: 2px;
-		color: BLACK;
-		padding: 3px 3px 3px 3px;
-		border-radius: 6px;
-	}
+.platthis tr td table tr td{
+	width: 260px;
+	height: 240px;
+	padding-top: 3px;
+	float:left;
+	overflow:auto;
+	display:inline;
+}
+.imgPlat{
+	max-width: 100%;
+	height: 235px;
+	border-radius: 7px;
+}
+.platthis .nomPlat{
 
-	.platthis tr td table tr td{
-		width: 225px;
-		height: 240px;
-		padding-top: 3px;
-		float:left;
-		overflow:auto;
-		display:inline;
-	}
-	.imgPlat{
-		max-width: 100%;
-		height: 235px;
-	}
-	.platthis .nomPlat{
+	font-size: 22px;
+	width: auto;
+	padding-left: 10px;
 
-		font-size: 22px;
-		width: auto;
-		padding-left: 10px;
+}
+.platthis .lblPrixPlat{
+	width: auto;
+	padding-left: 10px;
 
-	}
-	.platthis .lblPrixPlat{
-		width: auto;
-		padding-left: 10px;
+}
+.platthis .lblDescripPlat{
+	width: auto;
+	padding-left: 10px;
+}
+.menuTypePlat{
+	margin-top: 20px;
+}
+.menuTypePlat li:hover a{
+	color: orange;
+	transition:0.5s;
+}
 
-	}
-	.platthis .lblDescripPlat{
-		width: auto;
-		padding-left: 10px;
-	}
-	.menuTypePlat{
-		margin-top: 20px;
-	}
-	.menuTypePlat li:hover a{
-		color: orange;
-	}
 	/****************************************************/
 	/*styles pour le formulaire du panier           */
 	/****************************************************/
-	#panier{
-		display: inline-block;
-		width: 20%;
-		font-size: 15px;
-		vertical-align: top;
-		border: 3px solid orange;
-		margin-top: 50px;
-		height: inherit;
-		margin-left: 10px;
-	}
+#panier{
+	display: inline-block;
+	width: 300px;
+	font-size: 15px;
+	margin-left: 100px;
+	margin-top: 50px;
+	height: inherit;
+	float: right;
+	margin-right: 2%;
+}
+.panierthis{
+	padding: 2% 2% 2% 2%;
+	border: 2px solid orange;
+}
 .lblPanier{
 	font-size: 20px;
 	text-decoration: bold;
@@ -490,14 +573,53 @@ nav.menuPrincipal ul li .actif {
 	margin-left: 20px;
 	padding: 3px 3px 3px 3px;
 	border-radius: 6px;
+	transition:0.5s;
 }
 
+.panierthis .lblVide{
+	color : grey;
+
+}
+
+.panierthis .lblPourboir{
+	font-weight: bold;
+}
+.panierthis #btnMoinsPourboir{
+	border: 1px solid orange;
+	background-color: white;
+	width: 18px;
+	border-radius: 100%;
+	margin-left: 23px;
+}
+.panierthis #btnPlusPourboir{
+	border: 1px solid orange;
+	background-color: white;
+	width: 18px;
+	border-radius: 100%;
+	margin-right: 7px;
+}
+.panierthis #btnMoinsPourboir:hover{
+	border: 1px solid orange;
+	background-color: #F4FA58;
+	width: 18px;
+	border-radius: 100%;
+	margin-left: 23px;
+	transition:0.5s;
+}
+.panierthis #btnPlusPourboir:hover{
+	border: 1px solid orange;
+	background-color: #F4FA58;
+	width: 18px;
+	border-radius: 100%;
+	margin-right: 7px;
+	transition:0.5s;
+}
 	/****************************************************/
 	/*styles pour le formulaire de reglement           */
 	/****************************************************/
 .reglementthis{
 	margin-top: 200px;
-	margin-left: 370px;
+	margin-left: 30%;
 	border: 2px solid orange;
 	width:  600px;
 	padding: 10px 30px 10px 30px;
@@ -526,10 +648,10 @@ nav.menuPrincipal ul li .actif {
 	margin-right: 30px;
 }
 #unJour {
-	width: 25px;
+	width: 40px;
 }
 #unMois {
-	width: 70px;
+	width: 80px;
 }
 #unAnnee {
 	width: 40px;
@@ -541,47 +663,49 @@ nav.menuPrincipal ul li .actif {
 	width: 25px;
 }
 .reglementthis #suivantReglement{
-background-color: #F5ECCE;
-border-style: solid;
-border-width: 2px;
-border-color: orange;
-font-size: 16px;
-letter-spacing: 2px;
-color: BLACK;
-margin-bottom: -10px;
-margin-top: 20px;
-margin-left: 540px;
-padding: 3px 3px 3px 3px;
-border-radius: 6px;
+	background-color: #F5ECCE;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+	margin-bottom: -10px;
+	margin-top: 20px;
+	margin-left: 540px;
+	padding: 3px 3px 3px 3px;
+	border-radius: 6px;
 }
 .reglementthis #suivantReglement:hover{
-background-color: #F4FA58;
-border-style: solid;
-border-width: 2px;
-border-color: orange;
-font-size: 16px;
-letter-spacing: 2px;
-color: BLACK;
-margin-bottom: -10px;
-margin-top: 20px;
-margin-left: 540px;
-padding: 3px 3px 3px 3px;
-border-radius: 6px;
+	background-color: #F4FA58;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+	margin-bottom: -10px;
+	margin-top: 20px;
+	margin-left: 540px;
+	padding: 3px 3px 3px 3px;
+	border-radius: 6px;
+	transition:0.5s;
 }
 
 /****************************************************/
 /*styles pour le formulaire de commande          */
 /****************************************************/
 #commande{
-	margin-top: 300px;
+	margin-top: 25%;
 	margin-left: 45%;
+
 }
 .commandethis{
 margin-top: -200px;
 margin-left: -30%;
 border: 2px solid orange;
 width:  600px;
-padding: 10px 30px 10px 30px;
+padding: 10px 30px 30px 30px;
 }
 .commandethis .lblcommande{
 	color : orange;
@@ -630,6 +754,12 @@ padding: 10px 30px 10px 30px;
 	font-weight: bold;
 	margin-left: 450px;
 }
+.commandethis .lblPourboirC{
+	color : orange;
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 50px;
+}
 .commandethis .nomPlatCommande{
 	font-size: 16px;
 	margin-left: 75px;
@@ -644,32 +774,33 @@ padding: 10px 30px 10px 30px;
 }
 
 .commandethis #confirmCommande{
-background-color: #F5ECCE;
-border-style: solid;
-border-width: 2px;
-border-color: orange;
-font-size: 16px;
-letter-spacing: 2px;
-color: BLACK;
-margin-bottom: -10px;
-margin-top: 20px;
-margin-left: 390px;
-padding: 3px 3px 3px 3px;
-border-radius: 6px;
+	background-color: #F5ECCE;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+	margin-bottom: -10px;
+	margin-top: 20px;
+	margin-left: 390px;
+	padding: 3px 3px 3px 3px;
+	border-radius: 6px;
 }
 .commandethis #confirmCommande:hover{
-background-color: #F4FA58;
-border-style: solid;
-border-width: 2px;
-border-color: orange;
-font-size: 16px;
-letter-spacing: 2px;
-color: BLACK;
-margin-bottom: -10px;
-margin-top: 20px;
-margin-left: 390px;
-padding: 3px 3px 3px 3px;
-border-radius: 6px;
+	background-color: #F4FA58;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+	margin-bottom: -10px;
+	margin-top: 20px;
+	margin-left: 390px;
+	padding: 3px 3px 3px 3px;
+	border-radius: 6px;
+	transition:0.5s;
 }
 
 #fin{
@@ -717,6 +848,7 @@ border-radius: 6px;
 	font-size: 16px;
 	letter-spacing: 2px;
 	color: BLACK;
+	transition:0.5s;
 }
 
 
@@ -793,6 +925,7 @@ border-radius: 6px;
 	font-size: 16px;
 	letter-spacing: 2px;
 	color: BLACK;
+	transition:0.5s;
 }
 
 .contentConnexion .btnIdent input[type='reset']:hover{
@@ -803,7 +936,36 @@ border-radius: 6px;
 	font-size: 16px;
 	letter-spacing: 2px;
 	color: BLACK;
+	transition:0.5s;
 }
+/****************************************************/
+/*styles pour le formulaire de restauration            */
+/****************************************************/
+.restaurateurthis{
+margin-top: 200px;
+margin-left: 30%;
+border: 2px solid orange;
+width:  600px;
+padding: 10px 30px 30px 30px;
+}
+
+.sepAjoutPlat{
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

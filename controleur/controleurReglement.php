@@ -20,8 +20,10 @@ $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantLigne($formReglement->concactComposants($formReglement->creerLabelFor('Date de livraison : ', 'lblDateLivraison'),
                                       $formReglement->concactComposants($formReglement->creerSelect('jour',"unJour"),
+                                      $formReglement->concactComposants($formReglement->creerLabelFor(' / ', 'lblSlash'),
                                       $formReglement->concactComposants($formReglement->creerSelect('mois',"unMois"),
-                                      $formReglement->creerSelect("annee","uneAnnee"),0),0),0));
+                                      $formReglement->concactComposants($formReglement->creerLabelFor(' / ', 'lblSlash'),
+                                      $formReglement->creerSelect("annee","uneAnnee"),0),0),0),0),0));
 $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantLigne($formReglement->concactComposants($formReglement->creerLabelFor('Horraire : ', 'lblHorraireLivraison'),
