@@ -223,7 +223,6 @@ public static function ajouterPlat($unPlat){
 	$sql.= $unPlat->getPlatVisible() . "','";
 	$sql.= $unPlat->getCheminPhoto() . "','";
 	$sql.= $unPlat->getDescription() . "')";
-	echo $sql;
 	DBConnex::getInstance()->queryFetchFirstRow($sql);
 }
 
