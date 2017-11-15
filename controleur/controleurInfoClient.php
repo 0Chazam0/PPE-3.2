@@ -20,13 +20,19 @@ $formProfil = new Formulaire('post','index.php','formProfil','formProfil');
 if ($_SESSION['menuProfil'] == "Deconnexion") {
   $formProfil->ajouterComposantLigne($formProfil->creerInputSubmit('deconnexion','deconnexion','Deconnecter'));
   $formProfil->ajouterComposantTab();
-  $formProfil->ajouterComposantLigne($formProfil->creerInputSubmitHidden('deco','deco',''));
+  $formProfil->ajouterComposantLigne($formProfil->creerInputSubmitHidden('deco','deco','deco'));
+	$formProfil->ajouterComposantTab();
   $contentProfil=$formProfil->creerFormulaire();
   $contentProfil=$formProfil->afficherFormulaire();
 }
 
 if ($_SESSION['menuProfil'] == "Profil") {
-	$formProfil->ajouterComposantLigne($formProfil->)
+	$formProfil->ajouterComposantLigne($formProfil->creerLabelFor($_SESSION['identite'][1],'nom'));
+	$formProfil->ajouterComposantTab();
+	$formProfil->ajouterComposantLigne($formProfil->creerLabelFor($_SESSION['identite'][2],'prenom'));
+	$formProfil->ajouterComposantTab();
+	$formProfil->ajouterComposantLigne($formProfil->creerLabelFor($_SESSION['identite'][5],'adresse'));
+	$formProfil->ajouterComposantTab();
   $contentProfil=$formProfil->creerFormulaire();
   $contentProfil=$formProfil->afficherFormulaire();
 }
