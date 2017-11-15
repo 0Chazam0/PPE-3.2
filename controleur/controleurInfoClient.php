@@ -23,12 +23,14 @@ if ($_SESSION['menuProfil'] == "Deconnexion") {
   $formProfil->ajouterComposantLigne($formProfil->creerInputSubmitHidden('deco','deco',''));
   $contentProfil=$formProfil->creerFormulaire();
   $contentProfil=$formProfil->afficherFormulaire();
-  $test[0][0]=3;
-  $test[0][1]=4;
-  $test[1][0]=5;
-  $test[0][2]=6;
-  echo count($test[0]);
 }
+
+if ($_SESSION['menuProfil'] == "Profil") {
+	$formProfil->ajouterComposantLigne($formProfil->)
+  $contentProfil=$formProfil->creerFormulaire();
+  $contentProfil=$formProfil->afficherFormulaire();
+}
+
 
 if ($_SESSION['menuProfil'] == "Historique") {
   $lesCommandes = CommandeDAO::commandesDunUser($_SESSION['identite'][0]);
