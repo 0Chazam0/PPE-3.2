@@ -4,11 +4,9 @@ class Menu{
 	private $style;
 	private $composants = array();
 
-
 	public function __construct($unStyle ){
 		$this->style = $unStyle;
 	}
-
 
 	public function ajouterComposant($unComposant){
 		$this->composants[] = $unComposant;
@@ -29,7 +27,6 @@ class Menu{
 		return $composant;
 	}
 
-
 	public function creerMenu($nomMenu){
 		$menu = "<ul class = '" .  $this->style . "'>";
 		foreach($this->composants as $composant){
@@ -43,6 +40,7 @@ class Menu{
 		$menu .= "</ul>";
 		return $menu ;
 	}
+	
 	public function creerMenuType($composantActif){
 		$menu = "<ul class = '" .  $this->style . "'>";
 		foreach($this->composants as $composant){

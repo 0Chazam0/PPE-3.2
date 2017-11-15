@@ -835,8 +835,6 @@ border-radius: 6px;
 
 }*/
 
-
-
 .styleNote{
 	z-index: 10;
 	position: fixed;
@@ -854,4 +852,58 @@ border-radius: 6px;
 	padding: 12px;
 	margin-bottom: 20px;
 	border-radius: 5px;
+}
+
+/****************************************************/
+/*styles pour le menu du profil                     */
+/****************************************************/
+
+nav.menuProfil{
+	background-color: white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	height: 75px;
+	margin-top: 20%;
+	margin-left: 40%;
+	margin-right: 10%;
+}
+
+nav.menuProfil ul {
+	display: inline-block;
+	list-style: none;
+	margin-top:5px;
+}
+
+nav.menuProfil ul li {
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Helvetica;
+}
+
+nav.menuProfil ul li a {
+	display: table-cell;
+    text-decoration: none;
+  	color: black;
+  	text-align: center;
+  	vertical-align: middle;
+  	height: 50px;
+  	width: 140px;
+}
+
+nav.menuProfil ul li a:hover {
+  color: grey;
+}
+
+nav.menuProfil ul li .actif {
+	display: table-cell;
+  	background-color: ivory;
+  	color: black;
+  	text-align: center;
+  	vertical-align: middle;
+  	height: 50px;
+  	width: 140px;
 }
