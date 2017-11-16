@@ -147,6 +147,21 @@ class RestoDAO
 	  $sql = "DELETE FROM resto WHERE IDR = '" . $IDR . "';";
 
 	}
+	public static function selectListeRestoRestaurateur($idU)
+	{
+		$result = array();
+		$sql = "SELECT IDR FROM gerer WHERE IDU = '" . $idU . "' ;";
+		$liste = DBConnex::getInstance()->queryFetchAll($sql);
+		if (count($liste) > 0)
+		{
+			foreach ($liste as $resto)
+			{
+				$result[] = $resto;
+			}
+		}
+		return $result;
+	}
+
 }
 
 

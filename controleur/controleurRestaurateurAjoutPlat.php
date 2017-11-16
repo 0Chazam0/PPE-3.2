@@ -1,8 +1,16 @@
 
 <?php
 $_SESSION['dernierePage'] = "Restaurateur";
+
 $formRestaurateur = new Formulaire("POST","index.php","formRestaurateur","restaurateurthis");
-$formResultat = new Formulaire("POST","","formResultat","resultatthis");
+if(isset($_SESSION['resultatUpload']) && $_SESSION['resultatUpload'] == "Transfert réussi" ){
+  $style = "resultatthisSucces";
+
+}
+else{
+  $style = "resultatthisErreur";
+}
+$formResultat = new Formulaire("POST","","formResultat",$style);
 
 
 /*----------------------------------------------------------*/
@@ -10,7 +18,7 @@ $formResultat = new Formulaire("POST","","formResultat","resultatthis");
 /*----------------------------------------------------------*/
 if(isset($_POST['btnAjoutPlat'])){
   $formRestaurateur->ajouterComposantLigne($formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Ajouter un plat', 'lblajoutPlat'),
-                                           $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Icône du fichier (JPEG | max. 15 Ko) :', 'lblajoutPlat'),
+                                           $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Icône du fichier (JPEG | max. 1 Mo) :', 'fileAjoutPlat'),
                                            $formRestaurateur->concactComposants($formRestaurateur->creerInputFile('uploadImg','uploadImg',"Parcourir"),
                                            $formRestaurateur->concactComposants($formRestaurateur->creerSep('sepAjoutPlat'),
                                            $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Type de plat : ', 'lblAjoutTypePlat'),
@@ -36,7 +44,7 @@ if(isset($_POST['btnAjoutPlat'])){
 else{
 
 $formRestaurateur->ajouterComposantLigne($formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Ajouter un plat', 'lblajoutPlat'),
-                                         $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Icône du fichier (JPEG | max. 15 Ko) :', 'lblajoutPlat'),
+                                         $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Icône du fichier (JPEG | max. 1 Mo) :', 'fileAjoutPlat'),
                                          $formRestaurateur->concactComposants($formRestaurateur->creerInputFile('uploadImg','uploadImg',"Parcourir"),
                                          $formRestaurateur->concactComposants($formRestaurateur->creerSep('sepAjoutPlat'),
                                          $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Type de plat : ', 'lblAjoutTypePlat'),
@@ -126,5 +134,5 @@ if(isset($_SESSION['resultatUpload'])){
 
 
 /*-------------------------------------------*/
-include "vue/vueRestaurateur.php";
+include "vue/vueRestaurateurAjoutPlat.php";
  ?>

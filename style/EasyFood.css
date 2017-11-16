@@ -939,37 +939,93 @@ padding: 10px 30px 30px 30px;
 	transition:0.5s;
 }
 /****************************************************/
-/*styles pour le formulaire de restauration            */
+/*styles pour le formulaire de restaurateur ajout plat            */
 /****************************************************/
 .restaurateurthis{
 margin-top: 30px;
 margin-left: 30%;
-border: 2px solid orange;
+border: 4px solid orange;
 width:  600px;
-padding: 10px 30px 30px 30px;
+padding: 10px 0px 30px 30px;
+background-color: #212020;
+color: white;
+border-radius: 10px
 }
 
-.sepAjoutPlat{
-	width: 100%;
+#sepAjoutPlat{
+	width:  100%;
+	background-color: orange;
+	border: 2px solid orange;
 }
+#uploadImg{
+ margin-left: 15px;
+}
+.lblajoutPlat{
+	color:orange;
+	font-size: 25px;
 
+}
 #cbxTypeP{
 	width: 60px;
+	margin-left: 55px;
+}
+.fileAjoutPlat{
+	margin-left: 15px;
+}
+.lblAjoutTypePlat{
+	margin-left: 15px;
+}
+.lblAjoutNomPlat{
+	margin-left: 15px;
+}
+#txtAjoutNomPlat{
+	margin-left: 57px;
+}
+.lblAjoutPrixPlat{
+	margin-left: 15px;
+}
+#txtAjoutPrixPlat{
+	margin-left: 62px;
+}
+.lblAjoutDescriptionPlat{
+	margin-left: 15px;
+
+}
+#txtAjoutDescriptionPlat{
+	margin-left: 15px;
+	width: 200px;
+}
+#btnAjoutPlat{
+	margin-left: 430px;
+	width: 130px;
 }
 
 
-.resultatthis{
-text-align: center;
+.resultatthisErreur{
+background-color: #F3CACA;
 margin-top: 130px;
 margin-left: 30%;
-border: 2px solid orange;
+border: 4px solid red;
 width:  600px;
 color: red;
-height: 40px;
-padding-left: 200px;
-
+font-weight: bold;
+height: 60px;
+padding-right: 30px;
+border-radius: 10px;
 }
 
+.resultatthisSucces{
+background-color: #97E18C;
+margin-top: 130px;
+margin-left: 30%;
+border: 4px solid green;
+width:  600px;
+color: green;
+font-weight: bold;
+border-radius: 10px;
+height: 60px;
+padding-right: 30px;
+}
 
 
 

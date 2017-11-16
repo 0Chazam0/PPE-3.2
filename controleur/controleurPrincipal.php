@@ -76,6 +76,15 @@ if (isset($_POST['idResto'])){
 }
 
 /*----------------------------------------------------------*/
+/*--------Récupère le controleur RestaurateurAjouPlat (si la condition est respectée)----------*/
+/*----------------------------------------------------------*/
+
+if (isset($_POST['idRestoRestaurateur'])){
+	$_SESSION['RestoRestaurateurSelected'] = $_POST['idRestoRestaurateur'];
+	$_SESSION['menuPrincipal']="RestaurateurAjoutPlat";
+}
+
+/*----------------------------------------------------------*/
 /*--------Récupère le controleur Commande (si la condition est respectée)----------*/
 /*----------------------------------------------------------*/
 if (isset($_POST['suivantReglement'])){
