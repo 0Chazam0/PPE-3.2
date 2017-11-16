@@ -102,7 +102,7 @@ if (isset($_FILES['uploadImg']['name']) && !empty($_FILES['uploadImg']['name']))
               }
 
               $cheminPhoto = str_replace(CHR(32),"",strtolower($_POST['txtAjoutNomPlat']));
-              $lePlat = new Plat("P".($numeroPlat+1),"",$_POST['cbxTypeP'],$_POST['txtAjoutNomPlat'],$_POST['txtAjoutPrixPlat'],0,1,$cheminPhoto,$_POST['txtAjoutDescriptionPlat']);
+              $lePlat = new Plat("P".($numeroPlat+1),$_SESSION['RestoRestaurateurSelected'],$_POST['cbxTypeP'],$_POST['txtAjoutNomPlat'],$_POST['txtAjoutPrixPlat'],0,1,$cheminPhoto,$_POST['txtAjoutDescriptionPlat']);
               PlatDAO::ajouterPlat($lePlat);
             }
             else{
@@ -120,6 +120,9 @@ else {
   $_SESSION['resultatUpload'] = "Choisir une image";
 
 }
+
+
+
 /*----------------------------------------------------------*/
 /*------Affiche un message de resultat (Succés de l'ajout ou l'erreur)-------*/
 /*----------------------------------------------------------*/
@@ -134,5 +137,5 @@ if(isset($_SESSION['resultatUpload'])){
 
 
 /*-------------------------------------------*/
-include "vue/vueRestaurateurAjoutPlat.php";
+include "vue/vueRestaurateurChgResto.php";
  ?>

@@ -2,7 +2,7 @@
 /*----------------------------------------------------------*/
 /*--------Déclaration variable session----------------------*/
 /*----------------------------------------------------------*/
-$_SESSION['dernierePage'] = "RestaurteurResto";
+$_SESSION['dernierePage'] = "RestaurteurSesResto";
 $_SESSION['listeRestosRestaurateur'] = RestoDAO::selectListeRestoRestaurateur($_SESSION['identite'][0]);
 $_SESSION['listeRestos'] = new Restos(RestoDAO::selectListeResto());
 $_SESSION['listeTypeRestos'] = new TypeRestos(TypeRestoDAO::selectListeTypeResto());
@@ -88,5 +88,5 @@ else {
 }
 }
 /*-------------------------------------------*/
-include "vue/vueRestaurateurResto.php";
+include "vue/vueRestaurateurSesResto.php";
  ?>
