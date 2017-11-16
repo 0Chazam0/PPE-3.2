@@ -7,15 +7,19 @@ if (isset($_POST['id']) && isset($_POST['mdp'])) {
   $unUserR = UserDAO::unUserR($_POST['id']);
   if ($unUserA != NULL) {
     $unUser = $unUserA;
+    $unUserType = 'A';
   }
   elseif ($unUserC != NULL) {
     $unUser = $unUserC;
+    $unUserType = 'C';
   }
   elseif ($unUserM != NULL) {
     $unUser = $unUserM;
+    $unUserType = 'M';
   }
   elseif ($unUserR != NULL) {
     $unUser = $unUserR;
+    $unUserType = 'R';
   }
   else {
     $unUser ='';
@@ -23,6 +27,7 @@ if (isset($_POST['id']) && isset($_POST['mdp'])) {
   if ($unUser != '') {
     if ($unUser[4]==$_POST['mdp'] ) {
       $_SESSION['identite'] = $unUser;
+      $_SESSION['typeIdentite'] = $unUserType;
       $_SESSION['menuPrincipal']=$_SESSION['dernierePage'];
       include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
     }

@@ -196,11 +196,10 @@ public static function selectListeVille()
 class PlatDAO
 {
 	public static function platsDuneCommande($unIdCOmmande){
-		$sql="select Q.IDP, P.NOMP, Q.QUANTITE from quantite as Q, plat as P where Q.IDP=P.IDP and Q.IDC = '";
+		$sql="select Q.IDP, P.NOMP, Q.QUANTITE, P.PHOTOP,P.PRIXCLIENTP, P.DESCRIPTIONP from quantite as Q, plat as P where Q.IDP=P.IDP and Q.IDC = '";
 		$sql.= $unIdCOmmande;
 		$sql.= "'";
-		echo $sql . "</br>";
-		$lesplats = DBConnex::getInstance()->queryFetchFirstRow($sql);
+		$lesplats = DBConnex::getInstance()->queryFetchAll($sql);
 		return $lesplats;
 	}
 
@@ -316,8 +315,7 @@ class CommandeDAO
 		$sql="select C.IDC, C.IDR, C.IDU, C.DATEC FROM commande as C WHERE C.IDU = '";
 		$sql.= $unIdClient;
 		$sql.= "'";
-		echo $sql . "</br>";
-		$comm = DBConnex::getInstance()->queryFetchFirstRow($sql);
+		$comm = DBConnex::getInstance()->queryFetchAll($sql);
 		return $comm;
 	}
 

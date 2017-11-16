@@ -3,6 +3,9 @@
 $menuProfil = new menu("menuProfil");
 $menuProfil->ajouterComposant($menuProfil->creerItemLien('Profil','Profil'));
 $menuProfil->ajouterComposant($menuProfil->creerItemLien('Historique','Historique'));
+if ($_SESSION['typeIdentite'] == 'R') {
+	$menuProfil->ajouterComposant($menuProfil->creerItemLien('Espace Restaurateur','Restaurateur'));
+}
 $menuProfil->ajouterComposant($menuProfil->creerItemLien('Deconnexion','Deconnexion'));
 $leMenuProfil = $menuProfil->creerMenu("menuProfil");
 
@@ -40,44 +43,24 @@ if ($_SESSION['menuProfil'] == "Profil") {
 
 if ($_SESSION['menuProfil'] == "Historique") {
   $lesCommandes = CommandeDAO::commandesDunUser($_SESSION['identite'][0]);
-    echo $lesCommandes[3][0] . "</br>";
-    if (count($lesCommandes[0] > 1)) {
       foreach ($lesCommandes as $uneCommande) {
-        echo $uneCommande;
-        $formProfil->ajouterComposantLigne($formProfil->creerA($uneCommande[0]));
-        $formProfil->ajouterComposantLigne($formProfil->creerA($uneCommande[3]));
-        $formProfil->ajouterComposantTab();
-        $lesPlats = PlatDAO::platsDuneCommande($uneCommande[0]);
-        echo $lesPlats;
-        if (count($lesPlats[0] > 1)) {
+				$formProfil->ajouterComposantLigne($formProfil->creerLabelFor($uneCommande['IDC'],$uneCommande['IDC']));
+        $formProfil->ajouterComposantLigne($formProfil->creerLabelFor($uneCommande['DATEC'],$uneCommande['DATEC']));
+
+        $lesPlats = PlatDAO::platsDuneCommande($uneCommande['IDC']);
           foreach ($lesPlats as $unPlat) {
-            $formProfil->ajouterComposantLigne($formProfil->creerA($unPlat[1]));
+						$formProfil->ajouterComposantLigne($formProfil->creerInputImage($unPlat['NOMP'],'imgPlat','image/' .$unPlat['PHOTOP'] . '.jpeg' ));
+            $formProfil->ajouterComposantLigne($formProfil->creerA($unPlat['NOMP']));
+						$formProfil->ajouterComposantLigne($formProfil->creerA($unPlat['PRIXCLIENTP']));
+						$formProfil->ajouterComposantLigne($formProfil->creerA($unPlat['DESCRIPTIONP']));
+
           }
-        }
-        else {
-          $formProfil->ajouterComposantLigne($formProfil->creerA($unPlat[1]));
-        }
-        $formProfil->ajouterComposantTab();
-      }
-    }
-    else {
-      $formProfil->ajouterComposantLigne($formProfil->creerA($uneCommande[0]));
-      $formProfil->ajouterComposantLigne($formProfil->creerA($uneCommande[3]));
-      $formProfil->ajouterComposantTab();
-      $lesPlats = PlatDAO::platsDuneCommande($uneCommande[0]);
-      if (count($lesPlats[0])) {
-        foreach ($lesPlats as $unPlat) {
-          $formProfil->ajouterComposantLigne($formProfil->creerA($unPlat[1]));
-        }
-      }
-      else {
-        $formProfil->ajouterComposantLigne($formProfil->creerA($unPlat[1]));
-      }
       $formProfil->ajouterComposantTab();
     }
   $contentProfil=$formProfil->creerFormulaire();
   $contentProfil=$formProfil->afficherFormulaire();
 }
+
 
 include "vue/vueProfil.php";
  ?>
