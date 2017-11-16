@@ -46,6 +46,11 @@ if (!isset($_SESSION['identite'])) {
 	$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Connexion',"Connexion"));
 }
 else {
+	$uneNote = (NoteDAO::selectResto($_SESSION['identite'][0]) != null ? 1 : 0);
+	if ($uneNote == 1)
+	{
+		$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Noter', '<img src="image\notif.png" width="85%" height="85%" alt="notif">'));
+	}
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('InfoClient',"Bienvenue : " . $_SESSION['identite'][2]));
 }
 

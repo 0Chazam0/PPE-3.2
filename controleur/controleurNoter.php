@@ -15,7 +15,7 @@ else
   $nomResto = NoteDAO::selectResto($_SESSION['identite'][0]);
   $nomCommand = NoteDAO::selectIDCommand($_SESSION['identite'][0] , $nomResto);
   $commentaire = $_POST['descrip'];
-  updateNoteDAO::updateNote($_COOKIE['r'], $_COOKIE['q'], $_COOKIE['l'],
+  NoteDAO::updateNote($_COOKIE['r'], $_COOKIE['q'], $_COOKIE['l'],
                             $_COOKIE['c'], $nomCommand, $commentaire);
   setcookie(r, 0);
   setcookie(q, 0);

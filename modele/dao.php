@@ -391,6 +391,9 @@ class NoteDAO
         $result = $note['NOMR'];
       }
     }
+		else {
+			$result = 0;
+		}
     return $result;
   }
 
