@@ -1,12 +1,13 @@
 <div class="conteneur">
   <header>
-      <?php //include 'haut.php' ;?>
+      <?php include 'haut.php' ;?>
   </header>
 
   <main>
     <nav class = "menuProfil">
       <?php echo $leMenuProfil;
-            echo $contentProfil;?>
+            echo $contentProfil;
+            ?>
     </nav>
 
   </main>

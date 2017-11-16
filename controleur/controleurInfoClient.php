@@ -4,7 +4,7 @@ $menuProfil = new menu("menuProfil");
 $menuProfil->ajouterComposant($menuProfil->creerItemLien('Profil','Profil'));
 $menuProfil->ajouterComposant($menuProfil->creerItemLien('Historique','Historique'));
 if ($_SESSION['typeIdentite'] == 'R') {
-	$menuProfil->ajouterComposant($menuProfil->creerItemLien('Espace Restaurateur','Restaurateur'));
+	$menuProfil->ajouterComposant($menuProfil->creerItemLien('Restaurateur','Restaurateur'));
 }
 $menuProfil->ajouterComposant($menuProfil->creerItemLien('Deconnexion','Deconnexion'));
 $leMenuProfil = $menuProfil->creerMenu("menuProfil");
@@ -20,13 +20,16 @@ else
 
 }
 $formProfil = new Formulaire('post','index.php','formProfil','formProfil');
+if ($_SESSION['menuProfil'] == "Restaurateur") {
+	$formProfil->ajouterComposantLigne($formProfil->creerInputSubmit('redirectionRestaurateur','redirectionRestaurateur','Votre espace restaurateur'));
+	$formProfil->ajouterComposantTab();
+
+}
 if ($_SESSION['menuProfil'] == "Deconnexion") {
   $formProfil->ajouterComposantLigne($formProfil->creerInputSubmit('deconnexion','deconnexion','Deconnecter'));
   $formProfil->ajouterComposantTab();
   $formProfil->ajouterComposantLigne($formProfil->creerInputSubmitHidden('deco','deco','deco'));
 	$formProfil->ajouterComposantTab();
-  $contentProfil=$formProfil->creerFormulaire();
-  $contentProfil=$formProfil->afficherFormulaire();
 }
 
 if ($_SESSION['menuProfil'] == "Profil") {
@@ -36,10 +39,8 @@ if ($_SESSION['menuProfil'] == "Profil") {
 	$formProfil->ajouterComposantTab();
 	$formProfil->ajouterComposantLigne($formProfil->creerLabelFor($_SESSION['identite'][5],'adresse'));
 	$formProfil->ajouterComposantTab();
-  $contentProfil=$formProfil->creerFormulaire();
-  $contentProfil=$formProfil->afficherFormulaire();
-}
 
+}
 
 if ($_SESSION['menuProfil'] == "Historique") {
   $lesCommandes = CommandeDAO::commandesDunUser($_SESSION['identite'][0]);
@@ -57,10 +58,10 @@ if ($_SESSION['menuProfil'] == "Historique") {
           }
       $formProfil->ajouterComposantTab();
     }
-  $contentProfil=$formProfil->creerFormulaire();
-  $contentProfil=$formProfil->afficherFormulaire();
-}
 
+}
+$contentProfil=$formProfil->creerFormulaire();
+$contentProfil=$formProfil->afficherFormulaire();
 
 include "vue/vueProfil.php";
  ?>
