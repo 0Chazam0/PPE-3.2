@@ -115,7 +115,6 @@ if (isset($_POST['validerCommande'])){
 		$_SESSION['lieuLivraison']= $_SESSION['identite'][5];
 		$_SESSION['menuPrincipal']="Reglement";
 	}
-
 }
 /*----------------------------------------------------------*/
 /*-------Affiche le controleur récupéré----------*/

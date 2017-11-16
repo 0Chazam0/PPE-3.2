@@ -240,10 +240,25 @@ public static function ajouterPlat($unPlat){
 	DBConnex::getInstance()->queryFetchFirstRow($sql);
 }
 
-public function delPlat($IDR, $IDP)
+public static function updatePlat($unPlat)
+{
+  $sql = "UPDATE plat SET 	IDR = '" . $unPlat->getIDResto() . "',";
+	$sql .= "CODET = '" . $unPlat->getTypePlat() . "',";
+	$sql .= "NOMP = '" . $unPlat->getNom() . "',";
+	$sql .= "PRIXFOURNISSEURP = '" . $unPlat->getPrixFournisseur() . "',";
+	$sql .= "PRIXCLIENTP = '" . $unPlat->getPrixClient() . "',";
+	$sql .= "PLATVISIBLE = '" . $unPlat->getPlatVisible() . "',";
+	$sql .= "PHOTOP = '" . $unPlat->getCheminPhoto() . "',";
+	$sql .= "DESCRIPTIONP = '" . $unPlat->getDescription() . "',";
+	$sql .= "WHERE IDP = '" . $unPlat->getID() . "';";
+	echo $sql;
+	//return DBConnex::getInstance()->exec($sql);
+}
+
+public static function delPlat($IDR, $IDP)
 {
   $sql = "DELETE FROM plat WHERE IDP = '" . $IDP . "' AND IDR = '" . $IDR . "';";
-
+	return DBConnex::getInstance()->exec($sql);
 }
 }
 
