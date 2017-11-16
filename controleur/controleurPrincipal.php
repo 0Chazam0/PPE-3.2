@@ -81,7 +81,7 @@ if (isset($_POST['idResto'])){
 
 if (isset($_POST['idRestoRestaurateur'])){
 	$_SESSION['RestoRestaurateurSelected'] = $_POST['idRestoRestaurateur'];
-	$_SESSION['menuPrincipal']="RestaurateurAjoutPlat";
+	$_SESSION['menuPrincipal']="RestaurateurChgResto";
 }
 
 /*----------------------------------------------------------*/
