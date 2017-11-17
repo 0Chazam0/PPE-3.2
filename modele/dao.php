@@ -249,10 +249,9 @@ public static function updatePlat($unPlat)
 	$sql .= "PRIXCLIENTP = '" . $unPlat->getPrixClient() . "',";
 	$sql .= "PLATVISIBLE = '" . $unPlat->getPlatVisible() . "',";
 	$sql .= "PHOTOP = '" . $unPlat->getCheminPhoto() . "',";
-	$sql .= "DESCRIPTIONP = '" . $unPlat->getDescription() . "',";
+	$sql .= "DESCRIPTIONP = '" . $unPlat->getDescription() . "'";
 	$sql .= "WHERE IDP = '" . $unPlat->getID() . "';";
-	echo $sql;
-	//return DBConnex::getInstance()->exec($sql);
+	return DBConnex::getInstance()->exec($sql);
 }
 
 public static function delPlat($IDR, $IDP)

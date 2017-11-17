@@ -30,7 +30,9 @@ function myFunction() {
     </div>
     <div id="panier">
 			<?php
+			if (isset($_SESSION['typeIdentite']) && $_SESSION['typeIdentite'] != 'R'){
 			  echo $_SESSION['leFormPlanier'];
+			}
 			 ?>
 
     </div>

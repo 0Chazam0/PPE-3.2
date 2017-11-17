@@ -19,17 +19,17 @@ $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantLigne($formReglement->concactComposants($formReglement->creerLabelFor('Date de livraison : ', 'lblDateLivraison'),
-                                      $formReglement->concactComposants($formReglement->creerSelect('jour',"unJour"),
+                                      $formReglement->concactComposants($formReglement->creerSelect('jour',"unJour",""),
                                       $formReglement->concactComposants($formReglement->creerLabelFor(' / ', 'lblSlash'),
-                                      $formReglement->concactComposants($formReglement->creerSelect('mois',"unMois"),
+                                      $formReglement->concactComposants($formReglement->creerSelect('mois',"unMois",""),
                                       $formReglement->concactComposants($formReglement->creerLabelFor(' / ', 'lblSlash'),
                                       $formReglement->creerSelect("annee","uneAnnee"),0),0),0),0),0));
 $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantLigne($formReglement->concactComposants($formReglement->creerLabelFor('Horraire : ', 'lblHorraireLivraison'),
-                                      $formReglement->concactComposants($formReglement->creerSelect("heure","uneHeure"),
+                                      $formReglement->concactComposants($formReglement->creerSelect("heure","uneHeure",""),
                                       $formReglement->concactComposants($formReglement->creerLabelFor(' : ', 'lblHeureLivraison'),
-                                      $formReglement->concactComposants($formReglement->creerSelect("minute","uneMinute"),
+                                      $formReglement->concactComposants($formReglement->creerSelect("minute","uneMinute",""),
                                       $formReglement->creerLabelFor('minutes', 'lblMinuteLivraison')
                                       ,0),0),0),0));
 $formReglement->ajouterComposantTab();

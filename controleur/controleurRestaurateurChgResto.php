@@ -107,7 +107,7 @@ if ($_SESSION['menuDetailResto']== "insert"){
                                              $formRestaurateur->concactComposants($formRestaurateur->creerInputFile('uploadImg','uploadImg',"Parcourir"),
                                              $formRestaurateur->concactComposants($formRestaurateur->creerSep('sepAjoutPlat'),
                                              $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Type de plat : ', 'lblAjoutTypePlat'),
-                                             $formRestaurateur->concactComposants($formRestaurateur->creerSelect('typeP','cbxTypeP'),
+                                             $formRestaurateur->concactComposants($formRestaurateur->creerSelect('typeP','cbxTypeP',""),
                                              $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Nom du Plat : ', 'lblAjoutNomPlat'),
                                              $formRestaurateur->concactComposants($formRestaurateur->creerInputTexte("txtAjoutNomPlat","txtAjoutNomPlat","",$_POST['txtAjoutNomPlat'],1,"Entrez le nom du plat"),
                                              $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Prix du Plat : ', 'lblAjoutPrixPlat'),
@@ -133,7 +133,7 @@ if ($_SESSION['menuDetailResto']== "insert"){
                                            $formRestaurateur->concactComposants($formRestaurateur->creerInputFile('uploadImg','uploadImg',"Parcourir"),
                                            $formRestaurateur->concactComposants($formRestaurateur->creerSep('sepAjoutPlat'),
                                            $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Type de plat : ', 'lblAjoutTypePlat'),
-                                           $formRestaurateur->concactComposants($formRestaurateur->creerSelect('typeP','cbxTypeP'),
+                                           $formRestaurateur->concactComposants($formRestaurateur->creerSelect('typeP','cbxTypeP',""),
                                            $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Nom du Plat : ', 'lblAjoutNomPlat'),
                                            $formRestaurateur->concactComposants($formRestaurateur->creerInputTexte("txtAjoutNomPlat","txtAjoutNomPlat","","",1,"Entrez le nom du plat"),
                                            $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Prix du Plat : ', 'lblAjoutPrixPlat'),
@@ -244,13 +244,13 @@ if ($_SESSION['menuDetailResto']== "update"){
 
 			$formPlat = new Formulaire("POST","index.php","formPlat","platRthis");
 			$formPlat->ajouterComposantLigne($formPlat->creerInputImage('imgPlat', 'imgPlat', $correct));
-			$formPlat->ajouterComposantLigne($formPlat->concactComposants($formPlat->creerInputTexte("nomPlat","nomPlat","",$OBJ->getNom(),1,"Entrez le nom du plat"),
-																			$formPlat->concactComposants($formPlat->creerLabelFor('Type de Plat : ',"lblTypePlat"),
-																			$formPlat->concactComposants($formPlat->creerSelect('typeP','cbxTypeP'),
+			$formPlat->ajouterComposantLigne($formPlat->concactComposants($formPlat->creerInputTexte("nomPlatM","nomPlatM","",$OBJ->getNom(),1,"Entrez le nom du plat"),
+																			$formPlat->concactComposants($formPlat->creerLabelFor('Type de Plat : ',"lblTypePlatM"),
+																			$formPlat->concactComposants($formPlat->creerSelect('typeP','cbxTypeP',$OBJ->getTypePlat()),
 																			$formPlat->concactComposants($formPlat->creerLabelFor('Prix : ',"lblPrixPlat"),
 																			$formPlat->concactComposants($formPlat->creerInputTexte("prixPlat","prixPlat","",$OBJ->getPrixFournisseur(),1,"Entrez le nom du plat"),
 																			$formPlat->concactComposants($formPlat->creerLabelFor('Description : ',"lblDescripPlat"),
-																			$formPlat->$formPlat->creerInputTexte("descripPlat","descripPlat","",$OBJ->getDescription(),1,"Entrez le nom du plat"),
+																			$formPlat->creerInputTexte("descripPlat","descripPlat","",$OBJ->getDescription(),1,"Entrez le nom du plat"),
 																			0),2),0),2),0),2));
 			$formPlat->ajouterComposantLigne($formPlat->creerInputSubmitPanier($OBJ->getID(),"updatePlat-btn"," Modifier le plat"));
 			$formPlat->ajouterComposantTab();
@@ -261,11 +261,11 @@ if ($_SESSION['menuDetailResto']== "update"){
 	foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
 	{
 		if(isset($_POST[$OBJ->getID()])) {
-			//$lePlat = new Plat($OBJ->getID(),$_SESSION['RestoRestaurateurSelected'],$_POST['typePlat'],$_POST['nomPlat'],$_POST['prixPlat'],$OBJ->getPrixClient(),1,$OBJ->getCheminPhoto(),$_POST['descripPlat']);
+			$lePlat = new Plat($OBJ->getID(),$_SESSION['RestoRestaurateurSelected'],$_POST['cbxTypeP'],$_POST['nomPlat'],$_POST['prixPlat'],$OBJ->getPrixClient(),1,$OBJ->getCheminPhoto(),$_POST['descripPlat']);
 			PlatDAO::updatePlat($lePlat);
 			$_SESSION['lesFormsPlatR'] = null;
 			$formResult = new Formulaire("POST","#","formPlat","resultatthisSucces");
-			$formResult->ajouterComposantLigne($formResult->creerLabelFor("Le plat a été correctement supprimé","resultatSuppri"));
+			$formResult->ajouterComposantLigne($formResult->creerLabelFor("Le plat a été correctement modifié","resultatSuppri"));
 			$formResult->ajouterComposantTab();
 			$formResult->creerFormulaire();
 		}
@@ -335,8 +335,26 @@ if ($_SESSION['menuDetailResto']== "delete"){
 			$formResult->ajouterComposantLigne($formResult->creerLabelFor("Le plat a été correctement supprimé","resultatSuppri"));
 			$formResult->ajouterComposantTab();
 			$formResult->creerFormulaire();
+
+
+			$dossier_traite = "image";
+			$repertoire = opendir($dossier_traite); // On définit le répertoire dans lequel on souhaite travailler.
+			while (false !== ($fichier = readdir($repertoire))) // On lit chaque fichier du répertoire dans la boucle.
+			{
+				$chemin = $dossier_traite."/".$fichier; // On définit le chemin du fichier à effacer.
+				// Si le fichier n'est pas un répertoire…
+				$fichierSelected = $OBJ->getCheminPhoto().".jpeg";
+				if ($fichier == $fichierSelected)
+	     {
+	     	unlink($chemin); // On efface.
+	     }
+		 	}
+		 	closedir($repertoire); // Ne pas oublier de fermer le dossier ***EN DEHORS de la boucle*** ! Ce qui évitera à PHP beaucoup de calculs et des problèmes liés à l'ouverture du dossie
 		}
 	}
+
+
+
 }
 
 /*-------------------------------------------*/

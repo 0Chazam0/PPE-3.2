@@ -1147,13 +1147,13 @@ padding-right: 30px;
 	border-bottom: 2px solid orange;
 	border-radius: 10px;
 	height: 250px;
-	width: 800px;
+	width: 905px;
 	margin-bottom:  -30px;
 }
 
 .platRthis .updatePlat-btn{
 	margin-left: 25%;
-	margin-top: 75%;
+	margin-top: 65%;
 	background-color: #F5ECCE;
 	border-style: solid;
 	border-width: 2px;
@@ -1165,8 +1165,8 @@ padding-right: 30px;
 	border-radius: 6px;
 }
 .platRthis .updatePlat-btn:hover{
-	margin-left: 25%;
-	margin-top: 75%;
+	margin-left: 20%;
+	margin-top: 65%;
 	background-color: #F4FA58;
 	border-style: solid;
 	border-width: 2px;
@@ -1180,7 +1180,7 @@ padding-right: 30px;
 }
 
 .platRthis tr td table tr td{
-	width: 260px;
+	width: 290px;
 	height: 240px;
 	padding-top: 3px;
 	float:left;
@@ -1188,8 +1188,18 @@ padding-right: 30px;
 	display:inline;
 }
 
-.platRthis .nomPlat{
+.platRthis #nomPlatM{
+	width: auto;
+	margin-left: 10px;
+	margin-top: 15px;
+}
 
+.platRthis .lblTypePlatM{
+	width: auto;
+	padding-left: 10px;
+}
+
+.platRthis .nomPlat{
 	font-size: 22px;
 	width: auto;
 	padding-left: 10px;
@@ -1206,33 +1216,9 @@ padding-right: 30px;
 }
 
 
-/* ========================================================================== */
-/*.note {
- 	border:2px solid orange;
-	border-radius: 15px;
-	float:left;
-	background-color: white;
-}
-
-.noter{
-	background-color: white;
-	display: inline-block;
-	color: black;
-	height: 70%;
-	width: 50%;
-	font-size: 15px;
-	text-align: left;
-	vertical-align: middle;
-	border-radius: 5px;
-}
-
-.note tr td table tr td{
-	width: 300px;
-	height: 50px;
-	position: relative;
-	padding-right: 15px;
-
-}*/
+/****************************************************/
+/*styles pour le menu du profil du connecté                   */
+/****************************************************/
 
 .styleNote{
 	z-index: 10;

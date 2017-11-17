@@ -67,7 +67,7 @@ class Formulaire{
 	/****************************************************/
 
 
-	public function creerSelect($type,$id){
+	public function creerSelect($type,$id,$selected){
 		$composant = "<select  name = '" . $id . "' id = '" . $id . "' >";
 		if ($type=='jour') {
 			for ($i=1; $i <= 31 ; $i++) {
@@ -96,10 +96,11 @@ class Formulaire{
 		}
 		if ($type=='typeP') {
 			for ($i=1; $i <= 5 ; $i++) {
-				$composant .="<option>TP" . $i;
+				$composant .="<option ";
+				if("TP".$i == $selected) {$composant .="selected ";}
+				$composant .=">TP" . $i;
 			}
 		}
-
 		$composant .= "</select>";
 		return $composant;
 	}

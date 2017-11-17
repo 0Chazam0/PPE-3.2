@@ -83,7 +83,9 @@ if ($_SESSION['TypePlat']=="All") {
 	                                    $formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getPrixClient()."€","prixPlat"),
 	                                    $formPlat->concactComposants($formPlat->creerLabelFor('Description : ',"lblDescripPlat"),
 	                                    $formPlat->creerLabelFor($OBJ->getDescription(),"descripPlat"),0),4),0),2));
-	    $formPlat->ajouterComposantLigne($formPlat->creerInputSubmitPanier($OBJ->getID(),"ajoutCommande-btn"," Ajouter au panier "));
+			if (isset($_SESSION['typeIdentite']) && $_SESSION['typeIdentite'] != 'R'){
+	    	$formPlat->ajouterComposantLigne($formPlat->creerInputSubmitPanier($OBJ->getID(),"ajoutCommande-btn"," Ajouter au panier "));
+			}
 	    $formPlat->ajouterComposantTab();
 	    $formPlat->creerFormulaire();
 	    $_SESSION['lesFormsPlat'] .= $formPlat->afficherFormulaire();
@@ -107,8 +109,10 @@ else {
 		                                    $formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getPrixClient()."€","prixPlat"),
 		                                    $formPlat->concactComposants($formPlat->creerLabelFor('Description : ',"lblDescripPlat"),
 		                                    $formPlat->creerLabelFor($OBJ->getDescription(),"descripPlat"),0),4),0),2));
-		    $formPlat->ajouterComposantLigne($formPlat->creerInputSubmitPanier($OBJ->getID(),"ajoutCommande-btn"," Ajouter au panier "));
-		    $formPlat->ajouterComposantTab();
+				if (isset($_SESSION['typeIdentite']) && $_SESSION['typeIdentite'] != 'R'){
+		    	$formPlat->ajouterComposantLigne($formPlat->creerInputSubmitPanier($OBJ->getID(),"ajoutCommande-btn"," Ajouter au panier "));
+				}
+				$formPlat->ajouterComposantTab();
 		    $formPlat->creerFormulaire();
 		    $_SESSION['lesFormsPlat'] .= $formPlat->afficherFormulaire();
 				$_SESSION['nbPlatResto'] += 1;
