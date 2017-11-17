@@ -7,7 +7,4 @@
       <?php echo $formInscription->afficherFormulaire(); ?>
   </main>
 
-  <footer>
-      <?php include 'bas.php' ;?>
-  </footer>
 </div>
