@@ -6,6 +6,9 @@ $menuProfil->ajouterComposant($menuProfil->creerItemLien('Historique','Historiqu
 if ($_SESSION['typeIdentite'] == 'R') {
 	$menuProfil->ajouterComposant($menuProfil->creerItemLien('Restaurateur','Restaurateur'));
 }
+if ($_SESSION['typeIdentite'] == 'M') {
+	$menuProfil->ajouterComposant($menuProfil->creerItemLien('Moderateur','Moderateur'));
+}
 $menuProfil->ajouterComposant($menuProfil->creerItemLien('Deconnexion','Deconnexion'));
 $leMenuProfil = $menuProfil->creerMenu("menuProfil");
 
