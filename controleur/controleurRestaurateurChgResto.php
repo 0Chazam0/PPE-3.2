@@ -261,7 +261,7 @@ if ($_SESSION['menuDetailResto']== "update"){
 	foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
 	{
 		if(isset($_POST[$OBJ->getID()])) {
-			$lePlat = new Plat($OBJ->getID(),$_SESSION['RestoRestaurateurSelected'],$_POST['cbxTypeP'],$_POST['nomPlat'],$_POST['prixPlat'],$OBJ->getPrixClient(),1,$OBJ->getCheminPhoto(),$_POST['descripPlat']);
+			$lePlat = new Plat($OBJ->getID(),$_SESSION['RestoRestaurateurSelected'],$_POST['cbxTypeP'],$_POST['nomPlatM'],$_POST['prixPlat'],$OBJ->getPrixClient(),1,$OBJ->getCheminPhoto(),$_POST['descripPlat']);
 			PlatDAO::updatePlat($lePlat);
 			$_SESSION['lesFormsPlatR'] = null;
 			$formResult = new Formulaire("POST","#","formPlat","resultatthisSucces");

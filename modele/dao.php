@@ -203,6 +203,7 @@ class PlatDAO
 		return $lesplats;
 	}
 
+
 public static function selectListePlat()
 {
 	$result = array();
@@ -333,13 +334,22 @@ class CommandeDAO
 		return $comm;
 	}
 
-  public static function selectCommande($idUser)
+  public static function selectListeCommande()
   {
-    $sql = "SELECT IDR, DATEC, COMMENTAIRECLIENTC, DATELIVRC, MODEREGLEMENTC, AVISCLIENT, NOTECLIENT, COMVISIBLE FROM commande WHERE IDC = $idUser";
-
+    $sql = "SELECT * FROM commande ";
+		$liste = DBConnex::getInstance()->queryFetchAll($sql);
+		if (count($liste) > 0)
+		{
+			foreach ($liste as $com)
+			{
+				$uneCommande = new Commande($com['IDC'], $com['IDR'], $com['IDU'], $com['DATEC'], $com['COMMENTAIRECLIENTC'], $com['DATELIVRC'], $com['MODEREGLEMENTC'], $com['AVISCLIENT'], $com['NOTECLIENT'], $com['COMVISIBLE']);
+				$result[] = $uneCommande;
+			}
+		}
+		return $result;
   }
 	public static function inCommande($idCom, $idResto, $idCli,$dateCom,$dateLiv, $modeRegl){
-		$sql = "INSERT INTO commande VALUES ('C" . $idCom . "',
+		$sql = "INSERT INTO commande VALUES ('" . $idCom . "',
 																				 '" . $idResto . "',
 																				 '" . $idCli . "',
 																				 '" . $dateCom . "',
@@ -351,6 +361,17 @@ class CommandeDAO
 																				 '1')";
 	return DBConnex::getInstance()->exec($sql);
 	}
+
+
+	public static function inQte($idPlat,$idCom, $qte){
+		$sql = "INSERT INTO quantite VALUES ('" . $idPlat . "',
+																				 '" . $idCom . "',
+																				 '" . $qte . "'
+																				 )";
+	return DBConnex::getInstance()->exec($sql);
+	}
+
+
 	public function delCommande($IDC)
 	{
 	  $sql = "DELETE FROM commande WHERE IDC = '" . $IDC . "';";

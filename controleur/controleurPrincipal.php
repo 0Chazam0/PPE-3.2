@@ -24,7 +24,7 @@ require_once 'modele/DTO/ville.php';
 require_once 'modele/DTO/typePlat.php';
 require_once 'modele/DTO/plat.php';
 require_once 'modele/DTO/user.php';
-
+require_once 'modele/DTO/commande.php';
 /*----------------------------------------------------------*/
 /*--------session du menu principal avec accueil par defaut-------*/
 /*----------------------------------------------------------*/

@@ -66,8 +66,22 @@ $_SESSION['leformCommande'] = $formCommande->afficherFormulaire();
 
 if (isset($_POST['confirmCommande'])) {
   $txt = "<div id='fin'>Nous vous remercions de votre commande <br><br> Merci à bientôt </div>";
-  CommandeDAO::inCommande(4, $_SESSION['RestoSelected'], $_SESSION['identite'][0],date("Y-m-d"),$_SESSION['dateLivraisonMySql'], $_SESSION['modePaiement']);
-  
+  $numeroCommande = 1;
+  $_SESSION['listeCommande'] = new Commandes(CommandeDAO::selectListeCommande());
+  foreach ($_SESSION['listeCommande']->getLesCommandes() as $OBJ)
+  {
+    $idC = substr($OBJ->getidCommande(), 1) ;
+    if ($numeroCommande < $idC) {
+      $numeroCommande = substr($OBJ->getidCommande(), 1);
+    }
+  }
+  $_SESSION['compteurCommande']= "C".($numeroCommande+1);
+  CommandeDAO::inCommande($_SESSION['compteurCommande'], $_SESSION['RestoSelected'], $_SESSION['identite'][0],date("Y-m-d"),$_SESSION['dateLivraisonMySql'], $_SESSION['modePaiement']);
+
+  foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ)
+	{
+    CommandeDAO::inQte($OBJ->getID(),$_SESSION['compteurCommande'],1);
+  }
 
 }
 /*--------------------------------------------------------------------------*/

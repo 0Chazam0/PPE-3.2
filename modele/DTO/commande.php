@@ -1,12 +1,44 @@
 <?php
+class Commandes
+{
+  private   $lesCommandes;
 
+  function __construct($lesCommandes)
+  {
+    $this->lesCommandes = $lesCommandes;
+  }
+
+  public function getLesCommandes()
+  {
+    return $this->lesCommandes;
+  }
+
+  public function setLesCommandes($value)
+  {
+    $this->lesCommandes = $value;
+  }
+
+  public function chercher($TheId)
+  {
+    foreach ($this->lesCommandes as $Commande)
+    {
+      if ($Commande->getid() == $TheId)
+      {
+        return $Commande;
+      }
+    }
+    return null;
+  }
+
+}
 /**
  * Commande
  */
 class Commande
 {
-  private   $idClient;
-  private   $idRestaurateur;
+  private   $idCommande;
+  private   $idResto;
+  private   $idUser;
   private   $dateCommande;
   private   $commentaireClient;
   private   $dateLivraison;
@@ -14,14 +46,15 @@ class Commande
   private   $avisClient;
   private   $noteClient;
   private   $comVisible;
-  private   $quantite;
 
-  function __construct($pidClient, $pidRestaurateur, $pdateCommande,
+
+  function __construct($pidCommande, $pidResto, $pidUser, $pdateCommande,
                       $pcommentaireClient, $pdateLivraison, $pmodeReglement,
-                      $pavisClient, $pnoteClient, $pcomVisible, $pquantite)
+                      $pavisClient, $pnoteClient, $pcomVisible)
   {
-    $this->idClient = $pidClient;
-    $this->idRestaurateur = $pidRestaurateur;
+    $this->idCommande = $pidCommande;
+    $this->idResto = $pidResto;
+    $this->idUser = $pidUser;
     $this->dateCommande = $pdateCommande;
     $this->commentaireClient = $pcommentaireClient;
     $this->dateLivraison = $pdateLivraison;
@@ -29,18 +62,22 @@ class Commande
     $this->avisClient = $pavisClient;
     $this->noteClient = $pnoteClient;
     $this->comVisible = $pcomVisible;
-    $this->quantite = $pquantite;
   }
 
-  public function getIdClient()
+  public function getidCommande()
   {
-    return $this->idClient;
+    return $this->idCommande;
   }
 
-  public function getIdRestaurateur()
+  public function getidResto()
   {
-    return $this->idRestaurateur;
+    return $this->idResto;
   }
+  public function getidUser()
+  {
+    return $this->idUser;
+  }
+
 
   public function getDateCommande()
   {
@@ -77,9 +114,59 @@ class Commande
     return $this->comVisible;
   }
 
-  public function getQuantite()
+
+
+
+
+
+  public function setidCommande($value)
   {
-    return $this->quantite;
+     $this->idCommande = $value;
+  }
+
+  public function setidResto($value)
+  {
+     $this->idResto =$value;
+  }
+  public function setidUser($value)
+  {
+     $this->idUser= $value;
+  }
+
+
+  public function setDateCommande($value)
+  {
+     $this->dateCommande =$value;
+  }
+
+  public function setCommentaireClient($value)
+  {
+     $this->commentaireClient=$value;
+  }
+
+  public function setDateLivraison($value)
+  {
+     $this->dateLivraison=$value;
+  }
+
+  public function setModeReglement($value)
+  {
+     $this->modeReglement =$value;
+  }
+
+  public function setAvisClient($value)
+  {
+     $this->avisClient =$value;
+  }
+
+  public function setNoteClient($value)
+  {
+     $this->noteClient =$value;
+  }
+
+  public function setComVisible($value)
+  {
+     $this->comVisible = $value;
   }
 }
 

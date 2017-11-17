@@ -23,7 +23,7 @@ $formReglement->ajouterComposantLigne($formReglement->concactComposants($formReg
                                       $formReglement->concactComposants($formReglement->creerLabelFor(' / ', 'lblSlash'),
                                       $formReglement->concactComposants($formReglement->creerSelect('mois',"unMois",""),
                                       $formReglement->concactComposants($formReglement->creerLabelFor(' / ', 'lblSlash'),
-                                      $formReglement->creerSelect("annee","uneAnnee"),0),0),0),0),0));
+                                      $formReglement->creerSelect("annee","uneAnnee",""),0),0),0),0),0));
 $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantTab();
 $formReglement->ajouterComposantLigne($formReglement->concactComposants($formReglement->creerLabelFor('Horraire : ', 'lblHorraireLivraison'),
