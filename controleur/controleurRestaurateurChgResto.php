@@ -244,13 +244,14 @@ if ($_SESSION['menuDetailResto']== "update"){
 
 			$formPlat = new Formulaire("POST","index.php","formPlat","platRthis");
 			$formPlat->ajouterComposantLigne($formPlat->creerInputImage('imgPlat', 'imgPlat', $correct));
-			$formPlat->ajouterComposantLigne($formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getNom(),"nomPlat"),
+			$formPlat->ajouterComposantLigne($formPlat->concactComposants($formPlat->creerInputTexte("nomPlat","nomPlat","",$OBJ->getNom(),1,"Entrez le nom du plat"),
 																			$formPlat->concactComposants($formPlat->creerLabelFor('Type de Plat : ',"lblTypePlat"),
-																			$formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getTypePlat(),"typePlat"),
+																			$formPlat->concactComposants($formPlat->creerSelect('typeP','cbxTypeP'),
 																			$formPlat->concactComposants($formPlat->creerLabelFor('Prix : ',"lblPrixPlat"),
-																			$formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getPrixFournisseur()."€","prixPlat"),
+																			$formPlat->concactComposants($formPlat->creerInputTexte("prixPlat","prixPlat","",$OBJ->getPrixFournisseur(),1,"Entrez le nom du plat"),
 																			$formPlat->concactComposants($formPlat->creerLabelFor('Description : ',"lblDescripPlat"),
-																			$formPlat->creerLabelFor($OBJ->getDescription(),"descripPlat"),0),2),0),2),0),2));
+																			$formPlat->$formPlat->creerInputTexte("descripPlat","descripPlat","",$OBJ->getDescription(),1,"Entrez le nom du plat"),
+																			0),2),0),2),0),2));
 			$formPlat->ajouterComposantLigne($formPlat->creerInputSubmitPanier($OBJ->getID(),"updatePlat-btn"," Modifier le plat"));
 			$formPlat->ajouterComposantTab();
 			$formPlat->creerFormulaire();
@@ -260,9 +261,13 @@ if ($_SESSION['menuDetailResto']== "update"){
 	foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
 	{
 		if(isset($_POST[$OBJ->getID()])) {
-			$lePlat = new Plat($OBJ->getID(),$_SESSION['RestoRestaurateurSelected'],$_POST['typePlat'],$_POST['nomPlat'],$_POST['prixPlat'],$OBJ->getPrixClient(),1,$OBJ->getCheminPhoto(),$_POST['descripPlat']);
+			//$lePlat = new Plat($OBJ->getID(),$_SESSION['RestoRestaurateurSelected'],$_POST['typePlat'],$_POST['nomPlat'],$_POST['prixPlat'],$OBJ->getPrixClient(),1,$OBJ->getCheminPhoto(),$_POST['descripPlat']);
 			PlatDAO::updatePlat($lePlat);
-			$_SESSION['lesFormsPlatR'] = "Le plat a été correctement modifié";
+			$_SESSION['lesFormsPlatR'] = null;
+			$formResult = new Formulaire("POST","#","formPlat","resultatthisSucces");
+			$formResult->ajouterComposantLigne($formResult->creerLabelFor("Le plat a été correctement supprimé","resultatSuppri"));
+			$formResult->ajouterComposantTab();
+			$formResult->creerFormulaire();
 		}
 	}
 }
@@ -325,7 +330,11 @@ if ($_SESSION['menuDetailResto']== "delete"){
 	{
 		if(isset($_POST[$OBJ->getID()])) {
 			PlatDAO::delPlat($_SESSION['RestoRestaurateurSelected'],$OBJ->getID() );
-			$_SESSION['lesFormsPlatR'] = "Le plat a été correctement supprimé";
+			$_SESSION['lesFormsPlatR'] = null;
+			$formResult = new Formulaire("POST","#","formPlat","resultatthisSucces");
+			$formResult->ajouterComposantLigne($formResult->creerLabelFor("Le plat a été correctement supprimé","resultatSuppri"));
+			$formResult->ajouterComposantTab();
+			$formResult->creerFormulaire();
 		}
 	}
 }

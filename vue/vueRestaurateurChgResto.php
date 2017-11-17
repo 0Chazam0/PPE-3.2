@@ -23,10 +23,20 @@
         echo $formRestaurateur->afficherFormulaire();
       }
       if ($_SESSION['menuDetailResto']== "update"){
-        echo $_SESSION['lesFormsPlatR'];
+        if($_SESSION['lesFormsPlatR']!=null){
+          echo $_SESSION['lesFormsPlatR'];
+        }
+        elseif (isset($formResult)) {
+          echo $formResult->afficherFormulaire();
+        }
       }
       if ($_SESSION['menuDetailResto']== "delete"){
-        echo $_SESSION['lesFormsPlatR'];
+        if($_SESSION['lesFormsPlatR']!=null){
+          echo $_SESSION['lesFormsPlatR'];
+        }
+        elseif (isset($formResult)) {
+          echo $formResult->afficherFormulaire();
+        }
       }
     ?>
 
