@@ -314,6 +314,13 @@ public static function selectListeTypePlat()
 	}
 	return $result;
 }
+
+public static function ajouterTypePlat($unTypePlat){
+	$sql="INSERT INTO TYPE_PLAT VALUES ('";
+	$sql .= $unTypePlat->getCodeT() . "','";
+	$sql.= $unTypePlat->getLibelle() . "')";
+	DBConnex::getInstance()->queryFetchFirstRow($sql);
+}
 }
 
 

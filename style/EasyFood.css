@@ -1144,7 +1144,22 @@ padding-right: 30px;
 text-align: center;
 }
 
-
+.typeplatRthis{
+	margin-top: 15%;
+	margin-left: 30%;
+	border: 4px solid orange;
+	width:  600px;
+	padding: 30px 30px 30px 30px;
+	background-color:#E7E6E6;
+	color: black;
+	border-radius: 10px
+}
+#txtATP{
+	width: 200px;
+}
+#insertTypePlat-btn{
+	margin-left: 430px;
+}
 /****************************************************/
 /*styles pour le formulaire de restaurateur modif et supprimer plat            */
 /****************************************************/

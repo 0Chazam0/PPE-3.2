@@ -5,6 +5,7 @@ $_SESSION['listeRestos'] = new Restos(RestoDAO::selectListeResto());
 $_SESSION['listeTypeRestos'] = new TypeRestos(TypeRestoDAO::selectListeTypeResto());
 $_SESSION['listeVilles'] =new Villes(VilleDAO::selectListeVille());
 $_SESSION['listePlats'] = new Plats(PlatDAO::selectListePlat());
+$_SESSION['listeTypePlats'] = new TypePlats(TypePlatDAO::selectListeTypePlat());
 $_SESSION['lesFormsPlatR'] = null;
 /*----------------------------------------------------------*/
 /*--------Créer le menu detail resto----*/
@@ -15,6 +16,7 @@ $menuDetailResto = new menu("menuDetailResto");
 
 $menuDetailResto->ajouterComposant($menuDetailResto->creerItemLien('profil','Profil'));
 $menuDetailResto->ajouterComposant($menuDetailResto->creerItemLien('insert','Ajouter un plat'));
+$menuDetailResto->ajouterComposant($menuDetailResto->creerItemLien('insertTP','Ajouter un type de plat'));
 $menuDetailResto->ajouterComposant($menuDetailResto->creerItemLien('update','Modifier un plat'));
 $menuDetailResto->ajouterComposant($menuDetailResto->creerItemLien('delete','Supprimer un plat'));
 $menuDetailResto = $menuDetailResto->creerMenu("menuDetailResto");
@@ -208,6 +210,13 @@ if ($_SESSION['menuDetailResto']== "insert"){
 
 
 
+
+
+
+
+
+
+	/***********************************************************************************************************************************************************************/
   /*----------------------------------------------------------*/
   /*------Affiche un message de resultat (Succés de l'ajout ou l'erreur)-------*/
   /*----------------------------------------------------------*/
@@ -221,8 +230,39 @@ if ($_SESSION['menuDetailResto']== "insert"){
 }
 
 
+/***********************************************************************************************************************************************************************/
+
+/*----------------------------------------------------------*/
+/*--------Affiche la vue Upload typePlat si l'on choix le menu ajouter  type plat-----*/
+/*----------------------------------------------------------*/
+
+$formTypePlat = new Formulaire("POST","index.php","formPlat","typeplatRthis");
+$numeroTP = 0;
+if ($_SESSION['menuDetailResto']== "insertTP"){
+
+	$formTypePlat->ajouterComposantLigne($formTypePlat->concactComposants($formTypePlat->creerLabelFor('Type de Plat : ',"lblTypePlatATP"),
+																																				$formTypePlat->creerInputTexte("txtATP","txtATP","","",1,"Entrez le libelle du type de plat"),0));
+	$formTypePlat->ajouterComposantTab();
+	$formTypePlat->ajouterComposantLigne($formTypePlat->creerInputSubmitPanier("insertTypePlat-btn","insertTypePlat-btn"," Ajouter un type de plat"));
+	$formTypePlat->ajouterComposantTab();
+	$formTypePlat->creerFormulaire();
+	$_SESSION['lesFormsPlatR'] .= $formTypePlat->afficherFormulaire();
 
 
+	if(isset($_POST['insertTypePlat-btn'])){
+		foreach ($_SESSION['listeTypePlats']->getLesTypePlats() as $OBJ)
+		{
+			$numeroTP += 1;
+		}
+		$unTP = new typePlat('TP'.($numeroTP+1),$_POST['txtATP']);
+		TypePlatDAO::ajouterTypePlat($unTP);
+		$_SESSION['lesFormsPlatR'] = null;
+		$formResult = new Formulaire("POST","#","formPlat","resultatthisSucces");
+		$formResult->ajouterComposantLigne($formResult->creerLabelFor("Le type de plat a été correctement ajouté","resultatSuppri"));
+		$formResult->ajouterComposantTab();
+		$formResult->creerFormulaire();
+	}
+}
 
 
 

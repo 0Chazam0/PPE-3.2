@@ -22,6 +22,14 @@
         }
         echo $formRestaurateur->afficherFormulaire();
       }
+      if ($_SESSION['menuDetailResto']== "insertTP"){
+        if($_SESSION['lesFormsPlatR']!=null){
+          echo $_SESSION['lesFormsPlatR'];
+        }
+        elseif (isset($formResult)) {
+          echo $formResult->afficherFormulaire();
+        }
+      }
       if ($_SESSION['menuDetailResto']== "update"){
         if($_SESSION['lesFormsPlatR']!=null){
           echo $_SESSION['lesFormsPlatR'];
