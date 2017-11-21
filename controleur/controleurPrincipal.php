@@ -25,6 +25,7 @@ require_once 'modele/DTO/typePlat.php';
 require_once 'modele/DTO/plat.php';
 require_once 'modele/DTO/user.php';
 require_once 'modele/DTO/commande.php';
+
 /*----------------------------------------------------------*/
 /*--------session du menu principal avec accueil par defaut-------*/
 /*----------------------------------------------------------*/
@@ -39,6 +40,9 @@ else
 
 }
 
+/*----------------------------------------------------------*/
+/*--------Création du menu principal qui nous permet de naviguer sur le site de page en page----------*/
+/*----------------------------------------------------------*/
 $menuPrincipal = new Menu("menuP");
 
 
@@ -116,6 +120,10 @@ if (isset($_POST['validerCommande'])){
 		$_SESSION['menuPrincipal']="Reglement";
 	}
 }
+
+
+
+
 /*----------------------------------------------------------*/
 /*-------Affiche le controleur récupéré----------*/
 /*----------------------------------------------------------*/

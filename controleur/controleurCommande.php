@@ -8,14 +8,14 @@ foreach ($_SESSION['lesPlats'] as $OBJ) {
   $lesPlats[] = unserialize($OBJ);
 }
 $_SESSION['lePanier'] = new Plats($lesPlats);
-/*----------------------------------------------------------*/
-/*--------Le form de recap avant de commander-----*/
-/*----------------------------------------------------------*/
-
-
 $formCommande = new Formulaire("POST","index.php","formCommande","commandethis");
+
+/*----------------------------------------------------------*/
+/*--------Création du form de confirmation avant de commander-----*/
+/*----------------------------------------------------------*/
 foreach ($_SESSION['listeRestos']->getLesRestos() as $OBJ)
 {
+  //On utilise le restaurant selectioné, la ville, le type de règlement, date et lieu de livraison
   if ($_SESSION['RestoSelected']==$OBJ->getId()) {
     $formCommande->ajouterComposantLigne($formCommande->concactComposants($formCommande->creerLabelFor('Votre commande : ', 'lblcommande'),
                                          $formCommande->concactComposants($formCommande->creerLabelFor('Ville : ', 'lblville'),
@@ -41,6 +41,7 @@ $formCommande->ajouterComposantTab();
 $formCommande->ajouterComposantLigne($formCommande->creerLabelFor('Les plats : ', 'lesPlats'));
 $formCommande->ajouterComposantTab();
 
+// On ajoute les plats du panier et le pourboir
 foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ){
   $formCommande->ajouterComposantLigne($formCommande->concactComposants($formCommande->creerLabelFor($OBJ->getNom(), 'nomPlatCommande'),
                                        $formCommande->concactComposants($formCommande->creerLabelFor('x1 : ', 'qtPlatCommande'),
@@ -63,11 +64,15 @@ $_SESSION['leformCommande'] = $formCommande->afficherFormulaire();
 
 
 
-
+/*----------------------------------------------------------*/
+/*--------Ajout des informations dans la bdd (table commande et quantite) + création d'objet -----*/
+/*----------------------------------------------------------*/
+// Condition respectée quand on utilise le btn confirmCommande
 if (isset($_POST['confirmCommande'])) {
   $txt = "<div id='fin'>Nous vous remercions de votre commande <br><br> Merci à bientôt </div>";
   $numeroCommande = 1;
   $_SESSION['listeCommande'] = new Commandes(CommandeDAO::selectListeCommande());
+  // recuperer le num de la prochaine commande
   foreach ($_SESSION['listeCommande']->getLesCommandes() as $OBJ)
   {
     $idC = substr($OBJ->getidCommande(), 1) ;
@@ -84,6 +89,8 @@ if (isset($_POST['confirmCommande'])) {
   }
 
 }
+
+
 /*--------------------------------------------------------------------------*/
   include 'vue/vueCommande.php' ;
 

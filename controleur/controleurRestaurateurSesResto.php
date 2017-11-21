@@ -38,7 +38,7 @@ $lemenuTypeRestos = $menuTypeResto->creerMenu('TypeResto');
 
 
 /*----------------------------------------------------------*/
-/*--------Les forms des restaurants de la ville choisit-----*/
+/*--------creation des forms des restaurants du restaurateur choisit pour tous les types-----*/
 /*----------------------------------------------------------*/
 if ($_SESSION['TypeResto']=="All"){
   foreach ($_SESSION['listeRestos']->getLesRestos() as $OBJ)
@@ -63,6 +63,9 @@ if ($_SESSION['TypeResto']=="All"){
   }
 }
 }
+/*----------------------------------------------------------*/
+/*--------creation des forms des restaurants du restaurateur choisit pour le type choisit-----*/
+/*----------------------------------------------------------*/
 else {
 	foreach ($_SESSION['listeRestos']->getLesRestos() as $OBJ)
 	{
@@ -87,6 +90,10 @@ else {
 	}
 }
 }
+
+
+
+
 /*-------------------------------------------*/
 include "vue/vueRestaurateurSesResto.php";
  ?>

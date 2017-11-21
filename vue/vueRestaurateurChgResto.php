@@ -13,6 +13,7 @@
     </nav>
   </div>
     <?php
+    //affichage de form differents selon le menu choisit
       if ($_SESSION['menuDetailResto']== "profil"){
         echo $formProfil->afficherFormulaire();
       }

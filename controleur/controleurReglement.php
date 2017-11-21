@@ -1,7 +1,10 @@
 <?php
+/*----------------------------------------------------------*/
+/*--------Déclaration variable session----------------------*/
+/*----------------------------------------------------------*/
 $_SESSION['dernierePage'] = "Reglement";
 /*----------------------------------------------------------*/
-/*--------Le form de reglementation-----*/
+/*--------Création du form de reglement-----*/
 /*----------------------------------------------------------*/
 $formReglement = new Formulaire("POST","index.php","formReglement","reglementthis");
 $formReglement->ajouterComposantLigne($formReglement->creerLabelFor('Votre mode de paiement : ', 'lblModePaiement'));

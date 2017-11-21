@@ -24,7 +24,7 @@ else
 }
 
 /*----------------------------------------------------------*/
-/*--------Affichage type resto-----*/
+/*--------creation type resto-----*/
 /*----------------------------------------------------------*/
 $menuTypeResto = new menu("menuTypeResto");
 
@@ -36,7 +36,7 @@ $lemenuTypeRestos = $menuTypeResto->creerMenu('TypeResto');
 
 
 /*----------------------------------------------------------*/
-/*--------Les forms des restaurants de la ville choisit-----*/
+/*--------creation des forms des restaurants de la ville choisit pour tous les types-----*/
 /*----------------------------------------------------------*/
 if ($_SESSION['TypeResto']=="All"){
 	foreach ($_SESSION['listeVilles']->getLesVilles() as $OBJ2){
@@ -62,6 +62,9 @@ if ($_SESSION['TypeResto']=="All"){
 	  }
 	}
 }
+/*----------------------------------------------------------*/
+/*--------creation des forms des restaurants de la ville choisit pour le type selectionné-----*/
+/*----------------------------------------------------------*/
 else {
 	foreach ($_SESSION['listeVilles']->getLesVilles() as $OBJ2){
 		if ($OBJ2->getNom()==ucfirst($_SESSION['VilleSelected'])){
@@ -87,6 +90,7 @@ else {
 		}
 	}
 }
+//affiche une erreur si la ville n'est pas connue
 if ($compteurResto==0) {
 	$txt = "<div id='erreurVille'>Désolé nous n'avons trouvé aucun restaurant situé dans cette ville</div>";
 }

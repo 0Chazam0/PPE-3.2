@@ -9,8 +9,10 @@ function myFunction() {
   </header>
 
   <main>
+
 		<div id="baniereResto">
 			<?php
+			//affiche la banniere avec les infos du resto
 				echo $laBanniereResto->afficherFormulaire();
 			 ?>
 		</div>
@@ -30,7 +32,8 @@ function myFunction() {
     </div>
     <div id="panier">
 			<?php
-			if (isset($_SESSION['typeIdentite']) && $_SESSION['typeIdentite'] != 'R'){
+			//affiche le panier si il n'y a pas d'utilisateur connecté ou que l'utilisateur n'est pas un restaurateur
+			if (!isset($_SESSION['typeIdentite']) || $_SESSION['typeIdentite'] != 'R'){
 			  echo $_SESSION['leFormPlanier'];
 			}
 			 ?>

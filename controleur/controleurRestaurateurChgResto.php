@@ -1,5 +1,7 @@
 <?php
-
+/*----------------------------------------------------------*/
+/*--------Déclaration variable session----------------------*/
+/*----------------------------------------------------------*/
 $_SESSION['dernierePage'] = "RestaurateurChgResto";
 $_SESSION['listeRestos'] = new Restos(RestoDAO::selectListeResto());
 $_SESSION['listeTypeRestos'] = new TypeRestos(TypeRestoDAO::selectListeTypeResto());
@@ -7,8 +9,9 @@ $_SESSION['listeVilles'] =new Villes(VilleDAO::selectListeVille());
 $_SESSION['listePlats'] = new Plats(PlatDAO::selectListePlat());
 $_SESSION['listeTypePlats'] = new TypePlats(TypePlatDAO::selectListeTypePlat());
 $_SESSION['lesFormsPlatR'] = null;
+
 /*----------------------------------------------------------*/
-/*--------Créer le menu detail resto----*/
+/*--------Créer le menu et le formulaire detail resto----*/
 /*----------------------------------------------------------*/
 $formDetailsResto = new Formulaire("POST","","formDetailsResto","detailRestothis");
 $menuDetailResto = new menu("menuDetailResto");
@@ -28,7 +31,7 @@ $formDetailsResto->ajouterComposantTab();
 $formDetailsResto->creerFormulaire();
 
 /*----------------------------------------------------------*/
-/*--------Gestion du menu detail resto----------------------*/
+/*--------Gestion du menu detail resto selon l'onglet selectionné----------------------*/
 /*----------------------------------------------------------*/
 if(isset($_GET['menuDetailResto'])){
 	$_SESSION['menuDetailResto']= $_GET['menuDetailResto'];
@@ -39,11 +42,12 @@ else
 		$_SESSION['menuDetailResto']="profil";
 	}
 }
+
 /***********************************************************************************************************************************************************************/
 
 
 /*----------------------------------------------------------*/
-/*--------Affiche la profil du resto-----*/
+/*--------Affiche la profil du resto avec quelques caracteristiques propres-----*/
 /*----------------------------------------------------------*/
 if ($_SESSION['menuDetailResto']== "profil"){
 	$formProfil = new Formulaire("POST","index.php","formProfil","formProfilRthis");
@@ -170,13 +174,16 @@ if ($_SESSION['menuDetailResto']== "insert"){
                 $_SESSION['resultatUpload'] = "Image trop grande";
             }
             else{
+							/*----------------------------------------------------------*/
+							/*--------upload de la photo a l'emplacement----*/
+							/*----------------------------------------------------------*/
               $nom = "image/{$nomPhoto}.{$extension_upload}";
               $resultat = move_uploaded_file($_FILES['uploadImg']['tmp_name'],$nom);
               if ($resultat)
               {
                 $_SESSION['resultatUpload'] ="Transfert réussi";
                 /*----------------------------------------------------------*/
-                /*--------Appel de la requete sql pour ajuter dans la bdd-----*/
+                /*--------Appel de la requete sql pour ajouter dans la bdd (plat)-----*/
                 /*----------------------------------------------------------*/
                 $numeroPlat = 1;
                 $_SESSION['listePlats'] = new Plats(PlatDAO::selectListePlat());
@@ -248,7 +255,9 @@ if ($_SESSION['menuDetailResto']== "insertTP"){
 	$formTypePlat->creerFormulaire();
 	$_SESSION['lesFormsPlatR'] .= $formTypePlat->afficherFormulaire();
 
-
+	/*----------------------------------------------------------*/
+	/*--------Appel de la requete sql pour ajouter dans la bdd (TypePlat)-----*/
+	/*----------------------------------------------------------*/
 	if(isset($_POST['insertTypePlat-btn'])){
 		foreach ($_SESSION['listeTypePlats']->getLesTypePlats() as $OBJ)
 		{
@@ -298,6 +307,9 @@ if ($_SESSION['menuDetailResto']== "update"){
 			$_SESSION['lesFormsPlatR'] .= $formPlat->afficherFormulaire();
 		}
 	}
+	/*----------------------------------------------------------*/
+	/*--------Appel de la requete sql pour modifier dans la bdd(plat)-----*/
+	/*----------------------------------------------------------*/
 	foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
 	{
 		if(isset($_POST[$OBJ->getID()])) {
@@ -311,25 +323,6 @@ if ($_SESSION['menuDetailResto']== "update"){
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -365,7 +358,9 @@ if ($_SESSION['menuDetailResto']== "delete"){
 			$_SESSION['lesFormsPlatR'] .= $formPlat->afficherFormulaire();
 		}
 	}
-
+	/*----------------------------------------------------------*/
+	/*--------Appel de la requete sql pour supprimer dans la bdd-----*/
+	/*----------------------------------------------------------*/
 	foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
 	{
 		if(isset($_POST[$OBJ->getID()])) {
@@ -376,7 +371,9 @@ if ($_SESSION['menuDetailResto']== "delete"){
 			$formResult->ajouterComposantTab();
 			$formResult->creerFormulaire();
 
-
+			/*----------------------------------------------------------*/
+			/*--------supprime la photo dans le repertoire image-----*/
+			/*----------------------------------------------------------*/
 			$dossier_traite = "image";
 			$repertoire = opendir($dossier_traite); // On définit le répertoire dans lequel on souhaite travailler.
 			while (false !== ($fichier = readdir($repertoire))) // On lit chaque fichier du répertoire dans la boucle.

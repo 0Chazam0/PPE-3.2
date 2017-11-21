@@ -19,7 +19,7 @@ if(!isset($_SESSION['prixPourboir'])){
 	$_SESSION['prixPourboir'] = 0;
 }
 /*----------------------------------------------------------*/
-/*--------Affichage  des plats selon leur type-----*/
+/*--------Affichage  des plats selon leur type selectionné-----*/
 /*----------------------------------------------------------*/
 if(isset($_GET['TypePlat'])){
 	$_SESSION['TypePlat']= $_GET['TypePlat'];
@@ -31,7 +31,7 @@ else
 	}
 }
 /*----------------------------------------------------------*/
-/*--------Affichage type PLAT-----*/
+/*--------Créer menu type PLAT-----*/
 /*----------------------------------------------------------*/
 $menuTypePlat = new menu("menuTypePlat");
 $menuTypePlat->ajouterComposant($menuTypePlat->creerItemLien("All" ,"Tous les types"));
@@ -43,7 +43,7 @@ $lemenuTypePlats = $menuTypePlat->creerMenu('TypePlat');
 
 
 /*----------------------------------------------------------*/
-/*-------------------La banniere resto----------------------*/
+/*-------------------creation de La banniere resto----------------------*/
 /*----------------------------------------------------------*/
 
 
@@ -65,7 +65,7 @@ foreach ($_SESSION['listeRestos']->getLesRestos() as $OBJ)
 }
 
 /*----------------------------------------------------------*/
-/*--------Les forms des plats du restaurants choisit-----*/
+/*--------creation des forms des plats du restaurants choisit-----*/
 /*----------------------------------------------------------*/
 
 if ($_SESSION['TypePlat']=="All") {
@@ -83,7 +83,7 @@ if ($_SESSION['TypePlat']=="All") {
 	                                    $formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getPrixClient()."€","prixPlat"),
 	                                    $formPlat->concactComposants($formPlat->creerLabelFor('Description : ',"lblDescripPlat"),
 	                                    $formPlat->creerLabelFor($OBJ->getDescription(),"descripPlat"),0),4),0),2));
-			if (isset($_SESSION['typeIdentite']) && $_SESSION['typeIdentite'] != 'R'){
+			if (!isset($_SESSION['typeIdentite']) || $_SESSION['typeIdentite'] != 'R'){
 	    	$formPlat->ajouterComposantLigne($formPlat->creerInputSubmitPanier($OBJ->getID(),"ajoutCommande-btn"," Ajouter au panier "));
 			}
 	    $formPlat->ajouterComposantTab();
@@ -109,7 +109,7 @@ else {
 		                                    $formPlat->concactComposants($formPlat->creerLabelFor($OBJ->getPrixClient()."€","prixPlat"),
 		                                    $formPlat->concactComposants($formPlat->creerLabelFor('Description : ',"lblDescripPlat"),
 		                                    $formPlat->creerLabelFor($OBJ->getDescription(),"descripPlat"),0),4),0),2));
-				if (isset($_SESSION['typeIdentite']) && $_SESSION['typeIdentite'] != 'R'){
+				if (!isset($_SESSION['typeIdentite']) || $_SESSION['typeIdentite'] != 'R'){
 		    	$formPlat->ajouterComposantLigne($formPlat->creerInputSubmitPanier($OBJ->getID(),"ajoutCommande-btn"," Ajouter au panier "));
 				}
 				$formPlat->ajouterComposantTab();
@@ -121,7 +121,7 @@ else {
 	}
 }
 /*----------------------------------------------------------*/
-/*--------Ajouter un plat a la commande-----*/
+/*--------Ajouter un plat au panier (liste de plat en obj)-----*/
 /*----------------------------------------------------------*/
 
 $lePlat = new Plat("","","","","","","","","");
@@ -182,7 +182,9 @@ if ($_SESSION['nbPlatPanier']>0)
 // }
 //var_dump($_SESSION['cePanier']);
 
-
+/*----------------------------------------------------------*/
+/*--------Ajout  ou enelever de l'argent du pourboir-----*/
+/*----------------------------------------------------------*/
 if (isset($_POST['btnMoinsPourboir'])) {
 	if($_SESSION['prixPourboir']>0){
 		$_SESSION['prixPourboir']-=1;
@@ -191,13 +193,15 @@ if (isset($_POST['btnMoinsPourboir'])) {
 if (isset($_POST['btnPlusPourboir'])) {
 	$_SESSION['prixPourboir']+=1;
 }
-
+/*----------------------------------------------------------*/
+/*--------Création du form panier-----*/
+/*----------------------------------------------------------*/
 $formPanier = new Formulaire("POST","index.php","formPanier","panierthis");
 
 $formPanier->ajouterComposantLigne($formPanier->creerLabelFor('Votre Panier', 'lblPanier'));
 $formPanier->ajouterComposantTab();
 
-
+//Condition si le panier est remplit
 if($_SESSION['nbPlatPanier']>0){
 	foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ)
 	{
@@ -211,6 +215,7 @@ if($_SESSION['nbPlatPanier']>0){
 																		 $formPanier->creerLabelFor($_SESSION['prixPourboir']."€","prixTotal"),0),0),0));
 	$formPanier->ajouterComposantTab();
 }
+//Condition si le panier est vide
 else{
 	$formPanier->ajouterComposantLigne($formPanier->creerLabelFor("Le panier est vide","lblVide"));
 	$formPanier->ajouterComposantTab();
