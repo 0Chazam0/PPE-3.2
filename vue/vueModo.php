@@ -2,20 +2,15 @@
 <header>
       <?php include 'haut.php' ;?>
   </header>
-  <img src="image\background.jpg" width="100%" height="100%" style="position:absolute;">-->
+  <img src="image\background.jpg" width="100%" height="100%" style="position:absolute;">
   <div id="txtModo">
-    <p></p>
 
   </div>
-  <div class="gestModo">'
+  <!-- <div class="gestModo"> -->
+    <div class="styleNote">
   <?php
-
-      // $formRecherche = new Formulaire("POST","#","formModo","searchthis");
-      //
-      // $formRecherche->creerFormulaire();
-      // echo $formRecherche->afficherFormulaire();
-    ?>
-    <!-- <script type="text/javascript" src="fonction\autocomplete.js"></script> -->
+    echo $formModo->afficherFormulaire();
+  ?>
   </div>
 
 </div>

@@ -461,5 +461,19 @@ class NoteDAO
 					'", COMVISIBLE = 2 WHERE IDC = "' . $command . '"';
 	return DBConnex::getInstance()->exec($sql);
 	}
+
+	public static function selectModeNote(){
+		$sql = "SELECT R.NOMR, NOTERAPIDITE, NOTEQUALITE, NOTETEMP, NOTECOUT, COMMENTAIRE
+						FROM evaluer, resto AS R WHERE evaluer.IDR = R.IDR AND COMVISIBLE = 2 LIMIT 1";
+    $liste = DBConnex::getInstance()->queryFetchAll($sql);
+    return ($liste);
+  }
+
+	public static function	updateModeSee($command, $afficher)
+	{
+		$sql = 'UPDATE evaluer SET COMVISIBLE = ' . $afficher . ' WHERE IDC = "' . $command . '"';
+
+		return DBConnex::getInstance()->exec($sql);
+	}
 }
  ?>
