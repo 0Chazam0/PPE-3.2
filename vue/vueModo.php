@@ -9,7 +9,14 @@
   <!-- <div class="gestModo"> -->
     <div class="styleNote">
   <?php
+  if(isset($formModo))
+  {
     echo $formModo->afficherFormulaire();
+  }
+  else {
+    echo "salut [" . $idCommande . "]";
+  }
+
   ?>
   </div>
 

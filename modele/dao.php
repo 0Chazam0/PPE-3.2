@@ -463,8 +463,8 @@ class NoteDAO
 	}
 
 	public static function selectModeNote(){
-		$sql = "SELECT R.NOMR, NOTERAPIDITE, NOTEQUALITE, NOTETEMP, NOTECOUT, COMMENTAIRE
-						FROM evaluer, resto AS R WHERE evaluer.IDR = R.IDR AND COMVISIBLE = 2 LIMIT 1";
+		$sql = "SELECT R.NOMR, IDC, NOTERAPIDITE, NOTEQUALITE, NOTETEMP, NOTECOUT, COMMENTAIRE
+						FROM evaluer, resto AS R WHERE evaluer.IDR = R.IDR AND COMVISIBLE = 1 LIMIT 1";
     $liste = DBConnex::getInstance()->queryFetchAll($sql);
     return ($liste);
   }
