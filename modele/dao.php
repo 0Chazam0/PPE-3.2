@@ -475,5 +475,15 @@ class NoteDAO
 
 		return DBConnex::getInstance()->exec($sql);
 	}
+
+	public static function selectNoteUnResto($leResto)
+	{
+		$sql = "SELECT NOTERAPIDITE, NOTEQUALITE, NOTETEMP, NOTECOUT FROM evaluer
+						WHERE IDR = '" . $leResto . "'";
+		$liste = DBConnex::getInstance()->queryFetchAll($sql);
+		$calcul = intval($liste[0]['NOTERAPIDITE']) + intval($liste[0]['NOTEQUALITE']) + intval($liste[0]['NOTETEMP']) + intval($liste[0]['NOTECOUT']);
+		$calcul /= 4;
+		return (intval($calcul));
+	}
 }
  ?>
