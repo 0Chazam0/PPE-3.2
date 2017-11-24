@@ -21,10 +21,16 @@ else
   setcookie(q, 0);
   setcookie(l, 0);
   setcookie(c, 0);
-  if 
-  echo '<script type="text/javascript">';
-  echo 'window.location.href = "index.php?menuPrincipal=Accueil";';
-  echo '</script>';
+  if (NoteDAO::selectResto($_SESSION['identite'][0])){
+    echo '<script type="text/javascript">';
+    echo 'window.location.href = "index.php?menuPrincipal=Noter";';
+    echo '</script>';
+  }
+  else {
+    echo '<script type="text/javascript">';
+    echo 'window.location.href = "index.php?menuPrincipal=Accueil";';
+    echo '</script>';
+  }
 }
 
 

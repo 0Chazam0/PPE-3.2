@@ -424,7 +424,7 @@ class NoteDAO
   public static function selectResto($IDClient)
   {
     $sql = "SELECT NOMR FROM evaluer As E, resto As R WHERE E.IDR = R.IDR
-            AND IDU = '" . $IDClient . "' AND COMVISIBLE = 0 LIMIT 1";
+						AND IDU = '" . $IDClient . "' AND COMVISIBLE = 0 LIMIT 1";
     $liste = DBConnex::getInstance()->queryFetchAll($sql);
     if (count($liste) > 0)
     {
@@ -441,7 +441,7 @@ class NoteDAO
 
   public static function selectIDCommand($IDClient, $selectResto)
   {
-    $sql = 'SELECT IDC FROM evaluer As E, resto As R WHERE E.IDR = R.IDR
+    $sql = 'SELECT IDC FROM evaluer As E, resto As R WHERE E.IDR = R.IDR AND COMVISIBLE = 0
             AND IDU = "' . $IDClient . '" AND R.NOMR = "' . $selectResto . '" LIMIT 1';
     $liste = DBConnex::getInstance()->queryFetchAll($sql);
     if (count($liste) > 0)
@@ -458,7 +458,7 @@ class NoteDAO
 	{
 		$sql = 'UPDATE evaluer SET NOTERAPIDITE = ' . $ntR . ', NOTEQUALITE = ' . $ntQ .
 					', NOTETEMP = ' . $ntT . ', NOTECOUT = ' . $ntC . ',    COMMENTAIRE = "' . $commentaire .
-					'", COMVISIBLE = 2 WHERE IDC = "' . $command . '"';
+					'", COMVISIBLE = 1 WHERE IDC = "' . $command . '"';
 		return DBConnex::getInstance()->exec($sql);
 	}
 
