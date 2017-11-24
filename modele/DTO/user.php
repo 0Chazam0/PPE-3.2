@@ -10,10 +10,9 @@ class User
   private   $mail;
   private   $mdp;
   private   $adresse;
-  private   $privilege;         // modo, client, admin, etc...
 
   function __construct($pid, $pnom, $pprenom,
-                        $pmail, $pmdp, $padresse, $pprivilege)
+                        $pmail, $pmdp, $padresse)
   {
     $this->id = $pid;
     $this->nom = $pnom;
@@ -21,7 +20,6 @@ class User
     $this->mail = $pmail;
     $this->mdp = $pmdp;
     $this->adresse = $padresse;
-    $this->privilege = $pprivilege;
   }
 
   public function   getId()
@@ -52,11 +50,6 @@ class User
   public function getAdresse()
   {
     return $this->adresse;
-  }
-
-  public function getPrivilege()
-  {
-    return $this->privilege;
   }
 
   public static function testConnex($unId, $unMdp){

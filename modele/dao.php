@@ -463,7 +463,7 @@ class NoteDAO
 	}
 
 	public static function selectModeNote(){
-		$sql = "SELECT R.NOMR, IDC, NOTERAPIDITE, NOTEQUALITE, NOTETEMP, NOTECOUT, COMMENTAIRE
+		$sql = "SELECT R.NOMR, IDC, IDU, NOTERAPIDITE, NOTEQUALITE, NOTETEMP, NOTECOUT, COMMENTAIRE
 						FROM evaluer, resto AS R WHERE evaluer.IDR = R.IDR AND COMVISIBLE = 1 LIMIT 1";
     $liste = DBConnex::getInstance()->queryFetchAll($sql);
     return ($liste);
@@ -485,5 +485,21 @@ class NoteDAO
 		$calcul /= 4;
 		return (intval($calcul));
 	}
+}
+
+class AccueilModoDAO{
+	public static function	selectUser(){
+		$sql = "SELECT * FROM client";
+		$liste = DBConnex::getInstance()->queryFetchAll($sql);
+		if (count($liste) > 0){
+      foreach ($liste as $unUser){
+        $uneNote = New User($unUser['IDU'], $unUser['NOMU'], $unUser['PRENOMU'],
+										$unUser['MAIL'], $unUser['MDP'], $unUser['ADRESSEU']);
+        $result[] = $uneNote;
+			}
+			return $result;
+		}
+	}
+
 }
  ?>
