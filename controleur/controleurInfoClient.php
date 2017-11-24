@@ -9,7 +9,6 @@ if ($_SESSION['typeIdentite'] == 'R') {
 if ($_SESSION['typeIdentite'] == 'M') {
 	$menuProfil->ajouterComposant($menuProfil->creerItemLien('Moderateur','Moderateur'));
 }
-$menuProfil->ajouterComposant($menuProfil->creerItemLien('Deconnexion','Deconnexion'));
 $leMenuProfil = $menuProfil->creerMenu("menuProfil");
 
 if(isset($_GET['menuProfil'])){
@@ -28,11 +27,10 @@ if ($_SESSION['menuProfil'] == "Restaurateur") {
 	$formProfil->ajouterComposantTab();
 
 }
-if ($_SESSION['menuProfil'] == "Deconnexion") {
-  $formProfil->ajouterComposantLigne($formProfil->creerInputSubmit('deconnexion','deconnexion','Deconnecter'));
-  $formProfil->ajouterComposantTab();
-  $formProfil->ajouterComposantLigne($formProfil->creerInputSubmitHidden('deco','deco','deco'));
+if ($_SESSION['menuProfil'] == "Moderateur") {
+	$formProfil->ajouterComposantLigne($formProfil->creerInputSubmit('redirectionModo','redirectionModo','Votre espace Moderateur'));
 	$formProfil->ajouterComposantTab();
+
 }
 
 if ($_SESSION['menuProfil'] == "Profil") {
@@ -42,14 +40,20 @@ if ($_SESSION['menuProfil'] == "Profil") {
 	$formProfil->ajouterComposantTab();
 	$formProfil->ajouterComposantLigne($formProfil->creerLabelFor($_SESSION['identite'][5],'adresse'));
 	$formProfil->ajouterComposantTab();
-
+	$formProfil->ajouterComposantLigne($formProfil->creerInputSubmit('deconnexion','deconnexion','Deconnecter'));
+	$formProfil->ajouterComposantTab();
+	$formProfil->ajouterComposantLigne($formProfil->creerInputSubmitHidden('deco','deco','deco'));
+	$formProfil->ajouterComposantTab();
 }
 
 if ($_SESSION['menuProfil'] == "Historique") {
   $lesCommandes = CommandeDAO::commandesDunUser($_SESSION['identite'][0]);
       foreach ($lesCommandes as $uneCommande) {
+				$formProfil->ajouterComposantLigne($formProfil->creerLabelFor("Commande N° ","numeroCommande"));
 				$formProfil->ajouterComposantLigne($formProfil->creerLabelFor($uneCommande['IDC'],$uneCommande['IDC']));
+				$formProfil->ajouterComposantLigne($formProfil->creerLabelFor("Effectuée le ","dateCommande"));
         $formProfil->ajouterComposantLigne($formProfil->creerLabelFor($uneCommande['DATEC'],$uneCommande['DATEC']));
+				$formProfil->ajouterComposantTab();
 
         $lesPlats = PlatDAO::platsDuneCommande($uneCommande['IDC']);
           foreach ($lesPlats as $unPlat) {
@@ -64,7 +68,7 @@ if ($_SESSION['menuProfil'] == "Historique") {
 
 }
 $contentProfil=$formProfil->creerFormulaire();
-$contentProfil=$formProfil->afficherFormulaire();
+$contentProfil=  '<nav class = "conteneurProfil">'. $formProfil->afficherFormulaire() . '</nav>';
 
 include "vue/vueProfil.php";
  ?>

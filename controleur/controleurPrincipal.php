@@ -92,6 +92,13 @@ if (isset($_POST['redirectionRestaurateur'])){
 	$_SESSION['menuPrincipal']="RestaurateurSesResto";
 }
 /*----------------------------------------------------------*/
+/*--------Récupère le controleur Modo (si la condition est respectée)----------*/
+/*----------------------------------------------------------*/
+
+if (isset($_POST['redirectionModo'])){
+	$_SESSION['menuPrincipal']="Modo";
+}
+/*----------------------------------------------------------*/
 /*--------Récupère le controleur RestaurateurChgResto (si la condition est respectée)----------*/
 /*----------------------------------------------------------*/
 

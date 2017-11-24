@@ -1243,7 +1243,7 @@ text-align: center;
 
 
 /****************************************************/
-/*styles pour le menu du profil du connecté                   */
+/*styles pour les notes                             */
 /****************************************************/
 
 .styleNote{
@@ -1266,20 +1266,16 @@ text-align: center;
 }
 
 /****************************************************/
-/*styles pour le menu du profil du connecté                   */
+/*styles pour le menu du profil du connecté         */
 /****************************************************/
 
-nav.menuProfil{
+nav.menuProfil {
+	padding-top: 20%;
 	background-color: white;
+	font-size: 16px;
 	border-style: solid;
 	border-width: 2px;
 	border-color: orange;
-	font-size: 16px;
-	letter-spacing: 2px;
-	height: 75px;
-	margin-top: 20%;
-	margin-left: 40%;
-	margin-right: 10%;
 }
 
 nav.menuProfil ul {
@@ -1303,6 +1299,11 @@ nav.menuProfil ul li a {
   	vertical-align: middle;
   	height: 50px;
   	width: 140px;
+		border-style: solid;
+		border-bottom: 0px;
+		border-left: 0px;
+		border-width: 2px;
+		border-color: orange;
 }
 
 nav.menuProfil ul li a:hover {
@@ -1317,4 +1318,27 @@ nav.menuProfil ul li .actif {
   	vertical-align: middle;
   	height: 50px;
   	width: 140px;
+}
+nav.conteneurProfil{
+	margin-top: 0.5%;
+	background-color: white;
+	font-size: 16px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+}
+.formProfil #deconnexion{
+	background-color: #FAFAFA;
+  border-style: solid;
+	margin-top: 10px;
+	margin-left: 20px;
+  border-width: 2px;
+  border-color: orange;
+	text-align: center;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: BLACK;
+	border-radius: 10px;
+	width: 400px;
+	height: 40px;
 }
