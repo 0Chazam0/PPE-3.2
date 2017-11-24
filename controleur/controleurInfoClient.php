@@ -36,12 +36,6 @@ if ($_SESSION['menuProfil'] == "Moderateur") {
 }
 
 if ($_SESSION['menuProfil'] == "Profil") {
-	$photoProfil = new Formulaire('','','photoProfil','photoProfil');
-	$photoProfil->ajouterComposantLigne($photoProfil->creerInputImageProfil('photoProfil','photoDProfil',"image/" . $_SESSION['identite'][0]));
-	$photoProfil->ajouterComposantTab();
-	$laPhotoProfil = $photoProfil->creerFormulaire();
-	$laPhotoProfil = $photoProfil->afficherFormulaire();
-
 	$formProfil->ajouterComposantLigne($formProfil->creerLabelFor($_SESSION['identite'][1],'nom'));
 	$formProfil->ajouterComposantTab();
 	$formProfil->ajouterComposantLigne($formProfil->creerLabelFor($_SESSION['identite'][2],'prenom'));
@@ -78,6 +72,11 @@ if ($_SESSION['menuProfil'] == "Historique") {
     }
 
 }
+$photoProfil = new Formulaire('','','photoProfil','photoProfil');
+$photoProfil->ajouterComposantLigne($photoProfil->creerInputImageProfil('photoProfil','photoDProfil',"image/" . $_SESSION['identite'][0]));
+$photoProfil->ajouterComposantTab();
+$laPhotoProfil = $photoProfil->creerFormulaire();
+$laPhotoProfil = $photoProfil->afficherFormulaire();
 $contentProfil=$formProfil->creerFormulaire();
 $contentProfil=  '<nav class = "conteneurProfil">'. $formProfil->afficherFormulaire() . '</nav>';
 

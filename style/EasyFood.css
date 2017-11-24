@@ -1273,7 +1273,6 @@ text-align: center;
 /****************************************************/
 
 nav.menuProfil {
-	padding-top: 20%;
 	background-color: white;
 	font-size: 16px;
 	border-style: solid;
@@ -1321,6 +1320,11 @@ nav.menuProfil ul li .actif {
   	vertical-align: middle;
   	height: 50px;
   	width: 140px;
+}
+
+nav.menuProfil .photoProfil input{
+	width: 240px;
+	height: 240px;
 }
 
 nav.conteneurProfil{
