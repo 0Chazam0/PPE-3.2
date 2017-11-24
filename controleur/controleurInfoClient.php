@@ -51,16 +51,18 @@ if ($_SESSION['menuProfil'] == "Historique") {
       foreach ($lesCommandes as $uneCommande) {
 				$formProfil->ajouterComposantLigne($formProfil->creerLabelFor("Commande N° ","numeroCommande"));
 				$formProfil->ajouterComposantLigne($formProfil->creerLabelFor($uneCommande['IDC'],$uneCommande['IDC']));
+				$formProfil->ajouterComposantTab();
 				$formProfil->ajouterComposantLigne($formProfil->creerLabelFor("Effectuée le ","dateCommande"));
         $formProfil->ajouterComposantLigne($formProfil->creerLabelFor($uneCommande['DATEC'],$uneCommande['DATEC']));
 				$formProfil->ajouterComposantTab();
 
         $lesPlats = PlatDAO::platsDuneCommande($uneCommande['IDC']);
           foreach ($lesPlats as $unPlat) {
-						$formProfil->ajouterComposantLigne($formProfil->creerInputImage($unPlat['NOMP'],'imgPlat','image/' .$unPlat['PHOTOP'] . '.jpeg' ));
-            $formProfil->ajouterComposantLigne($formProfil->creerA($unPlat['NOMP']));
-						$formProfil->ajouterComposantLigne($formProfil->creerA($unPlat['PRIXCLIENTP']));
-						$formProfil->ajouterComposantLigne($formProfil->creerA($unPlat['DESCRIPTIONP']));
+						$formProfil->ajouterComposantLigne($formProfil->creerInputImage($unPlat['NOMP'],'imgPlat','image/' .$unPlat['PHOTOP']));
+						$formProfil->ajouterComposantLigne($formProfil->concactComposants($formProfil->creerA($unPlat['NOMP']),
+																							 $formProfil->concactComposants($formProfil->creerA($unPlat['PRIXCLIENTP']),
+																							 $formProfil->creerA($unPlat['DESCRIPTIONP']),2),2));
+						$formProfil->ajouterComposantTab();
 
           }
       $formProfil->ajouterComposantTab();

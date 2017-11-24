@@ -3179,9 +3179,27 @@ INSERT INTO `type_plat` (`CODET`, `LIBELLE`) VALUES
 
 
 -- --------------------------------------------------------
+--
+-- Contenu de la table `commande`
+--
 
 
+INSERT INTO `commande` (`IDC`, `IDR`, `IDU`, `DATEC`, `COMMENTAIRECLIENTC`, `DATELIVRC`, `MODEREGLEMENTC`, `AVISCLIENT`, `NOTECLIENT`, `COMVISIBLE`)
+VALUES ('C4', 'R4', 'U7', '2017-11-10', 'pas mal', '2017-11-11', 'CB', 'ouai ouai ', '2', '1'),
+('C5', 'R2', 'U7', '2017-11-30', 'oho', '2017-11-30', 'CB', 'mouais', '5', '1');
 
+-- --------------------------------------------------------
+--
+-- Contenu de la table `quantite`
+--
+
+INSERT INTO `quantite` (`IDP`, `IDC`, `QUANTITE`)
+VALUES ('P4', 'C4', '1'),
+('P6', 'C5', '2'),
+('P1', 'C4', '2'),
+('P2', 'C4', '2');
+
+-- --------------------------------------------------------
 --
 -- Contenu de la table `ville`
 --
