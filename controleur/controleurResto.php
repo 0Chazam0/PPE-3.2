@@ -38,7 +38,7 @@ $lemenuTypeRestos = $menuTypeResto->creerMenuType('TypeResto',$_SESSION['TypeRes
 /*----------------------------------------------------------*/
 /*--------creation des forms des restaurants de la ville choisit pour tous les types-----*/
 /*----------------------------------------------------------*/
-$star = "<img src='image/star.png' width='5%' height='5%'>";
+$star = "image/star.png";
 $notStar = "<img src='image/empty.png' width='5%' height='5%'>";
 if ($_SESSION['TypeResto']=="All"){
 	foreach ($_SESSION['listeVilles']->getLesVilles() as $OBJ2){

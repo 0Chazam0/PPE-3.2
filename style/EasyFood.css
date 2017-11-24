@@ -1399,3 +1399,8 @@ nav.conteneurProfil input[type='submit']:hover{
 		color: BLACK;
 		transition:0.5s;
 	}
+
+	.star{
+		width: 5%;
+		height: 5%;
+	}
