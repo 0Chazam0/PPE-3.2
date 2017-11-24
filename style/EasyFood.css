@@ -1322,6 +1322,7 @@ nav.menuProfil ul li .actif {
   	height: 50px;
   	width: 140px;
 }
+
 nav.conteneurProfil{
 	margin-top: 0.5%;
 	background-color: white;
@@ -1329,19 +1330,68 @@ nav.conteneurProfil{
 	border-style: solid;
 	border-width: 2px;
 	border-color: orange;
+	margin-left: 5%;
+	margin-right: 5%;
+	padding-left: 2%;
 }
-.formProfil #deconnexion{
-	background-color: #FAFAFA;
-  border-style: solid;
-	margin-top: 10px;
-	margin-left: 20px;
-  border-width: 2px;
-  border-color: orange;
-	text-align: center;
-  font-size: 16px;
-  letter-spacing: 2px;
-  color: BLACK;
-	border-radius: 10px;
-	width: 400px;
-	height: 40px;
+
+nav.conteneurProfil label{
+	font-family: Snell Roundhand , cursive;
+	font-size: 20px;
+  text-shadow: 2px 2px 8px orange;
 }
+
+nav.conteneurProfil a{
+	font-size: 16px;
+}
+
+nav.conteneurProfil hr{
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	width:1200px;
+margin: 5%;
+}
+
+nav.conteneurProfil label.nom{
+	font-family: sans-serif;
+	text-shadow: 2px 2px 8px white;
+}
+
+nav.conteneurProfil label.prenom{
+	font-family: sans-serif;
+	text-shadow: 2px 2px 8px white;
+}
+
+nav.conteneurProfil label.adresse{
+	font-family: sans-serif;
+	text-shadow: 2px 2px 8px white;
+}
+
+nav.conteneurProfil input[type='submit']{
+		background-color: #FAFAFA;
+	  border-style: solid;
+		margin-top: 10px;
+		margin-left: 20px;
+	  border-width: 2px;
+	  border-color: orange;
+		text-align: center;
+	  font-size: 16px;
+	  letter-spacing: 2px;
+	  color: BLACK;
+		border-radius: 10px;
+		width: 400px;
+		height: 40px;
+		display: inline-block;
+	}
+
+nav.conteneurProfil input[type='submit']:hover{
+		background-color: #F4FA58;
+		border-style: solid;
+		border-width: 2px;
+		border-color: orange;
+		font-size: 16px;
+		letter-spacing: 2px;
+		color: BLACK;
+		transition:0.5s;
+	}

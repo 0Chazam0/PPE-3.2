@@ -2,12 +2,14 @@
 
 $menuProfil = new menu("menuProfil");
 $menuProfil->ajouterComposant($menuProfil->creerItemLien('Profil','Profil'));
-$menuProfil->ajouterComposant($menuProfil->creerItemLien('Historique','Historique'));
 if ($_SESSION['typeIdentite'] == 'R') {
 	$menuProfil->ajouterComposant($menuProfil->creerItemLien('Restaurateur','Restaurateur'));
 }
 if ($_SESSION['typeIdentite'] == 'M') {
 	$menuProfil->ajouterComposant($menuProfil->creerItemLien('Moderateur','Moderateur'));
+}
+if ($_SESSION['typeIdentite'] == 'C') {
+	$menuProfil->ajouterComposant($menuProfil->creerItemLien('Historique','Historique'));
 }
 $leMenuProfil = $menuProfil->creerMenu("menuProfil");
 
@@ -51,19 +53,22 @@ if ($_SESSION['menuProfil'] == "Historique") {
       foreach ($lesCommandes as $uneCommande) {
 				$formProfil->ajouterComposantLigne($formProfil->creerLabelFor("Commande N° ","numeroCommande"));
 				$formProfil->ajouterComposantLigne($formProfil->creerLabelFor($uneCommande['IDC'],$uneCommande['IDC']));
+				$formProfil->ajouterComposantTab();
 				$formProfil->ajouterComposantLigne($formProfil->creerLabelFor("Effectuée le ","dateCommande"));
         $formProfil->ajouterComposantLigne($formProfil->creerLabelFor($uneCommande['DATEC'],$uneCommande['DATEC']));
 				$formProfil->ajouterComposantTab();
 
         $lesPlats = PlatDAO::platsDuneCommande($uneCommande['IDC']);
           foreach ($lesPlats as $unPlat) {
-						$formProfil->ajouterComposantLigne($formProfil->creerInputImage($unPlat['NOMP'],'imgPlat','image/' .$unPlat['PHOTOP'] . '.jpeg' ));
-            $formProfil->ajouterComposantLigne($formProfil->creerA($unPlat['NOMP']));
-						$formProfil->ajouterComposantLigne($formProfil->creerA($unPlat['PRIXCLIENTP']));
-						$formProfil->ajouterComposantLigne($formProfil->creerA($unPlat['DESCRIPTIONP']));
-
+						$formProfil->ajouterComposantLigne($formProfil->creerInputImage($unPlat['NOMP'],'imgPlat','image/' .$unPlat['PHOTOP']));
+						$formProfil->ajouterComposantLigne($formProfil->concactComposants($formProfil->creerA($unPlat['NOMP']),
+																							 $formProfil->concactComposants($formProfil->creerA($unPlat['PRIXCLIENTP'] . " €"),
+																							 $formProfil->creerA($unPlat['DESCRIPTIONP']),2),2));
+						$formProfil->ajouterComposantTab();
           }
       $formProfil->ajouterComposantTab();
+			$formProfil->ajouterComposantLigne($formProfil->creerSep(''));
+			$formProfil->ajouterComposantTab();
     }
 
 }
