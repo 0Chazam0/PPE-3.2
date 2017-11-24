@@ -21,8 +21,9 @@ else
   setcookie(q, 0);
   setcookie(l, 0);
   setcookie(c, 0);
+  if 
   echo '<script type="text/javascript">';
-  echo 'window.location.href = "http://127.0.0.1/eclipse-workspace/PPE-3.2/index.php?menuPrincipal=Accueil";';
+  echo 'window.location.href = "index.php?menuPrincipal=Accueil";';
   echo '</script>';
 }
 

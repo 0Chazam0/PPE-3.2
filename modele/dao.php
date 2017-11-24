@@ -459,7 +459,7 @@ class NoteDAO
 		$sql = 'UPDATE evaluer SET NOTERAPIDITE = ' . $ntR . ', NOTEQUALITE = ' . $ntQ .
 					', NOTETEMP = ' . $ntT . ', NOTECOUT = ' . $ntC . ',    COMMENTAIRE = "' . $commentaire .
 					'", COMVISIBLE = 2 WHERE IDC = "' . $command . '"';
-	return DBConnex::getInstance()->exec($sql);
+		return DBConnex::getInstance()->exec($sql);
 	}
 
 	public static function selectModeNote(){
