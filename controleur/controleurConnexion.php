@@ -33,7 +33,6 @@ if (isset($_POST['id']) && isset($_POST['mdp'])) {
       echo '<script type="text/javascript">';
       echo 'window.location.href = "index.php?menuPrincipal='.$_SESSION['dernierePage'].'";';
       echo '</script>';
-      //include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
     }
   }
 }
