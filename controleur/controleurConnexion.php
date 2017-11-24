@@ -29,7 +29,10 @@ if (isset($_POST['id']) && isset($_POST['mdp'])) {
       $_SESSION['identite'] = $unUser;
       $_SESSION['typeIdentite'] = $unUserType;
       $_SESSION['menuPrincipal']=$_SESSION['dernierePage'];
-      include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
+      $_SESSION['menuPrincipal']="Accueil";
+      echo '<script type="text/javascript">';
+      echo 'window.location.href = "index.php?menuPrincipal='.$_SESSION['dernierePage'].'";';
+      echo '</script>';
     }
   }
 }

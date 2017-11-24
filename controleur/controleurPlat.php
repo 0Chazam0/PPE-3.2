@@ -38,7 +38,7 @@ $menuTypePlat->ajouterComposant($menuTypePlat->creerItemLien("All" ,"Tous les ty
 foreach ($_SESSION['listeTypePlats']->getLesTypePlats() as $uneTypePlat){
 	$menuTypePlat->ajouterComposant($menuTypePlat->creerItemLien($uneTypePlat->getCodeT() ,$uneTypePlat->getLibelle()));
 }
-$lemenuTypePlats = $menuTypePlat->creerMenu('TypePlat');
+$lemenuTypePlats = $menuTypePlat->creerMenuType('TypePlat',$_SESSION['TypePlat']);
 
 
 

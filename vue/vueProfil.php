@@ -4,7 +4,11 @@
   </header>
 
   <main>
+
       <nav class = "menuProfil">
+        <nav class = "photoProfil">
+          <?php echo $laPhotoProfil ?>
+        </nav>
           <?php echo $leMenuProfil ?>
       </nav>
 
