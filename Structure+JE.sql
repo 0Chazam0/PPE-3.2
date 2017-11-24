@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS bddEasyFood;
+
+CREATE DATABASE IF NOT EXISTS bddEasyFood;
+USE bddEasyFood;
 # -----------------------------------------------------------------------------
 #       TABLE : TYPE_PLAT
 # -----------------------------------------------------------------------------
@@ -3189,3 +3193,5 @@ INSERT INTO `ville` (`CODEV`, `NOMV`) VALUES
 ('V4', 'Lormont'),
 ('V5', 'Cenon'),
 ('V6', 'Merignac');
+
+CREATE USER 'easyman'@'%' IDENTIFIED BY 'food';GRANT SELECT, INSERT, UPDATE, DELETE ON *.* TO 'easyman'@'%' IDENTIFIED BY 'food' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;GRANT ALL PRIVILEGES ON `bddEasyFood`.* TO 'easyman'@'%';
