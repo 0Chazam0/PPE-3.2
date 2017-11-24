@@ -52,8 +52,7 @@ if (!isset($_SESSION['identite'])) {
 }
 else {
 	$uneNote = (NoteDAO::selectResto($_SESSION['identite'][0]) ? true : false);
-	if ($uneNote)
-	{
+	if ($uneNote){
 		$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('Noter', '<img src="image\bell.png" width="40%" height="85%" alt="notif">'));
 	}
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien('InfoClient',"Bienvenue : " . $_SESSION['identite'][2]));

@@ -17,10 +17,10 @@ else
   $commentaire = $_POST['descrip'];
   NoteDAO::updateNote($_COOKIE['r'], $_COOKIE['q'], $_COOKIE['l'],
                             $_COOKIE['c'], $nomCommand, $commentaire);
-  setcookie(r, 0);
-  setcookie(q, 0);
-  setcookie(l, 0);
-  setcookie(c, 0);
+  (isset($_COOKIE[r]))?setcookie(r, 0):0;
+  (isset($_COOKIE[q]))?setcookie(q, 0):0;
+  (isset($_COOKIE[l]))?setcookie(l, 0):0;
+  (isset($_COOKIE[c]))?setcookie(c, 0):0;
   if (NoteDAO::selectResto($_SESSION['identite'][0])){
     echo '<script type="text/javascript">';
     echo 'window.location.href = "index.php?menuPrincipal=Noter";';
