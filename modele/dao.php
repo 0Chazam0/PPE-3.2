@@ -71,7 +71,7 @@ class UserDAO{
     return $user;
   }
 	public static function definirIDU(){
-		$sql = "select count(IDU) from client";
+		$sql = "select count(IDU) from user";
 		$resu = DBConnex::getInstance()->queryFetchFirstRow($sql);
 		return $resu;
 	}
