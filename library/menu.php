@@ -40,8 +40,8 @@ class Menu{
 		$menu .= "</ul>";
 		return $menu ;
 	}
-	
-	public function creerMenuType($composantActif){
+
+	public function creerMenuType($nomMenu,$composantActif){
 		$menu = "<ul class = '" .  $this->style . "'>";
 		foreach($this->composants as $composant){
 			if($composant[0] == $composantActif){
@@ -50,12 +50,12 @@ class Menu{
 			}
 			else{
 				$menu .= "<li>";
-				$menu .= "<a href='index.php?action=afficher" ;
-				$menu .= "&TypePlat=" . $composant[0] . "' >";
-				$menu .= $composant[1] ;
+				$menu .= "<a href='index.php?". $nomMenu ;
+				$menu .= "=" . $composant[0] . "' >";
+				$menu .= "<span>" . $composant[1] ."</span>";
 				$menu .= "</a>";
-			}
 			$menu .= "</li>";
+		}
 		}
 		$menu .= "</ul>";
 		return $menu ;

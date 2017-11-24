@@ -34,7 +34,7 @@ $menuTypeResto->ajouterComposant($menuTypeResto->creerItemLien("All" ,"Tous les 
 foreach ($_SESSION['listeTypeRestos']->getLesTypeRestos() as $uneTypeResto){
 	$menuTypeResto->ajouterComposant($menuTypeResto->creerItemLien($uneTypeResto->getCodeT() ,$uneTypeResto->getLibelle()));
 }
-$lemenuTypeRestos = $menuTypeResto->creerMenu('TypeResto');
+$lemenuTypeRestos = $menuTypeResto->creerMenuType('TypeResto',$_SESSION['TypeResto']);
 
 
 /*----------------------------------------------------------*/

@@ -350,6 +350,9 @@ nav.menuPrincipal ul li .actif {
 	transition:0.5s;
 }
 
+.menuTypeResto li.actif{
+	color: #FF8000;
+}
 #erreurVille{
 	margin-top: 150px;
 	margin-left: 150px;
