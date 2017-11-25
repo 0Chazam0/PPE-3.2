@@ -454,14 +454,6 @@ class NoteDAO
     return $result;
   }
 
-	public static function updateNote($ntR, $ntQ, $ntT, $ntC, $command, $commentaire)
-	{
-		$sql = 'UPDATE evaluer SET NOTERAPIDITE = ' . $ntR . ', NOTEQUALITE = ' . $ntQ .
-					', NOTETEMP = ' . $ntT . ', NOTECOUT = ' . $ntC . ',    COMMENTAIRE = "' . $commentaire .
-					'", COMVISIBLE = 1 WHERE IDC = "' . $command . '"';
-		return DBConnex::getInstance()->exec($sql);
-	}
-
 	public static function selectModeNote(){
 		$sql = "SELECT R.NOMR, IDC, IDU, NOTERAPIDITE, NOTEQUALITE, NOTETEMP, NOTECOUT, COMMENTAIRE
 						FROM evaluer, resto AS R WHERE evaluer.IDR = R.IDR AND COMVISIBLE = 1 LIMIT 1";
@@ -469,21 +461,29 @@ class NoteDAO
     return ($liste);
   }
 
-	public static function	updateModeSee($command, $afficher)
-	{
-		$sql = 'UPDATE evaluer SET COMVISIBLE = ' . $afficher . ' WHERE IDC = "' . $command . '"';
-
-		return DBConnex::getInstance()->exec($sql);
-	}
-
 	public static function selectNoteUnResto($leResto)
 	{
 		$sql = "SELECT NOTERAPIDITE, NOTEQUALITE, NOTETEMP, NOTECOUT FROM evaluer
 						WHERE IDR = '" . $leResto . "'";
 		$liste = DBConnex::getInstance()->queryFetchAll($sql);
-		$calcul = intval($liste[0]['NOTERAPIDITE']) + intval($liste[0]['NOTEQUALITE']) + intval($liste[0]['NOTETEMP']) + intval($liste[0]['NOTECOUT']);
-		$calcul /= 4;
-		return (intval($calcul));
+		$calcul = (isset($liste[0]['NOTERAPIDITE']))?intval($liste[0]['NOTERAPIDITE']) +
+							intval($liste[0]['NOTEQUALITE']) + intval($liste[0]['NOTETEMP']) +
+							intval($liste[0]['NOTECOUT']) : null;
+		return (($calcul != null)?($calcul>0?intval($calcul /= 4):0):null);
+	}
+
+	public static function updateNote($ntR, $ntQ, $ntT, $ntC, $command, $commentaire){
+		$sql = 'UPDATE evaluer SET NOTERAPIDITE = ' . $ntR . ', NOTEQUALITE = ' . $ntQ .
+					', NOTETEMP = ' . $ntT . ', NOTECOUT = ' . $ntC . ',    COMMENTAIRE = "' . $commentaire .
+					'", COMVISIBLE = 1 WHERE IDC = "' . $command . '"';
+		return DBConnex::getInstance()->exec($sql);
+	}
+
+	public static function	updateModeSee($command, $afficher)
+	{
+		$sql = 'UPDATE evaluer SET COMVISIBLE = ' . $afficher . ' WHERE IDC = "' . $command . '"';
+
+		return DBConnex::getInstance()->exec($sql);
 	}
 }
 
