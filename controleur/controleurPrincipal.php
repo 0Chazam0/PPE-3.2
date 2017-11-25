@@ -72,8 +72,17 @@ if (isset($_POST['inscr'])) {
 /*--------Récupère le controleur Resto et la ville choisit (si la condition est respectée)----------*/
 /*----------------------------------------------------------*/
 if (isset($_POST['search']) && $_POST['search']!=null) {
-	$_SESSION['VilleSelected'] = strtolower($_POST['search']);
-	$_SESSION['menuPrincipal'] = 'Resto';
+	if(preg_match("/^[a-zA-Z]{0,25}$/",$_POST['search']))
+	{
+		$_SESSION['VilleSelected'] = strtolower($_POST['search']);
+		$_SESSION['menuPrincipal'] = 'Resto';
+	}
+	else{
+		$formErreurA = new Formulaire("POST","index.php","formErreurA","formErreurAthis");
+		$formErreurA->ajouterComposantLigne($formErreurA->creerLabelFor('Attention il y a des caractères numériques ou spéciaux dans la saisie',"lblErreurAccueil"));
+		$formErreurA->ajouterComposantTab();
+		$formErreurA->creerFormulaire();
+	}
 }
 /*----------------------------------------------------------*/
 /*--------Récupère le controleur Plat (si la condition est respectée)----------*/

@@ -94,15 +94,6 @@ if ($_SESSION['menuDetailResto']== "profil"){
 /*----------------------------------------------------------*/
 if ($_SESSION['menuDetailResto']== "insert"){
   $formRestaurateur = new Formulaire("POST","index.php","formRestaurateur","restaurateurthis");
-  if(isset($_SESSION['resultatUpload']) && $_SESSION['resultatUpload'] == "Transfert réussi" ){
-    $style = "resultatthisSucces";
-
-  }
-  else{
-    $style = "resultatthisErreur";
-  }
-  $formResultat = new Formulaire("POST","","formResultat",$style);
-
 
   /*----------------------------------------------------------*/
   /*--------Création du form de l'ajout et autoremplissage avec les données précédentes envoyées au formulaire-----*/
@@ -125,6 +116,85 @@ if ($_SESSION['menuDetailResto']== "insert"){
     $formRestaurateur->ajouterComposantTab();
     $formRestaurateur->creerFormulaire();
 
+		/*----------------------------------------------------------*/
+		/*--------Upload une image (conforme) dans le dossier image-----*/
+		/*----------------------------------------------------------*/
+		if (isset($_FILES['uploadImg']['name']) && !empty($_FILES['uploadImg']['name'])){
+			$extensions_valides = array('jpeg');
+			$image_sizes = getimagesize($_FILES['uploadImg']['tmp_name']);
+			$nomPhoto = str_replace(CHR(32),"",strtolower($_POST['txtAjoutNomPlat']));
+			//La taille du fichier en octets.
+			if ($_FILES['uploadImg']['size'] > 1000000) {
+				$_SESSION['resultatUpload'] = "Le fichier est trop gros";
+			}
+			else{
+				if ($_FILES['uploadImg']['error'] > 0) {
+					$_SESSION['resultatUpload'] = "Erreur lors du transfert";
+				}
+					else{
+						$extension_upload = strtolower(  substr(  strrchr($_FILES['uploadImg']['name'], '.')  ,1)  );
+						//Parcourt le tableau de possibilité d'extention
+						if (in_array($extension_upload,$extensions_valides) ){
+							if ($image_sizes[0] > 300 OR $image_sizes[1] > 300) {
+									$_SESSION['resultatUpload'] = "Image trop grande";
+							}
+							else{
+								/*----------------------------------------------------------*/
+								/*--------Controle des expressions régulieres----*/
+								/*----------------------------------------------------------*/
+								if(preg_match("/^[a-zA-Z]{0,25}$/",$_POST['txtAjoutNomPlat']))
+								{
+									if(preg_match('/^\d+(?:[.]\d+)?$/',$_POST['txtAjoutPrixPlat']))
+									{
+										/*----------------------------------------------------------*/
+										/*--------upload de la photo a l'emplacement----*/
+										/*----------------------------------------------------------*/
+										$nom = "image/{$nomPhoto}.{$extension_upload}";
+										$resultat = move_uploaded_file($_FILES['uploadImg']['tmp_name'],$nom);
+										if ($resultat)
+										{
+											$_SESSION['resultatUpload'] ="Transfert réussi";
+											/*----------------------------------------------------------*/
+											/*--------Appel de la requete sql pour ajouter dans la bdd (plat)-----*/
+											/*----------------------------------------------------------*/
+											$numeroPlat = 1;
+											$_SESSION['listePlats'] = new Plats(PlatDAO::selectListePlat());
+											foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
+											{
+												$idP = substr($OBJ->getID(), 1) ;
+												if ($numeroPlat < $idP) {
+													$numeroPlat = substr($OBJ->getID(), 1);
+												}
+											}
+
+											$cheminPhoto = str_replace(CHR(32),"",strtolower($_POST['txtAjoutNomPlat']));
+											$lePlat = new Plat("P".($numeroPlat+1),$_SESSION['RestoRestaurateurSelected'],$_POST['cbxTypeP'],$_POST['txtAjoutNomPlat'],$_POST['txtAjoutPrixPlat'],0,1,$cheminPhoto,$_POST['txtAjoutDescriptionPlat']);
+											PlatDAO::ajouterPlat($lePlat);
+										}
+										else{
+											$_SESSION['resultatUpload'] = "Erreur non identifée";
+										}
+									}
+									else {
+										$_SESSION['resultatUpload'] = "Attention le prix du plat ne doit pas contenir des caractères numériques ou spéciaux <br> (exemple de nombre décimal : 5.5 )";
+									}
+								}
+								else{
+									$_SESSION['resultatUpload'] = "Attention il y a des caractères numériques ou spéciaux dans le nom du plat";
+								}
+
+							}
+						}
+						else{
+							$_SESSION['resultatUpload'] = "Extension incorecte";
+						}
+				}
+			}
+		}
+		else {
+			$_SESSION['resultatUpload'] = "Choisir une image";
+		}
+
   }
 
 
@@ -132,93 +202,26 @@ if ($_SESSION['menuDetailResto']== "insert"){
   /*----------------------------------------------------------*/
   /*--------Création du form de l'ajout de base-----*/
   /*----------------------------------------------------------*/
-  else{
-
-  $formRestaurateur->ajouterComposantLigne($formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Ajouter un plat', 'lblajoutPlat'),
-                                           $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Icône du fichier (JPEG | max. 1 Mo) :', 'fileAjoutPlat'),
-                                           $formRestaurateur->concactComposants($formRestaurateur->creerInputFile('uploadImg','uploadImg',"Parcourir"),
-                                           $formRestaurateur->concactComposants($formRestaurateur->creerSep('sepAjoutPlat'),
-                                           $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Type de plat : ', 'lblAjoutTypePlat'),
-                                           $formRestaurateur->concactComposants($formRestaurateur->creerSelect('typeP','cbxTypeP',""),
-                                           $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Nom du Plat : ', 'lblAjoutNomPlat'),
-                                           $formRestaurateur->concactComposants($formRestaurateur->creerInputTexte("txtAjoutNomPlat","txtAjoutNomPlat","","",1,"Entrez le nom du plat"),
-                                           $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Prix du Plat : ', 'lblAjoutPrixPlat'),
-                                           $formRestaurateur->concactComposants($formRestaurateur->creerInputTexte("txtAjoutPrixPlat","txtAjoutPrixPlat","","",1,"Entrez le prix du plat"),
-                                           $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Desciption du plat : ', 'lblAjoutDescriptionPlat'),
-                                           $formRestaurateur->concactComposants($formRestaurateur->creerInputTexte("txtAjoutDescriptionPlat","txtAjoutDescriptionPlat","","",1,"Entrez la description du plat"),
-                                           $formRestaurateur->creerInputSubmit("btnAjoutPlat","btnAjoutPlat","Ajouter le plat"),
-                                           2),0),2),0),2),0),2),0),2),3),0),3));
-  $formRestaurateur->ajouterComposantTab();
-  $formRestaurateur->creerFormulaire();
+  else
+	{
+		$_SESSION['resultatUpload']=null;
+	  $formRestaurateur->ajouterComposantLigne($formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Ajouter un plat', 'lblajoutPlat'),
+	                                           $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Icône du fichier (JPEG | max. 1 Mo) :', 'fileAjoutPlat'),
+	                                           $formRestaurateur->concactComposants($formRestaurateur->creerInputFile('uploadImg','uploadImg',"Parcourir"),
+	                                           $formRestaurateur->concactComposants($formRestaurateur->creerSep('sepAjoutPlat'),
+	                                           $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Type de plat : ', 'lblAjoutTypePlat'),
+	                                           $formRestaurateur->concactComposants($formRestaurateur->creerSelect('typeP','cbxTypeP',""),
+	                                           $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Nom du Plat : ', 'lblAjoutNomPlat'),
+	                                           $formRestaurateur->concactComposants($formRestaurateur->creerInputTexte("txtAjoutNomPlat","txtAjoutNomPlat","","",1,"Entrez le nom du plat"),
+	                                           $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Prix du Plat : ', 'lblAjoutPrixPlat'),
+	                                           $formRestaurateur->concactComposants($formRestaurateur->creerInputTexte("txtAjoutPrixPlat","txtAjoutPrixPlat","","",1,"Entrez le prix du plat"),
+	                                           $formRestaurateur->concactComposants($formRestaurateur->creerLabelFor('Desciption du plat : ', 'lblAjoutDescriptionPlat'),
+	                                           $formRestaurateur->concactComposants($formRestaurateur->creerInputTexte("txtAjoutDescriptionPlat","txtAjoutDescriptionPlat","","",1,"Entrez la description du plat"),
+	                                           $formRestaurateur->creerInputSubmit("btnAjoutPlat","btnAjoutPlat","Ajouter le plat"),
+	                                           2),0),2),0),2),0),2),0),2),3),0),3));
+	  $formRestaurateur->ajouterComposantTab();
+	  $formRestaurateur->creerFormulaire();
   }
-  /*----------------------------------------------------------*/
-  /*--------Upload une image (conforme) dans le dossier image-----*/
-  /*----------------------------------------------------------*/
-  if (isset($_FILES['uploadImg']['name']) && !empty($_FILES['uploadImg']['name'])){
-    $extensions_valides = array('jpeg');
-    $image_sizes = getimagesize($_FILES['uploadImg']['tmp_name']);
-    $nomPhoto = str_replace(CHR(32),"",strtolower($_POST['txtAjoutNomPlat']));
-    //La taille du fichier en octets.
-    if ($_FILES['uploadImg']['size'] > 1000000) {
-      $_SESSION['resultatUpload'] = "Le fichier est trop gros";
-    }
-    else{
-      if ($_FILES['uploadImg']['error'] > 0) {
-        $_SESSION['resultatUpload'] = "Erreur lors du transfert";
-      }
-        else{
-          $extension_upload = strtolower(  substr(  strrchr($_FILES['uploadImg']['name'], '.')  ,1)  );
-          //Parcourt le tableau de possibilité d'extention
-          if (in_array($extension_upload,$extensions_valides) ){
-            if ($image_sizes[0] > 300 OR $image_sizes[1] > 300) {
-                $_SESSION['resultatUpload'] = "Image trop grande";
-            }
-            else{
-							/*----------------------------------------------------------*/
-							/*--------upload de la photo a l'emplacement----*/
-							/*----------------------------------------------------------*/
-              $nom = "image/{$nomPhoto}.{$extension_upload}";
-              $resultat = move_uploaded_file($_FILES['uploadImg']['tmp_name'],$nom);
-              if ($resultat)
-              {
-                $_SESSION['resultatUpload'] ="Transfert réussi";
-                /*----------------------------------------------------------*/
-                /*--------Appel de la requete sql pour ajouter dans la bdd (plat)-----*/
-                /*----------------------------------------------------------*/
-                $numeroPlat = 1;
-                $_SESSION['listePlats'] = new Plats(PlatDAO::selectListePlat());
-                foreach ($_SESSION['listePlats']->getLesPlats() as $OBJ)
-                {
-                  $idP = substr($OBJ->getID(), 1) ;
-                  if ($numeroPlat < $idP) {
-                    $numeroPlat = substr($OBJ->getID(), 1);
-                  }
-                }
-
-                $cheminPhoto = str_replace(CHR(32),"",strtolower($_POST['txtAjoutNomPlat']));
-                $lePlat = new Plat("P".($numeroPlat+1),$_SESSION['RestoRestaurateurSelected'],$_POST['cbxTypeP'],$_POST['txtAjoutNomPlat'],$_POST['txtAjoutPrixPlat'],0,1,$cheminPhoto,$_POST['txtAjoutDescriptionPlat']);
-                PlatDAO::ajouterPlat($lePlat);
-              }
-              else{
-                $_SESSION['resultatUpload'] = "Erreur non identifée";
-              }
-            }
-          }
-          else{
-            $_SESSION['resultatUpload'] = "Extension incorecte";
-          }
-      }
-    }
-  }
-  else {
-    $_SESSION['resultatUpload'] = "Choisir une image";
-
-  }
-
-
-
-
-
 
 
 
@@ -227,11 +230,21 @@ if ($_SESSION['menuDetailResto']== "insert"){
   /*----------------------------------------------------------*/
   /*------Affiche un message de resultat (Succés de l'ajout ou l'erreur)-------*/
   /*----------------------------------------------------------*/
-  if(isset($_SESSION['resultatUpload'])){
-    $formResultat->ajouterComposantLigne($formResultat->creerLabelFor($_SESSION['resultatUpload'], 'lblMsgResult'));
-    $formResultat->ajouterComposantTab();
-    $formResultat->creerFormulaire();
+  if(isset($_SESSION['resultatUpload']) && $_SESSION['resultatUpload']!=null ){
+		if($_SESSION['resultatUpload'] == "Transfert réussi"){
+			$formResult = new Formulaire("POST","#","formPlat","resultatthisSucces");
+			$formResult->ajouterComposantLigne($formResult->creerLabelFor("Le plat a été correctement ajouté","resultatSuppri"));
+			$formResult->ajouterComposantTab();
+			$formResult->creerFormulaire();
+		}
+		else{
+			$formResultat = new Formulaire("POST","","formResultat",'resultatthisErreur');
+	    $formResultat->ajouterComposantLigne($formResultat->creerLabelFor($_SESSION['resultatUpload'], 'lblMsgResult'));
+	    $formResultat->ajouterComposantTab();
+	    $formResultat->creerFormulaire();
+		}
   }
+
 
 
 }
@@ -243,34 +256,57 @@ if ($_SESSION['menuDetailResto']== "insert"){
 /*--------Affiche la vue Upload typePlat si l'on choix le menu ajouter  type plat-----*/
 /*----------------------------------------------------------*/
 
-$formTypePlat = new Formulaire("POST","index.php","formPlat","typeplatRthis");
 $numeroTP = 0;
 if ($_SESSION['menuDetailResto']== "insertTP"){
-
-	$formTypePlat->ajouterComposantLigne($formTypePlat->concactComposants($formTypePlat->creerLabelFor('Type de Plat : ',"lblTypePlatATP"),
-																																				$formTypePlat->creerInputTexte("txtATP","txtATP","","",1,"Entrez le libelle du type de plat"),0));
-	$formTypePlat->ajouterComposantTab();
-	$formTypePlat->ajouterComposantLigne($formTypePlat->creerInputSubmitPanier("insertTypePlat-btn","insertTypePlat-btn"," Ajouter un type de plat"));
-	$formTypePlat->ajouterComposantTab();
-	$formTypePlat->creerFormulaire();
-	$_SESSION['lesFormsPlatR'] .= $formTypePlat->afficherFormulaire();
-
+	$formTypePlat = new Formulaire("POST","index.php","formPlat","typeplatRthis");
 	/*----------------------------------------------------------*/
 	/*--------Appel de la requete sql pour ajouter dans la bdd (TypePlat)-----*/
 	/*----------------------------------------------------------*/
 	if(isset($_POST['insertTypePlat-btn'])){
-		foreach ($_SESSION['listeTypePlats']->getLesTypePlats() as $OBJ)
+		if(preg_match("/^[a-zA-Z]{0,25}$/",$_POST['txtATP']))
 		{
-			$numeroTP += 1;
+			foreach ($_SESSION['listeTypePlats']->getLesTypePlats() as $OBJ)
+			{
+				$numeroTP += 1;
+			}
+			$unTP = new typePlat('TP'.($numeroTP+1),$_POST['txtATP']);
+			TypePlatDAO::ajouterTypePlat($unTP);
+			$_SESSION['lesFormsPlatR'] = null;
+			$formResult = new Formulaire("POST","#","formPlat","resultatthisSucces");
+			$formResult->ajouterComposantLigne($formResult->creerLabelFor("Le type de plat a été correctement ajouté","resultatSuppri"));
+			$formResult->ajouterComposantTab();
+			$formResult->creerFormulaire();
 		}
-		$unTP = new typePlat('TP'.($numeroTP+1),$_POST['txtATP']);
-		TypePlatDAO::ajouterTypePlat($unTP);
-		$_SESSION['lesFormsPlatR'] = null;
-		$formResult = new Formulaire("POST","#","formPlat","resultatthisSucces");
-		$formResult->ajouterComposantLigne($formResult->creerLabelFor("Le type de plat a été correctement ajouté","resultatSuppri"));
-		$formResult->ajouterComposantTab();
-		$formResult->creerFormulaire();
+		else{
+			$_SESSION['resultatUpload'] = "Attention il y a des caractères numériques ou spéciaux dans le nom du type de plat";
+			$formTypePlat->ajouterComposantLigne($formTypePlat->concactComposants($formTypePlat->creerLabelFor('Type de Plat : ',"lblTypePlatATP"),
+																																						$formTypePlat->creerInputTexte("txtATP","txtATP","",$_POST['txtATP'],1,"Entrez le libelle du type de plat"),0));
+			$formTypePlat->ajouterComposantTab();
+			$formTypePlat->ajouterComposantLigne($formTypePlat->creerInputSubmitPanier("insertTypePlat-btn","insertTypePlat-btn"," Ajouter un type de plat"));
+			$formTypePlat->ajouterComposantTab();
+			$formTypePlat->creerFormulaire();
+			$_SESSION['lesFormsPlatR'] .= $formTypePlat->afficherFormulaire();
+		}
 	}
+	else{
+		$_SESSION['resultatUpload']=null;
+		$formTypePlat->ajouterComposantLigne($formTypePlat->concactComposants($formTypePlat->creerLabelFor('Type de Plat : ',"lblTypePlatATP"),
+																																					$formTypePlat->creerInputTexte("txtATP","txtATP","","",1,"Entrez le libelle du type de plat"),0));
+		$formTypePlat->ajouterComposantTab();
+		$formTypePlat->ajouterComposantLigne($formTypePlat->creerInputSubmitPanier("insertTypePlat-btn","insertTypePlat-btn"," Ajouter un type de plat"));
+		$formTypePlat->ajouterComposantTab();
+		$formTypePlat->creerFormulaire();
+		$_SESSION['lesFormsPlatR'] .= $formTypePlat->afficherFormulaire();
+	}
+
+
+
+	if(isset($_SESSION['resultatUpload']) && $_SESSION['resultatUpload']!=null ){
+		$formResultat = new Formulaire("POST","","formResultat",'resultatthisErreur');
+    $formResultat->ajouterComposantLigne($formResultat->creerLabelFor($_SESSION['resultatUpload'], 'lblMsgResult'));
+    $formResultat->ajouterComposantTab();
+    $formResultat->creerFormulaire();
+  }
 }
 
 
