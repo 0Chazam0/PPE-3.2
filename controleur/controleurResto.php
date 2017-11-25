@@ -55,11 +55,11 @@ if ($_SESSION['TypeResto']=="All"){
 	        $formResto->ajouterComposantLigne($formResto->creerInputImage('imgResto', 'imgResto', $correct));
 					$formResto->ajouterComposantTab();
 	        $formResto->ajouterComposantLigne($formResto->concactComposants($formResto->creerLabelFor($OBJ->getNom(),"nomResto"),
-																						$formResto->concactComposants($formResto->creerInputImage('star', 'star', $star),
-																						$formResto->concactComposants($formResto->creerInputImage('star', 'star', $star),
-																						$formResto->concactComposants($formResto->creerInputImage('star', 'star', $star),
-																						$formResto->concactComposants($formResto->creerInputImage('star', 'star', $star),
-																						$formResto->concactComposants($formResto->creerInputImage('star', 'star', $star),
+																						$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', $star),
+																						$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', $star),
+																						$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', $star),
+																						$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', $star),
+																						$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', $star),
 																						$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto'),2),0),0),0),0),0));
 	        $formResto->ajouterComposantLigne($formResto->creerInputSubmitHidden("idResto","idResto",$OBJ->getId()));
 	        $formResto->ajouterComposantTab();
@@ -88,11 +88,11 @@ else {
 						$formResto = new Formulaire("POST","index.php","formResto","restothis");
 						$formResto->ajouterComposantLigne($formResto->creerInputImage('imgResto', 'imgResto', $correct));
 						$formResto->ajouterComposantLigne($formResto->concactComposants($formResto->creerLabelFor($OBJ->getNom(),"nomResto"),
-																							$formResto->concactComposants($formResto->creerInputImage('star', 'star', $star),
-																							$formResto->concactComposants($formResto->creerInputImage('star', 'star', $star),
-																							$formResto->concactComposants($formResto->creerInputImage('star', 'star', $star),
-																							$formResto->concactComposants($formResto->creerInputImage('star', 'star', $star),
-																							$formResto->concactComposants($formResto->creerInputImage('star', 'star', $star),
+																							$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', $star),
+																							$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', $star),
+																							$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', $star),
+																							$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', $star),
+																							$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', $star),
 																							$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto'),2),0),0),0),0),0));
 						$formResto->ajouterComposantLigne($formResto->creerInputSubmitHidden("idResto","idResto",$OBJ->getId()  ));
 						$formResto->ajouterComposantTab();

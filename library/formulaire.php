@@ -142,6 +142,11 @@ class Formulaire{
 		$composant .= "src = '" . $uneSource . "'/> ";
 		return $composant;
 	}
+	public function creerInputImageStar($unNom, $uneClasse, $uneSource){
+		$composant = "<input type = 'image' name = '" . $unNom . "' class= '" . $uneClasse . "' ";
+		$composant .= "src = '" . $uneSource . "'/> ";
+		return $composant;
+	}
 	public function creerInputImageProfil($unNom, $uneClasse, $uneSource){
 		$composant = "<input type = 'image' name = '" . $unNom . "' class= '" . $uneClasse . "' ";
 		$composant .= "src = '" . $uneSource . "'/> ";
