@@ -14,7 +14,9 @@
     echo $formModo->afficherFormulaire();
   }
   else {
-    echo "salut [" . $idCommande . "]";
+    echo '<script type="text/javascript">';
+    echo 'window.location.href = "index.php?menuPrincipal=Accueil";';
+    echo '</script>';
   }
 
   ?>

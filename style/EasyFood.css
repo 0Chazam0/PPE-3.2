@@ -1285,6 +1285,16 @@ text-align: center;
 	border-radius: 5px;
 }
 
+#tabloUser{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.styleNote th, td {
+	padding: 5px;
+	text-align: left;
+}
+
 /****************************************************/
 /*styles pour le menu du profil du connecté         */
 /****************************************************/

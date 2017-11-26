@@ -3,21 +3,19 @@
 $listeUser = AccueilModoDAO::selectUser();
 $formUser = new Formulaire("POST","index.php?menuPrincipal=AccueilModo",
 "formUser","user");
-$test = "<table>";
+$formUser->ajouterComposantLigne($formUser->creerDebutTabl());
+$formUser->ajouterComposantTab();
 foreach ($listeUser as $unUser) {
-  // $formModo->ajouterComposantLigne($formModo->creerA($nomR));
-  // $formModo->ajouterComposantTab();
-  print_r($unUser);
-  print_r($unUser['IDU']);
-  echo "[---->" . $unUser . "]";
-  $test = "<tr>";
-  $test = "<td>" . $unUser['id'] . "</td><td>" . $unUser['nom'] . "</td>";
-  $test = "</tr>";
-
+  $id = $unUser->getID();
+  $nom = $unUser->getNom();
+  $prenom = $unUser->getPrenom();
+  $formUser->ajouterComposantLigne($formUser->creerTabl($id, $nom, $prenom));
+  $formUser->ajouterComposantTab();
 }
-$test = "</table>";
-$formModo->creerFormulaire();
+$formUser->ajouterComposantLigne($formUser->creerFinTabl());
+$formUser->ajouterComposantTab();
+$formUser->creerFormulaire();
 
-//require_once 'vue/vueAccueilModo.php';
+require_once 'vue/vueAccueilModo.php';
 
 ?>

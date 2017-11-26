@@ -8,6 +8,12 @@ style="position:absolute;">
 
 </div>
 <div class="styleNote">
-    <?php echo $test; ?>
+    <?php
+    if(isset($formUser))
+    {
+      echo $formUser->afficherFormulaire();
+    }
+
+    ?>
 
 </div>

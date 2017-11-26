@@ -211,6 +211,31 @@ class Formulaire{
 		return $composant;
 	}
 
+	public function creerDebutTabl()
+	{
+		echo "[aaaa]";
+		$composant = '<table id="tabloUser">';
+		$composant .= "<tr>
+    							<th>ID</th>
+    							<th>Nom</th>
+									<th>Prenom</th>
+  								</tr>";
+		return $composant;
+	}
+
+	public function creerTabl($id, $nom, $prenom)
+	{
+		$composant = "<tr>";
+	  $composant .= "<td>" . $id . "</td><td>" . $nom . "</td><td>" . $prenom . "</td>";
+	  $composant .= "</tr>";
+		return $composant;
+	}
+
+	public function creerFinTabl()
+	{
+		return ("</table>");
+	}
+
 	/****************************************************/
 	/**********Creation et affichage du formulaire   *************/
 	/****************************************************/
