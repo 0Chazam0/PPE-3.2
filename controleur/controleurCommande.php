@@ -88,7 +88,31 @@ if (isset($_POST['confirmCommande'])) {
     CommandeDAO::inQte($OBJ->getID(),$_SESSION['compteurCommande'],1);
   }
 
-}
+
+//   foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ)
+// 	{
+//     $qte = 0;
+//     foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ2)
+//   	{
+//       if($OBJ == $OBJ2){
+//         $qte+=1;
+//       }
+//       $test[] = array($OBJ->getNom() => $qte);
+//
+//     }
+//   }
+//   foreach ($test as $i => $value) {
+//       foreach ($test[$i] as $j => $value) {
+//         if(key($value)){
+//
+//         }
+//           print_r($test[0]);
+//           print_r("-".$value."/");
+//       }
+//   }
+//   var_dump($test);
+//
+ }
 
 
 /*--------------------------------------------------------------------------*/

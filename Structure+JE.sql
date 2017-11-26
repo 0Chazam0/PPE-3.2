@@ -2824,7 +2824,7 @@ CREATE TABLE `restaurateur` (
 --
 
 INSERT INTO `restaurateur` (`IDU`, `NOMU`, `PRENOMU`, `MAIL`, `MDP`, `ADRESSEU`) VALUES
-('U3', 'Etchebest', 'Phillipe', 'etchebest.phillipe@gmail.com', 'etchebest', '7 rue du grand thÃ©Ã¢tre'),
+('U3', 'Etchebest', 'Phillipe', 'etchebest.phillipe@gmail.com', 'etchebest', '7 rue du grand théâtre'),
 ('U4', 'Ramsay', 'Gordon', 'ramsay.gordon@gmail.com', 'ramsay', '10 place du grand hotel'),
 ('U5', 'Michalak', 'Christophe', 'michalak.christophe@gmail.com', 'michalak', '3 avenue du palais'),
 ('U6', 'Giovani', 'Mario', 'giovani.mario@gmail.com', 'giovani', '5 route du ciel');
@@ -2948,7 +2948,7 @@ CREATE TABLE `type_plat` (
 INSERT INTO `type_plat` (`CODET`, `LIBELLE`) VALUES
 ('TP1', 'Entrées'),
 ('TP2', 'Plats'),
-('TP3', 'Déserts'),
+('TP3', 'Desserts'),
 ('TP4', 'Boissons'),
 ('TP5', 'Sauces');
 
