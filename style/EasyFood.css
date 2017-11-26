@@ -852,6 +852,14 @@ padding: 10px 30px 30px 30px;
 	display: inline-block;
 }
 
+.inscription input[type='text']:valid{
+	border-color: green;
+}
+
+.inscription input[type='password']:valid{
+	border-color: green;
+}
+
 .inscription input{
 	background-color: #FAFAFA;
 	border-style: solid;
@@ -1434,9 +1442,6 @@ nav.menuProfil input[type='submit']:hover{
 		color: BLACK;
 		transition:0.5s;
 	}
-
-
-
 
 
 

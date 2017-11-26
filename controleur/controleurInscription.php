@@ -16,19 +16,42 @@ if (isset($_POST['inscrIdentifiant'])
 	}
 }
 include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
-
+if (isset($_POST['inscrIdentifiant'])) {
+	$inscrIdentifiant = $_POST['inscrIdentifiant'];
+}
+else {
+	$inscrIdentifiant = '';
+}
+if (isset($_POST['inscrNom'])) {
+	$inscrNom = $_POST['inscrNom'];
+}
+else {
+	$inscrNom = '';
+}
+if (isset($_POST['inscrPrenom'])) {
+	$inscrPrenom = $_POST['inscrPrenom'];
+}
+else {
+	$inscrPrenom = '';
+}
+if (isset($_POST['inscrAdresse'])) {
+	$inscrAdresse = $_POST['inscrAdresse'];
+}
+else {
+	$inscrAdresse = '';
+}
   $formInscription = new formulaire('post','index.php','formInscription','inscription');
-  $formInscription->ajouterComposantLigne($formInscription->creerInputTexte('inscrIdentifiant', 'inscrIdentifiant', '','',1,'saisir votre mail' ));
+  $formInscription->ajouterComposantLigne($formInscription->creerInputTextePattern('inscrIdentifiant', 'inscrIdentifiant', '',$inscrIdentifiant,1,'saisir votre mail','[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})' ));
   $formInscription->ajouterComposantTab();
-  $formInscription->ajouterComposantLigne($formInscription->creerInputTexte('inscrNom', 'inscrNom', '','',1,'saisir votre nom' ));
+  $formInscription->ajouterComposantLigne($formInscription->creerInputTextePattern('inscrNom', 'inscrNom', '',$inscrNom,1,'saisir votre nom','[a-zA-ZÀ-ÿ]{3,15}'));
   $formInscription->ajouterComposantTab();
-  $formInscription->ajouterComposantLigne($formInscription->creerInputTexte('inscrPrenom', 'inscrPrenom', '','',1,'saisir votre prénom' ));
+  $formInscription->ajouterComposantLigne($formInscription->creerInputTextePattern('inscrPrenom', 'inscrPrenom', '',$inscrPrenom,1,'saisir votre prénom','[a-zA-ZÀ-ÿ]{3,15}'));
   $formInscription->ajouterComposantTab();
-  $formInscription->ajouterComposantLigne($formInscription->creerInputTexte('inscrAdresse', 'inscrAdresse', '','',1,'saisir votre adresse' ));
+  $formInscription->ajouterComposantLigne($formInscription->creerInputTextePattern('inscrAdresse', 'inscrAdresse', '',$inscrAdresse,1,'saisir votre adresse','[a-zA-Z]{5,20}'));
   $formInscription->ajouterComposantTab();
-  $formInscription->ajouterComposantLigne($formInscription->creerInputPassword('inscrmdp', 'inscrmdp', '','',1,'saisir votre mot de passe' ));
+  $formInscription->ajouterComposantLigne($formInscription->creerInputPassPattern('inscrmdp', 'inscrmdp', '','',1,'saisir votre mot de passe', '[a-zA-Z0-9]{6,20}' ));
   $formInscription->ajouterComposantTab();
-  $formInscription->ajouterComposantLigne($formInscription->creerInputPassword('inscrmdpconf', 'inscrmdpconf', '','',1,'confirmer votre mot de passe' ));
+  $formInscription->ajouterComposantLigne($formInscription->creerInputPassPattern('inscrmdpconf', 'inscrmdpconf', '','',1,'confirmer votre mot de passe','[a-zA-Z0-9]{6,20}' ));
   $formInscription->ajouterComposantTab();
   $formInscription->ajouterComposantLigne($formInscription->creerInputSubmit('inscrValid', 'inscrValid', "Valider inscription"));
   $formInscription->ajouterComposantTab();

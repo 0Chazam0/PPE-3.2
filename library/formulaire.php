@@ -115,6 +115,41 @@ class Formulaire{
 		$composant .= "value = '" . $uneValue . "'/> ";
 		return $composant;
 	}
+	public function creerInputTextePattern($unNom, $unId, $unLabel, $uneValue , $required , $placeholder, $unPattern){
+		$composant = "<input type = 'text' name = '" . $unNom . "' id = '" . $unId . "' ";
+		if (!empty($uneValue)){
+			$composant .= "value = '" . $uneValue . "' ";
+		}
+		if (!empty($placeholder)){
+			$composant .= "placeholder = '" . $placeholder . "' ";
+		}
+		if (!empty($unPattern)){
+			$composant .= "pattern = '" . $unPattern . "' ";
+		}
+		if ( $required == 1){
+			$composant .= "required";
+		}
+		$composant .= " autocomplete='off'/>";
+		return $composant;
+	}
+
+	public function creerInputPassPattern($unNom, $unId, $unLabel, $uneValue , $required , $placeholder, $unPattern){
+		$composant = "<input type = 'password' name = '" . $unNom . "' id = '" . $unId . "' ";
+		if (!empty($uneValue)){
+			$composant .= "value = '" . $uneValue . "' ";
+		}
+		if (!empty($placeholder)){
+			$composant .= "placeholder = '" . $placeholder . "' ";
+		}
+		if (!empty($unPattern)){
+			$composant .= "pattern = '" . $unPattern . "' ";
+		}
+		if ( $required == 1){
+			$composant .= "required";
+		}
+		$composant .= " autocomplete='off'/>";
+		return $composant;
+	}
 
 	public function creerInputSubmitOnClick($unNom, $unId, $uneValue,$erreur){
 		$composant = "<input type = 'submit' name = '" . $unNom . "' id = '" . $unId . "' ";
@@ -171,6 +206,7 @@ class Formulaire{
 		$composant .= " autocomplete='off'/>";
 		return $composant;
 	}
+
 	public function creerInputFile($unName,$uneClasse){
 		$composant = "<input type = 'file' id = '" . $unName . "'  name = '" . $unName . "' class = '" . $uneClasse . "'/> ";
 		return $composant;
