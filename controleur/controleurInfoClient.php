@@ -42,10 +42,6 @@ if ($_SESSION['menuProfil'] == "Profil") {
 	$formProfil->ajouterComposantTab();
 	$formProfil->ajouterComposantLigne($formProfil->creerLabelFor($_SESSION['identite'][5],'adresse'));
 	$formProfil->ajouterComposantTab();
-	$formProfil->ajouterComposantLigne($formProfil->creerInputSubmit('deconnexion','deconnexion','Deconnecter'));
-	$formProfil->ajouterComposantTab();
-	$formProfil->ajouterComposantLigne($formProfil->creerInputSubmitHidden('deco','deco','deco'));
-	$formProfil->ajouterComposantTab();
 }
 
 if ($_SESSION['menuProfil'] == "Historique") {
@@ -72,8 +68,9 @@ if ($_SESSION['menuProfil'] == "Historique") {
     }
 
 }
-$photoProfil = new Formulaire('','','photoProfil','photoProfil');
+$photoProfil = new Formulaire('post','index.php','photoProfil','photoProfil');
 $photoProfil->ajouterComposantLigne($photoProfil->creerInputImageProfil('photoProfil','photoDProfil',"image/" . $_SESSION['identite'][0]));
+$photoProfil->ajouterComposantLigne($photoProfil->creerInputSubmit('deconnexion','deconnexion','Deconnecter'));
 $photoProfil->ajouterComposantTab();
 $laPhotoProfil = $photoProfil->creerFormulaire();
 $laPhotoProfil = $photoProfil->afficherFormulaire();

@@ -1372,11 +1372,11 @@ nav.conteneurProfil label.adresse{
 	text-shadow: 2px 2px 8px white;
 }
 
-nav.conteneurProfil input[type='submit']{
+nav.menuProfil input[type='submit']{
+		margin-left: 65%;
 		background-color: #FAFAFA;
 	  border-style: solid;
 		margin-top: 10px;
-		margin-left: 20px;
 	  border-width: 2px;
 	  border-color: orange;
 		text-align: center;
@@ -1385,11 +1385,12 @@ nav.conteneurProfil input[type='submit']{
 	  color: BLACK;
 		border-radius: 10px;
 		width: 400px;
-		height: 40px;
+		height: 80px;
 		display: inline-block;
 	}
 
-nav.conteneurProfil input[type='submit']:hover{
+nav.menuProfil input[type='submit']:hover{
+		margin-left: 66%;
 		background-color: #F4FA58;
 		border-style: solid;
 		border-width: 2px;

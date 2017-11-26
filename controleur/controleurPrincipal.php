@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['deco'])) {
+if (isset($_POST['deconnexion'])) {
 	session_destroy();
 	session_start();
 }
