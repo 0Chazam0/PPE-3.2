@@ -278,6 +278,22 @@ nav.menuPrincipal ul li .actif {
 
 }
 
+.formErreurAthis{
+	float:left;
+	position: relative;
+	background-color: #F3CACA;
+	margin-top: 5%;
+	margin-left: -2%;
+	margin-bottom: 10%;
+	border: 4px solid red;
+	width:  520px;
+	color: red;
+	font-weight: bold;
+	height: 60px;
+	padding-right: 30px;
+	border-radius: 10px;
+	text-align: center;
+}
 /****************************************************/
 /*styles pour le formulaire de resto            */
 /****************************************************/
@@ -1060,7 +1076,7 @@ padding: 10px 30px 30px 30px;
 /****************************************************/
 
 .restaurateurthis{
-margin-top: 40px;
+margin-top: 15%;
 margin-left: 30%;
 border: 4px solid orange;
 width:  600px;
@@ -1122,6 +1138,7 @@ border-radius: 10px
 .resultatthisErreur{
 background-color: #F3CACA;
 margin-top: 7%;
+margin-bottom: -11%;
 margin-left: 30%;
 border: 4px solid red;
 width:  600px;
@@ -1255,18 +1272,35 @@ text-align: center;
 	background-color: white;
 	margin-left: 35%;
 	margin-top: 10%;
-	/*display: inline-block;*/
 	color: black;
 	width: 30%;
 	border: 3px orange solid;
 	font-size: 15px;
 	text-align: left;
-	/*vertical-align: center;*/
-	/*margin: auto;*/
 	padding: 12px;
 	margin-bottom: 20px;
 	border-radius: 5px;
 }
+
+#tablModo {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+}
+
+#tablModo td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#tablModo tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+/*.styleNote th, td {
+	padding: 5px;
+	text-align: left;
+}*/
 
 /****************************************************/
 /*styles pour le menu du profil du connecté         */
@@ -1401,7 +1435,13 @@ nav.menuProfil input[type='submit']:hover{
 		transition:0.5s;
 	}
 
+
+
+
+
+
 	.star{
-		width: 5%;
-		height: 5%;
+		width: 6%;
+		height: 6%;
+		margin-left: 1%;
 	}

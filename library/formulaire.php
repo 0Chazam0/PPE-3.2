@@ -142,6 +142,11 @@ class Formulaire{
 		$composant .= "src = '" . $uneSource . "'/> ";
 		return $composant;
 	}
+	public function creerInputImageStar($unNom, $uneClasse, $uneSource){
+		$composant = "<input type = 'image' name = '" . $unNom . "' class= '" . $uneClasse . "' ";
+		$composant .= "src = '" . $uneSource . "'/> ";
+		return $composant;
+	}
 	public function creerInputImageProfil($unNom, $uneClasse, $uneSource){
 		$composant = "<input type = 'image' name = '" . $unNom . "' class= '" . $uneClasse . "' ";
 		$composant .= "src = '" . $uneSource . "'/> ";
@@ -203,6 +208,33 @@ class Formulaire{
 		<input type="range" class="slider" value="0" id="' . $id . '"
 		max="' . $max . '" min="0" step="' . $step . '">
 		</div>';
+		return $composant;
+	}
+
+
+	public function creerTabl($id, $nom, $prenom)
+	{
+		$composant = "<table id='tablModo'>";
+		$composant .= "<script>
+										function ft_modo(i) {
+											document.getElementById('clickTablModo').innerHTML = 'Hello World' + i;
+										}
+									</script>";
+		$composant .= "</table>";
+		$composant .= "<tr id='tablModo'>
+    							<th id='tablModo'>ID</th>
+    							<th id='tablModo'>Nom</th>
+									<th id='tablModo'>Prenom</th>
+									<th id='tablModo'></th>
+  								</tr>";
+		$taille = count($id);
+		for ($i=0; $i < $taille; $i++) {
+			$composant .= "<tr id='tablModo'>";
+		  $composant .= "<td id='tablModo'>" . $id[$i] . "</td><td id='tablModo'>" . $nom[$i] . "</td><td id='tablModo'>" . $prenom[$i] . "</td>";
+			$composant .= "<td> <button onclick='ft_modo(" . $i . ")'>Click me</button><p id='clickTablModo'></p></td>";
+			$composant .= "</tr>";
+		}
+
 		return $composant;
 	}
 
