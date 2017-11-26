@@ -1272,28 +1272,35 @@ text-align: center;
 	background-color: white;
 	margin-left: 35%;
 	margin-top: 10%;
-	/*display: inline-block;*/
 	color: black;
 	width: 30%;
 	border: 3px orange solid;
 	font-size: 15px;
 	text-align: left;
-	/*vertical-align: center;*/
-	/*margin: auto;*/
 	padding: 12px;
 	margin-bottom: 20px;
 	border-radius: 5px;
 }
 
-#tabloUser{
-	border: 1px solid black;
-	border-collapse: collapse;
+#tablModo {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
 }
 
-.styleNote th, td {
+#tablModo td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#tablModo tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+/*.styleNote th, td {
 	padding: 5px;
 	text-align: left;
-}
+}*/
 
 /****************************************************/
 /*styles pour le menu du profil du connecté         */

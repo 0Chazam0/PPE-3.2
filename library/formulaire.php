@@ -211,29 +211,31 @@ class Formulaire{
 		return $composant;
 	}
 
-	public function creerDebutTabl()
-	{
-		echo "[aaaa]";
-		$composant = '<table id="tabloUser">';
-		$composant .= "<tr>
-    							<th>ID</th>
-    							<th>Nom</th>
-									<th>Prenom</th>
-  								</tr>";
-		return $composant;
-	}
 
 	public function creerTabl($id, $nom, $prenom)
 	{
-		$composant = "<tr>";
-	  $composant .= "<td>" . $id . "</td><td>" . $nom . "</td><td>" . $prenom . "</td>";
-	  $composant .= "</tr>";
-		return $composant;
-	}
+		$composant = "<table id='tablModo'>";
+		$composant .= "<script>
+										function ft_modo(i) {
+											document.getElementById('clickTablModo').innerHTML = 'Hello World' + i;
+										}
+									</script>";
+		$composant .= "</table>";
+		$composant .= "<tr id='tablModo'>
+    							<th id='tablModo'>ID</th>
+    							<th id='tablModo'>Nom</th>
+									<th id='tablModo'>Prenom</th>
+									<th id='tablModo'></th>
+  								</tr>";
+		$taille = count($id);
+		for ($i=0; $i < $taille; $i++) {
+			$composant .= "<tr id='tablModo'>";
+		  $composant .= "<td id='tablModo'>" . $id[$i] . "</td><td id='tablModo'>" . $nom[$i] . "</td><td id='tablModo'>" . $prenom[$i] . "</td>";
+			$composant .= "<td> <button onclick='ft_modo(" . $i . ")'>Click me</button><p id='clickTablModo'></p></td>";
+			$composant .= "</tr>";
+		}
 
-	public function creerFinTabl()
-	{
-		return ("</table>");
+		return $composant;
 	}
 
 	/****************************************************/
