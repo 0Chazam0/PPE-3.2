@@ -42,6 +42,8 @@ if ($_SESSION['menuProfil'] == "Profil") {
 	$formProfil->ajouterComposantTab();
 	$formProfil->ajouterComposantLigne($formProfil->creerLabelFor($_SESSION['identite'][5],'adresse'));
 	$formProfil->ajouterComposantTab();
+	$formProfil->ajouterComposantLigne($formProfil->creerInputSubmit('mdpChange','mdpChange','Changer de mot de passe'));
+	$formProfil->ajouterComposantTab();
 }
 
 if ($_SESSION['menuProfil'] == "Historique") {

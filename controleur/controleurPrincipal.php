@@ -107,6 +107,13 @@ if (isset($_POST['redirectionModo'])){
 	$_SESSION['menuPrincipal']="Modo";
 }
 /*----------------------------------------------------------*/
+/*--------Récupère le controleur mdpOublie (si la condition est respectée)----------*/
+/*----------------------------------------------------------*/
+
+if (isset($_POST['mdpChange'])){
+	$_SESSION['menuPrincipal']="MdpChange";
+}
+/*----------------------------------------------------------*/
 /*--------Récupère le controleur RestaurateurChgResto (si la condition est respectée)----------*/
 /*----------------------------------------------------------*/
 

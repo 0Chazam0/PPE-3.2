@@ -4,6 +4,6 @@
   </header>
 
   <main>
-MDP oublié
+    <?php echo $changeMdp ?>
   </main>
 </div>

@@ -1466,6 +1466,31 @@ nav.menuProfil input[type='submit']:hover{
 	}
 
 
+nav.conteneurProfil input{
+		background-color: #FAFAFA;
+	  border-style: solid;
+		margin-top: 10px;
+		margin-left: 20px;
+	  border-width: 2px;
+	  border-color: orange;
+		text-align: center;
+	  font-size: 16px;
+	  letter-spacing: 2px;
+	  color: BLACK;
+		border-radius: 10px;
+		width: 400px;
+		height: 40px;
+	}
+nav.conteneurProfil input[type='submit']:hover{
+		background-color: #F4FA58;
+		border-style: solid;
+		border-width: 2px;
+		border-color: orange;
+		font-size: 16px;
+		letter-spacing: 2px;
+		color: BLACK;
+		transition:0.5s;
+	}
 
 	.star{
 		width: 6%;

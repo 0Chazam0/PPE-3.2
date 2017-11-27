@@ -49,7 +49,7 @@ $contentConnex="
             <input id ='id' type = 'text' placeholder='Saisir votre identifiant' name='id' value='".$ident."' pattern='[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})'/>
             <br/>
             <br/>
-            <input id='mdp' type = 'password' placeholder='Saisir votre code' name='mdp' value='' pattern='[a-zA-Z0-9]{6,20}'/><br/><br/>
+            <input id='mdp' type = 'password' placeholder='Saisir votre code' name='mdp' value='' pattern='[a-zA-Z0-9]{4,20}'/><br/><br/>
             <input id = 'validCo' type = 'submit' value = 'Valider'/>
             <input type = 'reset' value ='Annuler'/><br>
       </div>
