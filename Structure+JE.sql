@@ -92,6 +92,7 @@ INSERT INTO `commande` (`IDC`, `IDR`, `IDU`, `DATEC`, `COMMENTAIRECLIENTC`, `DAT
 CREATE TABLE `evaluer` (
   `IDU` char(5) NOT NULL,
   `IDR` char(5) NOT NULL,
+  `IDC` char(5) NOT NULL,
   `NOTERAPIDITE` decimal(10,2) DEFAULT NULL,
   `NOTEQUALITE` decimal(10,2) DEFAULT NULL,
   `NOTETEMP` decimal(10,2) DEFAULT NULL,
@@ -104,10 +105,10 @@ CREATE TABLE `evaluer` (
 -- Contenu de la table `evaluer`
 --
 
-INSERT INTO `evaluer` (`IDU`, `IDR`, `NOTERAPIDITE`, `NOTEQUALITE`, `NOTETEMP`, `NOTECOUT`, `COMMENTAIRE`, `COMVISIBLE`) VALUES
-('U7', 'R1', '2.00', '4.00', '3.50', '4.20', 'Ca manquait de viande !', 1),
-('U8', 'R2', '2.80', '2.10', '3.80', '1.70', 'Les asperges c\'est meilleur sans la peau..', 1),
-('U9', 'R6', '1.50', '4.70', '4.00', '3.60', 'Parfait mais ou était la vache qui rit ?', 1);
+INSERT INTO `evaluer` (`IDU`, `IDR`,`IDC`, `NOTERAPIDITE`, `NOTEQUALITE`, `NOTETEMP`, `NOTECOUT`, `COMMENTAIRE`, `COMVISIBLE`) VALUES
+('U7', 'R1','C1', '2.00', '4.00', '3.50', '4.20', 'Ca manquait de viande !', 1),
+('U8', 'R2','C2', '2.80', '2.10', '3.80', '1.70', 'Les asperges c\'est meilleur sans la peau..', 1),
+('U9', 'R6','C3', '1.50', '4.70', '4.00', '3.60', 'Parfait mais ou était la vache qui rit ?', 1);
 
 -- --------------------------------------------------------
 
@@ -3056,9 +3057,9 @@ ALTER TABLE `commande`
 -- Index pour la table `evaluer`
 --
 ALTER TABLE `evaluer`
-  ADD PRIMARY KEY (`IDU`,`IDR`),
-  ADD KEY `FK_EVALUER_RESTO` (`IDR`);
-
+  ADD PRIMARY KEY (`IDU`,`IDR`,`IDC`),
+  ADD KEY `FK_EVALUER_RESTO` (`IDR`),
+  ADD KEY `FK_EVALUER_COMMANDE` (`IDC`);
 --
 -- Index pour la table `gerer`
 --
@@ -3152,7 +3153,8 @@ ALTER TABLE `commande`
 -- Contraintes pour la table `evaluer`
 --
 ALTER TABLE `evaluer`
-  ADD CONSTRAINT `FK_EVALUER_RESTO` FOREIGN KEY (`IDR`) REFERENCES `resto` (`IDR`);
+  ADD CONSTRAINT `FK_EVALUER_RESTO` FOREIGN KEY (`IDR`) REFERENCES `resto` (`IDR`),
+  ADD CONSTRAINT `FK_EVALUER_COMMANDE` FOREIGN KEY (`IDC`) REFERENCES `commande` (`IDC`);
 
 --
 -- Contraintes pour la table `gerer`
