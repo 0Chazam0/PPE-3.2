@@ -981,6 +981,20 @@ padding: 10px 30px 30px 30px;
 	color: BLACK;
 	transition:0.5s;
 }
+.contentConnexion .btn input[type='text']:valid{
+	border-color: green;
+}
+
+.contentConnexion .btn input[type='password']:valid{
+	border-color: green;
+}
+.contentConnexion .btn input[type='text']:invalid{
+	border-color: red;
+}
+
+.contentConnexion .btn input[type='password']:invalid{
+	border-color: red;
+}
 /****************************************************/
 /*styles pour le formulaire de restaurateur            */
 /****************************************************/
