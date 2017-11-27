@@ -92,6 +92,15 @@ if (isset($_POST['idResto'])){
 	$_SESSION['RestoSelected'] = $_POST['idResto'];
 	$_SESSION['menuPrincipal']="Plat";
 }
+
+/*----------------------------------------------------------*/
+/*--------Récupère le controleur mdpOublie (si la condition est respectée)----------*/
+/*----------------------------------------------------------*/
+
+if (isset($_POST['mdpOublie'])){
+	$_SESSION['menuPrincipal']="MdpOublie";
+}
+
 /*----------------------------------------------------------*/
 /*--------Récupère le controleur RestaurateurSesResto (si la condition est respectée)----------*/
 /*----------------------------------------------------------*/

@@ -58,6 +58,13 @@ $contentConnex="
   <form action='index.php' method='post'>
     <div class='contentConnexion'>
       <div class='btn'>
+            <input id = 'mdpOublie' name ='mdpOublie' type = 'submit' value = 'Mot de passe oublié ?'/>
+      </div>
+    </div>
+  </form>
+  <form action='index.php' method='post'>
+    <div class='contentConnexion'>
+      <div class='btn'>
             <input name ='inscr' type = 'hidden'/>
             <input id = 'inscription' type = 'submit' value ='Pas encore de compte ?'/>
       </div>
