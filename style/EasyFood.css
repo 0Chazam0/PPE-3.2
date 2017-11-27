@@ -1535,11 +1535,14 @@ nav.conteneurProfil input[type='submit']:hover{
 /****************************************************/
 /*styles pour mdpOublie                             */
 /****************************************************/
-.photoTravail{
-	padding-top: 5%;
-	padding-left: 20%;
+.formTravail{
+	margin-top: 5%;
+	margin-left: 35%;
 }
-.photoTravail a{
+.formTravail .photoTravail{
+		margin-left: -15%;
+}
+.formTravail a{
 	font-size: 16px;
 	letter-spacing: 2px;
 	color: BLACK;

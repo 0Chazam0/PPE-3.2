@@ -1,5 +1,5 @@
 <?php
-$photoTravail = new Formulaire('','','photoTravail','photoTravail');
+$photoTravail = new Formulaire('','','formTravail','formTravail');
 $photoTravail->ajouterComposantLigne($photoTravail->creerInputImageProfil('photoTravail','photoTravail',"image/travailEnCours.jpg"));
 $photoTravail->ajouterComposantTab();
 $photoTravail->ajouterComposantLigne($photoTravail->creerA("Désolé le site est en cours d'avancement"));
