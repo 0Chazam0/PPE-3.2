@@ -1500,7 +1500,22 @@ nav.conteneurProfil input[type='submit']:hover{
 	/****************************************************/
 	/*styles pour mdpChange                             */
 	/****************************************************/
-.formChange input[type='submit']{
+.formChange{
+	margin-left: 40%;
+	padding-top: 10%;
+}
+
+.formChange input[type='submit']:hover{
+	background-color: #F4FA58;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+	transition:0.5s;
+		}
+.formChange input{
 			background-color: #FAFAFA;
 		  border-style: solid;
 		  border-width: 2px;
@@ -1510,21 +1525,12 @@ nav.conteneurProfil input[type='submit']:hover{
 		  letter-spacing: 2px;
 		  color: BLACK;
 			border-radius: 10px;
-			width: 400px;
 			height: 40px;
-			display: inline-block;
-		}
-		.formChange input{
-			margin-left: 80%;
-			background-color: #FAFAFA;
-		  border-style: solid;
-		  border-width: 2px;
-		  border-color: orange;
-			text-align: center;
-		  font-size: 16px;
-		  letter-spacing: 2px;
-		  color: BLACK;
-			border-radius: 10px;
 			width: 400px;
-			height: 40px;
 		}
+.formChange input[type='password']:valid{
+	  border-color: green;
+}
+.formChange input[type='password']:invalid{
+	  border-color: red;
+}

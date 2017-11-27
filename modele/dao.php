@@ -93,6 +93,22 @@ class UserDAO{
 	  $sql = "DELETE FROM " . $table . " WHERE IDU = '" . $IDU . "';";
 
 	}
+	public function changeMDP($unIdUser,$typeUser, $nvMDP){
+		if($typeUser == 'A'){
+			$table = 'administrateur';
+		}
+		elseif ($typeUser == 'R') {
+			$table = 'restaurateur';
+		}
+		elseif ($typeUser == 'C') {
+			$table = 'client';
+		}
+		elseif ($typeUser == 'M') {
+			$table = 'moderateur';
+		}
+		$sql = "UPDATE " . $table . " set MDP = '" . $nvMDP ."' WHERE IDU = '" . $unIdUser . "'";
+		DBConnex::getInstance()->queryFetchFirstRow($sql);
+	}
 }
 
 /*----------------------------------------------------------*/
@@ -389,7 +405,7 @@ class CommandeDAO
 																				 '" . $comentaire . "',
 																				  $visible
 																				 )";
-																				
+
 	return DBConnex::getInstance()->exec($sql);
 	}
 
