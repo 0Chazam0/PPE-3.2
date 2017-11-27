@@ -7,6 +7,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>EasyFood</title>
+		<link rel="icon" href="image\logo.ico" />
 		<style type="text/css">
 			@import url(style/EasyFood.css);
 		</style>
