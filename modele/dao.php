@@ -378,6 +378,20 @@ class CommandeDAO
 	return DBConnex::getInstance()->exec($sql);
 	}
 
+	public static function inEvaluer($idCli,$idResto,$idCom, $noteRap,$notequalite,$notetemp, $notecout,$comentaire,$visible){
+		$sql = "INSERT INTO evaluer VALUES ('" . $idCli . "',
+																				 '" . $idResto . "',
+																				 '" . $idCom . "',
+																				  $noteRap ,
+																				 $notequalite ,
+																				 $notetemp,
+																				 $notecout,
+																				 '" . $comentaire . "',
+																				  $visible
+																				 )";
+																				
+	return DBConnex::getInstance()->exec($sql);
+	}
 
 	public function delCommande($IDC)
 	{

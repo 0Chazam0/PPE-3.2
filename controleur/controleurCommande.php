@@ -82,7 +82,7 @@ if (isset($_POST['confirmCommande'])) {
   }
   $_SESSION['compteurCommande']= "C".($numeroCommande+1);
   CommandeDAO::inCommande($_SESSION['compteurCommande'], $_SESSION['RestoSelected'], $_SESSION['identite'][0],date("Y-m-d"),$_SESSION['dateLivraisonMySql'], $_SESSION['modePaiement']);
-
+  CommandeDAO::inEvaluer($_SESSION['identite'][0],$_SESSION['RestoSelected'],$_SESSION['compteurCommande'],0,0,0,0,0,0);
   foreach ($_SESSION['lePanier']->getLesPlats() as $OBJ)
 	{
     CommandeDAO::inQte($OBJ->getID(),$_SESSION['compteurCommande'],1);
@@ -112,6 +112,7 @@ if (isset($_POST['confirmCommande'])) {
 //   }
 //   var_dump($test);
 //
+
  }
 
 
