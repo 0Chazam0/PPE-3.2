@@ -1466,7 +1466,7 @@ nav.menuProfil input[type='submit']:hover{
 	}
 
 
-nav.conteneurProfil input{
+nav.conteneurProfil input[type='submit']{
 		background-color: #FAFAFA;
 	  border-style: solid;
 		margin-top: 10px;

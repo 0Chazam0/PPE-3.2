@@ -4,6 +4,6 @@
   </header>
 
   <main>
-    <?php echo $changeMdp ?>
+    <?php echo $formChange->afficherFormulaire(); ?>
   </main>
 </div>
