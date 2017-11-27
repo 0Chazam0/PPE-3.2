@@ -47,7 +47,7 @@ else {
   $formInscription->ajouterComposantTab();
   $formInscription->ajouterComposantLigne($formInscription->creerInputTextePattern('inscrPrenom', 'inscrPrenom', '',$inscrPrenom,1,'saisir votre prénom','[a-zA-ZÀ-ÿ]{3,15}'));
   $formInscription->ajouterComposantTab();
-  $formInscription->ajouterComposantLigne($formInscription->creerInputTextePattern('inscrAdresse', 'inscrAdresse', '',$inscrAdresse,1,'saisir votre adresse','[a-zA-Z]{5,20}'));
+  $formInscription->ajouterComposantLigne($formInscription->creerInputTextePattern('inscrAdresse', 'inscrAdresse', '',$inscrAdresse,1,'saisir votre adresse','[a-zA-Z0-9]{5,20}'));
   $formInscription->ajouterComposantTab();
   $formInscription->ajouterComposantLigne($formInscription->creerInputPassPattern('inscrmdp', 'inscrmdp', '','',1,'saisir votre mot de passe', '[a-zA-Z0-9]{6,20}' ));
   $formInscription->ajouterComposantTab();

@@ -859,6 +859,13 @@ padding: 10px 30px 30px 30px;
 .inscription input[type='password']:valid{
 	border-color: green;
 }
+.inscription input[type='text']:invalid{
+	border-color: red;
+}
+
+.inscription input[type='password']:invalid{
+	border-color: red;
+}
 
 .inscription input{
 	background-color: #FAFAFA;
@@ -973,6 +980,20 @@ padding: 10px 30px 30px 30px;
 	letter-spacing: 2px;
 	color: BLACK;
 	transition:0.5s;
+}
+.contentConnexion .btn input[type='text']:valid{
+	border-color: green;
+}
+
+.contentConnexion .btn input[type='password']:valid{
+	border-color: green;
+}
+.contentConnexion .btn input[type='text']:invalid{
+	border-color: red;
+}
+
+.contentConnexion .btn input[type='password']:invalid{
+	border-color: red;
 }
 /****************************************************/
 /*styles pour le formulaire de restaurateur            */
@@ -1441,7 +1462,7 @@ nav.menuProfil input[type='submit']:hover{
 		font-size: 16px;
 		letter-spacing: 2px;
 		color: BLACK;
-		transition:0.5s;
+		transition:0.7s;
 	}
 
 
