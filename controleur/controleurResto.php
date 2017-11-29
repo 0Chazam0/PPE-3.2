@@ -61,11 +61,20 @@ if ($_SESSION['TypeResto']=="All"){
 																							$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', ($noteResto > 2)?$star:$noStar),
 																							$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', ($noteResto > 3)?$star:$noStar),
 																							$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', ($noteResto > 4)?$star:$noStar),
-																							$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto'),2),0),0),0),0),1));
+																							$formResto->concactComposants($formResto->creerLabelFor('&nbsp; - &nbsp;'.RestoDAO::selectNbNote($OBJ->getId()).'&nbsp;',"nbNoteResto"),
+																							$formResto->concactComposants($formResto->creerLabelFor('Notes',"lblNbNoteResto"),
+																							$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto'),2),0),0),0),0),0),0),1));
 					}
 					else {
 						$formResto->ajouterComposantLigne($formResto->concactComposants($formResto->creerLabelFor($OBJ->getNom(),"nomResto"),
-																							$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto'),2));
+																							$formResto->concactComposants($formResto->creerInputImageStar('star', 'star', $noStar),
+																							$formResto->concactComposants($formResto->creerInputImageStar('star', 'star',$noStar),
+																							$formResto->concactComposants($formResto->creerInputImageStar('star', 'star',$noStar),
+																							$formResto->concactComposants($formResto->creerInputImageStar('star', 'star',$noStar),
+																							$formResto->concactComposants($formResto->creerInputImageStar('star', 'star',$noStar),
+																							$formResto->concactComposants($formResto->creerLabelFor('&nbsp; - &nbsp;'.RestoDAO::selectNbNote($OBJ->getId()).'&nbsp;',"nbNoteResto"),
+																							$formResto->concactComposants($formResto->creerLabelFor('Notes',"lblNbNoteResto"),
+																							$formResto->creerLabelFor($OBJ->getNumAdr()." ".$OBJ->getRueAdr() ." ". $OBJ->getCP(),'adrResto'),2),0),0),0),0),0),0),1));
 					}
 	        $formResto->ajouterComposantLigne($formResto->creerInputSubmitHidden("idResto","idResto",$OBJ->getId()));
 	        $formResto->ajouterComposantTab();
