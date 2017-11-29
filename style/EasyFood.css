@@ -1388,6 +1388,9 @@ nav.menuProfil .photoProfil input{
 	height: 300px;
 	border-radius: 50%;
 }
+nav.menuProfil .photoProfil input [type='file']{
+
+}
 
 nav.conteneurProfil{
 
