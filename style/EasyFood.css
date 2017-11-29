@@ -1390,7 +1390,7 @@ nav.menuProfil .photoProfil input[type='image']{
 }
 nav.menuProfil .photoProfil input [type='file']{
 	height:40px;
-
+	margin-right: -30px;
 }
 
 nav.conteneurProfil{

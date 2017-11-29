@@ -72,8 +72,38 @@ if ($_SESSION['menuProfil'] == "Historique") {
 }
 
 
+
+$dossier_traite = "image";
+$repertoire = opendir($dossier_traite); // On définit le répertoire dans lequel on souhaite travailler.
+
+ // Ne pas oublier de fermer le dossier ***EN DEHORS de la boucle*** ! Ce qui évitera à PHP beaucoup de calculs et des problèmes liés à l'ouverture du dossie
+
+
+
 $photoProfil = new Formulaire('post','index.php','photoProfil','photoProfil');
-$photoProfil->ajouterComposantLigne($photoProfil->creerInputImageProfil('photoProfil','photoDProfil',"image/" . ucfirst($_SESSION['identite'][0])));
+$resultimg=false;
+while (false !== ($fichier = readdir($repertoire))) // On lit chaque fichier du répertoire dans la boucle.
+{
+	$chemin = $dossier_traite."/".$fichier; // On définit le chemin du fichier à effacer.
+	// Si le fichier n'est pas un répertoire…
+	$fichierSelected = lcfirst($_SESSION['identite'][0]).".jpeg";
+	if ($fichier == $fichierSelected)
+	{
+		$resultimg = true;
+	}
+	else{
+		if($resultimg==false){
+		$resultimg = false;
+	}
+	}
+}
+closedir($repertoire);
+if($resultimg){
+	$photoProfil->ajouterComposantLigne($photoProfil->creerInputImageProfil('photoProfil','photoDProfil',"image/" . lcfirst($_SESSION['identite'][0])));
+}
+else {
+	$photoProfil->ajouterComposantLigne($photoProfil->creerInputImageProfil('photoProfil','photoDProfil',"image\profildefaut.png"));
+	}
 $photoProfil->ajouterComposantLigne($photoProfil->creerInputSubmit('deconnexion','deconnexion','Deconnecter'));
 $photoProfil->ajouterComposantTab();
 $photoProfil->ajouterComposantLigne($formProfil->concactComposants($photoProfil->creerLabelFor('Icône du fichier (JPEG | max. 1 Mo) : ', 'fileAjoutPlatP'),
@@ -135,7 +165,23 @@ if(isset($_POST['btnUploadP'])){
 else {
 	$_SESSION['resultatUploadP'] = "Choisir une image";
 }
-echo $_SESSION['resultatUploadP'];
+
+
+if(isset($_SESSION['resultatUploadP'])){
+	if($_SESSION['resultatUploadP'] == "Transfert réussi"){
+		$formResult = new Formulaire("POST","#","formPlat","resultatthisSucces");
+		$formResult->ajouterComposantLigne($formResult->creerLabelFor("Photo bien ajoutée","resultatSuppri"));
+		$formResult->ajouterComposantTab();
+		$formResult->creerFormulaire();
+	}
+	else{
+		$formResultat = new Formulaire("POST","","formResultat",'resultatthisErreur');
+		$formResultat->ajouterComposantLigne($formResultat->creerLabelFor($_SESSION['resultatUploadP'], 'lblMsgResult'));
+		$formResultat->ajouterComposantTab();
+		$formResultat->creerFormulaire();
+	}
+}
+
 }
 
 
