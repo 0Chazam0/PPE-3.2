@@ -1383,7 +1383,7 @@ nav.menuProfil ul li .actif {
   	width: 140px;
 }
 
-nav.menuProfil .photoProfil input{
+nav.menuProfil .photoProfil input[type='image']{
 	width: 300px;
 	height: 300px;
 	border-radius: 50%;
