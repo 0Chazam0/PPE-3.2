@@ -1389,6 +1389,7 @@ nav.menuProfil .photoProfil input{
 	border-radius: 50%;
 }
 nav.menuProfil .photoProfil input [type='file']{
+	height:40px;
 
 }
 
