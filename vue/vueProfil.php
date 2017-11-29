@@ -1,6 +1,6 @@
 <div class="conteneur">
   <header>
-      <?php include 'haut.php' ;?>
+      <?php //include 'haut.php' ;?>
   </header>
 
   <main>

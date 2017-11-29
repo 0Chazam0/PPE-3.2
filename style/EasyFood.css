@@ -1384,12 +1384,13 @@ nav.menuProfil ul li .actif {
 }
 
 nav.menuProfil .photoProfil input{
-	width: 240px;
-	height: 240px;
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
 }
 
 nav.conteneurProfil{
-	margin-top: 0.5%;
+
 	background-color: white;
 	font-size: 16px;
 	border-style: solid;
@@ -1414,7 +1415,7 @@ nav.conteneurProfil hr{
 	border-style: solid;
 	border-width: 2px;
 	border-color: orange;
-	width:1200px;
+	width: 1000px;
 	margin: 5%;
 	border-radius: 50%;
 }
@@ -1434,7 +1435,7 @@ nav.conteneurProfil label.adresse{
 	text-shadow: 2px 2px 8px white;
 }
 
-nav.menuProfil input[type='submit']{
+#deconnexion{
 		margin-left: 65%;
 		background-color: #FAFAFA;
 	  border-style: solid;
@@ -1451,7 +1452,7 @@ nav.menuProfil input[type='submit']{
 		display: inline-block;
 	}
 
-nav.menuProfil input[type='submit']:hover{
+#deconnexion:hover{
 		margin-left: 66%;
 		background-color: #F4FA58;
 		border-style: solid;
@@ -1462,7 +1463,35 @@ nav.menuProfil input[type='submit']:hover{
 		color: BLACK;
 		transition:0.7s;
 	}
+#btnUploadP{
+			margin-top: -100%;
+			margin-left: 65%;
+			background-color: #FAFAFA;
+		  border-style: solid;
+		  border-width: 2px;
+		  border-color: orange;
+			text-align: center;
+		  font-size: 16px;
+		  letter-spacing: 2px;
+		  color: BLACK;
+			border-radius: 10px;
+			width: 400px;
+			height: 80px;
+			display: inline-block;
+		}
 
+#btnUploadP:hover{
+			margin-top: -100%;
+			margin-left: 66%;
+			background-color: #F4FA58;
+			border-style: solid;
+			border-width: 2px;
+			border-color: orange;
+			font-size: 16px;
+			letter-spacing: 2px;
+			color: BLACK;
+			transition:0.7s;
+		}
 
 nav.conteneurProfil input[type='submit']{
 		background-color: #FAFAFA;
@@ -1499,7 +1528,7 @@ nav.conteneurProfil input[type='submit']:hover{
 	/*styles pour mdpChange                             */
 	/****************************************************/
 .formChange{
-	margin-left: 40%;
+	margin-left: 35%;
 	padding-top: 10%;
 }
 

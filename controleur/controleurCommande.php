@@ -69,7 +69,14 @@ $_SESSION['leformCommande'] = $formCommande->afficherFormulaire();
 /*----------------------------------------------------------*/
 // Condition respectée quand on utilise le btn confirmCommande
 if (isset($_POST['confirmCommande'])) {
+
   $txt = "<div id='fin'>Nous vous remercions de votre commande <br><br> Merci à bientôt </div>";
+  $pdf = new Formulaire('post','index.php','pdf','pdf');
+  $pdf->ajouterComposantLigne($pdf->creerInputSubmit('pdf','pdf','Afficher pdf'));
+  $pdf->ajouterComposantLigne($pdf->creerInputSubmitHidden('confirmCommande','confirmCommande',''));
+  $pdf->ajouterComposantTab();
+  $lepdf = $pdf->creerFormulaireNewOnglet();
+  $lepdf = $pdf->afficherFormulaire();
   $numeroCommande = 1;
   $_SESSION['listeCommande'] = new Commandes(CommandeDAO::selectListeCommande());
   // recuperer le num de la prochaine commande
@@ -80,6 +87,7 @@ if (isset($_POST['confirmCommande'])) {
       $numeroCommande = substr($OBJ->getidCommande(), 1);
     }
   }
+
   $_SESSION['compteurCommande']= "C".($numeroCommande+1);
   CommandeDAO::inCommande($_SESSION['compteurCommande'], $_SESSION['RestoSelected'], $_SESSION['identite'][0],date("Y-m-d"),$_SESSION['dateLivraisonMySql'], $_SESSION['modePaiement']);
   CommandeDAO::inEvaluer($_SESSION['identite'][0],$_SESSION['RestoSelected'],$_SESSION['compteurCommande'],0,0,0,0,0,0);

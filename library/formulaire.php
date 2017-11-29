@@ -301,5 +301,25 @@ class Formulaire{
 	public function afficherFormulaire(){
 		return $this->formulaireToPrint ;
 	}
+	public function creerFormulaireNewOnglet(){
+
+		$this->formulaireToPrint = "<form method = '" .  $this->method . "' ";
+		$this->formulaireToPrint .= "action = '" .  $this->action . "' enctype='multipart/form-data' ";
+		$this->formulaireToPrint .= "name = '" .  $this->nom . "' ";
+		$this->formulaireToPrint .= "class = '" .  $this->style . "' TARGET='_BLANK'><table>";
+
+
+		foreach ($this->tabComposants as $uneLigneComposants){
+			$this->formulaireToPrint .= "<tr><td><table>";
+			foreach ($uneLigneComposants as $unComposant){
+				$this->formulaireToPrint .= "<td>";
+				$this->formulaireToPrint .= $unComposant ;
+				$this->formulaireToPrint .= "</td>";
+			}
+			$this->formulaireToPrint .= "</table></td></tr>";
+		}
+		$this->formulaireToPrint .= "</table></form>";
+		return $this->formulaireToPrint ;
+	}
 
 }

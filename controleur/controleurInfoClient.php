@@ -70,14 +70,76 @@ if ($_SESSION['menuProfil'] == "Historique") {
     }
 
 }
+
+
 $photoProfil = new Formulaire('post','index.php','photoProfil','photoProfil');
-$photoProfil->ajouterComposantLigne($photoProfil->creerInputImageProfil('photoProfil','photoDProfil',"image/" . $_SESSION['identite'][0]));
+$photoProfil->ajouterComposantLigne($photoProfil->creerInputImageProfil('photoProfil','photoDProfil',"image/" . ucfirst($_SESSION['identite'][0])));
 $photoProfil->ajouterComposantLigne($photoProfil->creerInputSubmit('deconnexion','deconnexion','Deconnecter'));
+$photoProfil->ajouterComposantTab();
+$photoProfil->ajouterComposantLigne($formProfil->concactComposants($photoProfil->creerLabelFor('Icône du fichier (JPEG | max. 1 Mo) : ', 'fileAjoutPlatP'),
+																	  $photoProfil->creerInputFile('uploadImgP','uploadImgP',"Parcourir"),0));
+$photoProfil->ajouterComposantTab();
+$photoProfil->ajouterComposantLigne($photoProfil->creerInputSubmit('btnUploadP','btnUploadP','Upload'));
 $photoProfil->ajouterComposantTab();
 $laPhotoProfil = $photoProfil->creerFormulaire();
 $laPhotoProfil = $photoProfil->afficherFormulaire();
+
 $contentProfil=$formProfil->creerFormulaire();
 $contentProfil=  '<nav class = "conteneurProfil">'. $formProfil->afficherFormulaire() . '</nav>';
+
+/*----------------------------------------------------------*/
+/*--------Upload une image (conforme) dans le dossier image-----*/
+/*----------------------------------------------------------*/
+if(isset($_POST['btnUploadP'])){
+	if (isset($_FILES['uploadImgP']['name']) && !empty($_FILES['uploadImgP']['name'])){
+		$extensions_valides = array('jpeg');
+		$image_sizes = getimagesize($_FILES['uploadImgP']['tmp_name']);
+		$nomPhoto = str_replace(CHR(32),"",strtolower($_SESSION['identite'][0]));
+		//La taille du fichier en octets.
+		if ($_FILES['uploadImgP']['size'] > 1000000) {
+			$_SESSION['resultatUploadP'] = "Le fichier est trop gros";
+		}
+		else{
+			if ($_FILES['uploadImgP']['error'] > 0) {
+				$_SESSION['resultatUploadP'] = "Erreur lors du transfert";
+			}
+				else{
+					$extension_upload = strtolower(  substr(  strrchr($_FILES['uploadImgP']['name'], '.')  ,1)  );
+					//Parcourt le tableau de possibilité d'extention
+					if (in_array($extension_upload,$extensions_valides) ){
+						if ($image_sizes[0] > 300 OR $image_sizes[1] > 300) {
+								$_SESSION['resultatUploadP'] = "Image trop grande";
+						}
+						else{
+								/*----------------------------------------------------------*/
+								/*--------upload de la photo a l'emplacement----*/
+								/*----------------------------------------------------------*/
+								$nom = "image/{$nomPhoto}.{$extension_upload}";
+								$resultat = move_uploaded_file($_FILES['uploadImgP']['tmp_name'],$nom);
+								if ($resultat)
+								{
+									$_SESSION['resultatUploadP'] ="Transfert réussi";
+								}
+								else{
+									$_SESSION['resultatUploadP'] = "Erreur non identifée";
+								}
+
+					}
+				}
+				else{
+					$_SESSION['resultatUploadP'] = "Extension incorecte";
+				}
+		}
+	}
+}
+else {
+	$_SESSION['resultatUploadP'] = "Choisir une image";
+}
+echo $_SESSION['resultatUploadP'];
+}
+
+
+
 
 include "vue/vueProfil.php";
  ?>

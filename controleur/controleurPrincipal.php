@@ -68,30 +68,6 @@ if (isset($_POST['inscr'])) {
 	$_SESSION['menuPrincipal'] = 'Inscription';
 }
 
-/*----------------------------------------------------------*/
-/*--------Récupère le controleur Resto et la ville choisit (si la condition est respectée)----------*/
-/*----------------------------------------------------------*/
-if (isset($_POST['search']) && $_POST['search']!=null) {
-	if(preg_match("/^[a-zA-Z]{0,25}$/",$_POST['search']))
-	{
-		$_SESSION['VilleSelected'] = strtolower($_POST['search']);
-		$_SESSION['menuPrincipal'] = 'Resto';
-	}
-	else{
-		$formErreurA = new Formulaire("POST","index.php","formErreurA","formErreurAthis");
-		$formErreurA->ajouterComposantLigne($formErreurA->creerLabelFor('Attention il y a des caractères numériques ou spéciaux dans la saisie',"lblErreurAccueil"));
-		$formErreurA->ajouterComposantTab();
-		$formErreurA->creerFormulaire();
-	}
-}
-/*----------------------------------------------------------*/
-/*--------Récupère le controleur Plat (si la condition est respectée)----------*/
-/*----------------------------------------------------------*/
-
-if (isset($_POST['idResto'])){
-	$_SESSION['RestoSelected'] = $_POST['idResto'];
-	$_SESSION['menuPrincipal']="Plat";
-}
 
 /*----------------------------------------------------------*/
 /*--------Récupère le controleur mdpOublie (si la condition est respectée)----------*/
@@ -130,6 +106,30 @@ if (isset($_POST['idRestoRestaurateur'])){
 	$_SESSION['RestoRestaurateurSelected'] = $_POST['idRestoRestaurateur'];
 	$_SESSION['menuPrincipal']="RestaurateurChgResto";
 }
+/*----------------------------------------------------------*/
+/*--------Récupère le controleur Resto et la ville choisit (si la condition est respectée)----------*/
+/*----------------------------------------------------------*/
+if (isset($_POST['search']) && $_POST['search']!=null) {
+	if(preg_match("/^[a-zA-Z]{0,25}$/",$_POST['search']))
+	{
+		$_SESSION['VilleSelected'] = strtolower($_POST['search']);
+		$_SESSION['menuPrincipal'] = 'Resto';
+	}
+	else{
+		$formErreurA = new Formulaire("POST","index.php","formErreurA","formErreurAthis");
+		$formErreurA->ajouterComposantLigne($formErreurA->creerLabelFor('Attention il y a des caractères numériques ou spéciaux dans la saisie',"lblErreurAccueil"));
+		$formErreurA->ajouterComposantTab();
+		$formErreurA->creerFormulaire();
+	}
+}
+/*----------------------------------------------------------*/
+/*--------Récupère le controleur Plat (si la condition est respectée)----------*/
+/*----------------------------------------------------------*/
+
+if (isset($_POST['idResto'])){
+	$_SESSION['RestoSelected'] = $_POST['idResto'];
+	$_SESSION['menuPrincipal']="Plat";
+}
 
 /*----------------------------------------------------------*/
 /*--------Récupère le controleur Commande (si la condition est respectée)----------*/
@@ -154,6 +154,12 @@ if (isset($_POST['validerCommande'])){
 }
 
 
+/*----------------------------------------------------------*/
+/*--------Récupère le controleur Inscription (si la condition est respectée)----------*/
+/*----------------------------------------------------------*/
+if (isset($_POST['pdf'])) {
+	$_SESSION['menuPrincipal'] = 'PDF';
+}
 
 
 /*----------------------------------------------------------*/
