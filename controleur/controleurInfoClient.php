@@ -47,6 +47,7 @@ if ($_SESSION['menuProfil'] == "Profil") {
 }
 
 if ($_SESSION['menuProfil'] == "Historique") {
+
   $lesCommandes = CommandeDAO::commandesDunUser($_SESSION['identite'][0]);
       foreach ($lesCommandes as $uneCommande) {
 				$formProfil->ajouterComposantLigne($formProfil->creerLabelFor("Commande N° ","numeroCommande"));
@@ -72,7 +73,7 @@ if ($_SESSION['menuProfil'] == "Historique") {
 }
 
 
-
+$_SESSION['resultatUploadP']=null;
 $dossier_traite = "image";
 $repertoire = opendir($dossier_traite); // On définit le répertoire dans lequel on souhaite travailler.
 
@@ -169,14 +170,14 @@ else {
 
 if(isset($_SESSION['resultatUploadP'])){
 	if($_SESSION['resultatUploadP'] == "Transfert réussi"){
-		$formResult = new Formulaire("POST","#","formPlat","resultatthisSucces");
+		$formResult = new Formulaire("POST","#","formPlat","resultatthisSuccesProfil");
 		$formResult->ajouterComposantLigne($formResult->creerLabelFor("Photo bien ajoutée","resultatSuppri"));
 		$formResult->ajouterComposantTab();
 		$formResult->creerFormulaire();
 	}
 	else{
-		$formResultat = new Formulaire("POST","","formResultat",'resultatthisErreur');
-		$formResultat->ajouterComposantLigne($formResultat->creerLabelFor($_SESSION['resultatUploadP'], 'lblMsgResult'));
+		$formResultat = new Formulaire("POST","","formResultat",'resultatthisErreurProfil');
+		$formResultat->ajouterComposantLigne($formResultat->creerLabelFor($_SESSION['resultatUploadP'], 'resultatSuppri'));
 		$formResultat->ajouterComposantTab();
 		$formResultat->creerFormulaire();
 	}
