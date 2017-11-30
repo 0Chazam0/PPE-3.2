@@ -4,7 +4,7 @@
       $this->Image('image\logo.jpeg',10,10,30);
       $this->SetFont('Arial','B',15);
       $this->Cell(70);
-      $this->Cell(60,15,'Votre commande',1,0,'C');
+      $this->Cell(60,15,utf8_decode('Votre commande n° '. $_SESSION['compteurCommande']),1,0,'C');
       $this->Ln(20);
     }
     function Footer(){

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>YOLO</title>
+    <meta charset="utf8_decode">
+    <title>Fcature commande</title>
   </head>
   <body>
     <?php
       include ('fact.php');
-
+      
       $pdf->Output();
     ?>
   </body>
