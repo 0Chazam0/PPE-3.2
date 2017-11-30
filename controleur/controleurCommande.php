@@ -17,6 +17,7 @@ foreach ($_SESSION['listeRestos']->getLesRestos() as $OBJ)
 {
   //On utilise le restaurant selectioné, la ville, le type de règlement, date et lieu de livraison
   if ($_SESSION['RestoSelected']==$OBJ->getId()) {
+    $_SESSION['nomSelected'] = $OBJ->getNom();
     $formCommande->ajouterComposantLigne($formCommande->concactComposants($formCommande->creerLabelFor('Votre commande : ', 'lblcommande'),
                                          $formCommande->concactComposants($formCommande->creerLabelFor('Ville : ', 'lblville'),
                                          $formCommande->concactComposants($formCommande->creerLabelFor(ucfirst($_SESSION['VilleSelected']), 'laVille'),
