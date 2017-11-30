@@ -178,6 +178,12 @@ class RestoDAO
 		return $result;
 	}
 
+	public static function selectNbNote($idR){
+		$sql = "SELECT COUNT(IDC) FROM evaluer WHERE IDR ='" . $idR . "';";
+		$nbNote = DBConnex::getInstance()->queryFetchFirstRow($sql);
+		return $nbNote[0];
+	}
+
 }
 
 
